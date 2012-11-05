@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5" method="upgrade">
+	<name>JXiForms</name>
+	<creationDate>2012-10-31</creationDate>
+	<author>Ready Bytes</author>
+	<authorEmail>bhavya@readybytes.in</authorEmail>
+	<authorUrl>http://www.joomlaxi.com</authorUrl>
+	<copyright>2009-12 Ready Bytes Software Labs Pvt. Ltd.</copyright>
+	<license>This component in released under the GNU/GPL v3 or later license</license>
+	<version>@build.version@</version>
+	<description>JoomlaXi Forms</description>
+
+	<!-- Public front end files -->
+	<files folder="site">
+		<folder>controllers</folder>
+		<folder>views</folder>
+		<folder>templates</folder>
+		<folder>jxiforms</folder>
+
+		<filename>jxiforms.php</filename>
+		<filename>index.html</filename>
+	</files>
+	
+	<languages>
+		<language tag="en-GB">languages/site/en-GB.com_jxiforms.ini</language>
+	</languages>
+
+<!--	<scriptfile>installscript.php</scriptfile> -->
+
+	<!-- Runs on install -->
+        <install>
+	  	 	 <sql>
+	           	 <file driver="mysql" charset="utf8">install/sql/install.mysql.utf8.sql</file>
+	   		 </sql>
+        </install>
+
+	<!-- Administrator back-end section -->
+	<administration>
+		<!-- Administration menu -->
+		<menu view="cpanel">COM_JOOMLAXIFORMS</menu>
+		<submenu>
+			<menu view="config">COM_JOOMLAXIFORMS_CONFIGURATION</menu>
+			<menu view="form">COM_JOOMLAXIFORMS_FORM</menu>
+			<menu view="action">COM_JOOMLAXIFORMS_ACTION</menu>
+		</submenu>
+
+		<!-- Back-end files -->
+		<files folder="admin">
+			<filename>jxiforms.php</filename>
+			<filename>index.html</filename>
+			<folder>controllers</folder>
+			<folder>views</folder>
+			<folder>templates</folder>
+			<folder>install</folder>
+		</files>
+
+		<languages>
+			<language tag="en-GB">languages/admin/en-GB.com_jxiforms.ini</language>
+			<language tag="en-GB">languages/admin/en-GB.com_jxiforms.sys.ini</language>
+		</languages>
+	</administration>
+
+</extension>
