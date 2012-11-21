@@ -1,12 +1,12 @@
-CREATE TABLE IF NOT EXISTS `#__jxiforms_form` (
- `form_id` 		INT(11)		NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `#__jxiforms_input` (
+ `input_id` 		INT(11)		NOT NULL AUTO_INCREMENT,
  `title` 		VARCHAR(255) 	NOT NULL ,
  `description` 		TEXT		DEFAULT NULL, 
  `post_url`     	VARCHAR(255)	NOT NULL,
  `redirect_url` 	VARCHAR(255)	DEFAULT NULL,
  `published` 		TINYINT(1) 	DEFAULT 1,
  `params`		TEXT 		DEFAULT NULL,  
-  PRIMARY KEY (`form_id`)
+  PRIMARY KEY (`input_id`)
 )
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8 ;
@@ -40,12 +40,12 @@ ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8 ;
 
 
-CREATE  TABLE IF NOT EXISTS `#__jxiforms_formaction` (
-  `formaction_id`	INT(11) 	NOT NULL AUTO_INCREMENT,
-  `form_id`     	INT(11)		NOT NULL ,
+CREATE  TABLE IF NOT EXISTS `#__jxiforms_inputaction` (
+  `inputaction_id`	INT(11) 	NOT NULL AUTO_INCREMENT,
+  `input_id`     	INT(11)		NOT NULL ,
   `action_id`     	INT(11)		NOT NULL ,
-   PRIMARY KEY (`formaction_id`),
-   INDEX `idx_form_id` (`form_id` ASC),
+   PRIMARY KEY (`inputaction_id`),
+   INDEX `idx_input_id` (`input_id` ASC),
    INDEX `idx_action_id` (`action_id` ASC)
  ) 
 ENGINE = MyISAM 

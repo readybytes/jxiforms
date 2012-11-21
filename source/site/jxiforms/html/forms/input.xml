@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+
+		<field name="input_id" type="hidden"
+			default="0"
+			label="COM_JXIFORMS_INPUT_ID_LABEL"
+			readonly="true"
+			required="true"
+			size="10"
+		/>
+
+		<field name="title" type="text"
+			label="COM_JXIFORMS_INPUT_TITLE_LABEL"
+			description="COM_JXIFORMS_INPUT_TITLE_DESC"
+			size="45" class="required"
+		/>
+		
+		<field name="post_url" type="text"
+			label="COM_JXIFORMS_INPUT_POST_URL_LABEL"
+			description="COM_JXIFORMS_INPUT_POST_URL_DESC"
+			size="45" readonly="true"
+		/>
+		
+		<field name="redirect_url" type="text"
+			label="COM_JXIFORMS_INPUT_REDIRECT_URL_LABEL"
+			description="COM_JXIFORMS_INPUT_REDIRECT_URL_DESC"
+			size="45"
+		/>
+		<field name="published" type="list"
+			label="COM_JXIFORMS_INPUT_PUBLISHED_LABEL" 
+			description="COM_JXIFORMS_INPUT_PUBLISHED_DESC"
+			class="inputbox" 
+			size="1" default="1" >
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+
+		<field name="description" type="editor"
+			default=""
+			description="COM_JXIFORMS_INPUT_DESCRIPTION_DESC"
+			label="COM_JXIFORMS_INPUT_DESCRIPTION_LABEL" 
+		/>
+
+	</fieldset>
+	
+</form>

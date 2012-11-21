@@ -21,7 +21,7 @@ include_once dirname(__FILE__).'/defines.php';
 Rb_HelperLoader::addAutoLoadFolder(JXIFORMS_PATH_CORE.'/base',		'',	'JXiForms');
 
 Rb_HelperLoader::addAutoLoadFolder(JXIFORMS_PATH_CORE.'/models',		'Model',	'JXiForms');
-Rb_HelperLoader::addAutoLoadFolder(JXIFORMS_PATH_CORE.'/models',		'Mform',	'JXiForms');
+Rb_HelperLoader::addAutoLoadFolder(JXIFORMS_PATH_CORE.'/models',		'Modelform','JXiForms');
 
 Rb_HelperLoader::addAutoLoadFolder(JXIFORMS_PATH_CORE.'/tables',		'Table',	'JXiForms');
 Rb_HelperLoader::addAutoLoadFolder(JXIFORMS_PATH_CORE.'/libs',			'',			'JXiForms');

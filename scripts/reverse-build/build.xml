@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Copying JoomlaXi Forms data to GIT" basedir="." default="copy_to_git">
 
-	<property name="target" 		value="@project.basedir@" 	override="true" />
+	<property name="target" 		value="@local.repository.location@" 	override="true" />
 	<property name="source" 		value="${project.basedir}" 	override="true" />
 	<property name="build.version" 	value="@build.version@" 	override="true" />
 	<property name="build.number" 	value="@build.number@" 		override="true" />
@@ -31,7 +31,7 @@
 			tofile="${target}/source/languages/site/en-GB.${args.comname}.ini" 
 			haltonerror="false" />
 
-		<copy file="${source}/administrator/language/en-GB/en-GB.c${args.comname}.ini"
+		<copy file="${source}/administrator/language/en-GB/en-GB.${args.comname}.ini"
 			tofile="${target}/source/languages/admin/en-GB.${args.comname}.ini" 
 			haltonerror="false" />
 		
@@ -52,7 +52,7 @@
 			</fileset>
 		</copy>
 
-		<copy 	file="${source}/administrator/components/${args.name}.xml" 
+		<copy 	file="${source}/administrator/components/${args.comname}/${args.name}.xml" 
 				tofile="${target}/source/${args.name}.xml" 
 				haltonerror="false"	
 				/>

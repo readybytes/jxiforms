@@ -9,6 +9,6 @@
 
 if(defined('_JEXEC')===false) die();
 
-class JXiFormsAdminViewForm extends JXiFormsView
+class JXiFormsAdminControllerInput extends JXiFormsController
 {
-}
+} 

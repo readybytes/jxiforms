@@ -9,7 +9,8 @@
 if(defined('_JEXEC')===false) die();
 
 
-class JXiFormsTableForm extends JXiFormsTable
+class JXiFormsModelInput extends JXiFormsModel
 {
 }
 
+class JXiFormsModelformInput extends JXiFormsModelform { }

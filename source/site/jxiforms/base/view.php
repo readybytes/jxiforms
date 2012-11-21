@@ -25,7 +25,7 @@ class JXiFormsView extends JXiFormsViewbase
 	{
 		parent::__construct($config);
 		
-		self::addSubmenus(array('dashboard', 'form', 'action'));
+		self::addSubmenus(array('dashboard', 'input', 'action'));
 		return $this;
 	}
 	
