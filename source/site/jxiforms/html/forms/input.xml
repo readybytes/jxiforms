@@ -5,6 +5,7 @@
 		<field name="input_id" type="hidden"
 			default="0"
 			label="COM_JXIFORMS_INPUT_ID_LABEL"
+			description="COM_JXIFORMS_INPUT_ID_DESC"
 			readonly="true"
 			required="true"
 			size="10"
@@ -19,7 +20,7 @@
 		<field name="post_url" type="text"
 			label="COM_JXIFORMS_INPUT_POST_URL_LABEL"
 			description="COM_JXIFORMS_INPUT_POST_URL_DESC"
-			size="45" readonly="true"
+			size="60" readonly="true"
 		/>
 		
 		<field name="redirect_url" type="text"

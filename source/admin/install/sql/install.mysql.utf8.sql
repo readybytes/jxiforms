@@ -31,6 +31,7 @@ CREATE  TABLE IF NOT EXISTS `#__jxiforms_action` (
   `core_params`		TEXT		DEFAULT NULL,
   `action_params` 	TEXT 		DEFAULT NULL,
   `is_core`		TINYINT(1)	DEFAULT 0,
+  `published` 		TINYINT(1) 	DEFAULT 1,
   `ordering`   		INT(11) 	NOT NULL DEFAULT 0,
    PRIMARY KEY (`action_id`),
    INDEX `idx_type` (`type` ASC),

@@ -13,3 +13,4 @@ class JXiFormsModelAction extends JXiFormsModel
 {
 }
 
+class JXiFormsmodelformAction extends JXiFormsModelform { }

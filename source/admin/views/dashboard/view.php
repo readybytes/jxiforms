@@ -9,8 +9,15 @@
 
 if(defined('_JEXEC')===false) die();
 
-include_once dirname(__FILE__).'/view.php';
-class JXiFormsAdminViewDashboard extends JXiFormsAdminBaseViewDashboard
+class JXiFormsAdminBaseViewDashboard extends JXiFormsView
 {
+	public function display()
+	{
+		return true;
+	}
 	
+	public function _basicFormSetup($task)
+	{
+		return true;
+	}
 }

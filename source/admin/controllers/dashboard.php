@@ -11,4 +11,9 @@ if(defined('_JEXEC')===false) die();
 
 class JXiFormsAdminControllerDashboard extends JXiFormsController
 {
+	//there is no model exists for dashboard
+	function getModel($name = '', $prefix = '', $config = array())
+	{
+		return null;
+	}
 } 
