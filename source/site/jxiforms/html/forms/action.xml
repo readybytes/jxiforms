@@ -14,13 +14,13 @@
 		<field name="title" type="text"
 			label="COM_JXIFORMS_ACTION_TITLE_LABEL"
 			description="COM_JXIFORMS_ACTION_TITLE_DESC"
-			size="45" class="required"
+			size="45" required="true"
 		/>
 		
 		<field name="type" type="text"
 			label="COM_JXIFORMS_ACTION_TYPE_LABEL"
 			description="COM_JXIFORMS_ACTION_TYPE_DESC"
-			size="45" class="required" readonly="true"
+			size="45" required="true" readonly="true"
 		/>
 		
 		<field name="published" type="list"
@@ -41,12 +41,16 @@
 			<option value="1">COM_JXIFORMS_YES</option>
 		</field>
 		
-		<field name="description" type="editor"
+		<field name="description" type="textarea"
+			rows="2" cols="40"
 			default=""
 			description="COM_JXIFORMS_ACTION_DESCRIPTION_DESC"
 			label="COM_JXIFORMS_ACTION_DESCRIPTION_LABEL" 
 		/>
 
 	</fieldset>
+	
+	<fields name="core_params">
+	</fields>
 	
 </form>

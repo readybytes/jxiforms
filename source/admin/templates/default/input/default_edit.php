@@ -9,7 +9,18 @@
 */
 
 if(defined('_JEXEC')===false) die();
+
+JHtml::_('behavior.formvalidation');
+JHtml::_('formbehavior.chosen', 'select.multiselect');
 ?>
+<script type="text/javascript">
+	Joomla.submitbutton = function(task)
+	{
+		if (task == 'cancel' || document.formvalidator.isValid(document.id('adminForm'))) {
+			Joomla.submitform(task, document.getElementById('adminForm'));
+		}
+	}
+</script>
 
 <form action="<?php echo $uri; ?>" method="post" name="adminForm" id="adminForm">
 	<div class="span6">		
@@ -47,6 +58,15 @@ if(defined('_JEXEC')===false) die();
 	<div class="span6">
 	<fieldset class="form-horizontal">
 	<legend> <?php echo Rb_Text::_('COM_JXIFORMS_INPUT_ACTIONS' ); ?> </legend>
+
+			<div class="control-group"> 
+				<div class="control-label">
+					<label class="hasTip" title="<?php echo Rb_Text::_('COM_JXIFORMS_INPUT_EDIT_ACTIONS_DESC');?>"><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_EDIT_ACTIONS'); ?></label>
+				</div>
+				<div class="controls"><?php $actions = $input->getActions();
+					 						echo JXiFormsHtml::_('jxiformshtml.actions.edit', 'jxiforms_form[_input_actions]', $actions, array('multiple'=>true, 'style'=>"class='multiselect'"));?></div>				
+			</div>
+			
 	</fieldset>	
 	</div>
 	

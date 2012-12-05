@@ -28,7 +28,7 @@ class JXiformsAction extends JXiFormsLib
 	protected 	$core_params	   =   null;
 	protected 	$action_params	   =   null;
 	
-	protected 	$_actioninputs  =   null;
+	protected 	$_action_inputs  =   null;
 	
 	/**
 	 * Gets the instance of JXiFormsAction with provide form identifier
@@ -41,7 +41,55 @@ class JXiformsAction extends JXiFormsLib
 	 */
 	public static function getInstance($id = 0,  $type = null,  $bindData = null)
 	{
-		return parent::getInstance('action', $id, $type, $bindData);
+		static $instance=array();
+
+		//clean cache if required
+		if(JXiFormsFactory::cleanStaticCache()){
+			$instance=array();
+		}
+		
+		$name = 'Action';
+		//generate class name
+		$className	= 'JXiForms'.$name;
+
+		//try to calculate type of app from ID if given
+		if($id){
+			if($bindData !== null){
+				$item = $bindData;
+			}else{
+				$item =  JXiFormsFactory::getInstance('action', 'model')->loadRecords(array('id'=>$id));
+				$item = array_shift($item);
+			}
+
+				$type = $item->type;
+		}
+
+			Rb_Error::assert($type!==null, Rb_Text::_('PLG_SYSTEM_RBSL_ERROR_INVALID_TYPE_OF_APPLICATION'));
+
+			//IMP autoload actions
+			JXiFormsHelperAction::getActions();
+			$className	.= $type;
+
+		// in classname does not exists then return false
+		if(class_exists($className, true) === FALSE){
+			return false;
+		}	
+		
+		// can not cache object of it 0
+		if(!$id){
+			return new $className();
+		}
+
+		//if already there is an object and check for static cache clean up
+		if(isset($instance[$name][$id]) && $instance[$name][$id]->getId()==$id)
+			return $instance[$name][$id];
+
+		//create new object, class must be autoloaded
+		$instance[$name][$id] = new $className();
+
+		//if bind data exist then bind with it, else load new data
+		return  $bindData 	? $instance[$name][$id]->bind($item)
+					: $instance[$name][$id]->load($id);
 	}
 	
 	/**
@@ -60,7 +108,7 @@ class JXiformsAction extends JXiFormsLib
 		$this->ordering		 	= 0;
 		$this->core_params		= new Rb_Registry();
 		$this->action_params	= new Rb_Registry();
-		$this->_actioninputs	= array();
+		$this->_action_inputs	= array();
 
 		return $this;
 	}
@@ -71,14 +119,13 @@ class JXiformsAction extends JXiFormsLib
 	 */
 	public function afterBind($id = 0, $data)
 	{ 
-		if(!$id) 
-			return $this;
-
-		//$this->_actioninputs = JXiFormsFactory::getInstance('actioninput', 'model')
-		//							->getInputActions($id);
-
-		if(isset($data['actioninputs'])){
-			$this->_actioninputs = $data['_actioninputs'];
+		if($id) {
+			$this->_action_inputs = JXiFormsFactory::getInstance('inputaction', 'model')
+										->getActionInputs($id);
+		}
+		
+		if(isset($data['_action_inputs'])){
+			$this->_action_inputs = is_array($data['_action_inputs']) ? $data['_action_inputs'] : array($data['_action_inputs']);
 		}
 									
 		return $this;
@@ -104,16 +151,14 @@ class JXiformsAction extends JXiFormsLib
 	 */
 	private function _saveActionInputs()
 	{
-		return true;
-
 		// delete all the existing values of current input_id
 		$model = JXiFormsFactory::getInstance('inputaction', 'model');
 		$model->deleteMany(array('action_id' => $this->getId()));
 
 		// insert new values into inputaction for current input_id
 		$data['action_id'] = $this->getId();
-		if(is_array($this->_actioninputs)){
-			foreach($this->_actioninputs as $input){
+		if(is_array($this->_action_inputs)){
+			foreach($this->_action_inputs as $input){
 				$data['input_id'] = $input;
 				$model->save($data);
 			}
@@ -122,4 +167,138 @@ class JXiformsAction extends JXiFormsLib
 		return $this;
 	} 
 	
+	/**
+	 * Check the action Type
+	 * @return boolean  True when action is of mentioned type else False
+	 */
+	public function isTypeOf($type='')
+	{
+		if($type==='')
+			return true;
+
+		$type = JString::ucfirst(JString::strtolower($type));
+		
+		return is_a($this, 'JXiFormsAction'.$type);
+	}
+	
+	public function getId()
+	{
+		XiError::assert($this);
+		return $this->action_id;
+	}
+	
+	public function getName()
+	{
+		if(isset($this->type)==false || empty($this->type))
+		{
+			$r = null;
+			if (!preg_match('/Action(.*)/i', get_class($this), $r)) {
+				JError::raiseError (500, "JXiForms: Can't get or parse class name.");
+			}
+			$this->type = strtolower( $r[1] );
+		}
+
+		return $this->type;
+	}
+	
+	public function load($id = 0)
+	{
+		if(!$id) return $this;
+
+		$actions = JXiFormsFactory::getInstance('action', 'model')
+							->loadRecords(array('id' => $id));
+		$this->bind(array_shift($actions));
+		return $this;
+	}
+	
+	public function getModelform()
+	{
+		if(isset($this->_modelform)){
+			return $this->_modelform;
+		}
+		
+		// setup modelform
+		$this->_modelform = Rb_Factory::getInstance('action', 'Modelform' , $this->_component->getPrefixClass());
+		
+		// set model form to pick data from this object
+		$this->_modelform->setLibData($this);
+		
+		return $this->_modelform ;
+	}
+	
+	public function getModel()
+	{
+		return Rb_Factory::getInstance('action', 'Model', $this->_component->getPrefixClass());
+	}
+	
+	public function getLocation()
+    {
+    	return dirname($this->_location);
+    }
+    
+    public function collectActionParams(array $data)
+    {
+    	if(!isset($data['action_params'])){
+    		$data['action_params'] = array();
+    	}
+    	return json_encode($data['action_params']);
+    }
+    
+	public function collectCoreParams(array $data)
+    {
+    	if(!isset($data['core_params'])){
+    		$data['core_params'] = array();
+    	}
+    	return json_encode($data['core_params']);
+    }
+	
+    public function isApplicable($refObject=null, $eventName='')
+    {
+    	//return when refObject is not set
+		if(($refObject === null) || !($refObject instanceof JXiformsInput)){
+			return false;
+		}
+
+		//if applicable to all is false then check input vs action
+		if($this->isCore() == false){
+			$ret = array_intersect($this->getInputs(), $refObject->getInputs());
+			if(count($ret) <= 0 ){
+				return false;
+			}
+		}
+		// finally check if plugin want trigger for this or not
+		return (boolean) $this->_isApplicable($refObject, $eventName);
+    }
+    
+    /**
+     * Check whether action is applicable to all the inputs or to any specific input
+     * @return boolean  True if action is applicable to all the inputs else False
+     */
+    public function isCore()
+    {
+    	return (boolean) $this->is_core;
+    }
+    
+    public function getInputs()
+    {
+    	return $this->_action_inputs;
+    }
+    
+	public function _isApplicable($refObject, $eventName='')
+	{
+		return true;
+	}
+	
+	public function getActionParams()
+	{
+		return $this->action_params;
+	}
+	
+	public function setId($id)
+	{
+		Rb_Error::assert($this);
+		$varName = 'action_id';
+		$this->$varName = $id;
+		return $this;
+	}
 }

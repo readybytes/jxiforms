@@ -11,4 +11,15 @@ if(defined('_JEXEC')===false) die();
 
 class JXiFormsSiteControllerInput extends JXiFormsController
 {
+	public function submit()
+	{
+		$inputId = JXiFormsFactory::getApplication()->input->get('input_id', 0);
+		$input   = ($inputId != 0) ?  JXiformsInput::getInstance($inputId) : false; 
+		$data    = JRequest::get('POST');
+		
+		$args = array($data, $input);
+		Rb_HelperPlugin::trigger('onJxiformsInputSubmit', $args, 'jxiforms');
+		
+		JXiFormsFactory::getApplication()->redirect('index.php');	
+	}
 } 

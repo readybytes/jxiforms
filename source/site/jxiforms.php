@@ -12,11 +12,13 @@ if(!defined('RB_FRAMEWORK_LOADED')){
 	JLog::add('RB Frameowork not loaded',JLog::ERROR);
 }
 
-require_once  dirname(__FILE__).DS.'includes'.DS.'includes.php';
+require_once  dirname(__FILE__).'/jxiforms/includes.php';
+$option	= 'com_jxiforms';
+$view	= 'dashboard';
+$task	= null;
+$format	= 'html';
 
-// find the controller to handle the request
-//TODO : pass by reference
-$controllerClass = JXiFormsHelper::findController($option='com_jxiforms',$view='dashboard', $task=null,$format='html');
+$controllerClass = JXiFormsHelper::findController($option,$view, $task,$format);
 
 $controller = JXiFormsFactory::getInstance($controllerClass, 'controller', 'jxiformssite');
 

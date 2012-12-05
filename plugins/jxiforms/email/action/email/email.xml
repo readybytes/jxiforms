@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+		<fields name="action_params">
+		
+			<fieldset name="parameters" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+
+				<field name="email_id" type="email"
+					label="Email Id"
+					description="COM_JXIFORMS_ACTION_EMAIL_ID_DESC"
+					size="45" required="true"
+				/>
+				
+				<field name="send_cc" type="textarea"
+					label="Email CC"
+					description="COM_JXIFORMS_ACTION_EMAIL_CC_DESC"
+					rows="2" cols="50" default=""
+				/>
+				
+				<field name="send_bcc" type="textarea"
+					label="Email BCC"
+					description="COM_JXIFORMS_ACTION_EMAIL_BCC_DESC"
+					srows="2" cols="50" default=""
+				/>
+				
+				<field name="email_subject" type="textarea"
+					label="Subject"
+					description="COM_JXIFORMS_ACTION_EMAIL_SUBJECT_DESC"
+					rows="2" cols="50" default=""
+				/>
+				
+				<field name="email_format" type="list"
+					label="Email Format"
+					description="COM_JXIFORMS_ACTION_EMAIL_FORMAT_DESC" 
+					default="0">
+				<option value="0">COM_JXIFORMS_ACTION_EMAIL_FORMAT_PLAIN_TEXT</option>
+				<option value="1">COM_JXIFORMS_ACTION_EMAIL_FORMAT_HTML</option>
+				</field>
+				
+				<field name="message" type="editor"
+					label="Message Body"
+					description="COM_JXIFORMS_INPUT_REDIRECT_URL_DESC"
+					size="45"
+				/>
+		</fieldset>
+	</fields>
+</config>

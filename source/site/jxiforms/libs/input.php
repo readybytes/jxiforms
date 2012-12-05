@@ -18,11 +18,11 @@ class JXiformsInput extends JXiFormsLib
 	protected 	$published	   =	1;
 	
 	protected 	$post_url	   =   '';
-	protected 	$redirect_url  =   '';
+	protected 	$redirect_url  =   'index.php';
 		
 	protected 	$params		   =   null;
 	
-	protected 	$_inputactions  =   null;
+	protected 	$_input_actions  =   null;
 	
 	/**
 	 * Gets the instance of JXiFormsInput with provide form identifier
@@ -50,9 +50,9 @@ class JXiformsInput extends JXiFormsLib
 		$this->description  = '';
 		$this->published	= 1;
 		$this->post_url		= '';
-		$this->redirect_url = '';
+		$this->redirect_url = 'index.php';
 		$this->params		= new Rb_Registry();
-		$this->_inputactions= array();
+		$this->_input_actions= array();
 
 		return $this;
 	}
@@ -63,14 +63,13 @@ class JXiformsInput extends JXiFormsLib
 	 */
 	public function afterBind($id = 0, $data)
 	{ 
-		if(!$id) 
-			return $this;
-
-		//$this->_inputactions = JXiFormsFactory::getInstance('inputaction', 'model')
-		//							->getInputActions($id);
-
-		if(isset($data['inputactions'])){
-			$this->_inputactions = $data['inputactions'];
+		if($id) {
+			$this->_input_actions = JXiFormsFactory::getInstance('inputaction', 'model')
+										->getInputActions($id);
+		}
+		
+		if(isset($data['_input_actions'])){
+			$this->_input_actions = is_array($data['_input_actions']) ? $data['_input_actions'] : array($data['_input_actions']);
 		}
 									
 		return $this;
@@ -90,7 +89,7 @@ class JXiformsInput extends JXiFormsLib
 		
 		$posturl = $this->getPosturl(); 
 		if(empty($posturl)){
-			$this->post_url = JURI::root().'index.php?option=jxiforms&view=input&task=post&input_id='.$this->getId();
+			$this->post_url = 'index.php?option=com_jxiforms&view=input&task=submit&input_id='.$this->getId();
 			$this->save();
 		}
 		
@@ -111,15 +110,15 @@ class JXiformsInput extends JXiFormsLib
 	 * @return object JXiformsInput  Instance of type JXiformsInput
 	 */
 	private function _saveInputActions()
-	{return true;
+	{
 		// delete all the existing values of current input_id
 		$model = JXiFormsFactory::getInstance('inputaction', 'model');
 		$model->deleteMany(array('input_id' => $this->getId()));
 
 		// insert new values into inputaction for current input_id
 		$data['input_id'] = $this->getId();
-		if(is_array($this->_inputactions)){
-			foreach($this->_inputactions as $action){
+		if(is_array($this->_input_actions)){
+			foreach($this->_input_actions as $action){
 				$data['action_id'] = $action;
 				$model->save($data);
 			}
@@ -127,4 +126,14 @@ class JXiformsInput extends JXiFormsLib
 
 		return $this;
 	} 
+	
+	public function getInputs()
+	{
+		return array($this->getId());
+	}
+	
+	public function getActions()
+	{
+		return $this->_input_actions;
+	}
 }

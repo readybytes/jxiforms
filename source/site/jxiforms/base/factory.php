@@ -10,5 +10,8 @@ if(defined('_JEXEC')===false) die();
 
 class JXiFormsFactory extends Rb_Factory
 {
-	
+	static function getInstance($name, $type='', $prefix='jxiforms', $refresh=false)
+	{
+		return parent::getInstance($name, $type, $prefix, $refresh);
+	}
 }
