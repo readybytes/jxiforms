@@ -98,7 +98,7 @@ class JXiFormsHelperAction extends JXiFormsHelper
 		//trigger all actions if they are of mentioned type
 		foreach($actions as $action)
 		{
-			if($action->isTypeOf($type)){
+			if($action->hasType($type)){
 				$results[$action->getId()] = $action;
 			}
 		}

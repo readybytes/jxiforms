@@ -27,7 +27,7 @@ JHtml::_('behavior.framework');
 				</th>
 				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_ACTION_GRID_TITLE", 'title', $filter_order_Dir, $filter_order);?></th>
 				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_ACTION_GRID_TYPE", 'type', $filter_order_Dir, $filter_order);?></th>
-				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_ACTION_GRID_IS_CORE", 'is_core', $filter_order_Dir, $filter_order);?></th>
+				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_ACTION_GRID_FOR_ALL_INPUTS", 'for_all_inputs', $filter_order_Dir, $filter_order);?></th>
 				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_ACTION_GRID_PUBLISHED", 'published', $filter_order_Dir, $filter_order);?></th>
 				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_ACTION_GRID_ORDERING", 'ordering', $filter_order_Dir, $filter_order);?></th>
 							
@@ -50,7 +50,7 @@ JHtml::_('behavior.framework');
 						<div><?php echo $record->description;?></div>
 					</td>
 					<td><?php echo $record->type;?></td>
-					<td><?php echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'is_core', $count);?></td>
+					<td><?php echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'for_all_inputs', $count);?></td>
 					<td><?php echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'published', $count);?></td>
 					<td>
 						<span><?php echo $pagination->orderUpIcon( $count , true, 'orderup', Rb_Text::_('COM_JXIFORMS_ORDERING_MOVE_UP')); ?></span>

@@ -13,13 +13,43 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 {
 	public function submit()
 	{
-		$inputId = JXiFormsFactory::getApplication()->input->get('input_id', 0);
+		$inputId = $this->_getId();
 		$input   = ($inputId != 0) ?  JXiformsInput::getInstance($inputId) : false; 
-		$data    = JRequest::get('POST');
 		
-		$args = array($data, $input);
+		Rb_Error::assert($input, Rb_Text::_('COM_JXIFORMS_ERROR_INVALID_INPUT_ID'));
+		
+		//collect data from get and post 
+		$postData    = Rb_Request::get('POST');
+		$getData     = Rb_Request::get('GET');
+		$data 		 = array_merge($getData, $postData);
+		
+		//move the uploaded attachments file to the 
+		//tmp location and pass it on to the plugins for further process
+		$attachments = array();
+		foreach($_FILES as $name => $file){
+			if(empty($file['tmp_name'])){
+				continue;
+			}
+			$extension = array_pop(explode('.', $file['name']));
+			$destination = JPATH_ROOT.'/tmp/'.$name.'.'.$extension;
+			
+			if(move_uploaded_file($file['tmp_name'], $destination)){
+				$attachments[$name] = $destination;	
+			}
+		}
+		
+		$args = array($input, $data, $attachments);
 		Rb_HelperPlugin::trigger('onJxiformsInputSubmit', $args, 'jxiforms');
 		
-		JXiFormsFactory::getApplication()->redirect('index.php');	
+		//remove the attachments from tmp location after trigger
+		foreach ($attachments as $attachment){
+			if(JFile::exists($attachment)){
+				JFile::delete($attachment);
+			}
+		}
+		
+		$url = $input->getRedirecturl();
+		//TODO : routed url required
+		JXiFormsFactory::getApplication()->redirect($url);	
 	}
 } 

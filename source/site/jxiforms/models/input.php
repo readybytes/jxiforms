@@ -11,6 +11,17 @@ if(defined('_JEXEC')===false) die();
 
 class JXiFormsModelInput extends JXiFormsModel
 {
+	public function delete($id=null)
+	{
+		if(!parent::delete($id))
+		{
+			$db = JXiFormsFactory::getDBO();
+			Rb_Error::raiseError(500, $db->getErrorMsg());
+		}
+			// delete input from inputaction table
+	       return JXiFormsFactory::getInstance('inputaction', 'model')
+							 	 ->deleteMany(array('input_id' => $id));
+	}
 }
 
 class JXiFormsModelformInput extends JXiFormsModelform { }

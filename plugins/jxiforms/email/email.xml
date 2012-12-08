@@ -11,6 +11,7 @@
     <description>JXiForms-Email</description>
 	<files>
 		<filename plugin="email">email.php</filename>
+		<folder>action</folder>
 	</files>
 	<params>
 	</params>

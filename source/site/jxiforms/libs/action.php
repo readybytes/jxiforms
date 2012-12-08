@@ -23,7 +23,7 @@ class JXiformsAction extends JXiFormsLib
 	
 	protected   $ordering		   =    0;
 	protected 	$published	   	   =	1;
-	protected   $is_core		   =    0;
+	protected   $for_all_inputs	   =    0;
 	
 	protected 	$core_params	   =   null;
 	protected 	$action_params	   =   null;
@@ -54,8 +54,8 @@ class JXiformsAction extends JXiFormsLib
 
 		//try to calculate type of app from ID if given
 		if($id){
-			if($bindData !== null){
-				$item = $bindData;
+			if(!empty($bindData)){
+				$item = is_array($bindData) ? (object) $bindData : $bindData;
 			}else{
 				$item =  JXiFormsFactory::getInstance('action', 'model')->loadRecords(array('id'=>$id));
 				$item = array_shift($item);
@@ -75,9 +75,11 @@ class JXiformsAction extends JXiFormsLib
 			return false;
 		}	
 		
-		// can not cache object of it 0
+		//bind data with instance even when object is not saved
 		if(!$id){
-			return new $className();
+			$class_instance = new $className();
+			return $bindData ? $class_instance->bind($item)
+							 : $class_instance;
 		}
 
 		//if already there is an object and check for static cache clean up
@@ -104,7 +106,7 @@ class JXiformsAction extends JXiFormsLib
 		$this->type				= '';
 		$this->description  	= '';
 		$this->published		= 1;
-		$this->is_core			= 0;
+		$this->for_all_inputs	= 0;
 		$this->ordering		 	= 0;
 		$this->core_params		= new Rb_Registry();
 		$this->action_params	= new Rb_Registry();
@@ -171,7 +173,7 @@ class JXiformsAction extends JXiFormsLib
 	 * Check the action Type
 	 * @return boolean  True when action is of mentioned type else False
 	 */
-	public function isTypeOf($type='')
+	public function hasType($type='')
 	{
 		if($type==='')
 			return true;
@@ -183,7 +185,7 @@ class JXiformsAction extends JXiFormsLib
 	
 	public function getId()
 	{
-		XiError::assert($this);
+		Rb_Error::assert($this);
 		return $this->action_id;
 	}
 	
@@ -236,7 +238,7 @@ class JXiformsAction extends JXiFormsLib
     	return dirname($this->_location);
     }
     
-    public function collectActionParams(array $data)
+    public function filterActionParams(array $data)
     {
     	if(!isset($data['action_params'])){
     		$data['action_params'] = array();
@@ -244,7 +246,7 @@ class JXiformsAction extends JXiFormsLib
     	return json_encode($data['action_params']);
     }
     
-	public function collectCoreParams(array $data)
+	public function filterCoreParams(array $data)
     {
     	if(!isset($data['core_params'])){
     		$data['core_params'] = array();
@@ -260,7 +262,7 @@ class JXiformsAction extends JXiFormsLib
 		}
 
 		//if applicable to all is false then check input vs action
-		if($this->isCore() == false){
+		if($this->forAllInputs() == false){
 			$ret = array_intersect($this->getInputs(), $refObject->getInputs());
 			if(count($ret) <= 0 ){
 				return false;
@@ -274,9 +276,9 @@ class JXiformsAction extends JXiFormsLib
      * Check whether action is applicable to all the inputs or to any specific input
      * @return boolean  True if action is applicable to all the inputs else False
      */
-    public function isCore()
+    public function forAllInputs()
     {
-    	return (boolean) $this->is_core;
+    	return (boolean) $this->for_all_inputs;
     }
     
     public function getInputs()
@@ -301,4 +303,19 @@ class JXiformsAction extends JXiFormsLib
 		$this->$varName = $id;
 		return $this;
 	}
+	
+	public function getActionParam($key, $default=null)
+	{
+		Rb_Error::assert($this);
+		return $this->action_params->get($key,$default);
+	}
+	
+	public function setActionParam($key, $value)
+	{
+		Rb_Error::assert($this);
+		
+		$this->action_params->set($key,$value);
+		return $this;
+	}
+	
 }

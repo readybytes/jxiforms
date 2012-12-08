@@ -43,8 +43,8 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 			</div>
 
 			<div class="control-group">
-				<div class="control-label"><?php echo $form->getLabel('is_core'); ?> </div>
-				<div class="controls"><?php echo $form->getInput('is_core'); ?></div>								
+				<div class="control-label"><?php echo $form->getLabel('for_all_inputs'); ?> </div>
+				<div class="controls"><?php echo $form->getInput('for_all_inputs'); ?></div>								
 			</div>
 			
 			<div class="control-group">

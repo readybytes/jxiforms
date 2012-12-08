@@ -13,3 +13,4 @@ class JXiFormsModelData extends JXiFormsModel
 {
 }
 
+class JXiFormsModelformData extends JXiFormsModelform { }

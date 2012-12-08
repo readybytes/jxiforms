@@ -30,12 +30,12 @@ CREATE  TABLE IF NOT EXISTS `#__jxiforms_action` (
   `description`		TEXT 		DEFAULT NULL,
   `core_params`		TEXT		DEFAULT NULL,
   `action_params` 	TEXT 		DEFAULT NULL,
-  `is_core`		TINYINT(1)	DEFAULT 0,
+  `for_all_inputs`		TINYINT(1)	DEFAULT 0,
   `published` 		TINYINT(1) 	DEFAULT 1,
   `ordering`   		INT(11) 	NOT NULL DEFAULT 0,
    PRIMARY KEY (`action_id`),
    INDEX `idx_type` (`type` ASC),
-   INDEX `idx_is_core` (`is_core`)
+   INDEX `idx_for_all_inputs` (`for_all_inputs`)
  ) 
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8 ;

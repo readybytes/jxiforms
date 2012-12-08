@@ -14,79 +14,79 @@ class JXiFormsActionEmail extends JXiformsAction
 {
 	protected $_location	= __FILE__;
 	
-	public function process($data)
+	public function process($data, $attachments)
 	{
-		$actionParams = json_decode($this->getActionParams());
+		$actionParams = $this->getActionParams();
 		
-		$emailInst  =  JXiFormsFactory::getMailer();
+		$mailer  =  JXiFormsFactory::getMailer();
+		$mailer->addRecipient($actionParams->get('email_id', ''));
 		
-		$emailInst->addRecipient($actionParams->email_id);
+		$subject  = $actionParams->get('email_subject', '');
+		$body 	  = base64_decode($actionParams->get('message', ''));
 		
-		$emailInst->setSubject($actionParams->email_subject);
-
-		$body = base64_decode($actionParams->message)."\n";
-		foreach ($data as $key => $value){
-			$body .= $key ." : ";
-			
-			if(is_array($value)){
-				$body .= implode(",",$value) ."\n"; 
-            }
-            else{
-                $body .= $value."\n";
-            }
+		if(!empty($data)){
+			$subject  = JXiFormsHelperRewriter::rewrite($subject, $data);
+			$body     = JXiFormsHelperRewriter::rewrite($body, $data);
+		}
+		
+		//if nothing is set in messgae then append all the form data in the message body
+		if(empty($body)){
+			foreach ($data as $key => $value){
+				$body .= $key ." : ";
+				
+				if(is_array($value)){
+					$body .= implode(",",$value) ."\n"; 
+	            }
+	            else{
+	                $body .= $value."\n";
+	            }
+			}
 		}
 
-		$emailInst->setBody($body);
+		$mailer->setSubject($subject);
+		$mailer->setBody($body);
 
-		$htmlFormat = $actionParams->email_format;
-		$emailInst->IsHTML($htmlFormat);
+		$htmlFormat = $actionParams->get('email_format', 1);
+		$mailer->IsHTML($htmlFormat);
 
 		//in case of text email format, remove all html and php tags from message content
 		if(!$htmlFormat){
 			$body = strip_tags($body);
-			$emailInst->setBody($body);
+			$mailer->setBody($body);
 		}
 
-		$this->_addEmailAddress($actionParams->send_cc,'addCC', $emailInst);
-		$this->_addEmailAddress($actionParams->send_bcc,'addBCC', $emailInst);
-		$emailSend = true;
+		$this->_addEmailAddress($actionParams->get('send_cc',''),'addCC', $mailer);
+		$this->_addEmailAddress($actionParams->get('send_bcc',''),'addBCC', $mailer);
 
-		if($emailInst->Send()){
-			$emailSend = true;
-		}else
-		{
-			$emailSend = false;
+		// add attachments
+		if(!empty($attachments)){
+			foreach ($attachments as $attachment =>$value){
+				$mailer->addAttachment($value, $attachment);
+			}
 		}
-			
-		return $emailSend;
+
+		return $mailer->Send();
 	}
 	
-	public function collectActionParams(array $data)
+	public function filterActionParams(array $data)
 	{
 		// encode editor content
 		if(isset($data['action_params']) && isset($data['action_params']['message'])){
 			$data['action_params']['message'] = base64_encode($data['action_params']['message']);
 		}
 
-		return parent::collectActionParams($data);
+		return parent::filterActionParams($data);
 	}
-	
-	public function _addEmailAddress($str, $function='addRecipient', $emailInst)
+
+	public function _addEmailAddress($str, $function='addRecipient', $mailer)
 	{
 		// string is empty
 		if(isset($str)==false || empty($str)){
 			return false;
 		}
 
-		// explode and add one by one
+		// explode emails
 		$emails = explode(',', $str);
-		$count = 0;
-		foreach($emails as $email){
-			// no need to get mailer, as we have just added it in sendEmail
-			$emailInst->$function($email);
-			$count++;
-		}
-
-		return $count;
+		return $mailer->$function($emails);
 	}
 }

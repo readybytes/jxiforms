@@ -21,18 +21,21 @@ class  plgJxiformsEmail extends RB_Plugin
 		JXiFormsHelperAction::addActionsPath($dir);
 	}
 	
-	public function onJxiformsInputSubmit($data, $inputInstance)
+	public function onJxiformsInputSubmit($inputInstance, $data, $attachments)
 	{
 		$actions = JXiFormsHelperAction::getAvailableActions('email');
 		
+		$results = array();
 		foreach ($actions as $action){
-			$result = $action->isApplicable($inputInstance);
-			if($result === false){
+			$applicable = $action->isApplicable($inputInstance);
+			if($applicable === false){
 				continue;
 			}
 			
-			$action->process($data);
+			$results[$action->getId()] = $action->process($data, $attachments);
 		}
+		
+		return $results;
 	}
 }
 

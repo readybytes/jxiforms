@@ -136,4 +136,13 @@ class JXiformsInput extends JXiFormsLib
 	{
 		return $this->_input_actions;
 	}
+	
+	/**
+	 * Gets the redirect url of the input form
+	 * @return string Url on which user will be redirected
+	 */
+	public function getRedirecturl()
+	{
+		return $this->redirect_url;
+	}
 }

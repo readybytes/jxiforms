@@ -32,12 +32,12 @@
 				<field name="email_format" type="list"
 					label="Email Format"
 					description="COM_JXIFORMS_ACTION_EMAIL_FORMAT_DESC" 
-					default="0">
+					default="1">
 				<option value="0">COM_JXIFORMS_ACTION_EMAIL_FORMAT_PLAIN_TEXT</option>
 				<option value="1">COM_JXIFORMS_ACTION_EMAIL_FORMAT_HTML</option>
 				</field>
 				
-				<field name="message" type="editor"
+				<field name="message" type="jxiforms.editor"
 					label="Message Body"
 					description="COM_JXIFORMS_INPUT_REDIRECT_URL_DESC"
 					size="45"

@@ -15,6 +15,8 @@ class JXiFormsModelAction extends JXiFormsModel
 
 class JXiFormsmodelformAction extends JXiFormsModelform 
 {
+	// action-type specific parameters needs to be binded 
+	// with basic action form so relevant xml file is loaded on the action form
 	function preprocessForm($form, $data)
 	{
 		$action_id = isset($data['action_id']) ? $data['action_id'] : 0;
@@ -25,5 +27,17 @@ class JXiFormsmodelformAction extends JXiFormsModelform
 		}
 		
 		return parent::preprocessForm($form, $data);
+	}
+	
+	public function delete($id=null)
+	{
+		if(!parent::delete($id))
+		{
+			$db = JXiFormsFactory::getDBO();
+			Rb_Error::raiseError(500, $db->getErrorMsg());
+		}
+			// delete action from inputaction table
+	       return JXiFormsFactory::getInstance('inputaction', 'model')
+							 	 ->deleteMany(array('action_id' => $id));
 	}
 }

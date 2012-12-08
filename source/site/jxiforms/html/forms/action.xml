@@ -32,9 +32,9 @@
 			<option value="0">JUNPUBLISHED</option>
 		</field>
 		
-		<field name="is_core" type="list"
-			label="COM_JXIFORMS_ACTION_IS_CORE_LABEL" 
-			description="COM_JXIFORMS_ACTION_IS_CORE_DESC"
+		<field name="for_all_inputs" type="list"
+			label="COM_JXIFORMS_ACTION_FOR_ALL_INPUTS_LABEL" 
+			description="COM_JXIFORMS_ACTION_FOR_ALL_INPUTS_DESC"
 			class="inputbox" 
 			size="1" default="0" >
 			<option value="0">COM_JXIFORMS_NO</option>

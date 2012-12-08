@@ -20,6 +20,8 @@
 			<property name="args.name" value="jxiforms" />
         </phingcall>
 		
+		<phingcall target="copy_actions">
+		</phingcall>
 		<copy file="${source}/build.xml"  tofile="${target}/scripts/reverse-build/build.xml" />
 		<copy file="${source}/delete.xml" tofile="${target}/scripts/reverse-build/delete.xml" />
 	</target>
@@ -56,6 +58,21 @@
 				tofile="${target}/source/${args.name}.xml" 
 				haltonerror="false"	
 				/>
+				
+		<copy todir="${target}/source/admin/install/extensions/plg_system_jxiforms">
+			<fileset dir="${source}/plugins/system/jxiforms">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	       
+	</target>
+
+	<target name="copy_actions">
+		<copy todir="${target}/plugins/jxiforms">
+			<fileset dir="${source}/plugins/jxiforms">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
 	</target>
 
 	<target name="versionclean">
