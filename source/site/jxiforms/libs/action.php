@@ -27,6 +27,7 @@ class JXiformsAction extends JXiFormsLib
 	
 	protected 	$core_params	   =   null;
 	protected 	$action_params	   =   null;
+	protected   $data			   =   '';
 	
 	protected 	$_action_inputs  =   null;
 	
@@ -110,6 +111,7 @@ class JXiformsAction extends JXiFormsLib
 		$this->ordering		 	= 0;
 		$this->core_params		= new Rb_Registry();
 		$this->action_params	= new Rb_Registry();
+		$this->data				= '';
 		$this->_action_inputs	= array();
 
 		return $this;

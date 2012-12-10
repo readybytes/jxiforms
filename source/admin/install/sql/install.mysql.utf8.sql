@@ -33,6 +33,7 @@ CREATE  TABLE IF NOT EXISTS `#__jxiforms_action` (
   `for_all_inputs`		TINYINT(1)	DEFAULT 0,
   `published` 		TINYINT(1) 	DEFAULT 1,
   `ordering`   		INT(11) 	NOT NULL DEFAULT 0,
+  `data`			TEXT		DEFAULT NULL,
    PRIMARY KEY (`action_id`),
    INDEX `idx_type` (`type` ASC),
    INDEX `idx_for_all_inputs` (`for_all_inputs`)

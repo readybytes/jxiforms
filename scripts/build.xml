@@ -30,9 +30,28 @@
 		
 		<phing phingfile="${project.shortform.small}.xml" inheritAll="true" target="build" />
 
+		<phingcall target="plugin_build" />
 
 		<zip destfile="${dir.packages}/${file.package}.${build.number}.${file.extension}" 
 			basedir="${dir.tmp}" />
+	</target>
+
+	<target name="plugin_build">
+		<foreach param="dirname" absparam="absname" target="copy_plugin">
+			  <fileset dir="${dir.plugin}/jxiforms">
+				<type type="dir" />
+				<depth max="0" min="0" />
+			  </fileset>
+		
+		</foreach>
+	</target>
+
+	<target name="copy_plugin">
+		<copy todir="${dir.tmp}/admin/install/extensions/plg_jxiforms_${dirname}">
+			<fileset dir="${absname}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
 	</target>
 
 	<!-- Global Target -->

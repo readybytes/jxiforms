@@ -7,3 +7,4 @@ dir.packages=${dir.root}/packages
 dir.tmp		=${dir.packages}/tmp
 dir.src		=${dir.root}/source
 dir.report	=${dir.root}/data/report
+dir.plugin	=${dir.root}/plugins

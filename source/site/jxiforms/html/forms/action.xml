@@ -47,6 +47,12 @@
 			description="COM_JXIFORMS_ACTION_DESCRIPTION_DESC"
 			label="COM_JXIFORMS_ACTION_DESCRIPTION_LABEL" 
 		/>
+		
+		<field name="data" type="editor"
+			default=""
+			description="COM_JXIFORMS_ACTION_DATA_DESC"
+			label="COM_JXIFORMS_ACTION_DATA_LABEL"  
+		/>
 
 	</fieldset>
 	

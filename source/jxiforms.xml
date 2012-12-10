@@ -25,7 +25,7 @@
 		<language tag="en-GB">languages/site/en-GB.com_jxiforms.ini</language>
 	</languages>
 
-<!--	<scriptfile>installscript.php</scriptfile> -->
+	<scriptfile>script.php</scriptfile>
 
 	<!-- Runs on install -->
         <install>
