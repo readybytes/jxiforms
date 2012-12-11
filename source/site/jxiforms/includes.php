@@ -7,6 +7,11 @@
 */
 if(defined('_JEXEC')===false) die();
 
+// if already loaded do not load
+if(!defined('RB_FRAMEWORK_LOADED')){
+	return;
+}
+
 // if JXIFORMS already loaded do not load
 if(defined('JXIFORMS_CORE_LOADED')){
 	return;

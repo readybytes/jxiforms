@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<install version="2.5" type="plugin" group="jxiforms" method="upgrade">
+<extension version="2.5" type="plugin" group="jxiforms" method="upgrade">
     <name>JXiForms-Email</name>
     <version>@build.version@</version>
     <creationDate>Nov 2012</creationDate>
@@ -13,7 +13,5 @@
 		<filename plugin="email">email.php</filename>
 		<folder>action</folder>
 	</files>
-	<params>
-	</params>
-</install>
+</extension>
 

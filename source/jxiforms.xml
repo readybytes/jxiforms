@@ -39,7 +39,6 @@
 		<!-- Administration menu -->
 		<menu view="cpanel">COM_JOOMLAXIFORMS</menu>
 		<submenu>
-			<menu view="config">COM_JOOMLAXIFORMS_CONFIGURATION</menu>
 			<menu view="input">COM_JOOMLAXIFORMS_INPUT</menu>
 			<menu view="action">COM_JOOMLAXIFORMS_ACTION</menu>
 		</submenu>

@@ -16,7 +16,7 @@ class JXiFormsAdminViewAction extends JXiFormsAdminBaseViewAction
 	protected function _adminGridToolbar()
 	{
 		Rb_HelperToolbar::addNew('selectAction');
-		Rb_HelperToolbar::editListX();
+		Rb_HelperToolbar::editList();
 		Rb_HelperToolbar::divider();
 		Rb_HelperToolbar::publish();
 		Rb_HelperToolbar::unpublish();
