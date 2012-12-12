@@ -19,7 +19,7 @@ JHtml::_('behavior.framework');
 			<!-- TABLE HEADER START -->
 			<tr>
 				<th  width="1%">
-					<input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count($records); ?>);" />
+					<input type="checkbox" name="toggle" value="" onclick="Joomla.checkAll(this);" />
 				</th>
 				
 				<th class="default-grid-sno">

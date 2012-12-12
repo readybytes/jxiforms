@@ -21,6 +21,12 @@
 		<filename>index.html</filename>
 	</files>
 	
+	<!-- Media files -->
+	<media destination="com_jxiforms" folder="media">
+        	<folder>js</folder>
+        	<filename>index.html</filename>
+	</media>
+
 	<languages>
 		<language tag="en-GB">languages/site/en-GB.com_jxiforms.ini</language>
 	</languages>

@@ -24,7 +24,7 @@ define('JXIFORMS_REVISION','@build.number@');
 
 //shared paths
 define('JXIFORMS_PATH_CORE',				JPATH_SITE.'/components/com_jxiforms/jxiforms');
-define('JXIFORMS_PATH_CORE_MEDIA',			JXIFORMS_PATH_CORE.'/media');
+define('JXIFORMS_PATH_CORE_MEDIA',			JPATH_ROOT.'/media/com_jxiforms');
 define('JXIFORMS_PATH_CORE_FORM',			JXIFORMS_PATH_CORE.'/form');
 
 // frontend

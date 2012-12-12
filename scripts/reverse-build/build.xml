@@ -54,6 +54,13 @@
 			</fileset>
 		</copy>
 
+		<!-- copy media folder -->
+		<copy todir="${target}/source/media">
+		    <fileset dir="${source}/media/${args.comname}">
+		        <include name="**/*.*" />
+		    </fileset>
+		</copy>
+
 		<copy 	file="${source}/administrator/components/${args.comname}/${args.name}.xml" 
 				tofile="${target}/source/${args.name}.xml" 
 				haltonerror="false"	
