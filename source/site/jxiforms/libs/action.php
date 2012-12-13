@@ -320,4 +320,9 @@ class JXiformsAction extends JXiFormsLib
 		return $this;
 	}
 	
+	public function getData()
+	{
+		return $this->data;
+	}
+	
 }

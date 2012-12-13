@@ -81,7 +81,10 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 			<?php endforeach;?>
 		<?php endforeach;?>	
 		
-		
+		<div class="control-group">
+				<div class="control-label"><?php echo $form->getLabel('data'); ?> </div>
+				<div class="controls"><?php echo $form->getInput('data'); ?></div>
+		</div>
 		
 	</fieldset>	
 	</div>

@@ -54,17 +54,6 @@ ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8;
 
 
-CREATE TABLE IF NOT EXISTS `#__jxiforms_data` (
-  `data_id`		INT(11) 	NOT NULL AUTO_INCREMENT,
-  `key`     		VARCHAR(255)	NOT NULL ,
-  `content`     	TEXT		NOT NULL ,
-   PRIMARY KEY (`data_id`),
-   INDEX `idx_key` (`key` ASC)
-) 
-ENGINE = MyISAM  
-DEFAULT CHARACTER SET = utf8;
-
-
 CREATE TABLE IF NOT EXISTS `#__jxiforms_log` (
   `log_id`		INT(11)		NOT NULL AUTO_INCREMENT,
   `level`		INT(11) 	NOT NULL,

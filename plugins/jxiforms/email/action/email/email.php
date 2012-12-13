@@ -22,7 +22,7 @@ class JXiFormsActionEmail extends JXiformsAction
 		$mailer->addRecipient($actionParams->get('email_id', ''));
 		
 		$subject  = $actionParams->get('email_subject', '');
-		$body 	  = base64_decode($actionParams->get('message', ''));
+		$body 	  = $this->getData();
 		
 		if(!empty($data)){
 			$subject  = JXiFormsHelperRewriter::rewrite($subject, $data);
@@ -66,16 +66,6 @@ class JXiFormsActionEmail extends JXiformsAction
 		}
 
 		return $mailer->Send();
-	}
-	
-	public function filterActionParams(array $data)
-	{
-		// encode editor content
-		if(isset($data['action_params']) && isset($data['action_params']['message'])){
-			$data['action_params']['message'] = base64_encode($data['action_params']['message']);
-		}
-
-		return parent::filterActionParams($data);
 	}
 
 	public function _addEmailAddress($str, $function='addRecipient', $mailer)

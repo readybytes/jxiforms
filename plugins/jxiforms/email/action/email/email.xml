@@ -37,11 +37,6 @@
 				<option value="1">COM_JXIFORMS_ACTION_EMAIL_FORMAT_HTML</option>
 				</field>
 				
-				<field name="message" type="jxiforms.editor"
-					label="COM_JXIFORMS_ACTION_EMAIL_BODY_LABEL"
-					description="COM_JXIFORMS_ACTION_EMAIL_BODY_DESC"
-					size="45"
-				/>
 		</fieldset>
 	</fields>
 </config>
