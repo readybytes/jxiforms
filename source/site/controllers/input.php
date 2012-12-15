@@ -16,7 +16,9 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		$inputId = $this->_getId();
 		$input   = ($inputId != 0) ?  JXiformsInput::getInstance($inputId) : false; 
 		
-		Rb_Error::assert($input, Rb_Text::_('COM_JXIFORMS_ERROR_INVALID_INPUT_ID'));
+		if(!($input instanceof JXiformsInput)){
+			throw new Exception(Rb_Text::sprintf('COM_JXIFORMS_EXCEPTION_INVALID_INPUT_ID', $inputId));
+		}
 		
 		//collect data from get and post 
 		$postData    = Rb_Request::get('POST');

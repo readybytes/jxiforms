@@ -40,7 +40,10 @@ class JXiFormsModelInputaction extends JXiFormsModel
 	
 	function getInputActions($inputId)
 	{
-		Rb_Error::assert($inputId, "INVALID INPUT ID $inputId");
+		if(!$inputId){
+			throw new Exception(Rb_Text::sprintf('COM_JXIFORMS_EXCEPTION_INVALID_INPUT_ID', $inputId));
+		}
+		
 		if(self::$_input_actions === null){
 			self::_loadCache(clone($this->getQuery()));
 		}
@@ -55,7 +58,9 @@ class JXiFormsModelInputaction extends JXiFormsModel
 	
 	function getActionInputs($actionId)
 	{
-		Rb_Error::assert($actionId, "INVALID ACTION ID $actionId");
+		if(!$actionId){
+			throw new Exception(Rb_Text::sprintf('COM_JXIFORMS_EXCEPTION_INVALID_ACTION_ID', $actionId));
+		}
 		if(self::$_action_inputs === null){
 			self::_loadCache(clone($this->getQuery()));
 		}

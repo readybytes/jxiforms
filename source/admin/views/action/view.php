@@ -17,7 +17,10 @@ class JXiFormsAdminBaseViewAction extends JXiFormsView
 				
 		if(!$itemId){
 			$actionType =	JXiFormsFactory::getApplication()->input->get('type', $actionType);
-			Rb_Error::assert(($actionType), Rb_Text::_('NO ACTION TYPE PROVIDED'));
+			
+			if(!$actionType){
+				throw new Exception(Rb_Text::_("COM_JXIFORMS_EXCEPTION_NO_ACTION_TYPE_PROVIDED"));
+			}
 			
 			$record = new stdClass();
 			$record->type = $actionType;

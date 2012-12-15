@@ -13,7 +13,9 @@ class JXiFormsAdminControllerAction extends JXiFormsController
 {
 	public function _save(array $data, $itemId=null)
 	{
-		Rb_Error::assert(isset($data['type']), Rb_Text::_('COM_JXIFORMS_ERROR_TYPE_IS_NOT_DEFINED_FOR_ACTION'));
+		if(!isset($data['type'])){
+			throw new Exception(Rb_Text::_('COM_JXIFORMS_EXCEPTION_NO_ACTION_TYPE_PROVIDED'));
+		}
 		$action = JXiformsAction::getInstance($itemId, $data['type']);
 
 		$data['core_params'] 	= $action->filterCoreParams($data);
@@ -24,9 +26,8 @@ class JXiFormsAdminControllerAction extends JXiFormsController
 		$data['_action_inputs']  = isset($data['_action_inputs']) ?  $data['_action_inputs'] : array();
 
 		//create new lib instance
-		return JXiformsAction::getInstance($itemId, $data['type'])
-						->bind($data)
-						->save();
+		return $action->bind($data)
+  			      ->save();
 	
 	}
 	
