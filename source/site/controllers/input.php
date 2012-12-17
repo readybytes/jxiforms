@@ -25,6 +25,15 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		$getData     = Rb_Request::get('GET');
 		$data 		 = array_merge($getData, $postData);
 		
+		$result = $this->_submit($input, $data);
+		
+		$url = $input->getRedirecturl();
+		//TODO : routed url required
+		JXiFormsFactory::getApplication()->redirect($url);	
+	}
+	
+	public function _submit($input, $data)
+	{
 		//move the uploaded attachments file to the 
 		//tmp location and pass it on to the plugins for further process
 		$attachments = array();
@@ -33,7 +42,8 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 				continue;
 			}
 			$extension = array_pop(explode('.', $file['name']));
-			$destination = JPATH_ROOT.'/tmp/'.$name.'.'.$extension;
+			$filename = array_pop(explode('/', $file['tmp_name']));
+			$destination = JPATH_ROOT.'/tmp/'.$filename.'.'.$extension;
 			
 			if(move_uploaded_file($file['tmp_name'], $destination)){
 				$attachments[$name] = $destination;	
@@ -41,7 +51,7 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		}
 		
 		$args = array($input, $data, $attachments);
-		Rb_HelperPlugin::trigger('onJxiformsInputSubmit', $args, 'jxiforms');
+		$result = Rb_HelperPlugin::trigger('onJxiformsInputSubmit', $args, 'jxiforms');
 		
 		//remove the attachments from tmp location after trigger
 		foreach ($attachments as $attachment){
@@ -50,8 +60,6 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 			}
 		}
 		
-		$url = $input->getRedirecturl();
-		//TODO : routed url required
-		JXiFormsFactory::getApplication()->redirect($url);	
+		return $result;
 	}
 } 

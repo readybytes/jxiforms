@@ -33,9 +33,9 @@ class JXiformsInput extends JXiFormsLib
 	 * 
 	 * @return Object JXiformsInput  Instance of JXiformsInput
 	 */
-	public static function getInstance($id = 0,  $type = null,  $bindData = null)
+	public static function getInstance($id = 0, $bindData = null)
 	{
-		return parent::getInstance('input', $id, $type, $bindData);
+		return parent::getInstance('input', $id, $bindData);
 	}
 	
 	/**

@@ -12,7 +12,7 @@ if(defined('_JEXEC')===false) die();
 JHtml::_('behavior.framework');
 ?>
 
-<form action="<?php echo $uri; ?>" method="post" name="adminForm">
+<form action="<?php echo $uri; ?>" method="post" name="adminForm" id="adminForm">
 
 	<table class="table table-condensed">
 		<thead>

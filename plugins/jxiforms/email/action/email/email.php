@@ -35,10 +35,10 @@ class JXiFormsActionEmail extends JXiformsAction
 				$body .= $key ." : ";
 				
 				if(is_array($value)){
-					$body .= implode(",",$value) ."\n"; 
+					$body .= implode(",",$value) ."<br/>"; 
 	            }
 	            else{
-	                $body .= $value."\n";
+	                $body .= $value."<br/>";
 	            }
 			}
 		}
@@ -61,7 +61,8 @@ class JXiFormsActionEmail extends JXiformsAction
 		// add attachments
 		if(!empty($attachments)){
 			foreach ($attachments as $attachment =>$value){
-				$mailer->addAttachment($value, $attachment);
+				$extension = array_pop(explode('.', $value));
+				$mailer->addAttachment($value, $attachment.'.'.$extension);
 			}
 		}
 
