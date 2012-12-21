@@ -11,6 +11,17 @@ if(defined('_JEXEC')===false) die();
 
 class JXiFormsModelAction extends JXiFormsModel
 {
+	public function delete($id=null)
+	{
+		if(!parent::delete($id)){
+			$db = JXiFormsFactory::getDBO();
+			Rb_Error::raiseError(500, $db->getErrorMsg());
+		}
+
+		// delete action from inputaction table
+       return JXiFormsFactory::getInstance('inputaction', 'model')
+						 	 ->deleteMany(array('action_id' => $id));
+	}
 }
 
 class JXiFormsmodelformAction extends JXiFormsModelform 
@@ -27,17 +38,5 @@ class JXiFormsmodelformAction extends JXiFormsModelform
 		}
 		
 		return parent::preprocessForm($form, $data);
-	}
-	
-	public function delete($id=null)
-	{
-		if(!parent::delete($id))
-		{
-			$db = JXiFormsFactory::getDBO();
-			Rb_Error::raiseError(500, $db->getErrorMsg());
-		}
-			// delete action from inputaction table
-	       return JXiFormsFactory::getInstance('inputaction', 'model')
-							 	 ->deleteMany(array('action_id' => $id));
 	}
 }

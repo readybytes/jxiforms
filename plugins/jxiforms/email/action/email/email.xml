@@ -20,7 +20,7 @@
 				<field name="send_bcc" type="textarea"
 					label="COM_JXIFORMS_ACTION_EMAIL_BCC_LABEL"
 					description="COM_JXIFORMS_ACTION_EMAIL_BCC_DESC"
-					srows="2" cols="50" default=""
+					rows="2" cols="50" default=""
 				/>
 				
 				<field name="email_subject" type="textarea"

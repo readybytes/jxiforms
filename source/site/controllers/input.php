@@ -20,6 +20,11 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 			throw new Exception(Rb_Text::sprintf('COM_JXIFORMS_EXCEPTION_INVALID_INPUT_ID', $inputId));
 		}
 		
+		//if form is not published then do nothing
+		if(!$input->isPublished()){
+			return true;
+		}
+		
 		//collect data from get and post 
 		$postData    = Rb_Request::get('POST');
 		$getData     = Rb_Request::get('GET');

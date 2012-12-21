@@ -325,4 +325,9 @@ class JXiformsAction extends JXiFormsLib
 		return $this->data;
 	}
 	
+	public function showDataEditor()
+	{
+		return true;
+	}
+	
 }

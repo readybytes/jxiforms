@@ -145,4 +145,9 @@ class JXiformsInput extends JXiFormsLib
 	{
 		return $this->redirect_url;
 	}
+	
+	public function isPublished()
+	{
+		return $this->published;
+	}
 }

@@ -31,16 +31,7 @@ class JXiFormsActionEmail extends JXiformsAction
 		
 		//if nothing is set in messgae then append all the form data in the message body
 		if(empty($body)){
-			foreach ($data as $key => $value){
-				$body .= $key ." : ";
-				
-				if(is_array($value)){
-					$body .= implode(",",$value) ."<br/>"; 
-	            }
-	            else{
-	                $body .= $value."<br/>";
-	            }
-			}
+			$body = $this->_setDefaultContent($data);
 		}
 
 		$mailer->setSubject($subject);
@@ -79,5 +70,22 @@ class JXiFormsActionEmail extends JXiformsAction
 		// explode emails
 		$emails = explode(',', $str);
 		return $mailer->$function($emails);
+	}
+	
+	protected function _setDefaultContent($data)
+	{ 
+		$body = '';
+		foreach ($data as $key => $value){
+			$body .= $key ." : ";
+			
+			if(is_array($value)){
+				$body .= implode(",",$value) ."<br/>"; 
+            }
+            else{
+                $body .= $value."<br/>";
+            }
+		}
+		
+		return $body;
 	}
 }
