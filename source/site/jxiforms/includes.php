@@ -45,3 +45,7 @@ Rb_HelperLoader::addAutoLoadViews(JXIFORMS_PATH_SITE.'/views', RB_REQUEST_DOCUME
 // admin
 Rb_HelperLoader::addAutoLoadFolder(JXIFORMS_PATH_ADMIN.'/controllers',	'Controller',		'JXiFormsAdmin');
 Rb_HelperLoader::addAutoLoadViews(JXIFORMS_PATH_ADMIN.'/views', RB_REQUEST_DOCUMENT_FORMAT, 'JXiFormsAdmin');
+
+$filename = 'com_jxiforms_extensions';
+$language = JFactory::getLanguage();
+$language->load($filename, JPATH_SITE);
