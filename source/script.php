@@ -61,7 +61,8 @@ class Com_jxiformsInstallerScript
 		}
 
 		if($delFolder){
-			JFolder::delete($actionPath);
+			$delPath = JPATH_ADMINISTRATOR.'/components/com_jxiforms/install/extensions';
+			JFolder::delete($delPath);
 		}
 
 		return true;

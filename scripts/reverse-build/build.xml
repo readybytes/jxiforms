@@ -45,6 +45,7 @@
 			<fileset dir="${source}/administrator/components/${args.comname}">
 				<include name="**/*.*" />
 				<exclude name="${args.name}.xml" />
+				<exclude name="script.php" />
 			</fileset>
 		</copy>
 
@@ -65,12 +66,23 @@
 				tofile="${target}/source/${args.name}.xml" 
 				haltonerror="false"	
 				/>
+
+		<copy 	file="${source}/administrator/components/${args.comname}/script.php" 
+				tofile="${target}/source/script.php" 
+				haltonerror="false"	
+				/>
 				
 		<copy todir="${target}/source/admin/install/extensions/plg_system_jxiforms">
 			<fileset dir="${source}/plugins/system/jxiforms">
 				<include name="**/*.*" />
 			</fileset>
 		</copy>
+
+		<!-- copy languagepack file folder -->
+		<copy file="${source}/language/en-GB/en-GB.com_jxiforms_extensions.ini"
+			  tofile="${target}/source/admin/install/extensions/languagepack_en_GB/plg_jxiforms/en-GB.com_jxiforms_extensions.ini"
+	   		  haltonerror="false"
+			  />
 	       
 	</target>
 

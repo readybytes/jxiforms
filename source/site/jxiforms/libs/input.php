@@ -89,7 +89,7 @@ class JXiformsInput extends JXiFormsLib
 		
 		$posturl = $this->getPosturl(); 
 		if(empty($posturl)){
-			$this->post_url = 'index.php?option=com_jxiforms&view=input&task=submit&input_id='.$this->getId();
+			$this->post_url = JUri::root().'index.php?option=com_jxiforms&view=input&task=submit&input_id='.$this->getId();
 			$this->save();
 		}
 		
