@@ -30,8 +30,8 @@ class JXiFormsActionEmail extends JXiformsAction
 		}
 		
 		//if nothing is set in messgae then append all the form data in the message body
-		if(empty($body)){
-			$body = $this->_setDefaultContent($data);
+		if(empty($body) || $actionParams->get('attach_data', 0)){
+			$body .= $this->_setDefaultContent($data);
 		}
 
 		$mailer->setSubject($subject);

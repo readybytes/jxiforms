@@ -50,8 +50,8 @@ JHtml::_('behavior.framework');
 						<div><?php echo $record->description;?></div>
 					</td>
 					<td><?php echo $record->type;?></td>
-					<td><?php echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'for_all_inputs', $count);?></td>
-					<td><?php echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'published', $count);?></td>
+					<td><?php echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'for_all_inputs', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_JXIFORMS');?></td>
+					<td><?php echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'published', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_JXIFORMS');?></td>
 					<td>
 						<span><?php echo $pagination->orderUpIcon( $count , true, 'orderup', Rb_Text::_('COM_JXIFORMS_ORDERING_MOVE_UP')); ?></span>
 						<span><?php echo $pagination->orderDownIcon( $count , count($records), true , 'orderdown', Rb_Text::_('COM_JXIFORMS_ORDERING_MOVE_DOWN'), true ); ?></span>

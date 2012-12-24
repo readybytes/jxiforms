@@ -26,8 +26,8 @@ JHtml::_('behavior.framework');
 					<?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_INPUT_GRID_INPUT_ID", 'input_id', $filter_order_Dir, $filter_order);?>
 				</th>
 				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_INPUT_GRID_TITLE", 'title', $filter_order_Dir, $filter_order);?></th>
-				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_INPUT_GRID_POSTURL", 'post_url', $filter_order_Dir, $filter_order);?></th>
-				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_INPUT_GRID_REDIRECTURL", 'redirect_url', $filter_order_Dir, $filter_order);?></th>
+				<th><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_GRID_POSTURL');?></th>
+				<th><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_GRID_REDIRECTURL');?></th>
 				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_INPUT_GRID_PUBLISHED", 'published', $filter_order_Dir, $filter_order);?></th>
 							
 			</tr>
@@ -50,7 +50,7 @@ JHtml::_('behavior.framework');
 					</td>
 					<td><?php echo $record->post_url;?></td>
 					<td><?php echo $record->redirect_url;?></td>
-					<td><?php echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'published', $count);?></td>
+					<td><?php echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'published', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_JXIFORMS');?></td>
 				</tr>
 			<?php $count++;?>
 			<?php endforeach;?>

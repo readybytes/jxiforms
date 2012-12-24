@@ -37,6 +37,14 @@
 				<option value="1">COM_JXIFORMS_ACTION_EMAIL_FORMAT_HTML</option>
 				</field>
 				
+				<field name="attach_data" type="list"
+					label="COM_JXIFORMS_ACTION_EMAIL_ATTACH_DATA_LABEL"
+					description="COM_JXIFORMS_ACTION_EMAIL_ATTACH_DATA_DESC" 
+					default="0">
+					<option value="0">COM_JXIFORMS_NO</option>
+					<option value="1">COM_JXIFORMS_YES</option>
+				</field>
+				
 		</fieldset>
 	</fields>
 </config>
