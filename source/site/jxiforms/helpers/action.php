@@ -42,17 +42,6 @@ class JXiFormsHelperAction extends JXiFormsHelper
 		return $instances;
 	}
 	
-	static function addActionsPath($path=null)
-	{
-		static $paths = array();
-
-		if(($path != null) && !in_array($path, $paths)){
-			$paths[]= $path;
-		}
-
-		return $paths;
-	}
-	
 	static $_actions = array(); 
 	
 	/**
@@ -66,28 +55,18 @@ class JXiFormsHelperAction extends JXiFormsHelper
 			return self::$_actions;
 		}
 
-		foreach(self::addActionsPath() as $path){
-			$newActions = JFolder::folders($path);
-			
-			if(!is_array($newActions)){
-				continue;
-			}
-
-			foreach($newActions as $action){
-				$file = $path.'/'.$action.'/'.$action.'.php';
-				if(JFile::exists($file)==true){
-					
-					Rb_HelperLoader::addAutoLoadFile($file, 'JXiFormsAction'.$action);
-					
-					self::$_actions[$action] = $action;
-				}
-			}
-		}
+		$type = 'jxiforms';
+		Rb_HelperPlugin::loadPlugins($type);
 		
 		sort(self::$_actions);
 		return self::$_actions;
 	}
 	
+	public function addAction($type)
+	{
+		self::$_actions[$type] = $type;
+	}
+		
 	static function getAvailableActions($type='')
 	{
 		//get Plugins classes names

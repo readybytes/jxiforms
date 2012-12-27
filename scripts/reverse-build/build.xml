@@ -71,12 +71,6 @@
 				tofile="${target}/source/script.php" 
 				haltonerror="false"	
 				/>
-				
-		<copy todir="${target}/source/admin/install/extensions/plg_system_jxiforms">
-			<fileset dir="${source}/plugins/system/jxiforms">
-				<include name="**/*.*" />
-			</fileset>
-		</copy>
 
 		<!-- copy languagepack file folder -->
 		<copy file="${source}/language/en-GB/en-GB.com_jxiforms_extensions.ini"

@@ -15,12 +15,6 @@ if(defined('_JEXEC')===false) die();
  */
 class  plgJxiformsEmail extends RB_Plugin
 {
-	function onJXiFormsSystemStart()
-	{
-		$dir = dirname(__FILE__).'/action';
-		JXiFormsHelperAction::addActionsPath($dir);
-	}
-	
 	public function onJxiformsInputSubmit($inputInstance, $data, $attachments)
 	{
 		$actions = JXiFormsHelperAction::getAvailableActions('email');
@@ -37,6 +31,16 @@ class  plgJxiformsEmail extends RB_Plugin
 		
 		return $results;
 	}
+	
+	function __construct(& $subject, $config = array())
+    {
+        parent::__construct($subject, $config);
+        
+        $fileName = __DIR__.'/action/email/email.php';
+		Rb_HelperLoader::addAutoLoadFile($fileName, 'JXiFormsActionEmail');
+		
+		JXiFormsHelperAction::addAction('email');
+    }
 }
 
 

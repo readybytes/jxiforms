@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `#__jxiforms_log` (
   `user_ip` 		VARCHAR(50)	NOT NULL,
   `created_date`	DATETIME	NOT NULL,
   `token`		VARCHAR(255)    DEFAULT NULL,
+  `status`		INT(11) 	DEFAULT '0',
   PRIMARY KEY (`log_id`),
   INDEX `idx_level` (`level` ASC),
   INDEX `idx_class` (`class` ASC)
