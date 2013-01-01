@@ -79,12 +79,11 @@ class Com_jxiformsInstallerScript
 				. ' SET   '. $db->quoteName('enabled').'='.$db->Quote($state);
 
 		$subQuery = array();
-		$subQuery[] = '('.$db->quoteName('element').'='.$db->Quote($extensions[0]['name'])
-			    . ' AND ' . $db->quoteName('folder').'='.$db->Quote($extensions[0]['type'])
-                            .'  AND `type`="plugin"  )   ';
-		$subQuery[] = '('.$db->quoteName('element').'='.$db->Quote($extensions[1]['name'])
-			    . ' AND ' . $db->quoteName('folder').'='.$db->Quote($extensions[1]['type'])
-                            .'  AND `type`="plugin"  )   ';
+		foreach($extensions as $extension => $value){
+			$subQuery[] = '('.$db->quoteName('element').'='.$db->Quote($value['name'])
+				    . ' AND ' . $db->quoteName('folder').'='.$db->Quote($value['type'])
+			            .'  AND `type`="plugin"  )   ';
+		}
 
 		$query .= 'WHERE '.implode(' OR ', $subQuery);
 
