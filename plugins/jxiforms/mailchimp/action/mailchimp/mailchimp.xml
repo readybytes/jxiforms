@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+		<fields name="action_params">
+		
+			<fieldset name="parameters" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+
+				<field name="mailchimpApikey" type="text"
+					label="COM_JXIFORMS_ACTION_MAILCHIMP_API_KEY_LABEL"
+					description="COM_JXIFORMS_ACTION_MAILCHIMP_API_KEY_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="addToLists" type="jxiforms.mailchimplist"
+					label="COM_JXIFORMS_ACTION_MAILCHIMP_ADD_TO_LISTS_LABEL"
+					description="COM_JXIFORMS_ACTION_MAILCHIMP_ADD_TO_LISTS_DESC"
+					multiple="true"
+					class="multiselect"
+					default=""
+					addfieldpath="/plugins/jxiforms/mailchimp/action/mailchimp/fields"
+				/>
+				
+				<field name="removeFromLists" type="jxiforms.mailchimplist"
+					label="COM_JXIFORMS_ACTION_MAILCHIMP_REMOVE_FROM_LISTS_LABEL"
+					description="COM_JXIFORMS_ACTION_MAILCHIMP_REMOVE_FROM_LISTS_DESC"
+					default=""
+					multiple="true"
+					class="multiselect"
+					addfieldpath="/plugins/jxiforms/mailchimp/action/mailchimp/fields"
+				/>
+				
+				<field name="emailField" type="text"
+					label="COM_JXIFORMS_ACTION_MAILCHIMP_EMAIL_FIELD_LABEL"
+					description="COM_JXIFORMS_ACTION_MAILCHIMP_EMAIL_FIELD_DESC"
+					default=""
+					required="true"
+				/>
+
+			</fieldset>
+		</fields>
+</config>

@@ -31,8 +31,9 @@
 		<phing phingfile="${project.shortform.small}.xml" inheritAll="true" target="build" />
 
 		<phingcall target="plugin_build" />
+		<phingcall target="replace_tokens" />
 
-		<zip destfile="${dir.packages}/${file.package}.${build.number}.${file.extension}" 
+		<zip destfile="${dir.packages}/${file.package}.${build.version}.${file.extension}" 
 			basedir="${dir.tmp}" />
 	</target>
 
@@ -62,7 +63,9 @@
 		<copy todir="${dir.tmp}" >
 		  <fileset dir="${dir.src}" />
 		</copy>
-		
+	</target>
+
+	<target name="replace_tokens" description="Replace tokens in all the files">	
 
 		<!-- Apply the version change to all files. -->
 		<reflexive>
@@ -75,6 +78,6 @@
 				    <token key="build.number"   value="${build.number}" />
 				</replacetokens>
 			</filterchain>
-		</reflexive>		
+		</reflexive>
 	</target>
 </project>
