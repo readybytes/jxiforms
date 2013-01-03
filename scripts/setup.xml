@@ -99,7 +99,7 @@
 
 	<target name="copy_kit">
 		<exec command="git describe" dir="${dir.root}" outputProperty="build.number"  />
-		<copy file="${dir.packages}/${file.package}.${build.number}.${file.extension}" 
+		<copy file="${dir.packages}/${file.package}.${build.version}.${file.extension}" 
 				tofile="${joomla.rootpath}/${joomla.folder}/${project.shortform.small}.zip" />
 	</target>
 </project>
