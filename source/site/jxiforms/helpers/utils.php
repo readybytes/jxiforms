@@ -49,4 +49,37 @@ class JXiFormsHelperUtils extends JXiFormsHelper
 		
 		return $content;
 	}
+	
+	public static function sendEmailToAdmin($subject, $message, $attachments=null)
+	{
+		$app  		= JXiFormsFactory::getApplication();
+		$mailfrom 	= $app->getCfg( 'mailfrom' );
+		$fromname 	= $app->getCfg( 'fromname' );
+		
+		$admins 	= Rb_HelperJoomla::getUsersToSendSystemEmail();
+		
+		if( !$mailfrom  || !$fromname ) {
+			$fromname = $admins[0]->name;
+			$mailfrom = $admins[0]->email;
+		}
+		
+		foreach ( $admins as $admin )
+		{
+			if($admin->sendEmail)
+			{
+				$message = html_entity_decode($message, ENT_QUOTES);
+				$mail 	  = JXiFormsFactory::getMailer()->setSender( array($mailfrom, $fromname))
+													    ->addRecipient($admin->email)
+											            ->setSubject($subject)
+											            ->setBody($message);
+				if($attachments != null){
+					$mail->addAttachment($attachments);
+				}
+
+				$mail->Send();
+			}
+		}
+		
+		return true;
+	}
 }

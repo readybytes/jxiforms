@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+		<fields name="action_params">
+		
+			<fieldset name="parameters" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+
+				<field name="email" type="text"
+					label="COM_JXIFORMS_ACTION_DROPBOX_EMAIL_ID_LABEL"
+					description="COM_JXIFORMS_ACTION_DROPBOX_EMAIL_ID_DESC"
+					default=""
+				/>
+				
+				<field name="password" type="password"
+					label="COM_JXIFORMS_ACTION_DROPBOX_PASSWORD_LABEL"
+					description="COM_JXIFORMS_ACTION_DROPBOX_PASSWORD_DESC"
+					default=""
+				/>
+				
+				<field name="destination" type="text"
+					label="COM_JXIFORMS_ACTION_DROPBOX_DESTINATION_LABEL"
+					description="COM_JXIFORMS_ACTION_DROPBOX_DESTINATION_DESC"
+					default=""
+				/>
+
+			</fieldset>
+		</fields>
+</config>

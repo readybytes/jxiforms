@@ -13,8 +13,8 @@ if(defined('_JEXEC')===false) die();
  * @author bhavya
  *
  */
-class  plgJxiformsHttpquery extends RB_Plugin
-{
+class  plgJxiformsDropbox extends JXiFormsPlugin
+{	
 	protected $_location	= __DIR__;
 }
 
