@@ -24,14 +24,27 @@ class JXiFormsActionDropbox extends JXiformsAction
 		$email  	  =  $this->getActionParam('email', '');
 		$password  	  =  $this->getActionParam('password', '');
 		$destination  =  $this->getActionParam('destination', '');
+		$uploadField  =  $this->getActionParam('upload_field', '');
+		$uploadField  =  empty($uploadField) ? '' : explode(',', $uploadField);
 		
 		if(!class_exists('DropboxUploader')){
 			require_once(__DIR__.'/DropboxUploader.php');
 		}
 		
+		//if nothing is mentioned in upload filed name then upload all the attachment files
+		if(empty($uploadField)){
+			$uploadField = array_keys($attachments);
+		}
+		
 		$result   = true;
 		$uploader = new DropboxUploader($email, $password);
-		foreach ($attachments as $key=> $attachment){
+		foreach ($uploadField as $key){
+			$key = trim($key);
+			if(!isset($attachments[$key])){
+				continue ;
+			}
+			
+			$attachment  = $attachments[$key];
 			$extension = JFile::getExt($attachment);			
 			try{
 				$uploader->upload($attachment, $destination, date("d_m_Y_").time().'_'.$key.'.'.$extension);

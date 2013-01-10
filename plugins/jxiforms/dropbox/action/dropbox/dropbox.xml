@@ -22,6 +22,12 @@
 					description="COM_JXIFORMS_ACTION_DROPBOX_DESTINATION_DESC"
 					default=""
 				/>
+				
+				<field name="upload_field" type="text"
+					label="COM_JXIFORMS_ACTION_DROPBOX_UPLOAD_FIELD_LABEL"
+					description="COM_JXIFORMS_ACTION_DROPBOX_UPLOAD_FIELD_DESC"
+					default=""
+				/>
 
 			</fieldset>
 		</fields>
