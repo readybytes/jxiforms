@@ -13,7 +13,7 @@ if(defined('_JEXEC')===false) die();
  * @author bhavya
  *
  */
-class  plgJxiformsMailchimp extends RB_Plugin
+class  plgJxiformsGithub extends JXiFormsPlugin
 {	
 	protected $_location	= __FILE__;
 }

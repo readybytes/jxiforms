@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+		<fields name="action_params">
+		
+			<fieldset name="parameters" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+
+				<field name="username" type="text"
+					label="COM_JXIFORMS_ACTION_GITHUB_USERNAME_LABEL"
+					description="COM_JXIFORMS_ACTION_GITHUB_USERNAME_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="password" type="password"
+					label="COM_JXIFORMS_ACTION_GITHUB_PASSWORD_LABEL"
+					description="COM_JXIFORMS_ACTION_GITHUB_PASSWORD_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="repository" type="text"
+					label="COM_JXIFORMS_ACTION_GITHUB_REPOSITORY_LABEL"
+					description="COM_JXIFORMS_ACTION_GITHUB_REPOSITORY_DESC"
+					default=""
+				/>
+				
+				<field name="organization" type="text"
+					label="COM_JXIFORMS_ACTION_GITHUB_ORGANIZATION_LABEL"
+					description="COM_JXIFORMS_ACTION_GITHUB_ORGANIZATION_DESC"
+					default=""
+				/>
+				
+				<field name="issue_title" type="textarea"
+					label="COM_JXIFORMS_ACTION_GITHUB_ISSUE_TITLE_LABEL"
+					description="COM_JXIFORMS_ACTION_GITHUB_ISSUE_TITLE_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="issue_description" type="textarea"
+					label="COM_JXIFORMS_ACTION_GITHUB_ISSUE_DESCRIPTION_LABEL"
+					description="COM_JXIFORMS_ACTION_GITHUB_ISSUE_DESCRIPTION_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="milestone" type="text"
+					label="COM_JXIFORMS_ACTION_GITHUB_MILESTONE_LABEL"
+					description="COM_JXIFORMS_ACTION_GITHUB_MILESTONE_DESC"
+					default=""
+				/>
+				
+				<field name="label" type="text"
+					label="COM_JXIFORMS_ACTION_GITHUB_LABEL_LABEL"
+					description="COM_JXIFORMS_ACTION_GITHUB_LABEL_DESC"
+					default=""
+				/>
+				
+				<field name="assignee" type="text"
+					label="COM_JXIFORMS_ACTION_GITHUB_ASSIGNEE_LABEL"
+					description="COM_JXIFORMS_ACTION_GITHUB_ASSIGNEE_DESC"
+					default=""
+				/>
+				
+
+			</fieldset>
+		</fields>
+</config>

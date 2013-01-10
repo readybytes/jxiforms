@@ -113,8 +113,4 @@ class JXiFormsActionMailchimp extends JXiformsAction
     	return parent::filterActionParams($data);
     }
 
-	public function showDataEditor()
-	{
-		return false;
-	}
 }

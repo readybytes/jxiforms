@@ -44,10 +44,5 @@ class JXiFormsActionDropbox extends JXiformsAction
 		
 		return $result;
 	}
-	
-	public function showDataEditor()
-	{
-		false;
-	}
 
 }

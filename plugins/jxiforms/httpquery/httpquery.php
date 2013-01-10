@@ -15,7 +15,7 @@ if(defined('_JEXEC')===false) die();
  */
 class  plgJxiformsHttpquery extends RB_Plugin
 {
-	protected $_location	= __DIR__;
+	protected $_location	= __FILE__;
 }
 
 

@@ -8,7 +8,7 @@
 */
 if(defined('_JEXEC')===false) die();
 
-class JXiFormsPlugin extends Rb_Plugin
+abstract class JXiFormsPlugin extends Rb_Plugin
 {
 	public $_component	= JXIFORMS_COMPONENT_NAME;
 	
@@ -33,9 +33,14 @@ class JXiFormsPlugin extends Rb_Plugin
     {
         parent::__construct($subject, $config);
         
-        $fileName = $this->_location.'/action/'.$this->_name.'/'. $this->_name.'.php';
+        $fileName = $this->getLocation().'/action/'.$this->_name.'/'. $this->_name.'.php';
 		Rb_HelperLoader::addAutoLoadFile($fileName, 'JXiFormsAction'.$this->_name);
 		
 		JXiFormsHelperAction::addAction($this->_name);
+    }
+    
+    public function getLocation()
+    {
+    	return dirname($this->_location);
     }
 }

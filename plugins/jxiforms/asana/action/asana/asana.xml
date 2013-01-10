@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+		<fields name="action_params">
+		
+			<fieldset name="parameters" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+
+				<field name="api_key" type="text"
+					label="COM_JXIFORMS_ACTION_ASANA_API_KEY_LABEL"
+					description="COM_JXIFORMS_ACTION_ASANA_API_KEY_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="workspace" type="jxiforms.asanaworkspacelist"
+					label="COM_JXIFORMS_ACTION_ASANA_WORKSPACE_LABEL"
+					description="COM_JXIFORMS_ACTION_ASANA_WORKSPACE_DESC"
+					default=""
+					class="multiselect"
+					addfieldpath="/plugins/jxiforms/asana/action/asana/fields"
+				/>
+				
+				<field name="project" type="jxiforms.asanaprojectlist"
+					label="COM_JXIFORMS_ACTION_ASANA_PROJECT_LABEL"
+					description="COM_JXIFORMS_ACTION_ASANA_PROJECT_DESC"
+					default=""
+					class="multiselect"
+					multiple="true"
+					addfieldpath="/plugins/jxiforms/asana/action/asana/fields">
+					<option value="" >COM_JXIFORMS_SELECT_OPTION</option>
+				</field>
+				
+				<field name="assignee" type="jxiforms.asanauserlist"
+					label="COM_JXIFORMS_ACTION_ASANA_ASSIGNEE_LABEL"
+					description="COM_JXIFORMS_ACTION_ASANA_ASSIGNEE_DESC"
+					default=""
+					class="multiselect"
+					addfieldpath="/plugins/jxiforms/asana/action/asana/fields">
+					<option value="" >COM_JXIFORMS_SELECT_OPTION</option>
+				</field>
+				
+				<field name="task_name" type="text"
+					label="COM_JXIFORMS_ACTION_ASANA_TASK_NAME_LABEL"
+					description="COM_JXIFORMS_ACTION_ASANA_TASK_NAME_DESC"
+					default=""
+				/>
+				
+				<field name="task_notes" type="textarea"
+					label="COM_JXIFORMS_ACTION_ASANA_TASK_NOTES_LABEL"
+					description="COM_JXIFORMS_ACTION_ASANA_TASK_NOTES_DESC"
+					default=""
+				/>
+
+			</fieldset>
+		</fields>
+</config>

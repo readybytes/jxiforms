@@ -15,7 +15,7 @@ if(defined('_JEXEC')===false) die();
  */
 class  plgJxiformsEmail extends JXiFormsPlugin
 {
-	protected $_location	= __DIR__;
+	protected $_location	= __FILE__;
 }
 
 

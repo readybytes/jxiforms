@@ -13,6 +13,7 @@ if(defined('_JEXEC')===false) die();
 class JXiFormsActionEmail extends JXiformsAction
 {
 	protected $_location	= __FILE__;
+	public    $show_editor  = true;
 	
 	public function process($data, $attachments)
 	{

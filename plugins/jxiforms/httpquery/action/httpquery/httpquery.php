@@ -57,9 +57,4 @@ class JXiFormsActionHttpquery extends JXiformsAction
 		$requestArray = ($this->getActionParam('append_data', 1)) ? array_merge($data, $queryArray) : $queryArray;
 		return http_build_query($queryArray);
 	}
-	
-	public function showDataEditor()
-	{
-		return false;
-	}
 }

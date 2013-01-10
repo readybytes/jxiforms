@@ -31,6 +31,8 @@ class JXiformsAction extends JXiFormsLib
 	
 	protected 	$_action_inputs  =   null;
 	
+	public      $show_editor 		= false;
+	
 	/**
 	 * Gets the instance of JXiFormsAction with provide form identifier
 	 * 
@@ -323,11 +325,5 @@ class JXiformsAction extends JXiFormsLib
 	public function getData()
 	{
 		return $this->data;
-	}
-	
-	public function showDataEditor()
-	{
-		return true;
-	}
-	
+	}	
 }
