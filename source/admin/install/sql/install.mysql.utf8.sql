@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS `#__jxiforms_input` (
  `redirect_url` 	VARCHAR(255)	DEFAULT NULL,
  `published` 		TINYINT(1) 	DEFAULT 1,
  `params`		TEXT 		DEFAULT NULL,  
+ `html` 		TEXT		DEFAULT NULL,
   PRIMARY KEY (`input_id`)
 )
 ENGINE = MyISAM

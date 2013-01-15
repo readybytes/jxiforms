@@ -11,15 +11,12 @@ if(defined('_JEXEC')===false) die();
 
 class JXiFormsSiteBaseViewInput extends JXiFormsView
 {
-	function edit($tpl= null, $itemId = null)
+	function display($tpl= null, $itemId = null)
 	{
 		$itemId  =  ($itemId === null) ? $this->getModel()->getState('id') : $itemId ;
 		
 		$input   =  JXiformsInput::getInstance($itemId);
-		
-		$this->assign('input', $input);
-		$this->assign('form',  $input->getModelform()->getForm($input));
-		
+		$this->assign('sample_html', $input->getHtml());
 		return true;
 	} 
 }

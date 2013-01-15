@@ -13,7 +13,7 @@ if(defined('_JEXEC')===false) die();
  * @author bhavya
  *
  */
-class  plgJxiformsHttpquery extends RB_Plugin
+class  plgJxiformsHttpquery extends JXiFormsPlugin
 {
 	protected $_location	= __FILE__;
 }

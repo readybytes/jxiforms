@@ -67,4 +67,9 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		
 		return $result;
 	}
+	
+	public function display()
+	{
+		return true;
+	}
 } 

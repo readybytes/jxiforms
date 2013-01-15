@@ -23,6 +23,7 @@ class JXiformsInput extends JXiFormsLib
 	protected 	$params		   =   null;
 	
 	protected 	$_input_actions  =   null;
+	protected 	$html			 =   null;
 	
 	/**
 	 * Gets the instance of JXiFormsInput with provide form identifier
@@ -53,6 +54,7 @@ class JXiformsInput extends JXiFormsLib
 		$this->redirect_url = 'index.php';
 		$this->params		= new Rb_Registry();
 		$this->_input_actions= array();
+		$this->html			 = '';
 
 		return $this;
 	}
@@ -149,5 +151,10 @@ class JXiformsInput extends JXiFormsLib
 	public function isPublished()
 	{
 		return $this->published;
+	}
+	
+	public function getHtml()
+	{
+		return $this->html;
 	}
 }

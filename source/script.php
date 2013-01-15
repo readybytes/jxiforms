@@ -28,6 +28,7 @@ class Com_jxiformsInstallerScript
 	function update($parent)
 	{
 		self::install($parent);
+		$this->alterInputTable();
 	}
 
 	function installExtensions($actionPath=null,$delFolder=true)
@@ -87,6 +88,21 @@ class Com_jxiformsInstallerScript
 
 		$query .= 'WHERE '.implode(' OR ', $subQuery);
 
+		$db->setQuery($query);
+		return $db->query();
+	}
+	
+	function alterInputTable()
+	{
+		$db = JFactory::getDBO();
+		$columns = $db->getTableColumns('#__jxiforms_input');
+		if(in_array('html', $columns)){
+			return true;
+		}
+		
+		$query = ' ALTER TABLE '.$db->quoteName( '#__jxiforms_input')
+				 .' ADD '. $db->quoteName('html').' TEXT  NULL ';
+				 
 		$db->setQuery($query);
 		return $db->query();
 	}

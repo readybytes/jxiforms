@@ -33,8 +33,12 @@ class JXiFormsAdminBaseViewAction extends JXiFormsView
 			$action   =  JXiformsAction::getInstance($itemId);
 		}
 		
+		$xmlData  	   =  JXiFormsHelperAction::getXml();
+		$help		   =  isset($xmlData[$action->getType()]) ? $xmlData[$action->getType()] : '';
+
 		$this->assign('action', $action);
 		$this->assign('form',   $action->getModelform()->getForm($action));
+		$this->assign('help', $help);
 		
 		return true;
 	}

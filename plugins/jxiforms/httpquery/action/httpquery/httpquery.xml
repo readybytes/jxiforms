@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <config>
+
+	<name>Http-Query</name>
+    <icon></icon>
+    <description>
+    	<![CDATA[
+    	HTTP-Query action sends out HTTP request to a URL with certain variables on the basis of form submission.
+    	<br> You can pass custom query variables or can use the existing variables with the HTTP query to that URL.
+    	]]>
+	</description>
+	<help></help>
+	<code></code>
 		<fields name="action_params">
 		
 			<fieldset name="parameters" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">

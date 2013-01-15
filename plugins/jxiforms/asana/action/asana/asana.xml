@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <config>
+	<name>Asana</name>
+    <icon></icon>
+    <description>
+    	<![CDATA[<a href="http://asana.com/" target="_blank" >Asana</a> is a modern web application that keeps teams in sync, a shared task list where everyone can capture, organize, track, and communicate what they are working on in service of their common goal.<br>
+    	Using this action you can create tasks in your asana account.
+    	]]>
+	</description>
+	<help>
+		<![CDATA[<br>Asana action requires cURL to be installed on your server.
+		
+		]]> 
+	</help>
+	<code>
+	<![CDATA[
+    	<pre class="jxif-example-code">
+<b>&lt;form name="form_name" method="POST" action="form_post_url"&gt;<br>
+	Task Name  : &lt;input    name="task_title" type="text" size="30" /&gt;<br>
+   	Add Notes  : &lt;textarea name="notes" rows="2" cols="50" &gt;&lt;/textarea&gt;<br>
+   	                      &lt;input type="submit" name="submit" value="Submit" /&gt;
+&lt;/form&gt;</b>
+		</pre>
+		]]>
+	</code>
+	
 		<fields name="action_params">
 		
 			<fieldset name="parameters" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">

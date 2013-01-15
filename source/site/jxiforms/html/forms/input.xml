@@ -43,6 +43,13 @@
 			description="COM_JXIFORMS_INPUT_DESCRIPTION_DESC"
 			label="COM_JXIFORMS_INPUT_DESCRIPTION_LABEL" 
 		/>
+		
+		<field name="html" type="textarea"
+			rows="4" cols="40"
+			default=""
+			description="COM_JXIFORMS_INPUT_HTML_DESC"
+			label="COM_JXIFORMS_INPUT_HTML_LABEL" 
+		/>
 
 	</fieldset>
 	

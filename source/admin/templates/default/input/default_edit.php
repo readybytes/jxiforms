@@ -69,6 +69,14 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 					 						echo JXiFormsHtml::_('jxiformshtml.actions.edit', 'jxiforms_form[_input_actions]', $actions, array('multiple'=>true, 'style'=>"class='multiselect'"));?></div>				
 			</div>
 			
+			<div class="control-group">
+				<div class="control-label"><?php echo $form->getLabel('html'); ?> </div>
+				<div class="controls"><?php echo $form->getInput('html'); ?></div>
+				<?php $html = trim($input->getHtml());?>
+				<?php if($input->getId() && !empty($html)): ?>
+					<div class="controls"><?php echo $preview_link?></div>
+				<?php endif;?>			
+			</div>
 	</fieldset>	
 	</div>
 	
@@ -76,5 +84,4 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 	<input type="hidden" name="boxchecked" value="1" />
 </form>
 
-
-
+<?php 

@@ -91,8 +91,32 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 		
 	</fieldset>	
 	</div>
+	<!-- Display help message and code block -->
+	<?php if(!empty($help['help']) || !empty($help['code'])): ?>
+		<div class="span12">
+			<fieldset class="form-horizontal">
+				<legend > <?php echo Rb_Text::_('COM_JXIFORMS_ACTION_EDIT_ACTION_HELP'); ?></legend>
+					<?php if(!empty($help['help']) || !empty($help['description'])):?>
+						<div class="span6">
+						  <div><?php echo (isset($help['description']) && !empty($help['description'])) ? Rb_Text::_('COM_JXIFORMS_ACTION_INTRODUCTION').$help['description'] : ''; ?></div>
+						  <div><?php echo (isset($help['help']) && !empty($help['help'])) ? Rb_Text::_($help['help']) : ''; ?></div>
+						</div>
+					<?php endif;?>
+					
+					<?php if(!empty($help['code'])):?>
+					<div class="span6">
+						<div><?php echo Rb_Text::_('COM_JXIFORMS_ACTION_EXAMPLE_CODE'); ?></div>
+						<div><?php echo $help['code']; ?></div>
+					</div>
+					<?php endif;?>
+		</fieldset>
+		</div>
+	
+	<?php endif;?>
+
 	<input type="hidden" name="task" value="save" />
 	<input type="hidden" name="boxchecked" value="1" />
 </form>
 
+<?php 
 

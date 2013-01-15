@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <config>
+	<name>Mailchimp</name>
+    <icon></icon>
+    <description>
+    	<![CDATA[<a href="http://mailchimp.com/" target="_blank" >Mailchimp</a> helps you design email newsletters, share them on social networks, integrate with services you already use, and track your results.
+    	<br>With Mailchimp action you can subscribe user(emails) to a mailchimp list(s).
+    	]]>
+	</description>
+	<help>
+	<![CDATA[
+		<br>Email Field contains name of field(s) from which email to be fetched for Mailchimp list subscribe.
+		]]>
+	</help>
+	<code>
+	<![CDATA[
+    	<pre class="jxif-example-code">
+<b>&lt;form name="form_name" method="POST" action="form_post_url" enctype="multipart/form-data" &gt;<br>
+	Primary Email   : &lt;input name="email1" type="text" /&gt;<br>
+	Alternate Email : &lt;input name="email2" type="text" /&gt;<br>
+	                       &lt;input type="submit" name="submit" value="Submit" /&gt;
+&lt;/form&gt;</b>
+		</pre>
+		]]>
+	</code>
+
 		<fields name="action_params">
 		
 			<fieldset name="parameters" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">

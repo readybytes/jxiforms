@@ -85,4 +85,32 @@ class JXiFormsHelperAction extends JXiFormsHelper
 		return $results;
 	}
 	
+	static $xmlData = null;
+	static public function getXml()
+	{
+		$actions = self::getActions();
+		
+		if(self::$xmlData === null){
+			
+			foreach($actions as $action){
+				$appInstance = JXiformsAction::getInstance( null, $action);
+				$xml = $appInstance->getLocation() .'/'. $appInstance->getName() . '.xml';
+
+				if (file_exists($xml)) {
+					$xmlContent = simplexml_load_file($xml);
+				}
+				else {
+					$xmlContent = null;
+				}
+
+				self::$xmlData[$appInstance->getName()]['location'] = $appInstance->getLocation();
+				foreach ($xmlContent as $element=> $value){
+					self::$xmlData[$appInstance->getName()][$element] = (string) $value;
+				}
+			}
+		}
+		
+		return self::$xmlData;
+	}
+	
 }
