@@ -17,3 +17,24 @@
 	background: #FFFFFF;
 	width : 85%;
 }
+
+.jxiforms .powered-by{
+	color: #aaa;
+    background-color: #F6F6F6;
+    border-top: 1px dashed #DDDDDD;
+    
+    color: #B0B0B0;
+	background-color: #FAFAFA;
+	border-top: 1px dashed #D6D6D6;
+	
+    clear: both;
+    line-height: 18px;
+    margin-top: 5px;
+    overflow: hidden;
+    text-align: right;
+    padding-right: 5px;
+    
+   	-webkit-border-radius:  0px 0px 5px 5px;
+	-moz-border-radius:    0px 0px 5px 5px;
+	border-radius:    0px 0px 5px 5px;
+}
