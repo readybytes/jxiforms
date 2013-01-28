@@ -6,12 +6,8 @@
 * @contact 		bhavya@readybytes.in
 */
 
-if (typeof(jxiforms)=='undefined')
-{
-	var jxiforms = {
-		jQuery: window.jQuery,
-		extend: function(obj){
-			this.jQuery.extend(this, obj);
-		}
-	}
+if (typeof(jxiforms)=='undefined'){
+	var jxiforms 	= {};
+	jxiforms.$ 		= jxiforms.jQuery = rb.jQuery;
+	jxiforms.ajax	= rb.ajax;
 }

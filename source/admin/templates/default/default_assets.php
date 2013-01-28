@@ -14,7 +14,7 @@ if(defined('_JEXEC')===false) die(); ?>
 Rb_HelperTemplate::loadSetupEnv();
 Rb_HelperTemplate::loadSetupScripts();
 
-Rb_Html::script(JXIFORMS_PATH_CORE_MEDIA.'/jxiforms.js');
+Rb_Html::script(JXIFORMS_PATH_CORE_MEDIA.'/js/jxiforms.js');
 Rb_Html::script(dirname(__FILE__).'/_media/admin.js');
 
 // load bootsrap css

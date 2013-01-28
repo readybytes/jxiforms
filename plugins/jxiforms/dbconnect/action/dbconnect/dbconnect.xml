@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <name>Database Connect</name>
+    <author>JoomlaXi</author>
+    <description>
+    	<![CDATA[
+    	MySQL query app can be used to fire various queries in MySQL whenever the attached form is submitted. Different features embedded in it are as follows:
+   		<ul>
+   		<li>Query on same database</li>
+    	<li>Query on different databases</li>    	
+    	<li>You can write multiple queries in the same action instance.</li>
+    	</ul>    	  	  	
+    	]]>
+    </description>
+   	<icon></icon>
+    <tags></tags>
+	<help>
+		<![CDATA[
+			<b>Note :</b> 
+			<ul>
+			<li>If you are not using default database, then you are required to fill the details for the fields Database Host, Databse Username,
+			Password, Database Name, Table Prefix.</li>
+			<li>Do not use Quotes for the tokens. You are not required to use <b>'[[Token]]'</b>, just use <b>[[Token]]</b>.</li>
+			</ul>  
+		]]>
+	</help>
+	<code>
+	<![CDATA[
+    	<pre class="jxif-example-code">
+<b>&lt;form name="form_name" method="POST" action="form_post_url" &gt;<br>
+		Column1   :  &lt;input type="text" size="15" name="column1" /&gt;<br>
+		Column2   :  &lt;input type="text" size="15" name="column2" /&gt;<br>
+		Column3   :  &lt;textarea rows="4" cols="12" name="column3" &gt;&lt;/textarea&gt;<br>
+	                              &lt;input type="submit" name="submit" value="Submit" /&gt;<br>
+&lt;/form&gt;</b>
+		</pre>
+		]]>
+	</code>
+		<fields name="action_params">		
+			<fieldset name="parameters" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+				<field	name="use_default_db"
+						type="list" 
+						label="COM_JXIFORMS_ACTION_DBCONNECT_USE_DEFAULT_DATABASE_LABEL"  
+						description="COM_JXIFORMS_ACTION_DBCONNECT_USE_DEFAULT_DATABASE_DESC"
+						default="1">						
+					    <option value="0">COM_JXIFORMS_NO</option>
+					    <option value="1">COM_JXIFORMS_YES</option>
+				</field>
+				
+				<field name="db_host" 
+					   type="xitext" 
+					   label="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_HOST_LABEL"
+					   default="" size="15" description="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_HOST_DESC"/>
+					   
+			   <field name="db_username" 
+					   type="xitext" 
+					   label="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_USERNAME_LABEL"
+					   default="" size="15" description="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_USERNAME_DESC"/>
+					   
+			   <field name="db_password" 
+					   type="password" 
+					   label="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_PASSWORD_LABEL"
+					   default="" size="15" description="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_PASSWORD_DESC"/>
+					   
+			   <field name="db_name" 
+					   type="text" 
+					   label="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_NAME_LABEL"
+					   default="" size="15" description="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_NAME_DESC"/>
+					   
+				<field name="table_prefix" 
+						type="text" 
+					    label="COM_JXIFORMS_ACTION_DBCONNECT_TABLE_PREFIX_LABEL"
+					    default="" size="15" description="COM_JXIFORMS_ACTION_DBCONNECT_TABLE_PREFIX_DESC"
+					    />	
+					    		    
+				<field 	name="sql"
+						type="textarea"
+						label="COM_JXIFORMS_ACTION_DBCONNECT_SQL_LABEL"
+						description="COM_JXIFORMS_ACTION_DBCONNECT_SQL_DESC"
+						required="true"/>
+				
+			</fieldset>
+	</fields>
+</config>
