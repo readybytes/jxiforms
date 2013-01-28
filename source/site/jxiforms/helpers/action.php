@@ -113,4 +113,18 @@ class JXiFormsHelperAction extends JXiFormsHelper
 		return self::$xmlData;
 	}
 	
+	static function getApplicableActions($type='', $refObject=null)
+	{
+		$actions = self::loadActions();
+		$results = array();
+
+		foreach($actions as $action)
+		{
+			if($action->hasType($type) && $action->isApplicable($refObject)){
+				$results[$action->getId()] = $action;
+			}
+		}
+
+		return $results;
+	}
 }

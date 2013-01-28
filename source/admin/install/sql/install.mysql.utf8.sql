@@ -72,3 +72,22 @@ CREATE TABLE IF NOT EXISTS `#__jxiforms_log` (
 ) 
 ENGINE = MyISAM 
 DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `#__jxiforms_queue` (
+  `queue_id`		INT(11)			NOT NULL AUTO_INCREMENT,
+  `input_id`		INT(11) 		NOT NULL,
+  `action_id` 		INT(11)			NOT NULL,
+  `approved`		TINYINT(1) 		DEFAULT 1,
+  `approval_key`	VARCHAR(255)	DEFAULT NULL,
+  `status`			TINYINT(4) 		DEFAULT 0,
+  `created_date`	DATETIME		NOT NULL,
+  `token` 			TEXT			DEFAULT NULL,
+  `params` 			TEXT			DEFAULT NULL,
+  PRIMARY KEY (`queue_id`),
+  INDEX `idx_input_id` (`input_id` ASC),
+  INDEX `idx_action_id` (`action_id` ASC),
+  INDEX `idx_approved` (`approved` ASC),
+  INDEX `idx_status` (`status` ASC)
+) 
+ENGINE = MyISAM 
+DEFAULT CHARACTER SET = utf8;

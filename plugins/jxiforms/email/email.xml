@@ -12,6 +12,7 @@
 	<files>
 		<filename plugin="email">email.php</filename>
 		<folder>action</folder>
+		<filename>index.html</filename>
 	</files>
 </extension>
 

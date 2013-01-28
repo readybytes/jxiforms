@@ -48,24 +48,20 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 			}
 			$extension = array_pop(explode('.', $file['name']));
 			$filename = array_pop(explode('/', $file['tmp_name']));
-			$destination = JPATH_ROOT.'/tmp/'.$filename.'.'.$extension;
+			
+			//JXITODO : what if multiple attachments are of same name
+			$destination = JXIFORMS_PATH_CORE_MEDIA.'/queue/attachments/'.$filename.'.'.$extension;
 			
 			if(move_uploaded_file($file['tmp_name'], $destination)){
 				$attachments[$name] = $destination;	
 			}
 		}
 		
-		$args = array($input, $data, $attachments);
-		$result = Rb_HelperPlugin::trigger('onJxiformsInputSubmit', $args, 'jxiforms');
+		//create queue records and dump data into file
+		$queueRecs  =  JXiFormsHelperQueue::enqueue($input);
+		JXiFormsHelperQueue::appendDataToFile($queueRecs, $data, $attachments);
 		
-		//remove the attachments from tmp location after trigger
-		foreach ($attachments as $attachment){
-			if(JFile::exists($attachment)){
-				JFile::delete($attachment);
-			}
-		}
-		
-		return $result;
+		return true;
 	}
 	
 	public function display()

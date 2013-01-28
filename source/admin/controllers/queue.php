@@ -9,14 +9,6 @@
 
 if(defined('_JEXEC')===false) die();
 
-class JXiFormsAdminControllerConfig extends JXiFormsController
+class JXiFormsAdminControllerQueue extends JXiFormsController
 {
-	protected 	$_defaultTask = 'edit';
-	
-	public function _save(array $data, $itemId=null)
-	{
-		$model 	= $this->getModel();
-		$model->save($data);
-		return true;
-	}
-}
+} 

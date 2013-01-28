@@ -11,11 +11,10 @@ if(defined('_JEXEC')===false) die();
 
 include_once dirname(__FILE__).'/view.php';
 
-class JXiFormsAdminViewConfig extends JXiFormsAdminBaseViewConfig
+class JXiFormsAdminViewQueue extends JXiFormsAdminBaseViewQueue
 {
-	protected function _adminEditToolbar()
+	protected function _adminGridToolbar()
 	{
-		Rb_HelperToolbar::apply();
-		Rb_HelperToolbar::cancel();
+		Rb_HelperToolbar::deleteList();
 	}
 }

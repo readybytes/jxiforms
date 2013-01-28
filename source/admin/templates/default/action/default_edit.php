@@ -64,6 +64,22 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 					
 			<?php echo $form->getInput('action_id'); ?>
 		</fieldset>
+		
+		<fieldset class="form-horizontal">
+			<legend> <?php echo Rb_Text::_('COM_JXIFORMS_ACTION_EDIT_CORE_PARAMETERS' ); ?> </legend>
+	
+			<?php $fieldSets = $form->getFieldsets('core_params'); ?>
+			<?php foreach ($fieldSets as $name => $fieldSet) : ?>
+			
+				<?php foreach ($form->getFieldset($name) as $field):?>
+					<div class="control-group">
+						<div class="control-label"><?php echo $field->label; ?> </div>
+						<div class="controls"><?php echo $field->input; ?></div>								
+					</div>
+				<?php endforeach;?>
+			<?php endforeach;?>
+		
+		</fieldset>	
 	</div>
 	
 	<div class="span6">

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+
+		<field name="send_approval_email" type="list"
+			label="COM_JXIFORMS_CONFIG_SEND_APPROVAL_EMAIL_LABEL" 
+			description="COM_JXIFORMS_CONFIG_SEND_APPROVAL_EMAIL_DESC"
+			class="inputbox" 
+			size="1" default="1" >
+			<option value="0">COM_JXIFORMS_NO</option>
+			<option value="1">COM_JXIFORMS_YES</option>
+		</field>
+
+		<field name="send_approval_email_to" type="text"
+			label="COM_JXIFORMS_CONFIG_SEND_APPROVAL_EMAIL_TO_LABEL" 
+			description="COM_JXIFORMS_CONFIG_SEND_APPROVAL_EMAIL_TO_DESC"
+			size="45" 
+		/>
+		
+		<field name="bucket_path" type="hidden"
+			label="COM_JXIFORMS_CONFIG_CURRENT_BUCKET_PATH_LABEL" 
+			description="COM_JXIFORMS_CONFIG_CURRENT_BUCKET_PATH_DESC"
+			default="/media/com_jxiforms/queue/data/"
+			size="45" 
+		/>
+		
+		<field name="current_bucket" type="hidden"
+			label="COM_JXIFORMS_CONFIG_CURRENT_BUCKET_PATH_LABEL" 
+			description="COM_JXIFORMS_CONFIG_CURRENT_BUCKET_PATH_DESC"
+			default="bucket1"
+			size="45" 
+		/>
+		
+	</fieldset>
+	
+</form>

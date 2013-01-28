@@ -331,4 +331,9 @@ class JXiformsAction extends JXiFormsLib
     {
     	return $this->type;
     }
+    
+	public function getParam($key, $default=null)
+	{
+		return $this->core_params->get($key,$default);
+	}
 }

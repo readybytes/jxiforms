@@ -12,6 +12,7 @@
 	<files>
 		<filename plugin="httpquery">httpquery.php</filename>
 		<folder>action</folder>
+		<filename>index.html</filename>
 	</files>
 </extension>
 
