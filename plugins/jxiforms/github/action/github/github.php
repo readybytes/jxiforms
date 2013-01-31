@@ -72,7 +72,8 @@ class JXiFormsActionGithub extends JXiformsAction
 		$issue['description']  	=  JXiFormsHelperRewriter::rewrite($this->getActionParam('issue_description', ''), $data);
 		$issue['assignee']	 	=  $this->getActionParam('assignee', '');
 		$issue['milestone']	  	=  $this->getActionParam('milestone', '');
-		$issue['labels']		=  explode(',', $this->getActionParam('label', ''));
+		$labels					=  $this->getActionParam('label', '');
+		$issue['labels']		=  empty($labels) ? '' : explode(',', $labels);
 		
 		//unset empty values
 		foreach ($issue as $key => $param){
