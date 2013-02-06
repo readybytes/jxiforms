@@ -40,10 +40,6 @@ class JXiFormsHelperQueue extends JXiFormsHelper
 			$record->set('token', $token)
 					   ->save();
 
-			//if task is approved then process immediately   
-			if($record->getApproved()){
-				$record->process();
-			}
 		}
 		
 		return true;
@@ -52,8 +48,14 @@ class JXiFormsHelperQueue extends JXiFormsHelper
 	public static function appendDataToFile($records, $data, $attachments)
 	{
 		$token   	=  md5(serialize($data).time());
-		$dataToDump = '{'.$token.'}'.json_encode(array('data'=>$data, 'attachments'=>$attachments)).'{/'.$token.'}';		
-		$bucketPath = JXiFormsHelperConfig::get('bucket_path').JXiFormsHelperConfig::get('current_bucket').'/';
+		$dataToDump = '{'.$token.'}'.json_encode(array('data'=>$data, 'attachments'=>$attachments)).'{/'.$token.'}';
+		$bucketPath = JXiFormsHelperConfig::get('bucket_path');
+		$bucket		= JXiFormsHelperConfig::get('current_bucket');	
+
+		$bucketPath = empty($bucketPath) ? JXIFORMS_DEFAULT_BUCKET_PATH : $bucketPath;
+		$bucket		= empty($bucket)? JXIFORMS_DEFAULT_BUCKET : $bucket;
+		
+		$bucketPath = $bucketPath.$bucket.'/';
 		
 		$filename   = '';
 		foreach ($records as $record){
@@ -85,4 +87,25 @@ class JXiFormsHelperQueue extends JXiFormsHelper
 		    break;
 		}
 	}	
+	
+	public static function sendApprovalEmail($approvalMessage, $subject = 'COM_JXIFORMS_QUEUE_SEND_APPROVAL_EMAIL_SUBJECT')
+	{
+		$subject  =  Rb_Text::_($subject);
+		$emails   =  JXiFormsHelperConfig::get('send_approval_email_to');
+		$emails   =  empty($emails) ? array() : explode(',', $emails);
+		
+		$emailgroup = JXiFormsHelperConfig::get('send_approval_email_group');
+		
+		//get users by group
+		if(!empty($emailgroup)){
+			$userIds  	= array();
+			foreach ($emailgroup as $groupId){
+				$userIds  	   =  JXiFormsHelperJoomla::getUsersByGroup($groupId);
+				$userEmails    =  JXiFormsHelperJoomla::getEmailById($userIds); 
+				$emails 	   =  empty($userEmails) ? $emails : array_merge($emails, $userEmails);
+			}
+		}
+
+		return JXiFormsHelperUtils::sendEmail($subject, $approvalMessage, null, $emails);
+	}
 }

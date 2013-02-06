@@ -53,36 +53,48 @@ class JXiFormsHelperUtils extends JXiFormsHelper
 	public static function sendEmailToAdmin($subject, $message, $attachments=null)
 	{		
 		$admins  = Rb_HelperJoomla::getUsersToSendSystemEmail();
-		return JXiFormsHelperUtils::sendEmail($subject, $message, $attachments, $admins);
+		
+		$emails = array();
+		foreach ($admins as $admin){
+			if ($admin->sendEmail){
+				$emails[] = $admin->email;
+			}
+		}
+		return JXiFormsHelperUtils::sendEmail($subject, $message, $attachments, $emails);
 	}
 	
-	public function sendEmail($subject, $message, $attachments=null, $users=array())
+	public function sendEmail($subject, $message, $attachments=null, $emails = array())
 	{
+		//when no email address exists
+		if (empty($emails)){
+			return true;
+		}
+		
 		$app  		= JXiFormsFactory::getApplication();
 		$mailfrom 	= $app->getCfg( 'mailfrom' );
 		$fromname 	= $app->getCfg( 'fromname' );
 		
 		if( !$mailfrom  || !$fromname ) {
-			$fromname = $users[0]->name;
-			$mailfrom = $users[0]->email;
+			$fromname = $emails[0]->name;
+			$mailfrom = $emails[0]->email;
 		}
 		
-		foreach ( $users as $user )
-		{
-			if($user->sendEmail)
-			{
-				$message = html_entity_decode($message, ENT_QUOTES);
-				$mail 	  = JXiFormsFactory::getMailer()->setSender( array($mailfrom, $fromname))
-													    ->addRecipient($user->email)
-											            ->setSubject($subject)
-											            ->setBody($message);
-				if($attachments != null){
-					$mail->addAttachment($attachments);
-				}
+		$message = html_entity_decode($message, ENT_QUOTES);
+		$mail 	 = JXiFormsFactory::getMailer()->setSender( array($mailfrom, $fromname))
+											   ->addRecipient(array_shift($emails))
+									           ->setSubject($subject)
+									           ->setBody($message);
 
-				$mail->Send();
-			}
+		if($attachments != null){
+			$mail->addAttachment($attachments);
 		}
+
+		
+		foreach ($emails as $email){
+			$mail->addBCC($email);
+		}
+		
+		$mail->Send();
 		
 		return true;
 	}

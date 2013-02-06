@@ -20,11 +20,7 @@ class JXiFormsAdminBaseViewConfig extends JXiFormsView
 		$form->loadFile($file, false, '//config');
 		$records = $this->getModel()->loadRecords();
 		
-		$data = array();
-		foreach ($records as $record){
-			$data[$record->key] = $record->value;
-		}
-		
+		$data = JXiFormsHelperConfig::get();
 		$form->bind($data);		
 		$this->assign('form', $form);
 

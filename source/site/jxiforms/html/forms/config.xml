@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
-	<fieldset addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+	<fieldset addfieldpath="/components/com_jxiforms/jxiforms/html/fields" name="config_params">
 
 		<field name="send_approval_email" type="list"
 			label="COM_JXIFORMS_CONFIG_SEND_APPROVAL_EMAIL_LABEL" 
@@ -15,6 +15,13 @@
 			label="COM_JXIFORMS_CONFIG_SEND_APPROVAL_EMAIL_TO_LABEL" 
 			description="COM_JXIFORMS_CONFIG_SEND_APPROVAL_EMAIL_TO_DESC"
 			size="45" 
+		/>
+		
+		<field name="send_approval_email_group" type="jxiforms.jusergroups"
+			label="COM_JXIFORMS_CONFIG_SEND_APPROVAL_EMAIL_GROUP_LABEL" 
+			description="COM_JXIFORMS_CONFIG_SEND_APPROVAL_EMAIL_GROUP_DESC"
+			class="multiselect"
+			multiple="true"
 		/>
 		
 		<field name="bucket_path" type="hidden"

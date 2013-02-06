@@ -21,21 +21,23 @@ class JXiFormsSiteControllerQueue extends JXiFormsController
 		}
 		
 		//if queue is processed OR already approved then do nothing 
-		if(!($queue->getStatus() === JXiformsQueue::STATUS_PROCESSED) || ($queue->getApproved())){
-			return true;
+		if(($queue->getStatus() === JXiformsQueue::STATUS_PROCESSED) || ($queue->getApproved())){
+			$this->setRedirect('index.php', Rb_Text::_('COM_JXIFORMS_QUEUE_EITHER_QUEUE_PROCESSED_OR_APPROVED'));
+			return false;
 		}
 
 		$queue_approval_key  =  $queue->getApprovalKey();
 		$approval_key = JXiFormsFactory::getApplication()->input->get('approval_key', '');
 		
 		if(strcmp($queue_approval_key, $approval_key) !== 0){
-			//JXITODO : display proper message when approval key does not match
-			return true;
+			$this->setRedirect('index.php', Rb_Text::_('COM_JXIFORMS_QUEUE_INVALID_QUEUE_APPROVAL_KEY'));
+			return false;
 		}
 		
 		//JXITODO :check whether user is authorized to approve this action
 		$queue->approve();
 		
-		JXiFormsFactory::getApplication()->redirect('index.php', Rb_Text::_('COM_JXIFORMS_QUEUE_TASK_APPROVED'));	
+		$this->setRedirect('index.php', Rb_Text::_('COM_JXIFORMS_QUEUE_TASK_APPROVED'));
+		return false;	
 	}
 }

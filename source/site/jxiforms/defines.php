@@ -43,6 +43,11 @@ define('JXIFORMS_PATH_ADMIN_TEMPLATE',		JXIFORMS_PATH_ADMIN.'/templates');
 define('JXIFORMS_PATH_CORE_FORMS', 			JXIFORMS_PATH_CORE.'/html/forms');
 define('JXIFORMS_PATH_CORE_FIELDS', 		JXIFORMS_PATH_CORE.'/html/fields');
 
+//queue bucket directory and bucket
+define('JXIFORMS_DEFAULT_BUCKET_PATH', 		'/media/com_jxiforms/queue/data/');
+define('JXIFORMS_DEFAULT_BUCKET', 			'bucket1');
+
+
 
 // object to identify extension, create once, so same can be consumed by constructors
 Rb_Extension::getInstance(JXIFORMS_COMPONENT_NAME, array('prefix_css'=>'jxif'));

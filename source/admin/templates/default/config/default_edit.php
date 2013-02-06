@@ -18,7 +18,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 <form action="<?php echo $uri; ?>" method="post" name="adminForm" id="adminForm">
 	<div class="span6">		
 		<fieldset class="form-horizontal">
-			<legend> <?php echo Rb_Text::_('COM_JXIFORMS_CONFIG_SETTINGS' ); ?> </legend>								
+			<legend> <?php echo Rb_Text::_('COM_JXIFORMS_CONFIG_SETTING' ); ?> </legend>								
 			
 			<div class="control-group">
 				<div class="control-label"><?php echo $form->getLabel('send_approval_email'); ?> </div>
@@ -31,14 +31,12 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 			</div>
 			
 			<div class="control-group">
-				<div class="control-label"><?php echo $form->getLabel('bucket_path'); ?> </div>
-				<div class="controls"><?php echo $form->getInput('bucket_path'); ?></div>								
+				<div class="control-label"><?php echo $form->getLabel('send_approval_email_group'); ?> </div>
+				<div class="controls"><?php echo $form->getInput('send_approval_email_group'); ?></div>								
 			</div>
 			
-			<div class="control-group">
-				<div class="control-label"><?php echo $form->getLabel('current_bucket'); ?> </div>
-				<div class="controls"><?php echo $form->getInput('current_bucket'); ?></div>								
-			</div>
+			<?php echo $form->getInput('bucket_path'); ?>
+			<?php echo $form->getInput('current_bucket'); ?>
 			
 		</fieldset>
 	</div>

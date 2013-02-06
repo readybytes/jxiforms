@@ -119,4 +119,10 @@ class JXiformsQueue extends JXiFormsLib
 	{
 		return $this->status;
 	}
+	
+	public function getApprovalUrl()
+	{
+		$url = JUri::root().'index.php?option=com_jxiforms&view=queue&task=approve&queue_id='.$this->queue_id.'&approval_key='.$this->approval_key;
+		return $url;
+	}
 }

@@ -29,5 +29,21 @@ class JXiFormsView extends JXiFormsViewbase
 		return $this;
 	}
 	
-
+	protected function _showAdminFooter()
+	{
+		ob_start()?>
+       
+        <div class="powered-by">
+	       <?php echo Rb_Text::_('COM_JXIFORMS_POWERED_BY') .'<a href="http://www.joomlaxi.com/products/item/joomlaxi-forms.html" target="_blank" >Joomlaxi Forms</a>';?>
+		   <?php echo ' | '.Rb_Text::_('COM_JXIFORMS_FOOTER_VERSION').' <strong>'.JXIFORMS_VERSION .'</strong> | '. Rb_Text::_('COM_JXIFORMS_FOOTER_BUILD').JXIFORMS_REVISION; ?>	  	
+        	<?php echo '<br />'
+        		.Rb_Text::_('COM_JXIFORMS_FOOTER_MESSAGE')
+        		.'<a href="http://bit.ly/WtlmW4" target="_blank">'.Rb_Text::_('COM_JXIFORMS_FOOTER_MESSAGE_JED_LINK').'</a>'
+        	?>
+	    </div>
+		<?php 
+		$content = ob_get_contents();
+		ob_end_clean();
+		return $content;
+	}
 }

@@ -25,6 +25,9 @@ class JXiFormsModelConfig extends JXiFormsModel
 		$queryValue = array();
 		
 		foreach ($data as $key => $value){
+			if(is_array($value)){
+				$value  = json_encode($value);
+			}
 			$queryValue[] = "(".$db->quote($key).",". $db->quote($value).")";
 		}
 		$query .= implode(",", $queryValue);
