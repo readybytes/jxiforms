@@ -64,7 +64,7 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		$approvalContent = '';
 		foreach ($queueRecs as $queue){
 			//if task is approved then process immediately else set the approval contents to email
-			if($queue->getApproved()){
+			if($queue->isApproved() && $queue->getStatus() != JXiformsQueue::STATUS_PROCESSED){
 				$queue->process();
 			}
 			else {
@@ -73,7 +73,7 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		}
 		
 		//do not send approval email when configuration setting is set to no  
-		if(!empty($approvalContent) && JXiFormsHelperConfig::get('send_approval_email')){
+		if(!empty($approvalContent) && JXiFormsHelperConfig::get('approval_send_email')){
 			JXiFormsHelperQueue::sendApprovalEmail($approvalContent);
 		}
 		

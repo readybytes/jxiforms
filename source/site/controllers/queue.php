@@ -21,7 +21,7 @@ class JXiFormsSiteControllerQueue extends JXiFormsController
 		}
 		
 		//if queue is processed OR already approved then do nothing 
-		if(($queue->getStatus() === JXiformsQueue::STATUS_PROCESSED) || ($queue->getApproved())){
+		if(($queue->getStatus() === JXiformsQueue::STATUS_PROCESSED) || ($queue->isApproved())){
 			$this->setRedirect('index.php', Rb_Text::_('COM_JXIFORMS_QUEUE_EITHER_QUEUE_PROCESSED_OR_APPROVED'));
 			return false;
 		}

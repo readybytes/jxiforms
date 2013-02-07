@@ -58,7 +58,11 @@ class JXiFormsActionEmail extends JXiformsAction
 			}
 		}
 
-		return $mailer->Send();
+		if ($mailer->Send() === true){
+			return true;
+		}
+		
+		return false;
 	}
 
 	public function _addEmailAddress($str, $function='addRecipient', $mailer)

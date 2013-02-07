@@ -41,7 +41,7 @@ class JXiFormsHelperUtils extends JXiFormsHelper
 		$content = curl_exec($ch);
 		
 		// get info of content
-		$info = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+		$info = curl_getinfo($ch);
 				
 		if($get_info){
 			return array($info, $content);
@@ -75,8 +75,7 @@ class JXiFormsHelperUtils extends JXiFormsHelper
 		$fromname 	= $app->getCfg( 'fromname' );
 		
 		if( !$mailfrom  || !$fromname ) {
-			$fromname = $emails[0]->name;
-			$mailfrom = $emails[0]->email;
+			throw new Exception(Rb_Text::_('COM_JXIFORMS_EXCEPTION_UTILS_NO_EMAILFROM_AND_FROMNAME_EXISTS'));
 		}
 		
 		$message = html_entity_decode($message, ENT_QUOTES);

@@ -21,18 +21,18 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 			<legend> <?php echo Rb_Text::_('COM_JXIFORMS_CONFIG_SETTING' ); ?> </legend>								
 			
 			<div class="control-group">
-				<div class="control-label"><?php echo $form->getLabel('send_approval_email'); ?> </div>
-				<div class="controls"><?php echo $form->getInput('send_approval_email'); ?></div>								
+				<div class="control-label"><?php echo $form->getLabel('approval_send_email'); ?> </div>
+				<div class="controls"><?php echo $form->getInput('approval_send_email'); ?></div>								
 			</div>
 			
 			<div class="control-group">
-				<div class="control-label"><?php echo $form->getLabel('send_approval_email_to'); ?> </div>
-				<div class="controls"><?php echo $form->getInput('send_approval_email_to'); ?></div>								
+				<div class="control-label"><?php echo $form->getLabel('approval_send_email_to'); ?> </div>
+				<div class="controls"><?php echo $form->getInput('approval_send_email_to'); ?></div>								
 			</div>
 			
 			<div class="control-group">
-				<div class="control-label"><?php echo $form->getLabel('send_approval_email_group'); ?> </div>
-				<div class="controls"><?php echo $form->getInput('send_approval_email_group'); ?></div>								
+				<div class="control-label"><?php echo $form->getLabel('approval_send_email_group'); ?> </div>
+				<div class="controls"><?php echo $form->getInput('approval_send_email_group'); ?></div>								
 			</div>
 			
 			<?php echo $form->getInput('bucket_path'); ?>

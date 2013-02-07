@@ -24,12 +24,19 @@ class JXiFormsActionMailchimp extends JXiformsAction
 		$removeFromLists = $this->getActionParam('removeFromLists', '');		
 		$emailFields     = explode(',', $this->getActionParam('emailField', ''));
 		
+		$result 	= array();
+		
 		foreach ($emailFields as $key => $email){
 			//if email field does not exists in data than ignore that field
 			if(!empty($email) && (isset($data[$email])) && !empty($data[$email])){
-				$this->_removeFromList($data[$email], $removeFromLists, $apiKey);
-				$this->_addToList($data[$email], $addToLists, $apiKey, $data);
+				$result1 = $this->_removeFromList($data[$email], $removeFromLists, $apiKey);
+				$result2 = $this->_addToList($data[$email], $addToLists, $apiKey, $data);
+				$result = array_merge($result1, $result2, $result);
 			}
+		}
+		
+		if(in_array(false, $result)){
+			return false;
 		}
 
 		return true;
@@ -42,6 +49,7 @@ class JXiFormsActionMailchimp extends JXiformsAction
 			return false;
 		}
 		
+		$ret = array();
 		foreach($listIds as $listId)
 		{
 			if(empty($listId)){
@@ -59,9 +67,11 @@ class JXiFormsActionMailchimp extends JXiformsAction
 			else{
 				//JXITODO : enter the failure of subscription into logs
 			}
+			
+			$ret[] = $result;
 		}
 		
-		return true;
+		return $ret;
 	}
 	
 	protected function _removeFromList($emailId, $listIds, $apiKey)
@@ -71,6 +81,7 @@ class JXiFormsActionMailchimp extends JXiformsAction
 			return false;
 		}
 		
+		$ret = array();
 		foreach($listIds as $listId)
 		{
 			if(empty($listId)){
@@ -93,9 +104,10 @@ class JXiFormsActionMailchimp extends JXiformsAction
 			else{
 				//JXITODO : enter the failure of unsubscription into logs
 			}
+			$ret[] = $result;
 		}
 		
-		return true;
+		return $ret;
 	}
 	
 	public function filterActionParams(array $data)

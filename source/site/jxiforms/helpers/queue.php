@@ -26,7 +26,7 @@ class JXiFormsHelperQueue extends JXiFormsHelper
 			$queueRecords[] = $queue->set('input_id',     $input->getId())
 									  ->set('action_id',    $action->getId())
 									  ->set('approved',     !$action->getParam('require_approval', 1))
-									  ->set('approval_key', !($queue->getApproved()) ? md5($action->getId().$action->getType().time()) : '')
+									  ->set('approval_key', !($queue->isApproved()) ? md5($action->getId().$action->getType().time()) : '')
 									  ->save();
 		}
 		
@@ -88,13 +88,13 @@ class JXiFormsHelperQueue extends JXiFormsHelper
 		}
 	}	
 	
-	public static function sendApprovalEmail($approvalMessage, $subject = 'COM_JXIFORMS_QUEUE_SEND_APPROVAL_EMAIL_SUBJECT')
+	public static function sendApprovalEmail($approvalMessage, $subject = 'COM_JXIFORMS_QUEUE_APPROVAL_SEND_EMAIL_SUBJECT')
 	{
 		$subject  =  Rb_Text::_($subject);
-		$emails   =  JXiFormsHelperConfig::get('send_approval_email_to');
+		$emails   =  JXiFormsHelperConfig::get('approval_send_email_to');
 		$emails   =  empty($emails) ? array() : explode(',', $emails);
 		
-		$emailgroup = JXiFormsHelperConfig::get('send_approval_email_group');
+		$emailgroup = JXiFormsHelperConfig::get('approval_send_email_group');
 		
 		//get users by group
 		if(!empty($emailgroup)){

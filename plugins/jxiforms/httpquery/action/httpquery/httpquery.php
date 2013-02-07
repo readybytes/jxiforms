@@ -20,7 +20,15 @@ class JXiFormsActionHttpquery extends JXiformsAction
 		$queryParameters   = $this->getActionParam('query_parameters', '');
 		$filters		   = $this->getActionParam('filter_parameters', '');
 		
-		return $this->_executeHttpQuery($url, $queryParameters, $data, $filters);
+		list($info, $content) =  $this->_executeHttpQuery($url, $queryParameters, $data, $filters);
+		
+		//http-code 2XX This class of status codes indicates the action requested 
+		//by the client was received, understood, accepted and processed successfully.
+		if($info['http_code'] > 199 && $info['http_code'] < 300){
+			return true;
+		}
+		
+		return false;
 	}
 
 	protected function _executeHttpQuery($url, $query, $postedData, $filters)
@@ -28,7 +36,7 @@ class JXiFormsActionHttpquery extends JXiformsAction
 		$requestString  = $this->_createRequestString($url, $query, $postedData, $filters);
 		
 		//JXITODO: process response
-		return JXiFormsHelperUtils::postDataByCurl($url, $requestString);
+		return JXiFormsHelperUtils::postDataByCurl($url, $requestString, true);
 	}
 	
 	protected function _createRequestString($url, $query, $data, $filters)

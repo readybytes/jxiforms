@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `#__jxiforms_queue` (
   `action_id` 		INT(11)			NOT NULL,
   `approved`		TINYINT(1) 		DEFAULT 1,
   `approval_key`	VARCHAR(255)	DEFAULT NULL,
-  `status`			TINYINT(4) 		DEFAULT 0,
+  `status`			INT(4) 			DEFAULT 0,
   `created_date`	DATETIME		NOT NULL,
   `token` 			TEXT			DEFAULT NULL,
   `params` 			TEXT			DEFAULT NULL,

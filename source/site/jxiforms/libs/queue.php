@@ -62,7 +62,7 @@ class JXiformsQueue extends JXiFormsLib
 		return $this;
 	}
 
-	public function getApproved()
+	public function isApproved()
 	{
 		return $this->approved;
 	}
@@ -95,6 +95,12 @@ class JXiformsQueue extends JXiFormsLib
 		$action = JXiformsAction::getInstance($this->getActionId());
 		$result = $action->process($relevant_data['data'], $relevant_data['attachments']);
 		
+		//when action has been performed successfully 
+		//on the data then change the status of the queue
+		if($result === true ){
+			$this->set('status', self::STATUS_PROCESSED)
+				 ->save();
+		}
 		//JXITODO : if process is not successfull then do not change the queue status else mark it as processed
 	}
 	
