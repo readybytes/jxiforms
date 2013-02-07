@@ -13,7 +13,7 @@ if(defined('_JEXEC')===false) die();
  * @author Gaurav
  *
  */
-class  plgJxiformsDbconnect extends JXiFormsPlugin
+class  plgJxiformsSqlquery extends JXiFormsPlugin
 {
 	protected $_location	= __FILE__;
 }

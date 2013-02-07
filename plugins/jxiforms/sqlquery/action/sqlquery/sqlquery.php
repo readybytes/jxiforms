@@ -11,7 +11,7 @@ if(defined('_JEXEC')===false) die();
  * @author Gaurav
  *
  */
-class JXiFormsActionDbconnect extends JXiformsAction
+class JXiFormsActionSqlquery extends JXiformsAction
 {
 	protected $_location	= __FILE__;	
 	
@@ -24,7 +24,7 @@ class JXiFormsActionDbconnect extends JXiformsAction
 		$sql  = $actionParams->get('sql', '');
 		if(empty($sql)){
 			//JXITODO :
-			return true;
+			return false;
 		}
 		
 		$useDefaultDb	= $actionParams->get('use_default_db', true);
@@ -45,14 +45,16 @@ class JXiFormsActionDbconnect extends JXiformsAction
 		
 		$sql = Rb_HelperPatch::_filterComments($sql);
 		$queries = $db->splitSql($sql);
+
+		$result = true;
 		foreach ($queries as $query){			
 			$db->setQuery($query);
 			if ( !$db->query() ) {
-				//JXITODO : $db->stderr();
+				$result = false;
 			}
 		}
 		
-		return true;
+		return $result;
 	}
 	
 	protected function _quoteData($data)

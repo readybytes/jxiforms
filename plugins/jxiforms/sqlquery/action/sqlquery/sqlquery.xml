@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <config>
-    <name>Database Connect</name>
+    <name>SQL Query</name>
     <author>JoomlaXi</author>
     <description>
     	<![CDATA[
-    	MySQL query app can be used to fire various queries in MySQL whenever the attached form is submitted. Different features embedded in it are as follows:
+    	SQL query action can be used to fire various queries in SQL Database whenever the attached form is submitted. Different features embedded in it are as follows:
    		<ul>
    		<li>Query on same database</li>
     	<li>Query on different databases</li>    	
@@ -41,8 +41,8 @@
 			<fieldset name="parameters" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
 				<field	name="use_default_db"
 						type="list" 
-						label="COM_JXIFORMS_ACTION_DBCONNECT_USE_DEFAULT_DATABASE_LABEL"  
-						description="COM_JXIFORMS_ACTION_DBCONNECT_USE_DEFAULT_DATABASE_DESC"
+						label="COM_JXIFORMS_ACTION_SQLQUERY_USE_DEFAULT_DATABASE_LABEL"  
+						description="COM_JXIFORMS_ACTION_SQLQUERY_USE_DEFAULT_DATABASE_DESC"
 						default="1">						
 					    <option value="0">COM_JXIFORMS_NO</option>
 					    <option value="1">COM_JXIFORMS_YES</option>
@@ -50,34 +50,34 @@
 				
 				<field name="db_host" 
 					   type="xitext" 
-					   label="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_HOST_LABEL"
-					   default="" size="15" description="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_HOST_DESC"/>
+					   label="COM_JXIFORMS_ACTION_SQLQUERY_DATABASE_HOST_LABEL"
+					   default="" size="15" description="COM_JXIFORMS_ACTION_SQLQUERY_DATABASE_HOST_DESC"/>
 					   
 			   <field name="db_username" 
 					   type="xitext" 
-					   label="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_USERNAME_LABEL"
-					   default="" size="15" description="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_USERNAME_DESC"/>
+					   label="COM_JXIFORMS_ACTION_SQLQUERY_DATABASE_USERNAME_LABEL"
+					   default="" size="15" description="COM_JXIFORMS_ACTION_SQLQUERY_DATABASE_USERNAME_DESC"/>
 					   
 			   <field name="db_password" 
 					   type="password" 
-					   label="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_PASSWORD_LABEL"
-					   default="" size="15" description="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_PASSWORD_DESC"/>
+					   label="COM_JXIFORMS_ACTION_SQLQUERY_DATABASE_PASSWORD_LABEL"
+					   default="" size="15" description="COM_JXIFORMS_ACTION_SQLQUERY_DATABASE_PASSWORD_DESC"/>
 					   
 			   <field name="db_name" 
 					   type="text" 
-					   label="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_NAME_LABEL"
-					   default="" size="15" description="COM_JXIFORMS_ACTION_DBCONNECT_DATABASE_NAME_DESC"/>
+					   label="COM_JXIFORMS_ACTION_SQLQUERY_DATABASE_NAME_LABEL"
+					   default="" size="15" description="COM_JXIFORMS_ACTION_SQLQUERY_DATABASE_NAME_DESC"/>
 					   
 				<field name="table_prefix" 
 						type="text" 
-					    label="COM_JXIFORMS_ACTION_DBCONNECT_TABLE_PREFIX_LABEL"
-					    default="" size="15" description="COM_JXIFORMS_ACTION_DBCONNECT_TABLE_PREFIX_DESC"
+					    label="COM_JXIFORMS_ACTION_SQLQUERY_TABLE_PREFIX_LABEL"
+					    default="" size="15" description="COM_JXIFORMS_ACTION_SQLQUERY_TABLE_PREFIX_DESC"
 					    />	
 					    		    
 				<field 	name="sql"
 						type="textarea"
-						label="COM_JXIFORMS_ACTION_DBCONNECT_SQL_LABEL"
-						description="COM_JXIFORMS_ACTION_DBCONNECT_SQL_DESC"
+						label="COM_JXIFORMS_ACTION_SQLQUERY_SQL_LABEL"
+						description="COM_JXIFORMS_ACTION_SQLQUERY_SQL_DESC"
 						required="true"/>
 				
 			</fieldset>
