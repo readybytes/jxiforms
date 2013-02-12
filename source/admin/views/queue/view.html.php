@@ -17,4 +17,20 @@ class JXiFormsAdminViewQueue extends JXiFormsAdminBaseViewQueue
 	{
 		Rb_HelperToolbar::deleteList();
 	}
+	
+	public function display($tpl = null)
+	{
+		// get all inputs
+		$inputs = JXiFormsFactory::getInstance('input', 'model')->loadRecords();
+		$this->assign('inputs', $inputs);
+		
+		// get all actions
+		$actions = JXiFormsFactory::getInstance('action', 'model')->loadRecords();
+		$this->assign('actions', $actions);
+		
+		// get status list of queue
+		$queue_status_list = JXiformsQueue::getStatusList();
+		$this->assign('queue_status_list', $queue_status_list);
+		return parent::display($tpl);
+	}
 }

@@ -131,4 +131,19 @@ class JXiformsQueue extends JXiFormsLib
 		$url = JUri::root().'index.php?option=com_jxiforms&view=queue&task=approve&queue_id='.$this->queue_id.'&approval_key='.$this->approval_key;
 		return $url;
 	}
+
+	/**
+	 * Gets all the status of Queue
+	 * 
+	 * @return Array 
+	 */	
+	public static function getStatusList()
+	{
+		return array(
+				self::STATUS_NONE 		=> 'COM_JXIFORMS_QUEUE_STATUS_NONE',
+				self::STATUS_FAILED		=> 'COM_JXIFORMS_QUEUE_STATUS_FAILED',
+				self::STATUS_PROCESSED	=> 'COM_JXIFORMS_QUEUE_STATUS_PROCESSED',
+				self::STATUS_WAITING	=> 'COM_JXIFORMS_QUEUE_STATUS_WAITING'
+		);
+	} 
 }
