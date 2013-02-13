@@ -184,4 +184,27 @@ class JXiFormsHelperUtils extends JXiFormsHelper
 		//already set
 		return false;
 	}
+
+	public static function getModalLink($linkToOpen, $textToShow, $height = 300, $width = 300, $toolTip=null)
+	{
+		$link = "$linkToOpen";
+		
+        JHTML::_('behavior.modal', "a.exportPopup");
+        $buttonMap = new JObject();
+        $buttonMap->set('modal', true);
+        $buttonMap->set('text', Rb_Text::_("$textToShow"));
+        $buttonMap->set('modalname', 'exportPopup');
+        $buttonMap->set('options', "{handler: 'iframe', size: {x: $width, y:$height}}");
+        $buttonMap->set('link', $link);
+
+        $html = '<a style="color:#0088CC;"
+        `			id="'.$buttonMap->modalname.'" '
+                 .' class="'.$buttonMap->modalname.'" '
+                 .' title="'.Rb_Text::_($toolTip).'" '
+                 .' href ="'.$buttonMap->link.'" '
+                 .' rel  ="'.$buttonMap->options.'" >'
+			                .$buttonMap->text.' </a>';
+	
+		return $html;
+	}
 }

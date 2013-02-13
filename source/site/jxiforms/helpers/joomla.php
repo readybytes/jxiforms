@@ -62,4 +62,16 @@ class JXiFormsHelperJoomla extends JXiFormsHelper
 		
 		return $rows;
 	}
+
+	public static function getPlugins($type, $folder, $status=true)
+	{
+		$status = (false == $status) ? 0 : 1;
+		$db = JXiFormsFactory::getDbo();
+		$query = new Rb_Query();
+		return $query->select('*')
+				->from('#__extensions')
+				->where(array("`type`='"."$type"."'", "`folder`='"."$folder"."'", '`enabled`="'.$status.'"'),'AND')
+				->dbLoadQuery()
+				->loadObjectList();
+	}
 }

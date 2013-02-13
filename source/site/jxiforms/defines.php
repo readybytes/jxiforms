@@ -38,6 +38,7 @@ define('JXIFORMS_PATH_ADMIN', 				JPATH_ADMINISTRATOR.'/components/com_jxiforms'
 define('JXIFORMS_PATH_ADMIN_CONTROLLER',	JXIFORMS_PATH_ADMIN.'/controllers');
 define('JXIFORMS_PATH_ADMIN_VIEW',			JXIFORMS_PATH_ADMIN.'/views');
 define('JXIFORMS_PATH_ADMIN_TEMPLATE',		JXIFORMS_PATH_ADMIN.'/templates');
+define('JXIFORMS_PATH_PLUGIN', 				JPATH_PLUGINS.'/jxiforms');
 
 // Html => form + fields
 define('JXIFORMS_PATH_CORE_FORMS', 			JXIFORMS_PATH_CORE.'/html/forms');

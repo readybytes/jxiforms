@@ -2,7 +2,7 @@
 
 <config>
 	<name>Dropbox</name>
-    <icon></icon>
+    <icon>dropbox.png</icon>
     <description>
     	<![CDATA[<a href="https://www.dropbox.com/" target="_blank" >Dropbox</a> is a free service that lets you bring your photos, docs, and videos anywhere and share them easily.
     	<br>This action can be utilized to move the uploaded files in your Dropbox account.

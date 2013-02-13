@@ -2,7 +2,7 @@
 
 <config>
 	<name>Mailchimp</name>
-    <icon></icon>
+    <icon>mailchimp.png</icon>
     <description>
     	<![CDATA[<a href="http://mailchimp.com/" target="_blank" >Mailchimp</a> helps you design email newsletters, share them on social networks, integrate with services you already use, and track your results.
     	<br>With Mailchimp action you can subscribe user(emails) to a mailchimp list(s).

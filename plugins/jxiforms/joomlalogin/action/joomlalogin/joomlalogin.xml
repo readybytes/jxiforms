@@ -8,7 +8,7 @@
     	Allow user to Login with Joomla Login action.<br>
     	]]>
     </description>
-   	<icon></icon>
+   	<icon>joomlalogin.png</icon>
     <tags>login</tags>
 	<help><![CDATA[
 	<br>	With reference to the example code, you need to enter name of the fields in Username and Password parameters that are username and password.

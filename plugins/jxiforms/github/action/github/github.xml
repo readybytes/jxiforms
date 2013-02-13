@@ -2,7 +2,7 @@
 
 <config>
 	<name>Github</name>
-    <icon></icon>
+    <icon>github.png</icon>
     <description>
     	<![CDATA[<a href="https://github.com/" target="_blank" >Github</a> is a web-based hosting service for projects that use the Git revision control system.<br> 
 		This action can be used to create issues in github on form submission.<br>
