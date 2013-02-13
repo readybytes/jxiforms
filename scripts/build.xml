@@ -42,7 +42,7 @@
 			  <fileset dir="${dir.plugin}/jxiforms">
 				<type type="dir" />
 				<depth max="0" min="0" />
-				<include name="email" />
+		<!--		<include name="email" />  -->
 			  </fileset>
 		
 		</foreach>
