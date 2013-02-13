@@ -2,7 +2,7 @@
 
 <config>
 	<name>Asana</name>
-    <icon></icon>
+    <icon>asana.png</icon>
     <description>
     	<![CDATA[<a href="http://asana.com/" target="_blank" >Asana</a> is a modern web application that keeps teams in sync, a shared task list where everyone can capture, organize, track, and communicate what they are working on in service of their common goal.<br>
     	Using this action you can create tasks in your asana account.

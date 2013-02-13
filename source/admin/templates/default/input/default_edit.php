@@ -74,7 +74,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 				<div class="controls"><?php echo $form->getInput('html'); ?></div>
 				<?php $html = trim($input->getHtml());?>
 				<?php if($input->getId() && !empty($html)): ?>
-					<div class="controls"><?php echo $preview_link?></div>
+					<div class="controls forms-preview-link"><?php echo $preview_link?></div>
 				<?php endif;?>			
 			</div>
 	</fieldset>	

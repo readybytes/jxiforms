@@ -38,6 +38,30 @@
 			size="45" 
 		/>
 		
+		<field name="cron_run_automatic" type="list"
+			label="COM_JXIFORMS_CONFIG_CRON_RUN_AUTOMATIC_LABEL" 
+			description="COM_JXIFORMS_CONFIG_CRON_RUN_AUTOMATIC_DESC"
+			class="inputbox" 
+			size="1" default="1" >
+			<option value="0">COM_JXIFORMS_NO</option>
+			<option value="1">COM_JXIFORMS_YES</option>
+		</field>
+		
+		<field name="cron_frequency" type="list" 
+			   default="900"
+			   label="COM_JXIFORMS_CONFIG_CRON_FREQUENCY_LABEL" 
+			   description="COM_JXIFORMS_CONFIG_CRON_FREQUENCY_DESC">
+			<option value="3600">COM_JXIFORMS_CONFIG_CRON_FREQUENCY_LOWEST</option>
+			<option value="1800">COM_JXIFORMS_CONFIG_CRON_FREQUENCY_LOW</option>
+			<option value="900">COM_JXIFORMS_CONFIG_CRON_FREQUENCY_NORMAL</option>
+			<option value="300">COM_JXIFORMS_CONFIG_CRON_FREQUENCY_HIGH</option>
+		</field>
+		
+		<field name="cron_access_time" type="hidden" default="0"
+			label="COM_JXIFORMS_CONFIG_CRON_ACCESS_TIME_LABEL" 
+			description="COM_JXIFORMS_CONFIG_CRON_ACCESS_TIME_DESC" 
+			/>
+		
 	</fieldset>
 	
 </form>

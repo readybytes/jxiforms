@@ -38,3 +38,76 @@
 	-moz-border-radius:    0px 0px 5px 5px;
 	border-radius:    0px 0px 5px 5px;
 }
+
+.jxiforms .dashboard-icon{
+	border: 2px solid #D8D8D8;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);    
+    position: relative;
+    width: 16%;
+    margin:2%;
+    float:left;
+    padding:2%;
+    min-width:120px;
+    overflow:hidden;
+}
+
+.jxiforms .dashboard-icon:hover{
+	border: 2px solid #0088CC;
+	transition-duration: 1s;
+	-webkit-transition-duration:1s;
+	cursor: pointer;
+}
+
+.jxiforms .dashbosrd-icon-name{
+	margin-top:10%;
+	white-space: nowrap;
+    width: 98%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.jxiforms .dashboard-icon-image{
+	padding:5%;
+}
+
+.jxiforms .dashboard-icon-panel{
+	padding: 1%;
+	background-color: #f5f5f5;
+	margin:10px 0 0 0 !important ;
+	border: 1px solid #eee;
+	border: 1px solid rgba(0,0,0,0.05);
+	border-radius: 4px;
+	float:left !important;
+}
+
+.jxiforms .disabled-action{
+	opacity:0.43;	
+}
+
+.jxiforms .icon-badge {
+    border: 1px solid;
+    box-shadow: 4px 1px 4px black;
+    font-family:times new roman;
+    color: #FFFFFF;
+    font-size: 1em;
+    height: 15px;
+    letter-spacing: 1px;
+    margin: 0.05em 0;
+    position: absolute;
+    text-align: center;
+    top: 8%;
+    left: 56%;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    width: 58%;
+    border-color :#63AF62;
+    background-color:#0088CC
+}
+
+.jxiforms .forms-preview-link{
+	font-size : 12px;
+	font-weight : bold;
+	position : relative;
+	top : 14px;
+}

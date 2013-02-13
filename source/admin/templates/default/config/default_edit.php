@@ -39,6 +39,21 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 			<?php echo $form->getInput('current_bucket'); ?>
 			
 		</fieldset>
+		
+		<fieldset class="form-horizontal">
+			<legend> <?php echo Rb_Text::_('COM_JXIFORMS_CONFIG_CRON_SETTING' ); ?> </legend>
+			
+			<div class="control-group">
+				<div class="control-label"><?php echo $form->getLabel('cron_run_automatic'); ?> </div>
+				<div class="controls"><?php echo $form->getInput('cron_run_automatic'); ?></div>								
+			</div>	
+			
+			<div class="control-group">
+				<div class="control-label"><?php echo $form->getLabel('cron_frequency'); ?> </div>
+				<div class="controls"><?php echo $form->getInput('cron_frequency'); ?></div>								
+			</div>	
+				
+		</fieldset>
 	</div>
 	<input type="hidden" name="task" value="save" />
 </form>

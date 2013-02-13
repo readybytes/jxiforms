@@ -25,5 +25,10 @@ $controller = JXiFormsFactory::getInstance($controllerClass, 'controller', 'jxif
 // execute task
 $controller->execute($task);
 
+//exit after controller request
+if(defined('JXIFORMS_EXIT')){
+	exit(JXIFORMS_EXIT);
+}
+
 // lets complete the task by taking post-action
 $controller->redirect();

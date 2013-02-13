@@ -3,7 +3,7 @@
 <config>
 
 	<name>Http-Query</name>
-    <icon></icon>
+    <icon>httpquery.png</icon>
     <description>
     	<![CDATA[
     	HTTP-Query action sends out HTTP request to a URL with certain variables on the basis of form submission.

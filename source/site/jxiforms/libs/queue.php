@@ -101,6 +101,8 @@ class JXiformsQueue extends JXiFormsLib
 			$this->set('status', self::STATUS_PROCESSED)
 				 ->save();
 		}
+
+		return $result;
 		//JXITODO : if process is not successfull then do not change the queue status else mark it as processed
 	}
 	
