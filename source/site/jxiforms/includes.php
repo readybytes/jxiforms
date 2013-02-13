@@ -49,3 +49,5 @@ Rb_HelperLoader::addAutoLoadViews(JXIFORMS_PATH_ADMIN.'/views', RB_REQUEST_DOCUM
 $filename = 'com_jxiforms_extensions';
 $language = JFactory::getLanguage();
 $language->load($filename, JPATH_SITE);
+
+require_once JXIFORMS_PATH_CORE.'/base/event.php';

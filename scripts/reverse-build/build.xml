@@ -59,6 +59,7 @@
 		<copy todir="${target}/source/media">
 		    <fileset dir="${source}/media/${args.comname}">
 		        <include name="**/*.*" />
+		        <exclude name="queue/**/*.*" />
 		    </fileset>
 		</copy>
 
@@ -77,6 +78,12 @@
 			  tofile="${target}/source/admin/install/extensions/languagepack_en_GB/plg_jxiforms/en-GB.com_jxiforms_extensions.ini"
 	   		  haltonerror="false"
 			  />
+			  
+		<copy todir="${target}/source/admin/install/extensions/plg_system_jxiforms">
+			<fileset dir="${source}/plugins/system/jxiforms">
+			 	<include name="**/*.*" />
+			</fileset>
+		</copy>
 	       
 	</target>
 

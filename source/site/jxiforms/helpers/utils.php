@@ -172,4 +172,16 @@ class JXiFormsHelperUtils extends JXiFormsHelper
 
 		return true;
 	}
+	
+	static public function markExit($msg='NO_MESSAGE')
+	{
+		// if not already set
+		if(defined('JXIFORMS_EXIT')==false){
+			define('JXIFORMS_EXIT',$msg);
+			return true;
+		}
+
+		//already set
+		return false;
+	}
 }

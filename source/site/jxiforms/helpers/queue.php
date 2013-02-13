@@ -108,4 +108,13 @@ class JXiFormsHelperQueue extends JXiFormsHelper
 
 		return JXiFormsHelperUtils::sendEmail($subject, $approvalMessage, null, $emails);
 	}
+	
+	public static function getApprovedUnprocessedRecords()
+	{
+		$filter  = array('approved'=>1, 'status' => array(array('IN', '('.JXiformsQueue::STATUS_NONE.','.JXiformsQueue::STATUS_WAITING.')')));
+		$records = JXiFormsFactory::getInstance('queue', 'model')
+									->loadRecords($filter);
+									
+		return $records;
+	}
 }

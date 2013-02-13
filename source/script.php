@@ -21,6 +21,7 @@ class Com_jxiformsInstallerScript
 
 		$extensions 	= array();
 		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'email');
+		$extensions[] 	= array('type'=>'system', 'name'=>'jxiforms');
 		$this->enableExtensions($extensions);
 		return true;
 	}

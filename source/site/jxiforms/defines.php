@@ -47,6 +47,8 @@ define('JXIFORMS_PATH_CORE_FIELDS', 		JXIFORMS_PATH_CORE.'/html/fields');
 define('JXIFORMS_DEFAULT_BUCKET_PATH', 		'/media/com_jxiforms/queue/data/');
 define('JXIFORMS_DEFAULT_BUCKET', 			'bucket1');
 
+define('JXIFORMS_EXECUTION_TIME_MARGIN', 	20); //in percent
+
 
 
 // object to identify extension, create once, so same can be consumed by constructors

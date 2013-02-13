@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="system" method="upgrade">
+    <name>System - JoomlaXi Forms</name>
+    <version>@build.version@</version>
+    <creationDate>Jan 2013</creationDate>
+    <copyright>Copyright (C) 2009 - 2013 Ready Bytes Softwrae Labs. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>team@readybytes.in</authorEmail>
+    <authorUrl>www.readybytes.in</authorUrl>
+    <description>JXiForms. Plugin should be Enabled for proper functioning of JXiForms.</description>
+    <files>
+        <filename plugin="jxiforms">jxiforms.php</filename>
+        <filename plugin="jxiforms">index.html</filename>
+    </files>
+    <config>
+    </config>
+</extension>
+
