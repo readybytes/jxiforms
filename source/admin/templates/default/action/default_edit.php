@@ -23,7 +23,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 		}
 	}
 </script>
-
+<div class="row-fluid">
 <form action="<?php echo $uri; ?>" method="post" name="adminForm" id="adminForm">
 	<div class="span6">		
 		<fieldset class="form-horizontal">
@@ -107,11 +107,12 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 		
 	</fieldset>	
 	</div>
+	<div class="clr"></div>
 	<!-- Display help message and code block -->
 	<?php if(!empty($help['help']) || !empty($help['code'])): ?>
-		<div class="span12">
-			<fieldset class="form-horizontal">
+			<fieldset class="form-horizontal adminform">
 				<legend > <?php echo Rb_Text::_('COM_JXIFORMS_ACTION_EDIT_ACTION_HELP'); ?></legend>
+					<div class="row-fluid">
 					<?php if(!empty($help['help']) || !empty($help['description'])):?>
 						<div class="span6">
 						  <div><?php echo (isset($help['description']) && !empty($help['description'])) ? Rb_Text::_('COM_JXIFORMS_ACTION_INTRODUCTION').$help['description'] : ''; ?></div>
@@ -125,14 +126,14 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 						<div><?php echo $help['code']; ?></div>
 					</div>
 					<?php endif;?>
-		</fieldset>
-		</div>
-	
+					</div>
+		</fieldset>	
 	<?php endif;?>
 
 	<input type="hidden" name="task" value="save" />
 	<input type="hidden" name="boxchecked" value="1" />
 </form>
+</div>
 
 <?php 
 

@@ -23,7 +23,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 		}
 	}
 </script>
-
+<div class="row-fluid">
 <form action="<?php echo $uri; ?>" method="post" name="adminForm" id="adminForm">
 	<div class="span6">		
 		<fieldset class="form-horizontal">
@@ -83,5 +83,5 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 	<input type="hidden" name="task" value="save" />
 	<input type="hidden" name="boxchecked" value="1" />
 </form>
-
+</div>
 <?php 
