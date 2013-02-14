@@ -69,7 +69,7 @@ class JXiFormsActionGithub extends JXiformsAction
 	{
 		$issue		  			=  array();
 		$issue['title']  		=  JXiFormsHelperRewriter::rewrite($this->getActionParam('issue_title', ''), $data);
-		$issue['description']  	=  JXiFormsHelperRewriter::rewrite($this->getActionParam('issue_description', ''), $data);
+		$issue['body']  		=  JXiFormsHelperRewriter::rewrite($this->getActionParam('issue_description', ''), $data);
 		$issue['assignee']	 	=  $this->getActionParam('assignee', '');
 		$issue['milestone']	  	=  $this->getActionParam('milestone', '');
 		$labels					=  $this->getActionParam('label', '');
