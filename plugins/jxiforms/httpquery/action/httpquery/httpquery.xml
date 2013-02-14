@@ -10,7 +10,9 @@
     	<br> You can pass custom query variables or can use the existing variables with the HTTP query to that URL.
     	]]>
 	</description>
-	<help></help>
+	<help><![CDATA[
+	<br>Note : Option, view, task, input_id and ItemId will not be available in submitted data.
+	]]></help>
 	<code></code>
 		<fields name="action_params">
 		

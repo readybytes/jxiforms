@@ -41,7 +41,11 @@ class JXiFormsActionHttpquery extends JXiformsAction
 	
 	protected function _createRequestString($url, $query, $data, $filters)
 	{
-		$filters  = explode("\n", $filters);			
+		//these value needs to be removed form the posted data so that it does not create infinite loop
+		$defaultFilter = array('option', 'view', 'task', 'input_id', 'Itemid');
+		$filters  = explode("\r\n", $filters);			
+		$filters = array_unique($filters + $defaultFilter);
+		
 		$queryParameters = explode( "\r\n", $query );
 		
 		$queryArray = array();
@@ -63,6 +67,6 @@ class JXiFormsActionHttpquery extends JXiformsAction
 		}
 		
 		$requestArray = ($this->getActionParam('append_data', 1)) ? array_merge($data, $queryArray) : $queryArray;
-		return http_build_query($queryArray);
+		return http_build_query($requestArray);
 	}
 }
