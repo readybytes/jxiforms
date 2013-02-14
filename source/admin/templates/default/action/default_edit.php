@@ -107,7 +107,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 		
 	</fieldset>	
 	</div>
-	<div class="clr"></div>
+	<div style="clear:both;"></div>
 	<!-- Display help message and code block -->
 	<?php if(!empty($help['help']) || !empty($help['code'])): ?>
 			<fieldset class="form-horizontal adminform">
