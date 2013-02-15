@@ -157,4 +157,9 @@ class JXiformsInput extends JXiFormsLib
 	{
 		return $this->html;
 	}
+	
+	public function getTitle()
+	{
+		return $this->title;
+	}
 }

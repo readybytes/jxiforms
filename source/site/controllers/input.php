@@ -61,14 +61,14 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		$queueRecs  =  JXiFormsHelperQueue::enqueue($input);
 		JXiFormsHelperQueue::appendDataToFile($queueRecs, $data, $attachments);
 		
-		$approvalContent = '';
+		$approvalContent = Rb_Text::sprintf('COM_JXIFORMS_INPUT_DATA_SUBMITTED_ON', $input->getTitle());
 		foreach ($queueRecs as $queue){
 			//if task is approved then process immediately else set the approval contents to email
 			if($queue->isApproved() && $queue->getStatus() != JXiformsQueue::STATUS_PROCESSED){
 				$queue->process();
 			}
 			else {
-				$approvalContent .= $queue->getApprovalUrl()."\n";
+				$approvalContent .= Rb_Text::sprintf('COM_JXIFORMS_INPUT_APPROVAL_REQUEST', JXiFormsHelperAction::get($queue->getActionId())->title,$queue->getApprovalUrl());
 			}
 		}
 		

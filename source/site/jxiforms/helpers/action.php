@@ -14,6 +14,24 @@ if(defined('_JEXEC')===false) die();
  */
 class JXiFormsHelperAction extends JXiFormsHelper
 {
+	public static function get($id = 0)
+	{
+		static $actions = null;
+		if(($id !== 0 && !isset($actions[$id])) || $actions == null){
+			$actions = JXiFormsFactory::getInstance('action', 'model')->loadRecords();
+		}
+		
+		if($id === 0){
+			return $actions;
+		}
+		
+		if(isset($actions[$id])){
+			return $actions[$id];
+		}
+		
+		return false;
+	}
+	
 	static function loadActions()
 	{
 		static $instances = null;

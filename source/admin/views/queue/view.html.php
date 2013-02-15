@@ -21,11 +21,11 @@ class JXiFormsAdminViewQueue extends JXiFormsAdminBaseViewQueue
 	public function display($tpl = null)
 	{
 		// get all inputs
-		$inputs = JXiFormsFactory::getInstance('input', 'model')->loadRecords();
+		$inputs = JXiFormsHelperInput::get();
 		$this->assign('inputs', $inputs);
 		
 		// get all actions
-		$actions = JXiFormsFactory::getInstance('action', 'model')->loadRecords();
+		$actions = JXiFormsHelperAction::get();
 		$this->assign('actions', $actions);
 		
 		// get status list of queue

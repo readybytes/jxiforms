@@ -43,12 +43,12 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 				<div class="control-label"><?php echo $form->getLabel('published'); ?> </div>
 				<div class="controls"><?php echo $form->getInput('published'); ?></div>								
 			</div>
-
+<!-- 
 			<div class="control-group">
 				<div class="control-label"><?php echo $form->getLabel('for_all_inputs'); ?> </div>
 				<div class="controls"><?php echo $form->getInput('for_all_inputs'); ?></div>								
 			</div>
-			
+ -->			
 			<div class="control-group">
 				<div class="control-label"><?php echo $form->getLabel('description'); ?> </div>
 				<div class="controls"><?php echo $form->getInput('description'); ?></div>				
@@ -110,7 +110,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 	<div style="clear:both;"></div>
 	<!-- Display help message and code block -->
 	<?php if(!empty($help['help']) || !empty($help['code'])): ?>
-			<fieldset class="form-horizontal adminform">
+			<fieldset class="form-horizontal">
 				<legend > <?php echo Rb_Text::_('COM_JXIFORMS_ACTION_EDIT_ACTION_HELP'); ?></legend>
 					<div class="row-fluid">
 					<?php if(!empty($help['help']) || !empty($help['description'])):?>
