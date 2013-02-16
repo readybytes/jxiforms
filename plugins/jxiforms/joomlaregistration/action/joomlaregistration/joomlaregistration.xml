@@ -7,7 +7,7 @@
 	Joomla Registration Action collects the form data, and registers the user at your site.
     	]]>
     </description>
-   	<icon></icon>
+   	<icon>joomlaregistration.png</icon>
     <tags>registration</tags>
 	<help>
 		<![CDATA[
