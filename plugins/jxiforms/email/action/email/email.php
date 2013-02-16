@@ -80,6 +80,13 @@ class JXiFormsActionEmail extends JXiformsAction
 	protected function _setDefaultContent($data)
 	{ 
 		$body = '';
+		
+		//filter these values otherwise it will get attached with the email content
+		$filter = array('option', 'view', 'task', 'input_id', 'Itemid');
+		foreach ($filter as $key){
+			unset($data[$key]);
+		}
+		
 		foreach ($data as $key => $value){
 			$body .= $key ." : ";
 			
