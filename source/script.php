@@ -22,6 +22,10 @@ class Com_jxiformsInstallerScript
 		$extensions 	= array();
 		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'email');
 		$extensions[] 	= array('type'=>'system', 'name'=>'jxiforms');
+		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'joomlalogin');
+		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'dropbox');
+		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'mailchimp');
+		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'joomlaregistration');
 		$this->enableExtensions($extensions);
 		return true;
 	}
