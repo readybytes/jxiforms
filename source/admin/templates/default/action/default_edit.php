@@ -27,16 +27,11 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 <form action="<?php echo $uri; ?>" method="post" name="adminForm" id="adminForm">
 	<div class="span6">		
 		<fieldset class="form-horizontal">
-			<legend> <?php echo Rb_Text::_('COM_JXIFORMS_ACTION_EDIT_DETAILS' ); ?> </legend>
+			<legend> <?php echo $help['name'].Rb_Text::_('COM_JXIFORMS_ACTION_EDIT_DETAILS' ); ?> </legend>
 			
 			<div class="control-group">
 				<div class="control-label"><?php echo $form->getLabel('title'); ?> </div>
 				<div class="controls"><?php echo $form->getInput('title'); ?></div>								
-			</div>
-			
-			<div class="control-group">
-				<div class="control-label"><?php echo $form->getLabel('type'); ?> </div>
-				<div class="controls"><?php echo $form->getInput('type'); ?></div>								
 			</div>
 			
 			<div class="control-group">
@@ -63,22 +58,18 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 			</div>
 					
 			<?php echo $form->getInput('action_id'); ?>
-		</fieldset>
-		
-		<fieldset class="form-horizontal">
-			<legend> <?php echo Rb_Text::_('COM_JXIFORMS_ACTION_EDIT_CORE_PARAMETERS' ); ?> </legend>
-	
-			<?php $fieldSets = $form->getFieldsets('core_params'); ?>
-			<?php foreach ($fieldSets as $name => $fieldSet) : ?>
+			<?php echo $form->getInput('type'); ?>
 			
-				<?php foreach ($form->getFieldset($name) as $field):?>
-					<div class="control-group">
-						<div class="control-label"><?php echo $field->label; ?> </div>
-						<div class="controls"><?php echo $field->input; ?></div>								
-					</div>
-				<?php endforeach;?>
-			<?php endforeach;?>
+		<?php $fieldSets = $form->getFieldsets('core_params'); ?>
+		<?php foreach ($fieldSets as $name => $fieldSet) : ?>
 		
+			<?php foreach ($form->getFieldset($name) as $field):?>
+				<div class="control-group">
+					<div class="control-label"><?php echo $field->label; ?> </div>
+					<div class="controls"><?php echo $field->input; ?></div>								
+				</div>
+			<?php endforeach;?>
+		<?php endforeach;?>
 		</fieldset>	
 	</div>
 	

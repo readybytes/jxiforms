@@ -17,7 +17,7 @@
 			size="45" required="true"
 		/>
 		
-		<field name="type" type="text"
+		<field name="type" type="hidden"
 			label="COM_JXIFORMS_ACTION_TYPE_LABEL"
 			description="COM_JXIFORMS_ACTION_TYPE_DESC"
 			size="45" required="true" readonly="true"

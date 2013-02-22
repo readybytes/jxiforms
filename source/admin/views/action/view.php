@@ -45,8 +45,7 @@ class JXiFormsAdminBaseViewAction extends JXiFormsView
 	
 	public	function selectAction()
 	{
-		$actions = JXiFormsHelperAction::getActions();
-		$this->assign('actions', $actions);
+		$this->assign('actions', JXiFormsHelperAction::getXml());
 		return true;
 	}
 }

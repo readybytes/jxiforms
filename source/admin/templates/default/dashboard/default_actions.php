@@ -19,7 +19,7 @@
 		
 		<div class="dashboard-icon center" onclick="location.href='<?php echo Rb_Route::_('index.php?option=com_jxiforms&view=action&task=new&type='.$plugin->element);?>';">
 			<div class="dashboard-icon-image"><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI($imagePath, false), $plugin->name) ;?></div>
-	 		<div class="dashbosrd-icon-name"><?php echo $plugin->name;?></div>
+	 		<div class="dashboard-icon-name"><?php echo $plugin->name;?></div>
 		</div>
 		
 <?php 	}	
@@ -31,7 +31,7 @@
 		<div class="dashboard-icon center disabled-action" title="<?php echo Rb_Text::_("COM_JXIFORMS_DASHBOARD_DISABLED_ACTION_ICON_TOOLTIP");?>" onclick="location.href='<?php echo Rb_Route::_('index.php?option=com_plugins&filter_folder=jxiforms');?>'">
 			<div class="icon-badge">&nbsp;&nbsp;Disable</div>
 			<div class="dashboard-icon-image"><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI($imagePath, false), $plugin->name) ;?></div>
-			<div class="dashbosrd-icon-name"><?php echo $plugin->name;?></div>
+			<div class="dashboard-icon-name"><?php echo $plugin->name;?></div>
 		</div>
 		
 <?php 	}

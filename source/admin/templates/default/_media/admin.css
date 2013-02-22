@@ -59,7 +59,7 @@
 	cursor: pointer;
 }
 
-.jxiforms .dashbosrd-icon-name{
+.jxiforms .dashboard-icon-name{
 	margin-top:10%;
 	white-space: nowrap;
     width: 98%;
@@ -110,4 +110,34 @@
 	font-weight : bold;
 	position : relative;
 	top : 14px;
+}
+
+.jxiforms  .position-relative{	
+ 	position : relative;
+}
+
+.jxiforms  .position-absolute{	
+ 	position : absolute;
+ 	left: 0; 
+ 	top: 0;
+}
+
+.jxiforms  .margin-top2{	
+ 	margin-top : 2%;
+}
+
+.jxiforms .action-select-list{
+	border: 2px solid #D8D8D8;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);    
+    position: relative;
+    width: 100%;
+    float:left;
+    padding:2%;
+    overflow:hidden;
+    margin-top: 1%;
+}
+
+.jxiforms .action-list [class*="span"]:first-child {
+    margin-left: 15px;
 }
