@@ -46,11 +46,20 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 			if(empty($file['tmp_name'])){
 				continue;
 			}
-			$extension = array_pop(explode('.', $file['name']));
-			$filename = array_pop(explode('/', $file['tmp_name']));
+
+			$extension = '';
+			$properties = explode('.', $file['name']);
+			
+			//if there is no extension attached with filename
+			if(count($properties) > 1){
+				$extension = '.'.array_pop($properties);
+			}
+
+			//append current time_stamp to the file name
+			$filename = array_pop(explode('/', $file['tmp_name'])).'_'.time();
 			
 			//JXITODO : what if multiple attachments are of same name
-			$destination = JXIFORMS_PATH_CORE_MEDIA.'/queue/attachments/'.$filename.'.'.$extension;
+			$destination = JXIFORMS_PATH_CORE_MEDIA.'/queue/attachments/'.$filename.$extension;
 			
 			if(move_uploaded_file($file['tmp_name'], $destination)){
 				$attachments[$name] = $destination;	

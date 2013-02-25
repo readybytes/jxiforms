@@ -39,11 +39,13 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 				<div class="controls"><?php echo $form->getInput('published'); ?></div>								
 			</div>
 
-			<div class="control-group">
-				<div class="control-label"><?php echo $form->getLabel('post_url'); ?> </div>
-				<div class="controls"><?php echo $form->getInput('post_url'); ?></div>								
-			</div>
-			
+			<?php $post_url = $form->getValue('post_url');
+			if(!empty($post_url)):?>
+				<div class="control-group">
+					<div class="control-label"><?php echo $form->getLabel('post_url'); ?> </div>
+					<div class="controls"><?php echo $form->getInput('post_url'); ?></div>								
+				</div>
+			<?php endif;?>			
 			<div class="control-group">
 				<div class="control-label"><?php echo $form->getLabel('redirect_url'); ?> </div>
 				<div class="controls"><?php echo $form->getInput('redirect_url'); ?></div>								

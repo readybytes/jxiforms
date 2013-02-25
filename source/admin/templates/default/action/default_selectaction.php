@@ -64,8 +64,8 @@ jxiforms.jQuery(document).ready(function(){
 </fieldset>
 
 <!--  =================  All Action List========================== -->
-
-<div class="position-relative">
+<!--  JXITODO : implement proper fix -->
+<div class="position-relative" style="min-height: 250px;">
 	<div class="action-list">
 		<div class="row-fluid ">
 			<div class="span12">
@@ -93,7 +93,7 @@ jxiforms.jQuery(document).ready(function(){
 	
 	<!--   =============== Action - Detail Block =========================== -->
 	
-	<div class="row-fluid action-description position-absolute" style="float:left;">
+	<div class="row-fluid action-description position-absolute">
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="span2 action-select-list center">
