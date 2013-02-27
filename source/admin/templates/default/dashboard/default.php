@@ -20,13 +20,14 @@ JHtml::_('behavior.framework');
 			</div>
 		</div>
 		<div class="span5">
-			<div class="span12 dashboard-icon-panel" style="padding:2%;font-size:2em;">
-				<!-- JXITODO: Show a Cross-Button For Permanent removing this link-->	
-				<?php echo $howItWorks;?>
-			</div>
 			<div class="span12 dashboard-icon-panel">
 				<!-- JXITODO: Tracking on G-Analytics-->
-				<iframe class="span12" style="border:none;padding:2%;" src="http://pub.joomlaxi.com/broadcast/broadcast.html"></iframe>
+				<iframe class="span12 jxif-padding02 jxif-border00" src="http://pub.joomlaxi.com/broadcast/broadcast.html"></iframe>
+
+				<div class="span12">
+					<!-- JXITODO: Show a Cross-Button For Permanent removing this link-->
+					<h2><?php echo $howItWorks;?></h2>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -47,7 +47,6 @@
     width: 16%;
     margin:2%;
     float:left;
-    padding:2%;
     min-width:120px;
     overflow:hidden;
 }
@@ -60,7 +59,7 @@
 }
 
 .jxiforms .dashboard-icon-name{
-	margin-top:10%;
+	height:30px;
 	white-space: nowrap;
     width: 98%;
 	overflow: hidden;
@@ -81,28 +80,8 @@
 	float:left !important;
 }
 
-.jxiforms .disabled-action{
-	opacity:0.43;	
-}
-
-.jxiforms .icon-badge {
-    border: 1px solid;
-    box-shadow: 4px 1px 4px black;
-    font-family:times new roman;
-    color: #FFFFFF;
-    font-size: 1em;
-    height: 15px;
-    letter-spacing: 1px;
-    margin: 0.05em 0;
-    position: absolute;
-    text-align: center;
-    top: 8%;
-    left: 56%;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    width: 58%;
-    border-color :#63AF62;
-    background-color:#0088CC
+.jxiforms .jxif-opacity45{
+	opacity:0.45;
 }
 
 .jxiforms .forms-preview-link{
@@ -140,4 +119,16 @@
 
 .jxiforms .action-list [class*="span"]:first-child {
     margin-left: 15px;
+}
+
+.jxiforms .enable-plugin-button{
+	display:none;
+	height:30px;
+}
+
+.jxiforms .jxif-padding02{
+	padding:2%;
+}
+.jxiforms .jxif-border00{
+	border:none;
 }

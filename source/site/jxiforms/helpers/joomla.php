@@ -72,6 +72,6 @@ class JXiFormsHelperJoomla extends JXiFormsHelper
 				->from('#__extensions')
 				->where(array("`type`='"."$type"."'", "`folder`='"."$folder"."'", '`enabled`="'.$status.'"'),'AND')
 				->dbLoadQuery()
-				->loadObjectList();
+				->loadObjectList('element');
 	}
 }
