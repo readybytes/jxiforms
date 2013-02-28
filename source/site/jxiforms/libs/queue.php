@@ -147,5 +147,21 @@ class JXiformsQueue extends JXiFormsLib
 				self::STATUS_PROCESSED	=> 'COM_JXIFORMS_QUEUE_STATUS_PROCESSED',
 				self::STATUS_WAITING	=> 'COM_JXIFORMS_QUEUE_STATUS_WAITING'
 		);
-	} 
+	}
+
+	public function getInput($requireinstance=false)
+	{
+		if($requireinstance == JXIFORMS_INSTANCE_REQUIRE){
+			return JXiformsInput::getInstance($this->queue_id);
+		}
+		return $this->input_id;
+	}
+	
+	public function getAction($requireinstance=false)
+	{
+		if($requireinstance == JXIFORMS_INSTANCE_REQUIRE){
+			return JXiformsAction::getInstance($this->action_id);
+		}
+		return $this->action_id;
+	}
 }

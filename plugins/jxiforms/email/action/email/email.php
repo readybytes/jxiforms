@@ -54,7 +54,7 @@ class JXiFormsActionEmail extends JXiformsAction
 		if(!empty($attachments)){
 			foreach ($attachments as $attachment =>$value){
 				$extension = array_pop(explode('.', $value));
-				$mailer->addAttachment($value, $attachment.'.'.$extension);
+				$mailer->addAttachment(JPATH_SITE.$value, $attachment.'.'.$extension);
 			}
 		}
 

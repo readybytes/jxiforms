@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<layout title="COM_JXIFORMS_INPUT_DEFAULT_LAYOUT_TITLE" option="com_jxiforms_input_view_default_option">
+		<message><![CDATA[COM_JXIFORMS_INPUT_DEFAULT_LAYOUT_MESSAGE]]></message>
+	</layout>
+	
+	<fields name="request">
+		<fieldset name="request" addfieldpath="/components/com_jxiforms/jxiforms/html/html"
+			label="Basic Parameters">
+			<field name="task" type="hidden" default="display" />
+			<field name="input_id" type="jxiforms.inputs" default="0"
+				label="COM_JXIFORMS_INPUT_SELECT" addnone="true" description=""/>	
+		</fieldset>
+	</fields>
+</metadata>

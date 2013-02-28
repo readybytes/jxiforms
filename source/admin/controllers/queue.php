@@ -11,4 +11,13 @@ if(defined('_JEXEC')===false) die();
 
 class JXiFormsAdminControllerQueue extends JXiFormsController
 {
+	//JXITODO : remove this code when fix has been implemented in the framework
+	public function _save(array $data, $itemId=null)
+	{
+		$queue = JXiformsQueue::getInstance($itemId);
+
+		//create new lib instance
+		return $queue->bind($data)
+  			         ->save();	
+	}
 } 

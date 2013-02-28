@@ -45,8 +45,11 @@ define('JXIFORMS_PATH_CORE_FORMS', 			JXIFORMS_PATH_CORE.'/html/forms');
 define('JXIFORMS_PATH_CORE_FIELDS', 		JXIFORMS_PATH_CORE.'/html/fields');
 
 //queue bucket directory and bucket
-define('JXIFORMS_DEFAULT_BUCKET_PATH', 		'/media/com_jxiforms/queue/data/');
-define('JXIFORMS_DEFAULT_BUCKET', 			'bucket1');
+define('JXIFORMS_PATH_BUCKET_ROOT', 		'/media/com_jxiforms/queue/data/');
+define('JXIFORMS_PATH_ATTACHMENTS', 		'/media/com_jxiforms/queue/attachments/');
+define('JXIFORMS_BUCKET_NAME',	 			'bucket1');
+
+define('JXIFORMS_INSTANCE_REQUIRE', 		true);
 
 define('JXIFORMS_EXECUTION_TIME_MARGIN', 	20); //in percent
 

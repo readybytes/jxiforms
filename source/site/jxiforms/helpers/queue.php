@@ -52,8 +52,8 @@ class JXiFormsHelperQueue extends JXiFormsHelper
 		$bucketPath = JXiFormsHelperConfig::get('bucket_path');
 		$bucket		= JXiFormsHelperConfig::get('current_bucket');	
 
-		$bucketPath = empty($bucketPath) ? JXIFORMS_DEFAULT_BUCKET_PATH : $bucketPath;
-		$bucket		= empty($bucket)? JXIFORMS_DEFAULT_BUCKET : $bucket;
+		$bucketPath = empty($bucketPath) ? JXIFORMS_PATH_BUCKET_ROOT : $bucketPath;
+		$bucket		= empty($bucket)? JXIFORMS_BUCKET_NAME : $bucket;
 		
 		$bucketPath = $bucketPath.$bucket.'/';
 		
@@ -116,5 +116,22 @@ class JXiFormsHelperQueue extends JXiFormsHelper
 									->loadRecords($filter);
 									
 		return $records;
+	}
+	
+	public static function fetchData($token, $assoc=null)
+	{
+		$token  		= json_decode($token, $assoc);
+		$content 		= file_get_contents(JPATH_SITE.$token['filename'], null, null, $token['filepointer'], $token['length']);
+		
+		$regex = '#{'.$token['token'].'}(.*?){/'.$token['token'].'}#s';
+		preg_match($regex,$content,$matches);
+		
+		if(empty($matches[1])){
+			//JXITODO : read complete file with ref to the token value and update relevant data value
+		}
+		
+		$relevant_data = json_decode($matches[1], true);
+
+		return $relevant_data;
 	}
 }

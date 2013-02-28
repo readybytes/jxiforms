@@ -13,3 +13,6 @@ class JXiFormsModelQueue extends JXiFormsModel
 {
 }
 
+class JXiFormsmodelformQUEUE extends JXiFormsModelform 
+{}
+

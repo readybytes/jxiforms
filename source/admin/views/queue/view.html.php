@@ -18,6 +18,11 @@ class JXiFormsAdminViewQueue extends JXiFormsAdminBaseViewQueue
 		Rb_HelperToolbar::deleteList();
 	}
 	
+	protected function _adminEditToolbar()
+	{
+		Rb_HelperToolbar::cancel();
+	}
+	
 	public function display($tpl = null)
 	{
 		// get all inputs

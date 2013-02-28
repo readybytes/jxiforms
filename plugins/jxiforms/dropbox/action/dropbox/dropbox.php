@@ -44,7 +44,7 @@ class JXiFormsActionDropbox extends JXiformsAction
 				continue ;
 			}
 			
-			$attachment  = $attachments[$key];
+			$attachment  = JPATH_SITE.$attachments[$key];
 			$extension = JFile::getExt($attachment);			
 			try{
 				$uploader->upload($attachment, $destination, date("d_m_Y_").time().'_'.$key.'.'.$extension);

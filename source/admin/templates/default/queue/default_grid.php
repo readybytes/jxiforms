@@ -45,7 +45,7 @@ JHtml::_('behavior.framework');
 					<th class="default-grid-chkbox">
 				    	<?php echo JXiFormsHtml::_('grid.id', $cbCount++, $record->{$record_key} ); ?>
 				    </th>				
-					<td><?php echo $record->queue_id;?></td>
+					<td><?php echo JXiFormsHtml::link($uri.'&task=edit&id='.$record->{$record_key}, $record->queue_id);?></td>
 					<td><?php echo isset($inputs[$record->input_id]) ? JXiFormsHtml::link('index.php?option=com_jxiforms&view=input&task=edit&input_id='.$record->input_id, $inputs[$record->input_id]->title) : $record->input_id.'('.Rb_Text::_('COM_JXIFORMS_INPUT_DELETED').')';?></td>
 					<td><?php echo isset($actions[$record->action_id]) ? JXiFormsHtml::link('index.php?option=com_jxiforms&view=action&task=edit&action_id='.$record->action_id, $actions[$record->action_id]->title) : $record->action_id.'('.Rb_Text::_('COM_JXIFORMS_ACTION_DELETED').')';?></td>
 					<td><?php echo Rb_Text::_($queue_status_list[$record->status]);?></td>					
