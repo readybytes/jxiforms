@@ -14,15 +14,19 @@ JHtml::_('behavior.framework');
 
 <div class="row-fluid">
 	<div class="span12">
-		<div class="span7 dashboard-icon-panel">
-			<div class="span12">
-				<?php echo  $this->loadTemplate('actions', compact('enablePlugins', 'disablePlugins')); ?>
-			</div>
+		<!--For Actions Panel-->
+		<div class="span7 dashboard-icon-panel jxif-left-padding01">
+			<div class="span10 jxif-padding01 jxif-action-heading jxif-fontsize15 margin-top2 jxif-text-colorgray"><?php echo Rb_Text::_('COM_JXIFORMS_SUBMENU_ACTION');?></div>
+			<div><?php echo  $this->loadTemplate('actions', compact('enablePlugins', 'disablePlugins')); ?></div>
 		</div>
+		
+		<!--For BroadCast By Joomlaxi-->
 		<div class="span5">
+		<?php
+			$version = new JVersion();
+			$suffix = 'jom=J'.$version->RELEASE.'&utm_campaign=broadcast&jxif=JXIF'.JXIFORMS_VERSION.'&dom='.JURI::getInstance()->toString(array('scheme', 'host', 'port'));?>
 			<div class="span12 dashboard-icon-panel">
-				<!-- JXITODO: Tracking on G-Analytics-->
-				<iframe class="span12 jxif-padding02 jxif-border00" src="http://pub.joomlaxi.com/broadcast/broadcast.html"></iframe>
+				<iframe class="span12 jxif-padding02 jxif-border00" src="http://pub.joomlaxi.com/broadcast/broadcast.html?<?php echo $suffix?>"></iframe>
 
 				<div class="span12">
 					<!-- JXITODO: Show a Cross-Button For Permanent removing this link-->
