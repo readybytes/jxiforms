@@ -12,24 +12,6 @@ abstract class JXiFormsPlugin extends Rb_Plugin
 {
 	public $_component	= JXIFORMS_COMPONENT_NAME;
 	
-	//JXITODO : remove this code
-	public function onJxiformsInputSubmit($inputInstance, $data, $attachments)
-	{
-		$actions = JXiFormsHelperAction::getAvailableActions($this->_name);
-		
-		$results = array();
-		foreach ($actions as $action){
-			$applicable = $action->isApplicable($inputInstance);
-			if($applicable === false){
-				continue;
-			}
-			
-			$results[$action->getId()] = $action->process($data, $attachments);
-		}
-		
-		return $results;
-	}
-	
 	function __construct(& $subject, $config = array())
     {
         parent::__construct($subject, $config);

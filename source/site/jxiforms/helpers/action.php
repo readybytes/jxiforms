@@ -112,6 +112,11 @@ class JXiFormsHelperAction extends JXiFormsHelper
 			
 			foreach($actions as $action){
 				$appInstance = JXiformsAction::getInstance( null, $action);
+				 
+				if($appInstance == false){
+					continue;
+				}
+				
 				$xml = $appInstance->getLocation() .'/'. $appInstance->getName() . '.xml';
 
 				if (file_exists($xml)) {
