@@ -88,9 +88,4 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		
 		return true;
 	}
-	
-	public function display()
-	{
-		return true;
-	}
 } 

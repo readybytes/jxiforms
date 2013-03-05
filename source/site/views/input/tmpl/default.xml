@@ -7,7 +7,6 @@
 	<fields name="request">
 		<fieldset name="request" addfieldpath="/components/com_jxiforms/jxiforms/html/html"
 			label="Basic Parameters">
-			<field name="task" type="hidden" default="display" />
 			<field name="input_id" type="jxiforms.inputs" default="0"
 				label="COM_JXIFORMS_INPUT_SELECT" addnone="true" description=""/>	
 		</fieldset>

@@ -26,7 +26,7 @@ class JXiFormsAdminControllerInput extends JXiFormsController
 		$advance 	= $data['advance'];
 		
 		$cmp   	=  JComponentHelper::getComponent('com_jxiforms');
-		$link  	=  "index.php?option=com_jxiforms&view=input&task=display&input_id=".$input_id;
+		$link  	=  "index.php?option=com_jxiforms&view=input&input_id=".$input_id;
 		$result =  Rb_HelperJoomla::addMenu($advance['menu_title'], $advance['menu_alias'], $link, $advance['menu_location'], $cmp->id);
 
 		$url     = 'index.php?option=com_jxiforms&view=input&task=edit&input_id='.$input_id;
