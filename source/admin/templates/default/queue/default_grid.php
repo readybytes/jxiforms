@@ -49,7 +49,15 @@ JHtml::_('behavior.framework');
 					<td><?php echo isset($inputs[$record->input_id]) ? JXiFormsHtml::link('index.php?option=com_jxiforms&view=input&task=edit&input_id='.$record->input_id, $inputs[$record->input_id]->title) : $record->input_id.'('.Rb_Text::_('COM_JXIFORMS_INPUT_DELETED').')';?></td>
 					<td><?php echo isset($actions[$record->action_id]) ? JXiFormsHtml::link('index.php?option=com_jxiforms&view=action&task=edit&action_id='.$record->action_id, $actions[$record->action_id]->title) : $record->action_id.'('.Rb_Text::_('COM_JXIFORMS_ACTION_DELETED').')';?></td>
 					<td><?php echo Rb_Text::_($queue_status_list[$record->status]);?></td>					
-					<td class="center"><?php echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'approved', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_JXIFORMS');?></td>
+					<td class="center"><?php 
+									if($record->approved){?>
+										 <i class="icon-publish" title="<?php echo Rb_Text::_('COM_JXIFORMS_QUEUE_GRID_APPROVED');?>"></i><?php 
+									}
+									else{
+										echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'approved', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_JXIFORMS');
+									}
+							?>
+					</td>	
 					<td class="center"><?php echo !empty($record->approval_key) ? $record->approval_key : '-';?></td>
 					<td class="center"><?php echo $record->created_date;?></td>
 				</tr>
@@ -74,3 +82,4 @@ JHtml::_('behavior.framework');
 	<input type="hidden" name="boxchecked" value="0" />
 </form>
 <?php 
+
