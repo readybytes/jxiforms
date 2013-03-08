@@ -45,7 +45,8 @@
 		/>
 		
 		<field name="html" type="textarea"
-			rows="4" cols="40"
+			rows="20" cols="45"
+			class="jxif-textarea"
 			default=""
 			description="COM_JXIFORMS_INPUT_HTML_DESC"
 			label="COM_JXIFORMS_INPUT_HTML_LABEL" 

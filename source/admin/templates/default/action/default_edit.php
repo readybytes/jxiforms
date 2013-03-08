@@ -31,7 +31,15 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 			
 			<div class="control-group">
 				<div class="control-label"><?php echo $form->getLabel('title'); ?> </div>
-				<div class="controls"><?php echo $form->getInput('title'); ?></div>								
+				<div class="controls">
+					<div><?php echo $form->getInput('title'); ?></div>
+					<div class="clr"></div>	
+					<div class="btn-link" onClick="jxiforms.utils.toggle('action-description');"><?php echo Rb_Text::_('Add a description'); ?></div>
+				</div>
+			</div>
+			
+			<div class="control-group hide" id="action-description">
+				<div class="controls"><?php echo $form->getInput('description'); ?></div>				
 			</div>
 			
 			<div class="control-group">
@@ -44,10 +52,6 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 				<div class="controls"><?php echo $form->getInput('for_all_inputs'); ?></div>								
 			</div>
  -->			
-			<div class="control-group">
-				<div class="control-label"><?php echo $form->getLabel('description'); ?> </div>
-				<div class="controls"><?php echo $form->getInput('description'); ?></div>				
-			</div>
 
 		 	<div class="control-group">
 				<div class="control-label">

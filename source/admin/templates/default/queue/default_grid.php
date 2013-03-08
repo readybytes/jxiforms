@@ -14,7 +14,7 @@ JHtml::_('behavior.framework');
 
 <form action="<?php echo $uri; ?>" method="post" id="adminForm" name="adminForm">
 
-	<table class="table table-condensed">
+	<table class="table table-striped">
 		<thead>
 			<!-- TABLE HEADER START -->
 			<tr>
@@ -50,7 +50,7 @@ JHtml::_('behavior.framework');
 					<td><?php echo Rb_Text::_($queue_status_list[$record->status]);?></td>					
 					<td class="center"><?php 
 									if($record->approved){?>
-										 <i class="icon-publish" title="<?php echo Rb_Text::_('COM_JXIFORMS_QUEUE_GRID_APPROVED');?>"></i><?php 
+										 <i class="icon-ok" title="<?php echo Rb_Text::_('COM_JXIFORMS_QUEUE_GRID_APPROVED');?>"></i><?php 
 									}
 									else{
 										echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'approved', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_JXIFORMS');

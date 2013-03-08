@@ -9,4 +9,12 @@
 
 if(defined('_JEXEC')===false) die(); ?>
 
-<?php echo $sample_html;
+<?php if($input->isPublished()){
+	echo $sample_html;
+}
+else { ?>
+	<div class="alert">
+		<h4><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_FORM_UNPUBLISHED');?></h4>
+	</div>
+<?php 
+}

@@ -14,7 +14,7 @@ JHtml::_('behavior.framework');
 
 <form action="<?php echo $uri; ?>" method="post" id="adminForm" name="adminForm">
 
-	<table class="table table-condensed">
+	<table class="table table-striped">
 		<thead>
 			<!-- TABLE HEADER START -->
 			<tr>

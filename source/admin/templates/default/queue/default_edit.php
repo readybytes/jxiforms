@@ -63,11 +63,11 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 						<?php $approved = $form->getValue('approved');?>
 						<input type="hidden" name="jxiforms_form[approved]" value="<?php echo $approved;?>" />
 						<?php if($approved):?>
-							<i class="icon-publish"></i>
+							<i class="icon-ok"></i>
 						<?php else :?>
-							<i class="icon-unpublish"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="icon-remove"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							 <button type="submit" class="btn" id="queue-approve-button">
-							 	<i class="icon-publish"></i>
+							 	<i class="icon-ok"></i>
 							 	<strong><?php echo Rb_Text::_('COM_JXIFORMS_QUEUE_EDIT_APPROVE_BUTTON');?></strong> 
 							</button> 
 						<?php endif;?>

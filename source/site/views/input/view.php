@@ -17,6 +17,7 @@ class JXiFormsSiteBaseViewInput extends JXiFormsView
 		
 		$input   =  JXiformsInput::getInstance($itemId);
 		$this->assign('sample_html', $input->getHtml());
+		$this->assign('input', $input);
 		return true;
 	} 
 }
