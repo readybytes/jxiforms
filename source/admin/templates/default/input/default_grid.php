@@ -37,11 +37,10 @@ JHtml::_('behavior.framework');
 		<tbody>
 		<!-- TABLE BODY START -->
 			<?php $count= $limitstart;
-			$cbCount = 0;
 			foreach ($records as $record):?>
 				<tr class="<?php echo "row".$count%2; ?>">								
 					<th class="default-grid-chkbox">
-				    	<?php echo JXiFormsHtml::_('grid.id', $cbCount++, $record->{$record_key} ); ?>
+				    	<?php echo JXiFormsHtml::_('grid.id', $count, $record->{$record_key} ); ?>
 				    </th>				
 					<td><?php echo $record->input_id;?></td>
 					<td>
