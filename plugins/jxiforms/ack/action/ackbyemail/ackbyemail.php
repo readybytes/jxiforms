@@ -11,7 +11,7 @@ if(defined('_JEXEC')===false) die();
  * @author bhavya
  *
  */
-class JXiFormsActionAckbyemail extends JXiFormsActionEmail
+class JXiFormsActionAckbyemail extends JXiFormsAction
 {
 	protected $_location	= __FILE__;
 	public    $show_editor  = true;
