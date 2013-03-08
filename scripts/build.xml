@@ -29,12 +29,26 @@
 		<phingcall target="export_sourcecode" />
 		
 		<phing phingfile="${project.shortform.small}.xml" inheritAll="true" target="build" />
+		
+		<phingcall target="copy_framework"/>
 
 		<phingcall target="plugin_build" />
 		<phingcall target="replace_tokens" />
 
-		<zip destfile="${dir.packages}/${file.package}.${build.version}.${file.extension}" 
+		<zip destfile="${dir.packages}/${file.package}.${build.version}.${build.number}.${file.extension}" 
 			basedir="${dir.tmp}" />
+		
+		<zip destfile="${dir.packages}/${file.package}.${build.version}.${file.extension}" basedir="${dir.packages}">
+			<fileset dir="${dir.packages}">
+				<include name="*.xml"></include>
+				<include name="*.zip"></include>
+			</fileset>
+		</zip>
+		<delete>
+			<fileset dir="${dir.packages}">
+				<include name="*.xml" />
+			</fileset>
+		</delete>
 	</target>
 
 	<target name="plugin_build">
@@ -69,15 +83,26 @@
 
 		<!-- Apply the version change to all files. -->
 		<reflexive>
-			<fileset dir="${dir.tmp}">
+			<fileset dir="${dir.packages}">
 			     <include name="**/*.*" />
 			</fileset>
 			 <filterchain>
 				<replacetokens>
 				    <token key="build.version" 	value="${build.version}" />
 				    <token key="build.number"   value="${build.number}" />
+				    <token key="rb.build.version"   value="${rb.build.version}" />
+				    <token key="rb.name"   value="${rb.name}" />
 				</replacetokens>
 			</filterchain>
 		</reflexive>
+	</target>
+
+	<target name="copy_framework">
+		<copy todir="${dir.packages}">
+			<fileset dir="${rb.location}">
+				<include name="${rb.name}${rb.build.version}.${file.extension}" />
+				<include name="*.xml" />
+			</fileset>
+		</copy>
 	</target>
 </project>

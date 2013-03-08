@@ -26,6 +26,9 @@ class Com_jxiformsInstallerScript
 		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'dropbox');
 		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'mailchimp');
 		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'joomlaregistration');
+		//For Enabling Rb_Framework
+		$extensions[] 	= array('type'=>'system',   'name'=>'rbsl');
+
 		$this->enableExtensions($extensions);
 		return true;
 	}
