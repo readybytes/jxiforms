@@ -29,9 +29,27 @@ class Com_jxiformsInstallerScript
 		//For Enabling Rb_Framework
 		$extensions[] 	= array('type'=>'system',   'name'=>'rbsl');
 
-		$this->enableExtensions($extensions);
+		$this->changeExtensionState($extensions);
 		return true;
 	}
+
+	function uninstall($parent)
+	{
+		$db = JFactory::getDBO();
+		$query = "SELECT * FROM `#__extensions` WHERE `type`='plugin' AND `element`='jxiforms' AND `folder`='system'";
+		$db->setQuery($query);
+		$result = $db->loadObjectList('element');
+		
+		if(isset($result['jxiforms']))
+		{
+			$state=0;
+			$extensions[] 	= array('type'=>'system', 'name'=>'jxiforms');
+			$this->changeExtensionState($extensions, $state);
+		}
+		
+		return true;
+	}
+
 	
 	function update($parent)
 	{
@@ -77,13 +95,12 @@ class Com_jxiformsInstallerScript
 		return true;
 	}
 
-	function enableExtensions($extensions = array())
+	function changeExtensionState($extensions = array(), $state = 1)
 	{
 		if(empty($extensions)){
 			return true;
 		}
 
-		$state    	= 1;
 		$db		= JFactory::getDBO();
 		$query		= 'UPDATE '. $db->quoteName( '#__extensions' )
 				. ' SET   '. $db->quoteName('enabled').'='.$db->Quote($state);

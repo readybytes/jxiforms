@@ -27,8 +27,8 @@ JHtml::_('behavior.framework');
 			$suffix = 'jom=J'.$version->RELEASE.'&utm_campaign=broadcast&jxif=JXIF'.JXIFORMS_VERSION.'&dom='.JURI::getInstance()->toString(array('scheme', 'host', 'port'));?>
 			<div class="span12 dashboard-icon-panel">
 				<iframe class="span12 jxif-padding02 jxif-border00" src="http://pub.joomlaxi.com/broadcast/broadcast.html?<?php echo $suffix?>"></iframe>
-
-				<div class="span12">
+				<!-- JXITODO: Remove Styling when How It Works is prepared-->
+				<div class="span12" style="display:none;">
 					<!-- JXITODO: Show a Cross-Button For Permanent removing this link-->
 					<h2><?php echo $howItWorks;?></h2>
 				</div>
