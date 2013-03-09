@@ -28,10 +28,10 @@
 			description="COM_JXIFORMS_INPUT_REDIRECT_URL_DESC"
 			size="45"
 		/>
-		<field name="published" type="list"
+		<field name="published" type="radio"
 			label="COM_JXIFORMS_INPUT_PUBLISHED_LABEL" 
 			description="COM_JXIFORMS_INPUT_PUBLISHED_DESC"
-			class="inputbox" 
+			class="btn-group" 
 			size="1" default="1" >
 			<option value="1">JPUBLISHED</option>
 			<option value="0">JUNPUBLISHED</option>

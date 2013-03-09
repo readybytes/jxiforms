@@ -23,10 +23,10 @@
 			size="45" required="true" readonly="true"
 		/>
 		
-		<field name="published" type="list"
+		<field name="published" type="radio"
 			label="COM_JXIFORMS_ACTION_PUBLISHED_LABEL" 
 			description="COM_JXIFORMS_ACTION_PUBLISHED_DESC"
-			class="inputbox" 
+			class="btn-group" 
 			size="1" default="1" >
 			<option value="1">JPUBLISHED</option>
 			<option value="0">JUNPUBLISHED</option>
@@ -59,13 +59,13 @@
 	<fields name="core_params">
 		<fieldset name="core_params" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
 		
-			<field name="require_approval" type="list"
+			<field name="require_approval" type="radio"
 					label="COM_JXIFORMS_ACTION_CORE_PARAMS_REQUIRE_APPROVAL_LABEL" 
 					description="COM_JXIFORMS_ACTION_CORE_PARAMS_REQUIRE_APPROVAL_DESC"
-					class="inputbox" 
+					class="btn-group" 
 					size="1" default="0" >
-					<option value="0">COM_JXIFORMS_NO</option>
 					<option value="1">COM_JXIFORMS_YES</option>
+					<option value="0">COM_JXIFORMS_NO</option>
 			</field>
 			
 		</fieldset>

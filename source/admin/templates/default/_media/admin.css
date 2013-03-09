@@ -166,3 +166,8 @@
 	width:85%;
 	max-width:90%;
 }
+
+/* Compatiblity with J2.5, radio buttons are not looking proper */
+.jxiforms  fieldset.btn-group label.btn {
+	clear : none;
+}

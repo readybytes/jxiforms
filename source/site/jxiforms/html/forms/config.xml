@@ -2,13 +2,13 @@
 <form>
 	<fieldset addfieldpath="/components/com_jxiforms/jxiforms/html/fields" name="config_params">
 
-		<field name="approval_send_email" type="list"
+		<field name="approval_send_email" type="radio"
 			label="COM_JXIFORMS_CONFIG_APPROVAL_SEND_EMAIL_LABEL" 
 			description="COM_JXIFORMS_CONFIG_APPROVAL_SEND_EMAIL_DESC"
-			class="inputbox" 
+			class="btn-group" 
 			size="1" default="1" >
-			<option value="0">COM_JXIFORMS_NO</option>
 			<option value="1">COM_JXIFORMS_YES</option>
+			<option value="0">COM_JXIFORMS_NO</option>
 		</field>
 
 		<field name="approval_send_email_to" type="text"
@@ -38,19 +38,20 @@
 			size="45" 
 		/>
 		
-		<field name="cron_run_automatic" type="list"
+		<field name="cron_run_automatic" type="radio"
 			label="COM_JXIFORMS_CONFIG_CRON_RUN_AUTOMATIC_LABEL" 
 			description="COM_JXIFORMS_CONFIG_CRON_RUN_AUTOMATIC_DESC"
-			class="inputbox" 
+			class="btn-group" 
 			size="1" default="1" >
-			<option value="0">COM_JXIFORMS_NO</option>
 			<option value="1">COM_JXIFORMS_YES</option>
+			<option value="0">COM_JXIFORMS_NO</option>
 		</field>
 		
-		<field name="cron_frequency" type="list" 
+		<field name="cron_frequency" type="radio" 
 			   default="900"
 			   label="COM_JXIFORMS_CONFIG_CRON_FREQUENCY_LABEL" 
-			   description="COM_JXIFORMS_CONFIG_CRON_FREQUENCY_DESC">
+			   description="COM_JXIFORMS_CONFIG_CRON_FREQUENCY_DESC"
+			   class="btn-group">
 			<option value="3600">COM_JXIFORMS_CONFIG_CRON_FREQUENCY_LOWEST</option>
 			<option value="1800">COM_JXIFORMS_CONFIG_CRON_FREQUENCY_LOW</option>
 			<option value="900">COM_JXIFORMS_CONFIG_CRON_FREQUENCY_NORMAL</option>
