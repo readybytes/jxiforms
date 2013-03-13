@@ -80,17 +80,7 @@ class JXiformsQueue extends JXiFormsLib
 			//JXITODO : Create Error log
 		}
 		
-		$token  		= json_decode($token, true);
-		$content 		= file_get_contents(JPATH_SITE.$token['filename'], null, null, $token['filepointer'], $token['length']);
-		
-		$regex = '#{'.$token['token'].'}(.*?){/'.$token['token'].'}#s';
-		preg_match($regex,$content,$matches);
-		
-		if(empty($matches[1])){
-			//JXITODO : read complete file with ref to the token value and update relevant data value
-		}
-		
-		$relevant_data = json_decode($matches[1], true);
+		$relevant_data  = JXiFormsHelperQueue::fetchData($token, true);
 
 		$action = JXiformsAction::getInstance($this->getActionId());
 		$result = $action->process($relevant_data['data'], $relevant_data['attachments']);

@@ -51,8 +51,9 @@ define('JXIFORMS_BUCKET_NAME',	 			'bucket1');
 
 define('JXIFORMS_INSTANCE_REQUIRE', 		true);
 
-define('JXIFORMS_EXECUTION_TIME_MARGIN', 	20); //in percent
+define('JXIFORMS_EXECUTION_TIME_MARGIN', 	10); //in percent
 
+define('JXIFORMS_BUCKET_MAX_FILE_COUNT', 	32);//maximum number of files allowed in a bucket 
 
 
 // object to identify extension, create once, so same can be consumed by constructors
