@@ -62,6 +62,26 @@ class JXiFormsHelperJoomla extends JXiFormsHelper
 		
 		return $rows;
 	}
+	
+	public static function getUser($filters = array(), $glue = null)
+	{
+		$db = JXiFormsFactory::getDbo();
+
+		$query  = new Rb_Query();
+
+		$query->select('*');
+		$query->from('#__users');
+
+		foreach ($filters as $filter){
+			$query->where($filters, $glue);
+		}
+		
+		
+		$db->setQuery($query);
+		$result = $db->loadObjectList();
+		
+		return $result;
+	}
 
 	public static function getPlugins($type, $folder, $status=true)
 	{
