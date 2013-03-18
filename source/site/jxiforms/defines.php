@@ -48,6 +48,7 @@ define('JXIFORMS_PATH_CORE_FIELDS', 		JXIFORMS_PATH_CORE.'/html/fields');
 define('JXIFORMS_PATH_BUCKET_ROOT', 		'/media/com_jxiforms/queue/data/');
 define('JXIFORMS_PATH_ATTACHMENTS', 		'/media/com_jxiforms/queue/attachments/');
 define('JXIFORMS_BUCKET_NAME',	 			'bucket1');
+define('JXIFORMS_BUCKET_CAPACITY',	 		67108864); //in bytes (64mb)
 
 define('JXIFORMS_INSTANCE_REQUIRE', 		true);
 

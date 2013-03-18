@@ -56,7 +56,8 @@ class JXiFormsHelperQueue extends JXiFormsHelper
 		$bucketPath = empty($bucketPath) ? JXIFORMS_PATH_BUCKET_ROOT : $bucketPath;
 		$bucket		= empty($bucket)? JXIFORMS_BUCKET_NAME : $bucket;
 		
-		$bucketPath = $bucketPath.$bucket.'/';
+		$bucketPath = JXiFormsHelperQueue::getBucket($bucketPath, $bucket).'/';
+
 		$recordIds  = array_keys($records);
 		
 		$file = self::getFile($recordIds, $bucketPath);
@@ -85,6 +86,48 @@ class JXiFormsHelperQueue extends JXiFormsHelper
 	    $queueToken = json_encode(array('filename'=>$bucketPath.$filename, 'token'=>$token, 'filepointer'=>$fileIndex, 'length'=>strlen($dataToDump)));
 		return self::updateToken($records, $queueToken);
 	}	
+	
+	public static function getBucket($bucketPath, $bucketname)
+	{
+		$bucket_size = 0;
+		$path 		 = $bucketPath.$bucketname;
+	    $files 		 = JFolder::files(JPATH_SITE.$path);
+	    
+	    foreach($files as $file) {
+	         $bucket_size += filesize(JPATH_SITE.$path . "/" . $file);
+	    }
+	    
+	    if($bucket_size >= JXIFORMS_BUCKET_CAPACITY){
+	    	$lock  =  JXiFormsLock::getInstance('switchingBucket');
+	    	if(!$lock->getLockResult()){	
+	    		return $path;
+	    	}
+	    	
+	    	$bucketNumber 	= (substr($bucketname, 6)+1);
+	    	$newBucketname  = 'bucket'.$bucketNumber;
+	    	
+	    	if(!JFolder::exists(JPATH_SITE.$bucketPath.$newBucketname)){
+	    	 	$create = JFolder::create(JPATH_SITE.$bucketPath.$newBucketname);
+	    	 	
+		    	if($create === false){
+		    		//JXITODO : error log..unable to create directory
+		    		$lock->releaseLock();
+		    		return $path;
+		    	}
+	    	}
+	    	
+	    	//create index.html file in new directory
+	    	$model = JXiFormsFactory::getInstance('config', 'model');
+			$model->save(array('current_bucket'=>$newBucketname));
+			$lock->releaseLock();
+	    	
+			//JXITODO : Bucket has been switched (Info Log)
+			return $bucketPath.$newBucketname;
+	    }
+	    
+	    return $path;
+	}
+		
 	
 	/**
 	 * This function will return the filepointer, filename 
