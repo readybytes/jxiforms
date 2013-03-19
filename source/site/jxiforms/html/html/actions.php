@@ -24,7 +24,7 @@ class JxiformsHtmlActions
 			$options[] = JXiFormsHtml::_('select.option', '', Rb_Text::_('Select Action'));
 			
 		foreach($actions as $action){
-			$options[] = JXiFormsHtml::_('select.option', $action->action_id, JString::ucfirst($action->title));	
+			$options[] = JXiFormsHtml::_('select.option', $action->action_id, $action->title);	
 		}
 
 		$style = '';
