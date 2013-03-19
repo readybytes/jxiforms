@@ -71,20 +71,26 @@ jxiforms.jQuery(document).ready(function(){
 			<div class="span12">
 			<?php 
 				$details = array();
-				foreach ($actions as $type => $action){
-					$imagePath  = $action['location'].'/'.$action['icon'];
-					$imagePath  = file_exists($imagePath) ? $imagePath : JXIFORMS_PATH_ADMIN_TEMPLATE.'/default/_media/icons/actions.png';
-					$details[$type]['description'] = $action['description'];
-					$details[$type]['icon'] = Rb_HelperTemplate::mediaURI($imagePath, false);
-					$details[$type]['name'] = $action['name'];
-					
-					?>
+				if(isset($actions))
+				{
+					foreach ($actions as $type => $action)
+					{
+						$imagePath  = $action['location'].'/'.$action['icon'];
+						$imagePath  = file_exists($imagePath) ? $imagePath : JXIFORMS_PATH_ADMIN_TEMPLATE.'/default/_media/icons/actions.png';
+						$details[$type]['description'] = $action['description'];
+						$details[$type]['icon'] = Rb_HelperTemplate::mediaURI($imagePath, false);
+						$details[$type]['name'] = $action['name'];
+				?>
 					<div class="span2 action-select-list center action-type" type="<?php echo $type;?>">
 						<div class="dashboard-icon-image"><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI($imagePath, false), $action['name']) ;?></div>
 						<div class="dashboard-icon-name"><?php echo $action['name'];?></div>
 					</div>
 						
-				<?php 	} ?> 
+				<?php 	}
+				}
+				else {?>
+					<div><?php echo Rb_Text::_('COM_JXIFORMS_FORM_NO_ACTION_ENABLED');?></div>
+				<?php } ?> 
 			</div>
 		</div>					
 	</div>
