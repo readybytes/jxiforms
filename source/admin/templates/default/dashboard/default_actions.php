@@ -18,7 +18,7 @@
 			$imagePath  = file_exists($imagePath) ? $imagePath : JXIFORMS_PATH_ADMIN_TEMPLATE.'/default/_media/icons/actions.png';
 ?>
 		
-		<div class="dashboard-icon jxif-padding02 center" onclick="location.href='<?php echo Rb_Route::_('index.php?option=com_jxiforms&view=action&task=new&type='.$type);?>';">
+		<div class="dashboard-icon action-icon-view jxif-padding02 center" onclick="location.href='<?php echo Rb_Route::_('index.php?option=com_jxiforms&view=action&task=new&type='.$type);?>';">
 			<div class="dashboard-icon-image"><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI($imagePath, false), $data['name']) ;?></div>
 	 		<div class="dashboard-icon-name"><?php echo $data['name'];?></div>
 		</div>
@@ -51,7 +51,7 @@
 			$imagePath  = file_exists($imagePath) ? $imagePath : JXIFORMS_PATH_ADMIN_TEMPLATE.'/default/_media/icons/actions.png';
 ?>
 		
-		<div class="jxif-disable dashboard-icon jxif-padding02 center" title="<?php echo Rb_Text::_("COM_JXIFORMS_DASHBOARD_DISABLED_ACTION_ICON_TOOLTIP");?>">
+		<div class="jxif-disable dashboard-icon action-icon-view jxif-padding02 center" title="<?php echo Rb_Text::_("COM_JXIFORMS_DASHBOARD_DISABLED_ACTION_ICON_TOOLTIP");?>">
 			<div class="dashboard-icon-image jxif-opacity45"><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI($imagePath, false), $plugin->name) ;?></div>
 			<div class="dashboard-icon-name jxif-opacity45"><?php echo $plugin->name;?></div>
 			<div class="enable-plugin-button">

@@ -44,7 +44,7 @@ class JXiFormsActionHttpquery extends JXiformsAction
 		//these value needs to be removed form the posted data so that it does not create infinite loop
 		$defaultFilter = array('option', 'view', 'task', 'input_id', 'Itemid');
 		$filters  = explode("\r\n", $filters);			
-		$filters = array_unique($filters + $defaultFilter);
+		$filters = array_unique(array_merge($filters, $defaultFilter));
 		
 		$queryParameters = explode( "\r\n", $query );
 		

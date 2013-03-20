@@ -40,22 +40,9 @@
 }
 
 .jxiforms .dashboard-icon{
-	border: 2px solid #D8D8D8;
-    border-radius: 5px 5px 5px 5px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);    
-    position: relative;
-    width: 16%;
+	width: 16%;
     margin:2%;
-    float:left;
     min-width:120px;
-    overflow:hidden;
-}
-
-.jxiforms .dashboard-icon:hover{
-	border: 2px solid #0088CC;
-	transition-duration: 1s;
-	-webkit-transition-duration:1s;
-	cursor: pointer;
 }
 
 .jxiforms .dashboard-icon-name{
@@ -104,15 +91,25 @@
 }
 
 .jxiforms .action-select-list{
+    width: 100%;
+    padding:2%;
+    margin-top: 1%;
+}
+
+.jxiforms .action-icon-view{
 	border: 2px solid #D8D8D8;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);    
     position: relative;
-    width: 100%;
     float:left;
-    padding:2%;
     overflow:hidden;
-    margin-top: 1%;
+}
+
+.jxiforms .action-icon-view:hover{
+	border: 2px solid #0088CC;
+	transition-duration: 1s;
+	-webkit-transition-duration:1s;
+	cursor: pointer;
 }
 
 .jxiforms .action-list [class*="span"]:first-child {

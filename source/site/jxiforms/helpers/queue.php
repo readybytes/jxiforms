@@ -114,9 +114,10 @@ class JXiFormsHelperQueue extends JXiFormsHelper
 		    		$lock->releaseLock();
 		    		return $path;
 		    	}
+		    	//create index.html file in new directory		    	
+		    	JFile::write(JPATH_SITE.$bucketPath.$newBucketname.'/index.html', $buffer);
 	    	}
 	    	
-	    	//create index.html file in new directory
 	    	$model = JXiFormsFactory::getInstance('config', 'model');
 			$model->save(array('current_bucket'=>$newBucketname));
 			$lock->releaseLock();

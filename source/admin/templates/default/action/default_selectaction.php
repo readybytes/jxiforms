@@ -79,7 +79,7 @@ jxiforms.jQuery(document).ready(function(){
 					$details[$type]['name'] = $action['name'];
 					
 					?>
-					<div class="span2 action-select-list center action-type" type="<?php echo $type;?>">
+					<div class="span2 action-icon-view action-select-list center action-type" type="<?php echo $type;?>">
 						<div class="dashboard-icon-image"><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI($imagePath, false), $action['name']) ;?></div>
 						<div class="dashboard-icon-name"><?php echo $action['name'];?></div>
 					</div>
@@ -96,7 +96,7 @@ jxiforms.jQuery(document).ready(function(){
 	<div class="row-fluid action-description position-absolute">
 		<div class="row-fluid">
 			<div class="span12">
-				<div class="span2 action-select-list center">
+				<div class="span2 action-icon-view action-select-list center">
 					<div class="action-selected-icon dashboard-icon-image"><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI($imagePath, false), $action['name']) ;?></div>
 			 		<div class="action-selected-name dashboard-icon-name"><?php echo $action['name'];?></div>
 				</div>
