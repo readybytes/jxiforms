@@ -65,13 +65,23 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 							<div class="controls"><?php echo $form->getInput('published'); ?></div>								
 						</div>
 			
+						<div class="control-group">
+							<div class="control-label"><?php echo $form->getLabel('post_url'); ?> </div>
+						
 						<?php $post_url = $form->getValue('post_url');
-						if(!empty($post_url)):?>
-							<div class="control-group">
-								<div class="control-label"><?php echo $form->getLabel('post_url'); ?> </div>
+						if(!empty($post_url)) {?>
 								<div class="controls"><?php echo $form->getValue('post_url'); ?></div>								
-							</div>
-						<?php endif;?>			
+
+						<?php } 
+							else {?>
+								<div class="controls muted">
+									<span class="text-info lead">
+										<strong><?php echo $help_link;?></strong>
+									</span>&nbsp;&nbsp;<?php echo Rb_Text::_('COM_JXIFORMS_FORM_POST_URL_MSG_BEFORE_SAVE');?>
+									
+								</div>
+							<?php }?>	
+						</div>		
 						<div class="control-group">
 							<div class="control-label"><?php echo $form->getLabel('redirect_url'); ?> </div>
 							<div class="controls"><?php echo $form->getInput('redirect_url'); ?></div>								
@@ -95,11 +105,14 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 						<div class="control-group">
 							<div class="control-label"><?php echo $form->getLabel('html'); ?> </div>
 							<div class="controls"><?php echo $form->getInput('html'); ?></div>
+							<div class="clr"></div>
 							<?php $html = trim($input->getHtml());?>
-							<?php if($input->getId() && !empty($html)): ?>
-								<div class="clr"></div>
+							<?php if($input->getId() && !empty($html)) { ?>
 								<div class="controls forms-preview-link"><?php echo $preview_link?></div>
-							<?php endif;?>			
+							<?php }
+								  else{?>
+								  	<div class="controls forms-preview-link jxif-opacity45" style="cursor:pointer; color:#0088CC;" title="<?php echo Rb_Text::_('COM_JXIFORMS_FORM_PREVIEW_LINK_TOOLTIP_BEFORE_SAVE');?>"><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_HTML_PREVIEW');?></div>
+								  <?php }?>			
 						</div>
 					</fieldset>	
 				</div>

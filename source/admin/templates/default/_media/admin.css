@@ -133,6 +133,10 @@
 	padding:2%;
 }
 
+.jxiforms .jxif-padding03{
+	padding:3%;
+}
+
 .jxiforms .jxif-left-padding01{
 	padding-left:1%;
 }
@@ -167,4 +171,9 @@
 /* Compatiblity with J2.5, radio buttons are not looking proper */
 .jxiforms  fieldset.btn-group label.btn {
 	clear : none;
+}
+
+/* No Class Available for text align right */
+.jxiforms .jxif-text-right {
+    text-align: right;
 }

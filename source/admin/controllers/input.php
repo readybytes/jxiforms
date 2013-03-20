@@ -41,4 +41,8 @@ class JXiFormsAdminControllerInput extends JXiFormsController
 		$this->setRedirect($url, $message, $type);
 		return false;
 	}
+	
+	public function help(){
+		return true;
+	}
 }

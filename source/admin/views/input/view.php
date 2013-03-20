@@ -26,6 +26,19 @@ class JXiFormsAdminBaseViewInput extends JXiFormsView
 		
 		$preview_link = JUri::root().$link."&tmpl=component";
 		$this->assign('preview_link', JXiFormsHelperUtils::getModalLink($preview_link, 'COM_JXIFORMS_INPUT_HTML_PREVIEW', '380', '600', 'COM_JXIFORMS_INPUT_HTML_PREVIEW'));		
+		
+		$helpLink = JURI::base()."index.php?option=com_jxiforms&view=input&task=help&tmpl=component";
+		$this->assign('help_link', JXiFormsHelperUtils::getModalLink($helpLink, '?', '410', '660', 'COM_JXIFORMS_FORM_POST_URL_HELP_DESC')); 
+		
+		
 		return true;
 	} 
+	
+	function help()
+	{
+		$helpImage = JURI::base()."components/com_jxiforms/templates/default/_media/icons/post_url_help.png";
+		$this->assign('help_image', $helpImage);
+		$this->setTpl('help');
+		return true;
+	}
 }
