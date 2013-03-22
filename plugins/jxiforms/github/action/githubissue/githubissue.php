@@ -11,7 +11,7 @@ if(defined('_JEXEC')===false) die();
  * @author bhavya
  *
  */
-class JXiFormsActionGithub extends JXiformsAction
+class JXiFormsActionGithubissue extends JXiformsAction
 {
 	protected $_location	= __FILE__;
 	

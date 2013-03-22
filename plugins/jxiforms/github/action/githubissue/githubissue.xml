@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <config>
-	<name>Github</name>
-    <icon>github.png</icon>
+	<name>Github : Issue</name>
+    <icon>githubissue.png</icon>
     <description>
     	<![CDATA[<a href="https://github.com/" target="_blank" >Github</a> is a web-based hosting service for projects that use the Git revision control system.<br> 
 		This action can be used to create issues in github on form submission.<br>
@@ -10,7 +10,7 @@
 	</description>
 	<help>
 		<![CDATA[
-		<br>Github action requires cURL to be installed on your server.<br>
+		<br>Github-Issue action requires cURL to be installed on your server.<br>
 		You can mention custom Issue title and description based on customer input.<br>
 		With reference to the example, you can use [[issue_title]] and [[issue_description]] for user input values.<br>
 		<b>Important : </b> If any repository lies under an organization then it is mandatory to enter the organization name.

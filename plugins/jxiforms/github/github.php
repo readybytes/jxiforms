@@ -16,6 +16,16 @@ if(defined('_JEXEC')===false) die();
 class  plgJxiformsGithub extends JXiFormsPlugin
 {	
 	protected $_location	= __FILE__;
+
+    function __construct(& $subject, $config = array())
+    {
+        parent::__construct($subject, $config);
+        
+        $fileName = $this->getLocation().'/action/'.$this->_name.'issue/'. $this->_name.'issue.php';
+		Rb_HelperLoader::addAutoLoadFile($fileName, 'JXiFormsAction'.$this->_name.'issue');
+		
+		JXiFormsHelperAction::addAction($this->_name.'issue');
+    }
 }
 
 
