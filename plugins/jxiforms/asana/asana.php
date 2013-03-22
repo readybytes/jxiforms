@@ -16,6 +16,16 @@ if(defined('_JEXEC')===false) die();
 class  plgJxiformsAsana extends JXiFormsPlugin
 {	
 	protected $_location	= __FILE__;
+
+    function __construct(& $subject, $config = array())
+    {
+        parent::__construct($subject, $config);
+        
+        $fileName = $this->getLocation().'/action/'.$this->_name.'task/'. $this->_name.'task.php';
+		Rb_HelperLoader::addAutoLoadFile($fileName, 'JXiFormsAction'.$this->_name.'task');
+		
+		JXiFormsHelperAction::addAction($this->_name.'task');
+    }
 }
 
 

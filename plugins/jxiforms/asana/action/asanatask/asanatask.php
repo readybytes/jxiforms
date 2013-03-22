@@ -11,7 +11,7 @@ if(defined('_JEXEC')===false) die();
  * @author bhavya
  *
  */
-class JXiFormsActionAsana extends JXiformsAction
+class JXiFormsActionAsanatask extends JXiformsAction
 {
 	protected $_location	= __FILE__;
 	
