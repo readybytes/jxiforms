@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <config>
-	<name>Github : Issue</name>
+	<name>Github-Issue</name>
     <icon>githubissue.png</icon>
     <description>
     	<![CDATA[<a href="https://github.com/" target="_blank" >Github</a> is a web-based hosting service for projects that use the Git revision control system.<br> 
@@ -71,11 +71,14 @@
 					required="true"
 				/>
 				
-				<field name="milestone" type="text"
+				<field name="milestone" type="jxiforms.githubmilestonelist"
 					label="COM_JXIFORMS_ACTION_GITHUB_MILESTONE_LABEL"
 					description="COM_JXIFORMS_ACTION_GITHUB_MILESTONE_DESC"
 					default=""
-				/>
+					class="multiselect"
+					addfieldpath="/plugins/jxiforms/github/action/githubissue/fields">
+					<option value="" >COM_JXIFORMS_SELECT_OPTION</option>
+				</field>
 				
 				<field name="label" type="text"
 					label="COM_JXIFORMS_ACTION_GITHUB_LABEL_LABEL"

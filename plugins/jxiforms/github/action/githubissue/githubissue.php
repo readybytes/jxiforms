@@ -26,7 +26,7 @@ class JXiFormsActionGithubissue extends JXiformsAction
 		$url 			= "https://api.github.com/repos/$owner/$repo/issues";
 		
 		$issue 			= $this->_prepareIssue($data);
-		$response 		= $this->_requestAPI($url, "POST", $username, $password, $issue);
+		$response 		= $this->requestAPI($url, "POST", $username, $password, $issue);
 		
 		if($response['http_code'] == 201){
 			//JXITODO : success log of github issue creation
@@ -38,7 +38,7 @@ class JXiFormsActionGithubissue extends JXiformsAction
 		}
 	}
 	
-	protected function _requestAPI($url, $method, $username, $password, $data=array()) 
+	public function requestAPI($url, $method, $username, $password, $data=array()) 
 	{		
 	    $ch = curl_init();
 	    curl_setopt($ch, CURLOPT_URL, $url);
