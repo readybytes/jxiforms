@@ -45,7 +45,16 @@ JHtml::_('behavior.framework');
 				    </th>				
 					<td><?php echo $record->action_id;?></td>
 					<td style="width:40%;">
-						<div><?php echo JXiFormsHtml::link($uri.'&task=edit&id='.$record->{$record_key}, $record->title);?></div>
+						<?php if(isset($enable_plugins[0]) && array_key_exists($record->type, $enable_plugins[0])){ ?>
+							     <div> <?php echo JXiFormsHtml::link($uri.'&task=edit&id='.$record->{$record_key}, $record->title); ?></div>
+						<?php }
+							  else
+							  {?>
+							  	<div >
+							  		<?php echo $record->title;?>
+							  		 <div class="muted"><?php echo Rb_Text::_('COM_JXIFORMS_ACTION_PLUGIN_NOT_ENABLED');?></div>
+							  	</div>
+						<?php }?>
 						<div><?php echo $record->description;?></div>
 					</td>
 					<td><?php echo $record->type;?></td>

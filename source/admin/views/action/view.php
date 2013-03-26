@@ -11,6 +11,13 @@ if(defined('_JEXEC')===false) die();
 
 class JXiFormsAdminBaseViewAction extends JXiFormsView
 { 
+	public function _displayGrid($records)
+	{
+		$enabledPluins[] = JXiFormsHelperAction::getXml();
+		$this->assign('enable_plugins', $enabledPluins);
+		parent::_displayGrid($records);
+	}
+	
 	public function edit($tpl= null, $itemId = null, $actionType=null)
 	{
 		$itemId  =  ($itemId === null) ? $this->getModel()->getState('id') : $itemId ;

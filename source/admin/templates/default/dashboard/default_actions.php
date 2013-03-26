@@ -46,13 +46,11 @@
 
 <?php
 	if(isset($disablePlugins)){
-		foreach ($disablePlugins as $plugin){
-			$imagePath  = JXIFORMS_PATH_PLUGIN."/".$plugin->element.'/action/'.$plugin->element."/".$plugin->element.".png";
-			$imagePath  = file_exists($imagePath) ? $imagePath : JXIFORMS_PATH_ADMIN_TEMPLATE.'/default/_media/icons/actions.png';
-?>
-		
+		foreach ($disablePlugins as $plugin)
+		{
+?>		
 		<div class="jxif-disable dashboard-icon action-icon-view jxif-padding02 center" title="<?php echo Rb_Text::_("COM_JXIFORMS_DASHBOARD_DISABLED_ACTION_ICON_TOOLTIP");?>">
-			<div class="dashboard-icon-image jxif-opacity45"><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI($imagePath, false), $plugin->name) ;?></div>
+			<div class="dashboard-icon-image jxif-opacity45"><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI($plugin->icon, false), $plugin->name) ;?></div>
 			<div class="dashboard-icon-name jxif-opacity45"><?php echo $plugin->name;?></div>
 			<div class="enable-plugin-button">
 				<input type="button" value="<?php echo Rb_Text::_('COM_JXIFORMS_DASHBOARD_ENABLE_PLUGIN_BUTTON');?>" class="btn" onclick="window.location.href='<?php echo JUri::base().'index.php?option=com_jxiforms&view=dashboard&task=enableActionPlugin&plugin='.$plugin->element.'&pluginName='.$plugin->name; ?>'"); />
