@@ -21,10 +21,12 @@ class  plgJxiformsGithub extends JXiFormsPlugin
     {
         parent::__construct($subject, $config);
         
-        $fileName = $this->getLocation().'/action/'.$this->_name.'issue/'. $this->_name.'issue.php';
-		Rb_HelperLoader::addAutoLoadFile($fileName, 'JXiFormsAction'.$this->_name.'issue');
-		
-		JXiFormsHelperAction::addAction($this->_name.'issue');
+        $actions = array('issue', 'milestone');
+        foreach ($actions as $action){
+        	$fileName = $this->getLocation().'/action/'.$this->_name.$action.'/'. $this->_name.$action.'.php';
+			Rb_HelperLoader::addAutoLoadFile($fileName, 'JXiFormsAction'.$this->_name.$action);
+			JXiFormsHelperAction::addAction($this->_name.$action);
+        }
     }
 }
 

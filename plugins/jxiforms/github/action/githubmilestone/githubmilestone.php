@@ -11,7 +11,7 @@ if(defined('_JEXEC')===false) die();
  * @author bhavya
  *
  */
-class JXiFormsActionGithubissue extends JXiformsAction
+class JXiFormsActionGithubmilestone extends JXiformsAction
 {
 	protected $_location	= __FILE__;
 	
@@ -29,13 +29,13 @@ class JXiFormsActionGithubissue extends JXiformsAction
 		$repo			=  $this->getActionParam('repository', '');
 
 		$owner 			=  empty($organization) ? $username : $organization;
-		$url 			= "https://api.github.com/repos/$owner/$repo/issues";
+		$url 			= "https://api.github.com/repos/$owner/$repo/milestones";
 		
-		$issue 			= $this->_prepareIssue($data);
+		$issue 			= $this->_prepareMilestone($data);
 		$response 		= JXiFormsActionGithubHelper::requestAPI($url, "POST", $username, $password, $issue);
 		
 		if($response['http_code'] == 201){
-			//JXITODO : success log of github issue creation
+			//JXITODO : success log of github milestone creation
 			return true;
 		}
 		else {
@@ -44,23 +44,21 @@ class JXiFormsActionGithubissue extends JXiformsAction
 		}
 	}
 	
-	protected function _prepareIssue($data)
+	protected function _prepareMilestone($data)
 	{
-		$issue		  			=  array();
-		$issue['title']  		=  JXiFormsHelperRewriter::rewrite($this->getActionParam('issue_title', ''), $data);
-		$issue['body']  		=  JXiFormsHelperRewriter::rewrite($this->getActionParam('issue_description', ''), $data);
-		$issue['assignee']	 	=  $this->getActionParam('assignee', '');
-		$issue['milestone']	  	=  $this->getActionParam('milestone', '');
-		$labels					=  $this->getActionParam('label', '');
-		$issue['labels']		=  empty($labels) ? '' : explode(',', $labels);
+		$milestone		  			=  array();
+		$milestone['title']  		=  JXiFormsHelperRewriter::rewrite($this->getActionParam('milestone_title', ''), $data);
+		$milestone['description']	=  JXiFormsHelperRewriter::rewrite($this->getActionParam('milestone_description', ''), $data);
+		$milestone['state'] 		=  $this->getActionParam('state', '');
+		$milestone['due_on']	  	=  $this->getActionParam('due_on', '');
 		
 		//unset empty values
-		foreach ($issue as $key => $param){
+		foreach ($milestone as $key => $param){
 			if(empty($param)){
-				unset($issue[$key]);
+				unset($milestone[$key]);
 			}
 		}
 
-		return json_encode($issue);
+		return json_encode($milestone);
 	}
 }

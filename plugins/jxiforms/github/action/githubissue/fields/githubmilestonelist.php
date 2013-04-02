@@ -52,7 +52,7 @@ class JXiFormsFormFieldGithubmilestonelist extends JFormFieldList
 		$owner		  =  empty($organization) ? $username : $organization;
 		$url 		  = "https://api.github.com/repos/$owner/$repository/milestones";
 		//request github api to list the workspaces
-		$result 	= $githubApp->requestAPI($url, "GET", $username, $password);
+		$result 	= JXiFormsActionGithubHelper::requestAPI($url, "GET", $username, $password);
 		$response   = json_decode($result['body'], true);
 		
 		if($result['http_code'] != 200){

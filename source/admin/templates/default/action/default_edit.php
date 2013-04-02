@@ -85,7 +85,8 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 		<?php foreach ($fieldSets as $name => $fieldSet) : ?>
 		
 			<?php foreach ($form->getFieldset($name) as $field):?>
-				<div class="control-group">
+				<?php $class = $field->group.$field->fieldname; ?>
+				<div class="control-group <?php echo $class;?>">
 					<div class="control-label"><?php echo $field->label; ?> </div>
 					<div class="controls"><?php echo $field->input; ?></div>								
 				</div>

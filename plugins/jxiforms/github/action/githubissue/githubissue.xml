@@ -68,7 +68,6 @@
 					label="COM_JXIFORMS_ACTION_GITHUB_ISSUE_DESCRIPTION_LABEL"
 					description="COM_JXIFORMS_ACTION_GITHUB_ISSUE_DESCRIPTION_DESC"
 					default=""
-					required="true"
 				/>
 				
 				<field name="milestone" type="jxiforms.githubmilestonelist"
