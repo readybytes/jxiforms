@@ -35,7 +35,7 @@ class JXiFormsAdminBaseViewDashboard extends JXiFormsView
 					$disabledPlugins[$action] 		   = new stdClass();
 					$disabledPlugins[$action]->element = $plugin->element;
 					$disabledPlugins[$action]->name    = $xmlContent->name;
-					$disabledPlugins[$action]->icon    = file_exists($actionPath."/".$action.".png") ? $actionPath."/".$action.".png" : JXIFORMS_PATH_ADMIN_TEMPLATE.'/default/_media/icons/actions.png';
+					$disabledPlugins[$action]->icon    = file_exists($actionPath."/".$xmlContent->icon) ? $actionPath."/".$xmlContent->icon : JXIFORMS_PATH_ADMIN_TEMPLATE.'/default/_media/icons/actions.png';
 					
 				}
 		}
