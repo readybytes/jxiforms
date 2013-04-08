@@ -30,6 +30,10 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		$getData     = Rb_Request::get('GET');
 		$data 		 = array_merge($getData, $postData);
 		
+		//unset token(added by RBFW for protecting against CSRF) from the submitted data 
+		$formToken   = JXiFormsFactory::getSession()->getFormToken();
+		unset($data[$formToken]);
+
 		$result = $this->_submit($input, $data);
 		
 		$url = $input->getRedirecturl();
