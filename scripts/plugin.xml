@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+<project name="Package Builder" basedir="." default="build" description="Phing build script for package.">
+
+	<target name="get_build_number">
+		<exec command="git describe" dir="${dir.root}" outputProperty="build.number"  />
+		<property name='build.number' value="${build.number}"  override="true" />
+
+	</target>
+
+	<target name="config" description="Load configuration file">
+	    <php expression="(PHP_OS == 'WINNT') ? 'win/' :'unix/'" returnProperty="IF_OS"/>
+
+		<property file="${IF_OS}global.prop" override="true" />
+		<phingcall target="get_build_number" />
+
+		<property file="${IF_OS}project.prop" override="true" />
+		<property file="${IF_OS}build.prop" override="true" />
+	</target>
+	
+	<target name="build" description="build installable package only" depends="config">
+
+		<delete dir="${dir.packages}" includeemptydirs="true" />
+
+		<mkdir dir="${dir.packages}" />
+		<mkdir dir="${dir.packages}/tmp" />
+
+		<phingcall target="plugin_build" />
+	</target>
+
+	<target name="plugin_build">
+		<foreach param="dirname" absparam="absname" target="zip_plugin">
+			  <fileset dir="${dir.plugin}/jxiforms">
+				<type type="dir" />
+				<depth max="0" min="0" />
+			  </fileset>
+		</foreach>
+	</target>
+
+	<target name="zip_plugin">
+		<!-- copy content from plugin directory to tmp folder--> 
+		<copy todir="${dir.tmp}/plg_jxiforms_${dirname}">
+			<fileset dir="${absname}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+
+		<!-- apply version changes to the copied file -->
+		<reflexive>
+			<fileset dir="${dir.tmp}/plg_jxiforms_${dirname}">
+			     <include name="**/*.*" />
+			</fileset>
+			 <filterchain>
+				<replacetokens>
+				    <token key="build.version" 	value="${build.version}" />
+				    <token key="build.number"   value="${build.number}" />
+				</replacetokens>
+			</filterchain>
+		</reflexive>
+
+		<zip destfile="${dir.packages}/${dirname}-${build.version}.zip" basedir="${absname}" />
+	</target>
+</project>
