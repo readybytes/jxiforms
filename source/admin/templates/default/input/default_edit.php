@@ -68,20 +68,19 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 						<div class="control-group">
 							<div class="control-label"><?php echo $form->getLabel('post_url'); ?> </div>
 						
-						<?php $post_url = $form->getValue('post_url');
-						if(!empty($post_url)) {?>
-								<div class="controls"><?php echo $form->getValue('post_url'); ?></div>								
+							<div class="controls">
+								<span class="lead">
+									<strong><?php echo $help_link;?></strong>
+								</span>
+								<?php $post_url = $form->getValue('post_url');
+								if(!empty($post_url)):?>
+									<span><?php echo $form->getValue('post_url'); ?></span>								
+								<?php else :?>
+									<span class="muted"><?php echo Rb_Text::_('COM_JXIFORMS_FORM_POST_URL_MSG_BEFORE_SAVE');?></span>
+								<?php endif;?>	
+							</div>
+						</div>
 
-						<?php } 
-							else {?>
-								<div class="controls muted">
-									<span class="text-info lead">
-										<strong><?php echo $help_link;?></strong>
-									</span>&nbsp;&nbsp;<?php echo Rb_Text::_('COM_JXIFORMS_FORM_POST_URL_MSG_BEFORE_SAVE');?>
-									
-								</div>
-							<?php }?>	
-						</div>		
 						<div class="control-group">
 							<div class="control-label"><?php echo $form->getLabel('redirect_url'); ?> </div>
 							<div class="controls"><?php echo $form->getInput('redirect_url'); ?></div>								
