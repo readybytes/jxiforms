@@ -20,8 +20,8 @@
 	<![CDATA[
     	<pre class="jxif-example-code">
 <b>&lt;form name="form_name" method="POST" action="form_post_url"&gt;<br>
-	Issue Name  : &lt;input name="milestone_title" type="text" size="30" /&gt;<br>
-   	Description : &lt;textarea name="description" rows="2" cols="50" &gt;&lt;/textarea&gt;<br>
+	Milestone Name : &lt;input name="milestone_title" type="text" size="30" /&gt;<br>
+   	Description    : &lt;textarea name="description" rows="2" cols="50" &gt;&lt;/textarea&gt;<br>
                                 &lt;input type="submit" name="submit" value="Submit" /&gt;
 &lt;/form&gt;</b>
 		</pre>
