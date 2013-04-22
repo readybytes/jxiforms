@@ -23,6 +23,7 @@
 	
 	<!-- Media files -->
 	<media destination="com_jxiforms" folder="media">
+			<folder>images</folder>
         	<folder>js</folder>
         	<folder>queue</folder>
         	<filename>index.html</filename>
