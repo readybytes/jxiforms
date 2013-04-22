@@ -1,4 +1,9 @@
 <?php
+
+/**
+* @license	GNU/GPL, see LICENSE.php
+*/
+if(defined('_JEXEC')===false) die();
 /**
  * Dropbox Uploader
  * 
