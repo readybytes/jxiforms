@@ -22,7 +22,7 @@ class JXiFormsFormFieldTitleandvalue extends JFormField
 		$options = array ();
 		$fields  = array();
 		
-		$values = $this->value;
+		$values = !empty($this->value) ? $this->value : false;
 		$html = '<div id="jxif_titleandvalue">';
 		
 		$count = ( isset($values['title']) && count($values['title']) > 0 ) ? count($values['title']) : 1; 
