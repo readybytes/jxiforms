@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<name>Google-Spreadsheet</name>
+    <icon>googlespreadsheet.png</icon>
+    <description>
+    	<![CDATA[Purpose of this action is to push form data in to the google-spreadsheet. 
+    	]]>
+	</description>
+	<help>
+	<![CDATA[
+		<br>
+		]]>
+	</help>
+	<code>
+	<![CDATA[
+    	
+		]]>
+	</code>
+		<fields name="action_params">
+		
+			<fieldset name="parameters" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+
+				<field name="email" type="text"
+					label="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_EMAIL_LABEL"
+					description="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_EMAIL_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="password" type="password"
+					label="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_PASSWORD_LABEL"
+					description="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_PASSWORD_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="spreadsheet_title" type="text"
+					label="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_SPREADSHEET_TITLE_LABEL"
+					description="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_SPREADSHEET_TITLE_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field	name="columnspacer"
+						label="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_COLUMN_TITLE_AND_VALUE_LABEL"
+						description="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_COLUMN_TITLE_AND_VALUE_DESC"
+						type="spacer" 
+				/>
+								
+				<field name="column" type="jxiforms.titleandvalue"
+					label="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_SPREADSHEET_COLUMN_LABEL"
+					description="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_SPREADSHEET_COLUMN_DESC"
+					default=""
+					addfieldpath="/plugins/jxiforms/google/action/googlespreadsheet/fields"
+				/>
+
+			</fieldset>
+		</fields>
+</config>
