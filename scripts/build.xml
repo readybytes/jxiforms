@@ -41,6 +41,7 @@
 		<zip destfile="${dir.packages}/${file.package}.${build.version}.${file.extension}" basedir="${dir.packages}">
 			<fileset dir="${dir.packages}">
 				<include name="*.xml"></include>
+				<include name="*.php"></include>
 				<include name="*.zip"></include>
 			</fileset>
 		</zip>
@@ -102,6 +103,7 @@
 			<fileset dir="${rb.location}">
 				<include name="${rb.name}${rb.build.version}.${file.extension}" />
 				<include name="*.xml" />
+				<include name="*.php" />
 			</fileset>
 		</copy>
 	</target>
