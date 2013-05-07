@@ -86,9 +86,57 @@
  	top: 0;
 }
 
+.jxiforms  .jxif-margin-top03{	
+ 	margin-top : 3%;
+}
+
 .jxiforms  .margin-top2{	
  	margin-top : 2%;
 }
+
+.jxiforms  .margin-top1{	
+ 	margin-top : 1%;
+}
+
+.jxiforms  .jxif-margin-bottom01{	
+ 	margin-bottom : 1%;
+}
+
+.jxiforms  .jxif-margin-bottom03{	
+ 	margin-bottom : 3%;
+}
+
+/* hacks */
+
+.show-grid {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.jxiforms .row-fluid [class*="span"]:first-child {
+    margin-left: 0;
+}
+
+.jxiforms .row-fluid [class*="span"] {
+    margin-left: 2.5641%;
+}
+
+@media (max-width: 767px) {
+	.jxiforms  [class*="span"],
+	.jxiforms .row-fluid [class*="span"], .jxiforms .row-fluid .span6
+	 {
+		float: none;
+		display: block;
+		width: auto !important;
+		margin-left: 0;
+     }	
+}
+
+.jxiforms .row-fluid .span6 {
+    width: 48.7179%;
+}
+
+/* hacks finished */
 
 .jxiforms .action-select-list{
     width: 100%;
@@ -145,6 +193,10 @@
 	font-size:1.5em;
 }
 
+.jxiforms .jxif-fontsize12{
+	font-size:1.2em;
+}
+
 .jxiforms .jxif-action-heading
 {
 	background-image: -moz-linear-gradient(left, #FFFFFF, #F5F5F5);
@@ -176,4 +228,45 @@
 /* No Class Available for text align right */
 .jxiforms .jxif-text-right {
     text-align: right;
+}
+
+.pull-right, [class*="span"] .pull-right {
+float: right ! important;
+}
+.pull-left, [class*="span"] .pull-left {
+float: left ! important;
+}
+
+.jxiforms .jxif-textcolor999{
+	color:#999;
+}
+
+.jxiforms .jxif-textcolor444{
+	color:#444;
+}
+
+.jxiforms .jxif-letterspace01{
+letter-spacing:1px;
+}
+
+.jxiforms .jxif-letterspace02{
+letter-spacing:2px;
+}
+.jxiforms .jxif-verticalalign-middle{
+vertical-align:middle;
+}
+
+.jxiforms .jxif-bgcolor-DC{
+	background-color: #DCDCDC;
+}
+
+.jxiforms .jxif-setborder{
+	border: 1px solid #eee;
+	border: 1px solid rgba(0,0,0,0.05);
+	border-radius: 4px;
+}
+
+.jxiforms .jxif-heading
+{
+	background-image: -moz-linear-gradient(left, #F5F5F5, #DCDCDC);
 }
