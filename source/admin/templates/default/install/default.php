@@ -83,5 +83,12 @@ JHtml::_('behavior.framework');
 					</div>
 			</div>
 	</div>
+	<div class="hide">
+		<?php
+			$version = new JVersion();
+			$suffix = 'jom=J'.$version->RELEASE.'&utm_campaign=broadcast&jxif=JXIF'.JXIFORMS_VERSION.'&dom='.JURI::getInstance()->toString(array('scheme', 'host', 'port'));?>
+			
+		<iframe src="http://pub.joomlaxi.com/broadcast/joomlaxi-form/installation.html?<?php echo $suffix?>"></iframe>
+	</div>
 </div>
 <?php 
