@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<name>Chargify - Customer</name>
+    <icon>chargifycustomer.png</icon>
+    <description>
+    	<![CDATA[<a href="http://chargify.com/" target="_blank" >Chargify</a> is a recurring billing system designed for Web 2.0 and SaaS companies.<br>Chargify allows you to concentrate on building innovative web applications and not worry about how to bill your customers. 
+    	]]>
+	</description>
+	<help>
+	<![CDATA[
+		<br>With the help of Chargify-Customer action you can add customer record in your chargify site(s) just by form submission.
+		<br><br><strong>API Key will be available under API Access section of your chargify account. <br>Make sure your API Access is enabled.
+		<br>Chargify accepts country value in [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format (i.e. "US" for United States)</strong>
+		<br><br>With reference to the example code you can enter first_name in the First-Name Field, last_name in the Last-Name Field and so on. 
+		]]>
+	</help>
+	<code>
+	<![CDATA[
+    	<pre class="jxif-example-code">
+<b>&lt;form name="form_name" method="POST" action="form_post_url" &gt;<br>
+		Email   :    &lt;input type="text" size="15" name="email" /&gt;<br>
+		First Name :   &lt;input type="text" size="15" name="first_name" /&gt;<br>
+		Last Name :  &lt;input type="text" size="15" name="last_name" /&gt;<br>
+		City :  &lt;input type="text" size="15" name="city" /&gt;<br>
+		
+	                           &lt;input type="submit" name="submit" value="Submit" /&gt;<br>
+&lt;/form&gt;</b>
+		</pre>
+		]]>
+	</code>
+		<fields name="action_params">
+		
+			<fieldset name="parameters" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+
+				<field name="subdomain" type="text"
+					label="COM_JXIFORMS_ACTION_CHARGIFY_SUBDOMAIN_LABEL"
+					description="COM_JXIFORMS_ACTION_CHARGIFY_SUBDOMAIN_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="api_key" type="text"
+					label="COM_JXIFORMS_ACTION_CHARGIFY_API_KEY_LABEL"
+					description="COM_JXIFORMS_ACTION_CHARGIFY_API_KEY_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="first_name" type="text"
+					label="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_FIRST_NAME_LABEL"
+					description="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_FIRST_NAME_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="last_name" type="text"
+					label="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_LAST_NAME_LABEL"
+					description="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_LAST_NAME_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="email" type="text"
+					label="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_EMAIL_LABEL"
+					description="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_EMAIL_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="organization" type="text"
+					label="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_ORGANIZATION_LABEL"
+					description="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_ORGANIZATION_DESC"
+					default=""
+				/>
+				
+				<field name="reference" type="text"
+					label="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_REFERENCE_LABEL"
+					description="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_REFERENCE_DESC"
+					default=""
+				/>
+				
+				<field name="vat_number" type="text"
+					label="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_VAT_NUMBER_LABEL"
+					description="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_VAT_NUMBER_DESC"
+					default=""
+				/>
+				
+				<field name="address" type="text"
+					label="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_ADDRESS_LABEL"
+					description="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_ADDRESS_DESC"
+					default=""
+				/>
+				
+				<field name="address_2" type="text"
+					label="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_ADDRESS_2_LABEL"
+					description="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_ADDRESS_2_DESC"
+					default=""
+				/>
+				
+				<field name="city" type="text"
+					label="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_CITY_LABEL"
+					description="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_CITY_DESC"
+					default=""
+				/>
+				
+				<field name="state" type="text"
+					label="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_STATE_LABEL"
+					description="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_STATE_DESC"
+					default=""
+				/>
+				
+				<field name="zip" type="text"
+					label="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_ZIP_LABEL"
+					description="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_ZIP_DESC"
+					default=""
+				/>
+				
+				<field name="country" type="text"
+					label="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_COUNTRY_LABEL"
+					description="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_COUNTRY_DESC"
+					default=""
+				/>
+				
+				<field name="phone" type="text"
+					label="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_PHONE_LABEL"
+					description="COM_JXIFORMS_ACTION_CHARGIFY_CUSTOMER_PHONE_DESC"
+					default=""
+				/>
+
+			</fieldset>
+		</fields>
+</config>
