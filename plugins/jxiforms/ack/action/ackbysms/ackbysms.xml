@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<name>Ack By SMS</name>
+	<icon>smsgatewayhub.png</icon>
+	<description>
+	    	<![CDATA[
+		<p>
+			This Action helps you in sending Acknowledgement SMS with the Help of your SMS Gateway Hub Account.
+			For using this action your form must have a field for Phone number where user enters phone on which acknowledgement will be sent.
+			<p class="">This SMS Gateway only Supported in India.</p>
+		</p>
+	    	]]>
+	</description>
+	
+	<help>
+		<![CDATA[
+		<br>With reference to the example code, you need to enter name of the field in Recipient(Field Name): parameter that is "phone_number" in example code.
+		]]>
+	</help>
+
+	<code>
+		<![CDATA[
+		<pre class="jxif-example-code">
+			<b>&lt;form name="form_name" method="POST" action="form_post_url" &gt;<br>
+			Phone Number :  &lt;input type="text" size="15" name="phone_number" /&gt;<br>
+			&lt;input type="submit" name="submit" value="Submit" /&gt;<br>
+			&lt;/form&gt;</b>
+		</pre>
+
+	    	]]>
+	</code>
+	<fields name="action_params">
+		
+			<fieldset name="parameters" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+				<field  name="user_id"
+						type="text"
+						label="COM_JXIFORMS_ACTION_ACK_BY_SMS_SMSGATEWAYHUB_USER_ID"
+						description="COM_JXIFORMS_ACTION_ACK_BY_SMS_SMSGATEWAYHUB_USER_ID_DESC"
+						class="required"
+				/>				
+				<field  name="password"
+						type="password"
+						label="COM_JXIFORMS_ACTION_ACK_BY_SMS_SMSGATEWAYHUB_PASSWORD"
+						description="COM_JXIFORMS_ACTION_ACK_BY_SMS_SMSGATEWAYHUB_PASSWORD_DESC"
+						class="required"
+				/>
+				<field  name="route_id"
+						type="text"
+						label="COM_JXIFORMS_ACTION_ACK_BY_SMS_SMSGATEWAYHUB_ROUTE_ID"
+						description="COM_JXIFORMS_ACTION_ACK_BY_SMS_SMSGATEWAYHUB_ROUTE_ID_DESC"
+						class="required"
+				/>
+				<field  name="sender_id"
+						type="text"
+						label="COM_JXIFORMS_ACTION_ACK_BY_SMS_SMSGATEWAYHUB_SENDER_ID"
+						description="COM_JXIFORMS_ACTION_ACK_BY_SMS_SMSGATEWAYHUB_SENDER_ID_DESC"
+						class="required"
+				/>
+				<field  name="message"
+						type="textarea"
+						label="COM_JXIFORMS_ACTION_ACK_BY_SMS_SMSGATEWAYHUB_MESSAGE"
+						description="COM_JXIFORMS_ACTION_ACK_BY_SMS_SMSGATEWAYHUB_MESSAGE_DESC"
+				/>
+				<field  name="recipient"
+						type="text"
+						label="COM_JXIFORMS_ACTION_ACK_BY_SMS_SMSGATEWAYHUB_RECIPIENT"
+						description="COM_JXIFORMS_ACTION_ACK_BY_SMS_SMSGATEWAYHUB_RECIPIENT_DESC"
+						class="required"
+				/>
+			</fieldset>
+	</fields>
+</config>
