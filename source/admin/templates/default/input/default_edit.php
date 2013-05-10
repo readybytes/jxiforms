@@ -69,14 +69,14 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 							<div class="control-label"><?php echo $form->getLabel('post_url'); ?> </div>
 						
 							<div class="controls">
-								<span class="lead">
+								<div class="jxif-fontsize15">
 									<strong><?php echo $help_link;?></strong>
-								</span>
+								</div>
 								<?php $post_url = $form->getValue('post_url');
 								if(!empty($post_url)):?>
-									<span><?php echo $form->getValue('post_url'); ?></span>								
+									<div><?php echo $form->getValue('post_url'); ?></div>
 								<?php else :?>
-									<span class="muted"><?php echo Rb_Text::_('COM_JXIFORMS_FORM_POST_URL_MSG_BEFORE_SAVE');?></span>
+									<div class="muted"><?php echo Rb_Text::_('COM_JXIFORMS_FORM_POST_URL_MSG_BEFORE_SAVE');?></div>
 								<?php endif;?>	
 							</div>
 						</div>

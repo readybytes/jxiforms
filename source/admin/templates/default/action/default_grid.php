@@ -42,28 +42,31 @@ JHtml::_('behavior.framework');
 				<tr class="<?php echo "row".$count%2; ?>">								
 					<th class="default-grid-chkbox">
 				    	<?php echo JXiFormsHtml::_('grid.id', $count, $record->{$record_key} ); ?>
-				    </th>				
-					<td><?php echo $record->action_id;?></td>
-					<td style="width:40%;">
-						<?php if(isset($enable_plugins[0]) && array_key_exists($record->type, $enable_plugins[0])){ ?>
-							     <div> <?php echo JXiFormsHtml::link($uri.'&task=edit&id='.$record->{$record_key}, $record->title); ?></div>
-						<?php }
-							  else
-							  {?>
-							  	<div >
-							  		<?php echo $record->title;?>
-							  		 <div class="muted"><?php echo Rb_Text::_('COM_JXIFORMS_ACTION_PLUGIN_NOT_ENABLED');?></div>
-							  	</div>
-						<?php }?>
-						<div><?php echo $record->description;?></div>
-					</td>
-					<td><?php echo $record->type;?></td>
-<!-- 					<td><?php echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'for_all_inputs', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_JXIFORMS');?></td> -->
-					<td><?php echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'published', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_JXIFORMS');?></td>
-					<td>
-						<span><?php echo $pagination->orderUpIcon( $count , true, 'orderup', Rb_Text::_('COM_JXIFORMS_ORDERING_MOVE_UP')); ?></span>
-						<span><?php echo $pagination->orderDownIcon( $count , count($records), true , 'orderdown', Rb_Text::_('COM_JXIFORMS_ORDERING_MOVE_DOWN'), true ); ?></span>
-					</td>
+				    </th>
+				    <?php if(!empty($enable_plugins) && array_key_exists($record->type, $enable_plugins)){ ?>
+				    	<td><?php echo $record->action_id;?></td>
+						<td style="width:40%;">
+								<div> <?php echo JXiFormsHtml::link($uri.'&task=edit&id='.$record->{$record_key}, $record->title); ?></div>
+								<div> <?php echo $record->description;?></div>
+						</td>
+						<td><?php echo $record->type;?></td>
+<!-- 					<td><?php //echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'for_all_inputs', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_JXIFORMS');?></td> -->
+						<td><?php echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'published', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_JXIFORMS');?></td>
+						<td>
+							<span><?php echo $pagination->orderUpIcon( $count , true, 'orderup', Rb_Text::_('COM_JXIFORMS_ORDERING_MOVE_UP')); ?></span>
+							<span><?php echo $pagination->orderDownIcon( $count , count($records), true , 'orderdown', Rb_Text::_('COM_JXIFORMS_ORDERING_MOVE_DOWN'), true ); ?></span>
+						</td>
+					
+					<?php }
+						  else
+						  {?>
+							<!--Id-->
+							<td><?php echo $record->action_id;?></td>
+							<td style="width:40%;"> <?php echo $record->title;?></td>
+							<td colspan="3">
+						  		<div class="muted"><?php echo Rb_Text::sprintf('COM_JXIFORMS_ACTION_GRID_PLUGIN_NOT_ENABLED',$record->type);?></div>
+							</td>
+					<?php }?>
 				</tr>
 			<?php $count++;?>
 			<?php endforeach;?>

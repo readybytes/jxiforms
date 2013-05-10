@@ -13,8 +13,9 @@ class JXiFormsAdminBaseViewAction extends JXiFormsView
 { 
 	public function _displayGrid($records)
 	{
-		$enabledPluins[] = JXiFormsHelperAction::getXml();
-		$this->assign('enable_plugins', $enabledPluins);
+		$enabledPlugins = array();
+		$enabledPlugins = JXiFormsHelperAction::getXml();
+		$this->assign('enable_plugins', $enabledPlugins);
 		parent::_displayGrid($records);
 	}
 	
