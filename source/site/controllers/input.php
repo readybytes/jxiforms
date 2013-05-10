@@ -75,19 +75,20 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		JXiFormsHelperQueue::appendDataToFile($queueRecs, $data, $attachments);
 		
 		$approvalContent = Rb_Text::sprintf('COM_JXIFORMS_INPUT_DATA_SUBMITTED_ON', $input->getTitle());
+		$approvalLinks    = '';
 		foreach ($queueRecs as $queue){
 			//if task is approved then process immediately else set the approval contents to email
 			if($queue->isApproved() && $queue->getStatus() != JXiformsQueue::STATUS_PROCESSED){
 				$queue->process();
 			}
 			else {
-				$approvalContent .= Rb_Text::sprintf('COM_JXIFORMS_INPUT_APPROVAL_REQUEST', JXiFormsHelperAction::get($queue->getActionId())->title,$queue->getApprovalUrl());
+				$approvalLinks .= Rb_Text::sprintf('COM_JXIFORMS_INPUT_APPROVAL_REQUEST', JXiFormsHelperAction::get($queue->getActionId())->title,$queue->getApprovalUrl());
 			}
 		}
 		
 		//do not send approval email when configuration setting is set to no  
-		if(!empty($approvalContent) && JXiFormsHelperConfig::get('approval_send_email')){
-			JXiFormsHelperQueue::sendApprovalEmail($approvalContent);
+		if(!empty($approvalLinks) && JXiFormsHelperConfig::get('approval_send_email')){
+			JXiFormsHelperQueue::sendApprovalEmail($approvalContent.$approvalLinks);
 		}
 		
 		return true;
