@@ -9,12 +9,23 @@
 	</description>
 	<help>
 	<![CDATA[
-		<br>
-		]]>
+	<b>In Parameter Section:<br>--Title is the column_name of your spreadsheet and Value is the name of HTML field of your form where user enters some value.</b><br>
+	--Title or Column names are case-insensitive, But the column name Entered in title option must have to be present in the specified spread-sheet as you have entered.<br>
+	--Value Field is case-sensitive.<br>
+	<b>Ex:</b> Suppose your spreadsheet have column with the name <b>"First Name"</b> then value of <b>"Title"</b> parameter is <b>"First Name"</b> and value of <b>"Value"</b> parameter according to example code is <b>"first_name"</b>.
+	]]>
 	</help>
 	<code>
 	<![CDATA[
-    	
+	<pre class="jxif-example-code">
+	<b>&lt;form name="form_name" method="POST" action="form_post_url" &gt;<br>
+		First Name : &lt;input type="text" size="15" name="first_name" /&gt;&lt;/br&gt;<br>
+		Last  Name : &lt;input type="text" size="15" name="last_name" /&gt;&lt;/br&gt;<br>
+		Email      : &lt;input type="text" size="15" name="email" /&gt;&lt;/br&gt;<br>
+		Contact No.: &lt;input type="text" size="15" name="contact_number" /&gt;&lt;/br&gt;<br>
+		&lt;input type="submit" name="submit" value="Submit" /&gt;<br>
+	&lt;/form&gt;</b>
+	</pre>
 		]]>
 	</code>
 		<fields name="action_params">

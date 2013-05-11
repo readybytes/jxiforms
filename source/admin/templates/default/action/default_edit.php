@@ -34,7 +34,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 				<div class="controls">
 					<div><?php echo $form->getInput('title'); ?></div>
 					<div class="clr"></div>	
-					<div class="btn-link" onClick="jxiforms.utils.toggle('action-description');"><?php echo Rb_Text::_('Add a description'); ?></div>
+					<span class="btn-link" onClick="jxiforms.utils.toggle('action-description');"><?php echo Rb_Text::_('Add a description'); ?></span>
 				</div>
 			</div>
 			
