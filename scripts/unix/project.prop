@@ -6,7 +6,7 @@ project.codename		= jxiforms
 # Version
 build.version 	= 1.0.1
 #build.number	= Will be created dynamically
-rb.build.version	= 0.9.0
+rb.build.version	= 1.0.0
 rb.name		= RBSL.
 
 # Output settings
