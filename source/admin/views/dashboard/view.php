@@ -40,7 +40,7 @@ class JXiFormsAdminBaseViewDashboard extends JXiFormsView
 				}
 		}
 		//For Pop-up of How it Works
-		$this->assign('howItWorks', JXiFormsHelperUtils::getModalLink('http://pub.joomlaxi.com/broadcast/xiform/how-it-works/tab.html','COM_JXIFORMS_DASHBOARD_TEXT_HOW_IT_WORKS','552','960','COM_JXIFORMS_DASHBOARD_TEXT_HOW_IT_WORKS_TOOL_TIP'));
+		$this->assign('howItWorks', JXiFormsHelperUtils::getModalLink('http://pub.joomlaxi.com/broadcast/joomlaxi-form/how-it-works/info.html','COM_JXIFORMS_DASHBOARD_TEXT_HOW_IT_WORKS','600','970','COM_JXIFORMS_DASHBOARD_TEXT_HOW_IT_WORKS_TOOL_TIP'));
 		$this->assign('disablePlugins',$disabledPlugins);
 		return true;
 	}
