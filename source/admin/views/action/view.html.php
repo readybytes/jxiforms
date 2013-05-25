@@ -31,4 +31,15 @@ class JXiFormsAdminViewAction extends JXiFormsAdminBaseViewAction
 		Rb_HelperToolbar::divider();
 		Rb_HelperToolbar::cancel();
 	}
+
+	//Overrided because no toolbar needed when task=selectAction.
+	protected function _adminToolbar()
+	{
+		if($this->getTask() == 'selectAction'){
+			return true;
+		}
+		else{
+			return parent::_adminToolbar();
+		}
+	}
 }
