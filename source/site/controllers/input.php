@@ -30,6 +30,10 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		$getData     = Rb_Request::get('GET');
 		$data 		 = array_merge($getData, $postData);
 		
+		//If any action's plugin want to attach some data.		
+		$args     = array(&$data);
+		Rb_HelperPlugin::trigger('onJXIFormsDataPrepare', $args, 'jxiforms');
+
 		//unset token(added by RBFW for protecting against CSRF) from the submitted data 
 		$formToken   = JXiFormsFactory::getSession()->getFormToken();
 		unset($data[$formToken]);
