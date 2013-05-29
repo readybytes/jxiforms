@@ -13,6 +13,7 @@
 		<br><br><strong>API Key will be available under API Access section of your chargify account. <br>Make sure your API Access is enabled.
 		<br>Chargify accepts country value in [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format (i.e. "US" for United States)</strong>
 		<br><br>With reference to the example code you can enter first_name in the First-Name Field, last_name in the Last-Name Field and so on. 
+		<br><br>Chargify-Customer action requires cURL to be installed on your server.
 		]]>
 	</help>
 	<code>
