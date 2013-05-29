@@ -14,6 +14,7 @@
 		<br>API Keys are not available to all customers. 
 		<br>You can generate your hubspot API Key at <a href="https://app.hubspot.com/keys/get" target="_blank" >https://app.hubspot.com/keys/get</a>
 		<br>Please contact your account manager if your portal is ineligible for API access.</strong>  
+		<br>Hubspot-Contacts action requires cURL to be installed on your server. 
 		]]>
 	</help>
 	<code>

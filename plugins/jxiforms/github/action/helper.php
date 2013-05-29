@@ -28,7 +28,9 @@ class JXiFormsActionGithubHelper extends JXiFormsHelper
 	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
 	    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
 	    curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
-	    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);   
+	    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+	    curl_setopt($ch, CURLOPT_USERAGENT, "team+jxiforms@readybytes.in");
+	    curl_setopt($ch, CURLOPT_CAINFO, JPATH_SITE.'/libraries/joomla/http/transport/cacert.pem');   
 	    $response = curl_exec($ch);
 	    
 	    $header_size 		 = curl_getinfo($ch,CURLINFO_HEADER_SIZE);
