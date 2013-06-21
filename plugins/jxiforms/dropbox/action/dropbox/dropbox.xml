@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <config>
-	<name>Dropbox</name>
+	<name>Dropbox for JoomlaXi Forms</name>
     <icon>dropbox.png</icon>
     <description>
     	<![CDATA[<a href="https://www.dropbox.com/" target="_blank" >Dropbox</a> is a free service that lets you bring your photos, docs, and videos anywhere and share them easily.

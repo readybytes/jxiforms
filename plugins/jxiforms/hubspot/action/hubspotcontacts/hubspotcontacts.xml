@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <config>
-	<name>Hubspot - Contacts</name>
+	<name>Hubspot-Contacts</name>
     <icon>hubspotcontacts.png</icon>
     <description>
     	<![CDATA[<a href="http://www.hubspot.com/" target="_blank" >HubSpot</a> is a marketing software as a service company provides software for businesses to coordinate their online marketing efforts.
