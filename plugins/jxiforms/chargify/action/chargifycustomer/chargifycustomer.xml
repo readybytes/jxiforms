@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <config>
-	<name>Chargify - Customer</name>
+	<name>Chargify-Customer</name>
     <icon>chargifycustomer.png</icon>
     <description>
     	<![CDATA[<a href="http://chargify.com/" target="_blank" >Chargify</a> is a recurring billing system designed for Web 2.0 and SaaS companies.<br>Chargify allows you to concentrate on building innovative web applications and not worry about how to bill your customers. 
