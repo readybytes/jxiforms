@@ -11,7 +11,7 @@ if(defined('_JEXEC')===false) die();
 
 class JXiFormsModelConfig extends JXiFormsModel
 {
-	function save($data = array())
+	function save($data = array(), $pk = null, $new = false)
 	{		
 		$keys = array_keys($data);
 		$db = JXiFormsFactory::getDbo();
