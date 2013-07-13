@@ -1,5 +1,10 @@
 <?php
 
+/**
+* @license		GNU/GPL, see LICENSE.php
+*/
+if(defined('_JEXEC')===false) die();
+
 class MCAPI {
     var $version = "1.3";
     var $errorMessage;
