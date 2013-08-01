@@ -60,25 +60,28 @@ class JXiFormsActionTxntorefund extends JXiformsAction
 		//only master invoice has the data about all the transactions
 		$invoice = $order->getLastMasterInvoice(true);
 		
-		//if last-master invoice is not in paid status
-		if($invoice->getStatus() != PayplansStatus::INVOICE_PAID){
-			$paidInvoices = $order->getInvoices(PayplansStatus::INVOICE_PAID);
-			ksort($paidInvoices);
-			$invoice = array_shift($paidInvoices);
-		}
-		
-		$transactions = $invoice->getTransactions();		
-
 		$txnRecords = array();
-		foreach ($transactions as $transaction){
-			//consider only those transactions which contains some amount
-			if ($transaction->getAmount() > 0){
-				$txnId = $transaction->getId();
-				$txnRecords[$txnId]['gateway_txn_id'] = $transaction->getGatewayTxnId();
-				$txnRecords[$txnId]['txn_id'] = $txnId;
-				$payment = $transaction->getPayment(true);
-				$paymentApp = $payment->getApp(true);
-				$txnRecords[$txnId]['gateway_type'] = $paymentApp->getType();
+		//check the invoice existance before calling functions on the object
+		if ($invoice !== false){
+			//if last-master invoice is not in paid status
+			if($invoice->getStatus() != PayplansStatus::INVOICE_PAID){
+				$paidInvoices = $order->getInvoices(PayplansStatus::INVOICE_PAID);
+				ksort($paidInvoices);
+				$invoice = array_shift($paidInvoices);
+			}
+			
+			$transactions = $invoice->getTransactions();
+	
+			foreach ($transactions as $transaction){
+				//consider only those transactions which contains some amount
+				if ($transaction->getAmount() > 0){
+					$txnId = $transaction->getId();
+					$txnRecords[$txnId]['gateway_txn_id'] = $transaction->getGatewayTxnId();
+					$txnRecords[$txnId]['txn_id'] = $txnId;
+					$payment = $transaction->getPayment(true);
+					$paymentApp = $payment->getApp(true);
+					$txnRecords[$txnId]['gateway_type'] = $paymentApp->getType();
+				}
 			}
 		}
 		
