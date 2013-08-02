@@ -36,7 +36,7 @@ class JXiFormsSiteControllerCron extends JXiFormsController
 			// trigger plugin and actions
 			$args = array();
 
-			Rb_HelperPlugin::trigger('onJxiformsCron', $args);
+			Rb_HelperPlugin::trigger('onJxiformsCron', $args, 'jxiforms');
 			
 			// Mark exit
 			$msg = Rb_Text::_('COM_JXIFORMS_CRON_EXECUTED');

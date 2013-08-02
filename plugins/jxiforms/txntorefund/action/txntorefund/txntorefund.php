@@ -106,7 +106,12 @@ class JXiFormsActionTxntorefund extends JXiformsAction
 			}
 		}
 		
+		$mailer->setSubject($subject);
 		$mailer->setBody($body);
+		
+		if(!empty($data[trim($email_field)])){
+			$mailer->addReplyTo($data[trim($email_field)], $data[trim($username_field)]);
+		}
 	
 		$mailer->IsHTML(1);
 		if ($mailer->Send() === true){
