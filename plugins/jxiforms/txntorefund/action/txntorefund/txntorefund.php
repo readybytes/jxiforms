@@ -42,7 +42,18 @@ class JXiFormsActionTxntorefund extends JXiformsAction
 		$subId 		  = XiHelperUtils::getIdFromKey($data[trim($subscriptionkey_field)]);
 		$subscription = PayplansApi::getSubscription($subId);
 		
-		$buyer = $subscription->getBuyerUsername();
+		$buyer = '';
+		$title = '';
+		$order = false;
+		$invoice = false;
+		if ($subscription !== false){
+			$buyer = $subscription->getBuyerUsername();
+			$title = $subscription->getTitle();
+			$order = $subscription->getOrder(true);
+			//only master invoice has the data about all the transactions
+			$invoice = $order->getLastMasterInvoice(true);
+		}
+		
 		
 		if(strcasecmp($buyer, $data[trim($username_field)]) !== 0){
 			//username does not match with the subscription buyer
@@ -50,15 +61,10 @@ class JXiFormsActionTxntorefund extends JXiformsAction
 			
 		}
 		
-		if(strcasecmp(trim($subscription->getTitle()), trim($data[trim($plan_field)])) !== 0){
+		if(strcasecmp(trim($title), trim($data[trim($plan_field)])) !== 0){
 			//plan name of the subscription does not match with the provided plan 
 			$body .= Rb_Text::_('COM_JXIFORMS_ACTION_TXNTOREFUND_PLANNAME_DOES_NOT_MATCH');
 		}
-		
-		$order = $subscription->getOrder(true);
-		
-		//only master invoice has the data about all the transactions
-		$invoice = $order->getLastMasterInvoice(true);
 		
 		$txnRecords = array();
 		//check the invoice existance before calling functions on the object
