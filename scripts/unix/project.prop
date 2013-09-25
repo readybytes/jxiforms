@@ -6,7 +6,7 @@ project.name			= com_jxiforms
 build.package.name		= JoomlaXi Forms
 
 # Version
-build.version 	 = 1.0.1
+build.version 	 = 2.0
 #build.number	 = Will be created dynamically
 rb.build.version = 1.0.0
 rb.name			 = RBSL

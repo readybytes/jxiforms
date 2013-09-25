@@ -52,7 +52,7 @@ class jxiformsadminViewInput extends JXiFormsAdminBaseViewInput
 		$ajax 	= Rb_Factory::getAjaxResponse();
 
 		// Prepare Output
-		$ajax->addScriptCall('jxiforms.jQuery(\'#add_task_form\').append', $this->loadTemplate('add_task'));
+		$ajax->addScriptCall('jxiforms.jQuery(\'#add_task_form\').append', $this->loadTemplate('assign_action'));
 		// Stop Ajax request and send output
 		$ajax->sendResponse();
 	}
@@ -83,7 +83,7 @@ class jxiformsadminViewInput extends JXiFormsAdminBaseViewInput
 		}
 		
 		$ajax 	= Rb_Factory::getAjaxResponse();	
-		$ajax->addScriptCall('jxiforms.jQuery(\'#menuoptions\').html', $this->loadTemplate('menu_link'));
+		$ajax->addScriptCall('jxiforms.jQuery(\'#menuoptions\').html', $this->loadTemplate('menu'));
 		$ajax->sendResponse();
 		
 	}

@@ -39,13 +39,13 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 		<form method="post" name="adminForm" id="adminForm" action="<?php echo JUri::base().'index.php?option=com_jxiforms&view=input&task=new&type='.$type;?>">
 			<div class="tab-content">
 				<div class="tab-pane active margin-top1" id="form_settings">
-					<?php echo $this->loadTemplate('form_settings');?>
+					<?php echo $this->loadTemplate('basic_settings');?>
 				</div>
 				<div class="tab-pane" id="create_form">
-					<?php echo $this->loadTemplate('create_form');?>
+					<?php echo $this->loadTemplate('form');?>
 				</div>
 				<div class="tab-pane" id="add_task">
-					<?php echo $this->loadTemplate('add_task');?>
+					<?php echo $this->loadTemplate('assign_action');?>
 				</div>
 			</div>
 		</form>
