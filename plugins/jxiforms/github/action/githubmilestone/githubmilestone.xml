@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<name>Github-Milestone</name>
+    <icon>githubmilestone.png</icon>
+       <description>
+    	<![CDATA[<a href="https://github.com/" target="_blank" >Github</a> is a web-based hosting service for projects that use the Git revision control system.<br> 
+		This action can be used to create milestone in github on form submission.<br>
+		]]>
+	</description>
+	<help>
+		<![CDATA[
+		<br>Github-Milestone action requires cURL to be installed on your server.<br>
+		You can mention custom Milestone title and description based on customer input.<br>
+		With reference to the example, you can use [[milestone_title]] and [[description]] for user input values.<br>
+		<b>Important : </b> If any repository lies under an organization then it is mandatory to enter the organization name.
+		]]>
+	</help>
+	<code>
+	<![CDATA[
+	&lt;div class="control-group"&gt;
+		&lt;div class="control-label"&gt;
+			&lt;label&gt;Milestone Name :&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;div class="controls"&gt;
+			&lt;input name="milestone_title" type="text" size="30" /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	
+	&lt;div class="control-group"&gt;
+		&lt;div class="control-label"&gt;
+			&lt;label&gt;Description :&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;div class="controls"&gt;
+			&lt;textarea name="milestone_description" rows="2" cols="50"&gt; &lt;/textarea&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	]]>
+	</code>
+	<fields name="action_params">
+		<fieldset name="action_params" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+
+			<field name="username"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_GITHUB_USERNAME_LABEL"
+				   description="COM_JXIFORMS_ACTION_GITHUB_USERNAME_DESC"
+				   default=""
+				   required="true"/>
+		
+			<field name="password"
+				   type="password"
+				   label="COM_JXIFORMS_ACTION_GITHUB_PASSWORD_LABEL"
+				   description="COM_JXIFORMS_ACTION_GITHUB_PASSWORD_DESC"
+				   default=""
+				   required="true"/>
+
+			<field name="repository"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_GITHUBMILESTONE_REPOSITORY_LABEL"
+				   description="COM_JXIFORMS_ACTION_GITHUBMILESTONE_REPOSITORY_DESC"
+				   default=""/>
+
+			<field name="organization"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_GITHUB_ORGANIZATION_LABEL"
+				   description="COM_JXIFORMS_ACTION_GITHUB_ORGANIZATION_DESC"
+				   default=""/>
+
+			<field name="milestone_title"
+				   type="textarea"
+				   label="COM_JXIFORMS_ACTION_GITHUB_MILESTONE_LABEL"
+				   description="COM_JXIFORMS_ACTION_GITHUBMILESTONE_DESC"
+				   default="milestone_title"
+				   required="true"/>
+
+			<field name="state"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_GITHUBMILESTONE_STATE_LABEL"
+				   description="COM_JXIFORMS_ACTION_GITHUBMILESTONE_STATE_DESC"
+				   default=""/>
+
+			<field name="milestone_description"
+				   type="textarea"
+				   label="COM_JXIFORMS_ACTION_GITHUBMILESTONE_DESCRIPTION_LABEL"
+				   description="COM_JXIFORMS_ACTION_GITHUBMILESTONE_DESCRIPTION_DESC"
+				   default="milestone_description"/>
+
+			<field name="due_on"
+				   type="calendar"
+				   label="COM_JXIFORMS_ACTION_GITHUBMILESTONE_DUE_ON_LABEL"
+				   description="COM_JXIFORMS_ACTION_GITHUBMILESTONE_DUE_ON_DESC"
+				   default=""/>
+
+		</fieldset>
+	</fields>
+</config>

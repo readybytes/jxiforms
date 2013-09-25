@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<name>Email</name>
+    <author>JoomlaXi</author>
+    <description>
+    	<![CDATA[
+    	Email action collects the form data and send email.<br>
+    	You can set the email content as per your requirement.
+    	]]>
+    </description>
+   	<icon>email.png</icon>
+    <tags>email</tags>
+	<help>
+	</help>
+	<code>
+	<![CDATA[
+		&lt;div class="control-group"&gt;
+			&lt;div class="control-label"&gt;
+				&lt;label&gt;Email :&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;div class="controls"&gt;
+				&lt;input type="text" size="15" name="email" /&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="control-group"&gt;
+			&lt;div class="control-label"&gt;
+				&lt;label&gt;Subject :&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;div class="controls"&gt;
+				&lt;input type="text" size="15" name="subject" /&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="control-group"&gt;
+			&lt;div class="control-label"&gt;
+				&lt;label&gt;Message :&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;div class="controls"&gt;
+				&lt;textarea rows="4" cols="12" name="message"&gt; &lt;/textarea&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	]]>
+	</code>
+
+	<fields name="action_params">
+		<fieldset name="action_params" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+		
+			<field name="email_id"
+				   type="email"
+				   label="COM_JXIFORMS_ACTION_EMAIL_ID_LABEL"
+				   description="COM_JXIFORMS_ACTION_EMAIL_ID_DESC"
+				   size="45"
+				   required="true"/>
+
+			<field name="send_cc"
+				   type="textarea"
+				   label="COM_JXIFORMS_ACTION_EMAIL_CC_LABEL"
+				   description="COM_JXIFORMS_ACTION_EMAIL_CC_DESC"
+				   rows="2"
+				   cols="50"
+				   default=""/>
+		
+			<field name="send_bcc"
+				   type="textarea"
+				   label="COM_JXIFORMS_ACTION_EMAIL_BCC_LABEL"
+				   description="COM_JXIFORMS_ACTION_EMAIL_CC_DESC"
+				   rows="2"
+				   cols="50"
+				   default=""/>
+		
+			<field name="email_subject"
+				   type="textarea"
+				   label="COM_JXIFORMS_ACTION_EMAIL_SUBJECT_LABEL"
+				   description="COM_JXIFORMS_ACTION_EMAIL_SUBJECT_DESC"
+				   rows="2"
+				   cols="50"
+				   default="[[subject]]"
+				   required="true"/>
+		
+			<field name="email_format"
+				   type="list"
+				   label="COM_JXIFORMS_ACTION_EMAIL_FORMAT_LABEL"
+				   description="COM_JXIFORMS_ACTION_EMAIL_FORMAT_DESC"
+				   default="1">
+				   <option value="0">COM_JXIFORMS_ACTION_EMAIL_FORMAT_PLAIN_TEXT</option>
+				   <option value="1">COM_JXIFORMS_ACTION_EMAIL_FORMAT_HTML</option>
+			</field>
+		
+			<field name="attach_data"
+				   type="list"
+				   label="COM_JXIFORMS_ACTION_EMAIL_ATTACH_DATA_LABEL"
+				   description="COM_JXIFORMS_ACTION_EMAIL_ATTACH_DATA_DESC"
+				   default="0">
+				   <option value="0">COM_JXIFORMS_NO</option>
+				   <option value="1">COM_JXIFORMS_YES</option>
+			</field>
+		
+		</fieldset>
+	</fields>
+</config>

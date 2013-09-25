@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<name>Hubspot-Contacts</name>
+    <icon>hubspotcontacts.png</icon>
+    <description>
+    	<![CDATA[<a href="http://www.hubspot.com/" target="_blank" >HubSpot</a> is a marketing software as a service company provides software for businesses to coordinate their online marketing efforts.
+    	<br>Purpose of this action is to push form data to create contacts in Hubspot account. 
+    	]]>
+	</description>
+	<help>
+	<![CDATA[
+		<br><strong>HubSpot API keys and Access token both are different terms.
+		<br>API Keys are not available to all customers. 
+		<br>You can generate your hubspot API Key at <a href="https://app.hubspot.com/keys/get" target="_blank" >https://app.hubspot.com/keys/get</a>
+		<br>Please contact your account manager if your portal is ineligible for API access.</strong>  
+		<br>Hubspot-Contacts action requires cURL to be installed on your server. 
+		]]>
+	</help>
+	<code>
+	<![CDATA[
+	&lt;div class="control-group"&gt;
+		&lt;div class="control-label"&gt;
+			&lt;label&gt;First Name :&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;div class="controls"&gt;
+			&lt;input type="text" size="15" name="first_name" /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="control-group"&gt;
+		&lt;div class="control-label"&gt;
+			&lt;label&gt;Last Name :&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;div class="controls"&gt;
+			&lt;input type="text" size="15" name="last_name" /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="control-group"&gt;
+		&lt;div class="control-label"&gt;
+			&lt;label&gt;Email :&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;div class="controls"&gt;
+			&lt;input type="text" size="15" name="email" /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="control-group"&gt;
+		&lt;div class="control-label"&gt;
+			&lt;label&gt;City :&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;div class="controls"&gt;
+			&lt;input type="text" size="15" name="city" /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	]]>
+	</code>
+	<fields name="action_params">
+		<fieldset name="action_params" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+
+			<field name="api_key"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_APIKEY_LABEL"
+				   description="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_APIKEY_DESC"
+				   default=""
+				   required="true"/>
+						
+			<field name="email"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_EMAIL_LABEL"
+				   description="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_EMAIL_DESC"
+				   default="email"
+				   required="true"/>
+
+			<field name="firstname"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_FIRSTNAME_LABEL"
+				   description="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_FIRSTNAME_DESC"
+				   default="first_name"/>
+
+			<field name="lastname"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_LASTNAME_LABEL"
+				   description="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_LASTNAME_DESC"
+				   default="last_name"/>
+
+			<field name="website"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_WEBSITE_LABEL"
+				   description="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_WEBSITE_DESC"
+				   default="website"/>
+
+			<field name="company"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_COMPANY_LABEL"
+				   description="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_COMPANY_DESC"
+				   default="company"/>
+
+			<field name="phone"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_PHONE_LABEL"
+				   description="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_PHONE_DESC"
+				   default="phone"/>
+
+			<field name="address"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_ADDRESS_LABEL"
+				   description="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_ADDRESS_DESC"
+				   default="address"/>
+
+			<field name="city"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_CITY_LABEL"
+				   description="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_CITY_DESC"
+				   default="city"/>
+
+			<field name="state"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_STATE_LABEL"
+				   description="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_STATE_DESC"
+				   default="state"/>
+
+			<field name="zip"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_ZIP_LABEL"
+				   description="COM_JXIFORMS_ACTION_HUBSPOTCONTACTS_CONTACT_ZIP_DESC"
+				   default="zip_code"/>
+
+		</fieldset>
+	</fields>
+</config>

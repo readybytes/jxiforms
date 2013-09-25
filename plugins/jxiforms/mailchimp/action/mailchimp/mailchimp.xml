@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<name>Mailchimp for JoomlaXi Forms</name>
+    <icon>mailchimp.png</icon>
+    <description>
+    	<![CDATA[<a href="http://mailchimp.com/" target="_blank" >Mailchimp</a> helps you design email newsletters, share them on social networks, integrate with services you already use, and track your results.
+    	<br>With Mailchimp action you can subscribe user(emails) to a mailchimp list(s).
+    	]]>
+	</description>
+	<help>
+	<![CDATA[
+		<br>Email Field contains name of field(s) from which email to be fetched for Mailchimp list subscribe.
+		]]>
+	</help>
+	<code>
+	<![CDATA[
+		&lt;div class="control-group"&gt;
+			&lt;div class="control-label"&gt;
+				&lt;label&gt;Primary Email :&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;div class="controls"&gt;
+				&lt;input name="primary_email" type="text" /&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="control-group"&gt;
+			&lt;div class="control-label"&gt;
+				&lt;label&gt;Alternate Email :&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;div class="controls"&gt;
+				&lt;input name="alternate_email" type="text" /&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	]]>
+	</code>
+
+	<fields name="action_params">
+		<fieldset name="mailchimp" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+
+			<field name="mailchimpApikey"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_MAILCHIMP_API_KEY_LABEL"
+				   description="COM_JXIFORMS_ACTION_MAILCHIMP_API_KEY_DESC"
+				   default=""
+				   required="true"/>
+
+			<field name="addToLists"
+				   type="jxiforms.mailchimplist"
+				   label="COM_JXIFORMS_ACTION_MAILCHIMP_ADD_TO_LISTS_LABEL"
+				   description="COM_JXIFORMS_ACTION_MAILCHIMP_ADD_TO_LISTS_DESC"
+				   multiple="true"
+				   class="multiselect"
+				   default=""
+				   addfieldpath="/plugins/jxiforms/mailchimp/action/mailchimp/fields"/>
+
+			<field name="removeFromLists"
+				   type="jxiforms.mailchimplist"
+				   label="COM_JXIFORMS_ACTION_MAILCHIMP_REMOVE_FROM_LISTS_LABEL"
+				   description="COM_JXIFORMS_ACTION_MAILCHIMP_REMOVE_FROM_LISTS_DESC"
+				   default=""
+				   multiple="true"
+				   class="multiselect"
+				   addfieldpath="/plugins/jxiforms/mailchimp/action/mailchimp/fields"/>
+
+			<field name="emailField"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_MAILCHIMP_EMAIL_FIELD_LABEL"
+				   description="COM_JXIFORMS_ACTION_MAILCHIMP_EMAIL_FIELD_DESC"
+				   default="primary_email, alternate_email"
+				   required="true"/>
+
+		</fieldset>
+	</fields>
+</config>

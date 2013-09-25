@@ -1,0 +1,24 @@
+#change project code names
+project.shortform		= jxiforms
+project.shortform.small = jxiforms
+project.codename		= jxiforms
+project.name			= com_jxiforms
+build.package.name		= JoomlaXi Forms
+
+# Version
+build.version 	 = 1.0.1
+#build.number	 = Will be created dynamically
+rb.build.version = 1.0.0
+rb.name			 = RBSL
+build.number	 = ${build.version}
+
+# Output settings
+file.package		= ${project.shortform}
+file.compression	= gzip
+file.extension		= zip
+redirect.url		= index.php?option=com_jxiforms&view=install
+packageclass.name	= ${project.shortform}
+script.tag			= <scriptfile>script.php</scriptfile>
+team.name			= Team JoomlaXi
+creation.date		= October 2012
+site.url			= www.joomlaxi.com

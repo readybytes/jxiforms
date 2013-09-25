@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="jxiforms" method="upgrade">
+    <name>MailChimp for JoomlaXi Forms</name>
+    <version>@build.version@</version>
+    <creationDate>Nov 2012</creationDate>
+    <author>Team JoomlaXi</author>
+    <authorEmail>team@readybytes.in</authorEmail>
+    <authorUrl>http://www.joomlaxi.com</authorUrl>
+    <copyright>2009-13 Ready Bytes Software Labs Pvt. Ltd.</copyright>
+    <license>GNU General Public License v2</license>
+    <description>JoomlaXi Forms MailChimp Integration</description>
+	<files>
+		<filename plugin="mailchimp">mailchimp.php</filename>
+		<folder>action</folder>
+		<filename>index.html</filename>
+	</files>
+</extension>
+

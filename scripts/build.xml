@@ -1,0 +1,121 @@
+<?xml version="1.0" ?>
+<project name="Package Builder" basedir="." default="build" description="Phing build script for package.">
+
+	<!--<target name="get_build_number">
+		<exec command="git describe" dir="${dir.root}" outputProperty="build.number"  />
+		<property name='build.number' value="${build.number}"  override="true" />
+
+	</target> -->
+
+	<target name="config" description="Load configuration file">
+	    <php expression="(PHP_OS == 'WINNT') ? 'win/' :'unix/'" returnProperty="IF_OS"/>
+
+		<property file="${IF_OS}global.prop" override="true" />
+		<!--<phingcall target="get_build_number" /> -->
+
+		<property file="${IF_OS}project.prop" override="true" />
+		<property file="${IF_OS}build.prop" override="true" />
+	</target>
+
+	
+	<target name="build" description="build installable package only" depends="config">
+		<!--<exec command="git describe" dir="${dir.root}" outputProperty="build.number"  />-->
+
+		<delete dir="${dir.packages}" includeemptydirs="true" />
+		<delete dir="${dir.tmp}" includeemptydirs="true" />
+
+		<mkdir dir="${dir.packages}" />
+
+		<phingcall target="export_sourcecode" />
+		
+		<phing phingfile="${project.shortform.small}.xml" inheritAll="true" target="build" />
+		
+		<phingcall target="copy_framework"/>
+
+		<phingcall target="plugin_build" />
+		<phingcall target="replace_tokens" />
+
+		<zip destfile="${dir.packages}/${file.package}-${build.version}.${file.extension}" 
+			basedir="${dir.tmp}" />
+		
+		<zip destfile="${dir.packages}/${packageclass.name}_Package.${build.version}.${file.extension}" basedir="${dir.packages}">
+			<fileset dir="${dir.packages}">
+				<include name="*.xml"></include>
+				<include name="*.php"></include>
+				<include name="*.zip"></include>
+			</fileset>
+		</zip>
+		<delete>
+			<fileset dir="${dir.packages}">
+				<include name="pkg_${packageclass.name}.xml" />
+				<include name="script.php" />
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="plugin_build">
+		<foreach param="dirname" absparam="absname" target="copy_plugin">
+			  <fileset dir="${dir.plugin}/jxiforms">
+				<type type="dir" />
+				<depth max="0" min="0" />
+		<!--		<include name="email" />  -->
+			  </fileset>
+		
+		</foreach>
+	</target>
+
+	<target name="copy_plugin">
+		<copy todir="${dir.tmp}/admin/install/extensions/plg_jxiforms_${dirname}">
+			<fileset dir="${absname}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- Global Target -->
+	<target name="export_sourcecode" description="Export files from a local repository to package folder">		
+
+		<!-- Copy Source Code -->
+		<copy todir="${dir.tmp}" >
+		  <fileset dir="${dir.src}" />
+		</copy>
+	</target>
+
+	<target name="replace_tokens" description="Replace tokens in all the files">	
+
+		<!-- Apply the version change to all files. -->
+		<reflexive>
+			<fileset dir="${dir.packages}">
+			     <include name="**/*.*" />
+			</fileset>
+			 <filterchain>
+				<replacetokens>
+				    <token key="build.version"       		value="${build.version}" />
+				    <token key="build.number"				value="${build.number}" />
+				    <token key="rbframework.build.version"	value="${rb.build.version}" />
+				    <token key="rbframework.name"			value="${rb.name}" />
+				    <token key="script.tag"					value="${script.tag}" />
+				    <token key="packageclass.name"			value="${packageclass.name}" />
+				    <token key="redirect.url"				value="${redirect.url}" />
+				    <token key="team.name"					value="${team.name}" />
+				    <token key="creation.date"				value="${creation.date}" />
+				    <token key="site.url"					value="${site.url}" />
+				    <token key="project.name"       		value="${project.name}" />
+				    <token key="project.codename"       	value="${project.codename}" />
+				    <token key="project.shortform"      	value="${project.codename}" />
+				    <token key="build.package.name"     	value="${build.package.name}" />
+				</replacetokens>
+			</filterchain>
+		</reflexive>
+	</target>
+
+	<target name="copy_framework">
+		<copy file="${rb.location}/pkg.xml" tofile="${dir.packages}/pkg_${project.shortform}.xml" />
+		<copy todir="${dir.packages}">
+			<fileset dir="${rb.location}">
+				<include name="${rb.name}.${rb.build.version}.${file.extension}" />
+				<include name="script.php" />
+			</fileset>
+		</copy>
+	</target>
+</project>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="jxiforms" method="upgrade">
+    <name>AutoDelete</name>
+    <version>@build.version@</version>
+    <creationDate>July 2013</creationDate>
+    <author>Team JoomlaXi</author>
+    <authorEmail>bhavya@readybytes.in</authorEmail>
+    <authorUrl>http://www.joomlaxi.com</authorUrl>
+    <copyright>2009-13 Ready Bytes Software Labs Pvt. Ltd.</copyright>
+    <license>GNU General Public License v2</license>
+    <description>AutoDelete : This plugin will delete the queue records as per the configuration set in the parameter.</description>
+	<files>
+		<filename plugin="autodelete">autodelete.php</filename>
+	</files>
+	
+	<config>
+		<fields name="params" >
+			<fieldset name="basic" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+			
+				<field 	name="queue_status"	label="Status"
+					description="Enter the status of queue records to delete" type="text"
+					default="0" size="40" 
+					/>	
+					
+				<field 	name="created_time"	label="Time"
+					description="Enter the time in YYMMDDHHMMSS format" type="text"
+					default="000000000000" size="15" 
+					/>	
+			
+			</fieldset>
+		</fields>
+	</config>
+</extension>

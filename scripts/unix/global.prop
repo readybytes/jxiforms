@@ -1,0 +1,11 @@
+### Version 1.0
+### We store globally definition here
+
+# The root folder location
+dir.root	=${project.basedir}/..
+dir.packages=${dir.root}/packages
+dir.tmp		=${dir.packages}/tmp
+dir.src		=${dir.root}/source
+dir.report	=${dir.root}/data/report
+dir.plugin	=${dir.root}/plugins
+rb.location	=${user.home}/Dropbox/TEAM/dev/rbframework

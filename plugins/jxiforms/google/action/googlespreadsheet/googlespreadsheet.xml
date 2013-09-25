@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<name>Google-Spreadsheet</name>
+    <icon>googlespreadsheet.png</icon>
+    <description>
+    	<![CDATA[Purpose of this action is to push form data in to the google-spreadsheet. 
+    	]]>
+	</description>
+	<help>
+	<![CDATA[
+	<b>In Parameter Section:<br>--Title is the column_name of your spreadsheet and Value is the name of HTML field of your form where user enters some value.</b><br>
+	--Title or Column names are case-insensitive, But the column name Entered in title option must have to be present in the specified spread-sheet as you have entered.<br>
+	--Value Field is case-sensitive.<br>
+	<b>Ex:</b> Suppose your spreadsheet have column with the name <b>"First Name"</b> then value of <b>"Title"</b> parameter is <b>"First Name"</b> and value of <b>"Value"</b> parameter according to example code is <b>"first_name"</b>.
+	]]>
+	</help>
+	<code>
+	<![CDATA[
+	&lt;div class="control-group"&gt;
+		&lt;div class="control-label"&gt;
+			&lt;label&gt;First Name :&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;div class="controls"&gt;
+			&lt;input type="text" size="15" name="first_name" /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="control-group"&gt;
+		&lt;div class="control-label"&gt;
+			&lt;label&gt;Last Name :&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;div class="controls"&gt;
+			&lt;input type="text" size="15" name="last_name" /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="control-group"&gt;
+		&lt;div class="control-label"&gt;
+			&lt;label&gt;Email :&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;div class="controls"&gt;
+			&lt;input type="text" size="15" name="email" /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="control-group"&gt;
+		&lt;div class="control-label"&gt;
+			&lt;label&gt;Contact No.:&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;div class="controls"&gt;
+			&lt;input type="text" size="15" name="contact_number" /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	]]>
+	</code>
+	<fields name="action_params">
+		<fieldset name="action_params" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+
+			<field name="email"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_EMAIL_LABEL"
+				   description="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_EMAIL_DESC"
+				   default=""
+				   required="true"/>
+		
+			<field name="password"
+				   type="password"
+				   label="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_PASSWORD_LABEL"
+				   description="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_PASSWORD_DESC"
+				   default=""
+				   required="true"/>
+		
+			<field name="spreadsheet_title"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_SPREADSHEET_TITLE_LABEL"
+				   description="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_SPREADSHEET_TITLE_DESC"
+				   default=""
+				   required="true"/>
+		
+			<field	name="columnspacer"
+					label="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_COLUMN_TITLE_AND_VALUE_LABEL"
+					description="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_COLUMN_TITLE_AND_VALUE_DESC"
+					type="spacer"/>
+
+			<field name="column"
+				   type="jxiforms.titleandvalue"
+				   label="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_SPREADSHEET_COLUMN_LABEL"
+				   description="COM_JXIFORMS_ACTION_GOOGLESPREADSHEET_SPREADSHEET_COLUMN_DESC"
+				   default=""
+				   addfieldpath="/plugins/jxiforms/google/action/googlespreadsheet/fields"/>
+
+		</fieldset>
+	</fields>
+</config>

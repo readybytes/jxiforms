@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+<name>Joomla-Login</name>
+    <author>JoomlaXi</author>
+    <description>
+    	<![CDATA[
+    	Allow user to Login with Joomla Login action.<br>
+    	]]>
+    </description>
+   	<icon>joomlalogin.png</icon>
+    <tags>login</tags>
+	<help><![CDATA[
+	<br>	With reference to the example code, you need to enter name of the fields in Username and Password parameters that are username and password.
+	]]>
+	</help>
+	<code>
+	<![CDATA[
+		&lt;div class="control-group"&gt;
+			&lt;div class="control-label"&gt;
+				&lt;label&gt;Username :&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;div class="controls"&gt;
+				&lt;input type="text" size="15" name="username" /&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="control-group"&gt;
+			&lt;div class="control-label"&gt;
+				&lt;label&gt;Password :&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;div class="controls"&gt;
+				&lt;input type="text" size="15" name="password" /&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	]]>
+	</code>
+	<fields name="action_params">
+		<fieldset name="action_params" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+
+			<field name="username"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_JOOMLALOGIN_USERNAME_LABEL"
+				   description="COM_JXIFORMS_ACTION_JOOMLALOGIN_USERNAME_DESC"
+				   default="username"
+				   required="true"/>
+
+			<field name="password"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_JOOMLALOGIN_PASSWORD_LABEL"
+				   description="COM_JXIFORMS_ACTION_JOOMLALOGIN_PASSWORD_DESC"
+				   default="password"
+				   required="true"/>
+
+		</fieldset>
+	</fields>
+</config>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <name>Joomla Registration</name>
+    <author>JoomlaXi</author>
+    <description>
+    	<![CDATA[
+	Joomla Registration Action collects the form data, and registers the user at your site.
+    	]]>
+    </description>
+   	<icon>joomlaregistration.png</icon>
+    <tags>registration</tags>
+	<help>
+		<![CDATA[
+		You are not required to use all the fields, which are displayed in Joomla Registration. You can register users in
+		the following way.
+		<ul>
+			<li>By Email Id Only : In this case you need to show only Email field, user will be registered with email and random password. In this case <b>username</b> and <b>name</b> will contain the email id.</li>
+			<li>By Email Id and Password :  By this user will be registered with email id and the password selected by user. In this case <b>username</b> and <b>name</b> will contain the email id.</li>
+			<li>By Username, Email and Password</li>
+			<li>By Name, Username, Email, Password</li>
+			<li>By Name, Username, Email, Re-type Email, Password, Re-type Password</li>
+		</ul>
+		]]>
+	</help>
+	<code>
+	<![CDATA[
+	&lt;div class="control-group"&gt;
+		&lt;div class="control-label"&gt;
+			&lt;label&gt;Username :&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;div class="controls"&gt;
+			&lt;input type="text" size="15" name="username" /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="control-group"&gt;
+		&lt;div class="control-label"&gt;
+			&lt;label&gt;Email :&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;div class="controls"&gt;
+			&lt;input type="text" size="15" name="email" /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="control-group"&gt;
+		&lt;div class="control-label"&gt;
+			&lt;label&gt;Password :&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;div class="controls"&gt;
+			&lt;input type="text" size="15" name="password" /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	]]>
+	</code>
+	<fields name="action_params">		
+		<fieldset name="action_params" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+		
+			<field 	name="email" 
+					type="text"
+					label="COM_JXIFORMS_ACTION_JOOMLAREGISTRATION_EMAIL_LABEL"
+					description="COM_JXIFORMS_ACTION_JOOMLAREGISTRATION_EMAIL_DESC"
+					required="true"
+					default="email"/>
+
+			<field 	name="confirm_email" 
+					type="text"
+					label="COM_JXIFORMS_ACTION_JOOMLAREGISTRATION_CONFIRM_EMAIL_LABEL"
+					description="COM_JXIFORMS_ACTION_JOOMLAREGISTRATION_CONFIRM_EMAIL_DESC"/>
+
+			<field 	name="username" 
+					type="text"
+					label="COM_JXIFORMS_ACTION_JOOMLAREGISTRATION_USERNAME_LABEL"
+					description="COM_JXIFORMS_ACTION_JOOMLAREGISTRATION_USERNAME_DESC"
+					default="username"/>
+
+			<field 	name="password" 
+					type="text"
+					label="COM_JXIFORMS_ACTION_JOOMLAREGISTRATION_PASSWORD_LABEL"
+					description="COM_JXIFORMS_ACTION_JOOMLAREGISTRATION_PASSWORD_DESC"
+					default="password"/>
+
+			<field 	name="retype_password" 
+					type="text"
+					label="COM_JXIFORMS_ACTION_JOOMLAREGISTRATION_RETYPE_PASSWORD_LABEL"
+					description="COM_JXIFORMS_ACTION_JOOMLAREGISTRATION_RETYPE_PASSWORD_DESC"/>
+
+			<field 	name="name" 
+					type="text"
+					label="COM_JXIFORMS_ACTION_JOOMLAREGISTRATION_NAME_LABEL"
+					description="COM_JXIFORMS_ACTION_JOOMLAREGISTRATION_NAME_DESC"/>
+
+		</fieldset>
+	</fields>
+</config>

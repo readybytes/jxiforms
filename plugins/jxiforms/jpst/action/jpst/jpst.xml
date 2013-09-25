@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<name>JSPT</name>
+    <icon>jpst.png</icon>
+    <description>
+    	<![CDATA[
+		This Action allows a user to change his JomSocial Profile Type. 
+    	]]>
+	</description>
+	<help>
+	<![CDATA[
+		<ul>
+		<li>If you have set <strong>Required Approval</strong> to yes, for this action then approval mail will be sent to the Admin email address.</li>
+		<li>Now, if admin approves Profile Type change request of the User, In only that case Profile Type will be changed.</li>
+		<li><strong>Note:- JomSocial</strong> and <strong>JSPT</strong> must have to be Installed and Enabled.</li>
+		<li>Provide Profile IDs carefully in HTMl code. You can check Profile Type IDs in xipt_profiletype table of Your database.</li>
+		<li>As in example code you can see, Values of options are provided as profile type ids so be ensure provided profile type ids exists or not.</li>
+		]]>
+	</help>
+	<code>
+	<![CDATA[
+	&lt;div class="control-group"&gt;
+		&lt;div class="control-label"&gt;
+			&lt;label&gt;Profile Type :&lt;/label&gt;
+		&lt;/div&gt;
+		&lt;div class="controls"&gt;
+			&lt;select name="profile_type_id"&gt;
+				&lt;option value="1"&gt;Profile Type-1&lt;/option&gt;
+				&lt;option value="2"&gt;Profile Type-2&lt;/option&gt;
+			&lt;/select&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	]]>
+	</code>
+	<fields name="action_params">
+		<fieldset name="action_params" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+		
+			<field  name="profile_type_id"
+					type="text"
+					label="COM_JXIFORMS_ACTION_JSPT_PROFILE_TYPE_ID_FIELD"
+					description="COM_JXIFORMS_ACTION_JSPT_PROFILE_TYPE_ID_FIELD_DESC"
+					default="profile_type_id"
+					required="true"/>
+
+		</fieldset>
+	</fields>
+</config>

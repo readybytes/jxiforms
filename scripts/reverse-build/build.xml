@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Copying JoomlaXi Forms data to GIT" basedir="." default="copy_to_git">
+
+	<property name="target" 		value="/vobs/git/jxiforms/scripts/../" 	override="true" />
+	<property name="source" 		value="${project.basedir}" 	override="true" />
+	<property name="build.version" 	value="1.0.1" 	override="true" />
+	<property name="build.number" 	value="1.0.1" 		override="true" />
+	<property name="A@T" 			value="@" />
+	
+	<!-- Copy Target -->
+	<target name="copy_to_git" description="copy target">
+		<phingcall target="copy_jxiforms" />
+	</target>
+
+
+
+	<target name="copy_jxiforms">
+		<phingcall target="copy_component">
+			<property name="args.comname" value="com_jxiforms" />
+			<property name="args.name" value="jxiforms" />
+        </phingcall>
+		
+		<phingcall target="copy_actions">
+		</phingcall>
+		<copy file="${source}/build.xml"  tofile="${target}/scripts/reverse-build/build.xml" />
+		<copy file="${source}/delete.xml" tofile="${target}/scripts/reverse-build/delete.xml" />
+	</target>
+
+
+	
+	<target name="copy_component">
+		<copy file="${source}/language/en-GB/en-GB.${args.comname}.ini" 
+			tofile="${target}/source/languages/site/en-GB.${args.comname}.ini" 
+			haltonerror="false" />
+
+		<copy file="${source}/administrator/language/en-GB/en-GB.${args.comname}.ini"
+			tofile="${target}/source/languages/admin/en-GB.${args.comname}.ini" 
+			haltonerror="false" />
+		
+		<copy file="${source}/administrator/language/en-GB/en-GB.${args.comname}.sys.ini"
+			tofile="${target}/source/languages/admin/en-GB.${args.comname}.sys.ini"
+			haltonerror="false" />
+
+		<copy todir="${target}/source/admin">
+			<fileset dir="${source}/administrator/components/${args.comname}">
+				<include name="**/*.*" />
+				<exclude name="${args.name}.xml" />
+				<exclude name="script.php" />
+			</fileset>
+		</copy>
+
+		<copy todir="${target}/source/site">
+			<fileset dir="${source}/components/${args.comname}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+
+		<!-- copy media folder -->
+		<copy todir="${target}/source/media">
+		    <fileset dir="${source}/media/${args.comname}">
+		        <include name="**/*.*" />
+		        <exclude name="queue/**/*.*" />
+		    </fileset>
+		</copy>
+
+		<copy 	file="${source}/administrator/components/${args.comname}/${args.name}.xml" 
+				tofile="${target}/source/${args.name}.xml" 
+				haltonerror="false"	
+				/>
+
+		<copy 	file="${source}/administrator/components/${args.comname}/script.php" 
+				tofile="${target}/source/script.php" 
+				haltonerror="false"	
+				/>
+
+		<!-- copy languagepack file folder -->
+		<copy file="${source}/language/en-GB/en-GB.com_jxiforms_extensions.ini"
+			  tofile="${target}/source/admin/install/extensions/languagepack_en_GB/plg_jxiforms/en-GB.com_jxiforms_extensions.ini"
+	   		  haltonerror="false"
+			  />
+			  
+		<copy todir="${target}/source/admin/install/extensions/plg_system_jxiforms">
+			<fileset dir="${source}/plugins/system/jxiforms">
+			 	<include name="**/*.*" />
+			</fileset>
+		</copy>
+	       
+	</target>
+
+	<target name="copy_actions">
+		<copy todir="${target}/plugins/jxiforms">
+			<fileset dir="${source}/plugins/jxiforms">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="versionclean">
+		<php function="str_replace" returnProperty="versionString1">
+			    <param value="."/>
+		      	<param value="\."/>
+		      	<param value="${build.version}"/>
+		</php>
+		<php function="str_replace" returnProperty="versionString2">
+					    <param value="."/>
+				      	<param value="\."/>
+				      	<param value="${build.number}"/>
+		</php>
+		
+		<reflexive>
+			<fileset dir="${target}/source">
+				<include name="**/*.xml" />
+				<include name="**/*.php" />
+				<include name="**/*.js" />
+				<include name="**/*.css" />
+				<include name="**/*.ini" />
+				<include name="**/*.html" />
+				<include name="**/*.sql" />
+			</fileset>
+		 <filterchain>
+		 	    <replaceregexp>
+		 	       <regexp pattern="${versionString1}" replace="${A@T}build.version${A@T}"/>
+		 	       <regexp pattern="${versionString2}" replace="${A@T}build.number${A@T}"/>
+		 	    </replaceregexp>
+		</filterchain>
+		</reflexive>
+	</target>
+	
+</project>

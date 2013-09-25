@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<name>Asana-Task</name>
+    <icon>asanatask.png</icon>
+    <description>
+    	<![CDATA[<a href="http://asana.com/" target="_blank" >Asana</a> is a modern web application that keeps teams in sync, a shared task list where everyone can capture, organize, track, and communicate what they are working on in service of their common goal.<br>
+    	Using this action you can create tasks in your asana account.
+    	]]>
+	</description>
+	<help>
+		<![CDATA[<br>Asana-Task action requires cURL to be installed on your server.
+		
+		]]> 
+	</help>
+	<code>
+	<![CDATA[
+		&lt;div class="control-group"&gt;
+			&lt;div class="control-label"&gt;
+				&lt;label&gt;Task Name :&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;div class="controls"&gt;
+				&lt;input name="task_title" type="text" size="30" /&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="control-group"&gt;
+			&lt;div class="control-label"&gt;
+				&lt;label&gt;Add Notes :&lt;/label&gt;
+			&lt;/div&gt;
+			&lt;div class="controls"&gt;
+				&lt;textarea name="notes" rows="2" cols="50"&gt; &lt;/textarea&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	]]>
+	</code>
+	<fields name="action_params">
+		<fieldset name="action_params" addfieldpath="/components/com_jxiforms/jxiforms/html/fields">
+
+			<field name="api_key"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_ASANA_API_KEY_LABEL"
+				   description="COM_JXIFORMS_ACTION_ASANA_API_KEY_DESC"
+				   default=""
+				   required="true"/>
+		
+			<field name="workspace"
+				   type="jxiforms.asanaworkspacelist"
+				   label="COM_JXIFORMS_ACTION_ASANA_WORKSPACE_LABEL"
+				   description="COM_JXIFORMS_ACTION_ASANA_WORKSPACE_DESC"
+				   default=""
+				   class="multiselect"
+				   addfieldpath="/plugins/jxiforms/asana/action/asanatask/fields"/>
+
+			<field name="project"
+				   type="jxiforms.asanaprojectlist"
+				   label="COM_JXIFORMS_ACTION_ASANA_PROJECT_LABEL"
+				   description="COM_JXIFORMS_ACTION_ASANA_PROJECT_DESC"
+				   default=""
+				   class="multiselect"
+				   multiple="true"
+				   addfieldpath="/plugins/jxiforms/asana/action/asanatask/fields">
+					<option value="" >COM_JXIFORMS_SELECT_OPTION</option>
+			</field>
+
+			<field name="assignee"
+				   type="jxiforms.asanauserlist"
+				   label="COM_JXIFORMS_ACTION_ASANA_ASSIGNEE_LABEL"
+				   description="COM_JXIFORMS_ACTION_ASANA_ASSIGNEE_DESC"
+				   default=""
+				   class="multiselect"
+				   addfieldpath="/plugins/jxiforms/asana/action/asanatask/fields">
+					<option value="" >COM_JXIFORMS_SELECT_OPTION</option>
+			</field>
+
+			<field name="task_name"
+				   type="text"
+				   label="COM_JXIFORMS_ACTION_ASANA_TASK_NAME_LABEL"
+				   description="COM_JXIFORMS_ACTION_ASANA_TASK_NAME_DESC"
+				   default="task_title"/>
+
+			<field name="task_notes"
+				   type="textarea"
+				   label="COM_JXIFORMS_ACTION_ASANA_TASK_NOTES_LABEL"
+				   description="COM_JXIFORMS_ACTION_ASANA_TASK_NOTES_DESC"
+				   default="notes"/>
+
+		</fieldset>
+	</fields>
+</config>
