@@ -16,23 +16,6 @@ JHtml::_('behavior.formvalidation');
 JHtml::_('formbehavior.chosen', 'select.multiselect');
 ?>
 <script type="text/javascript">
-	Joomla.submitbutton = function(task)
-	{
-		//for menu option form check whether form is valid or not
-		if (task == 'createMenu'){
-			if(document.formvalidator.isValid(document.id('createMenu'))) {
-				Joomla.submitform(task, document.getElementById('createMenu'));
-				return true;
-			}
-			else {
-				return false;
-			}
-		}
-		
-		if (task == 'cancel' || document.formvalidator.isValid(document.id('adminForm'))) {
-			Joomla.submitform(task, document.getElementById('adminForm'));
-		}
-	}
 </script>
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="#details" data-toggle="tab"><?php echo JText::_('COM_JXIFORMS_INPUT_EDIT_DETAILS');?></a></li>
@@ -42,7 +25,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 	<div class="tab-content">
 		<div class="tab-pane active" id="details">
 		
-		<form action="<?php echo $uri; ?>" method="post" name="adminForm" id="adminForm">	
+		<form action="<?php echo $uri; ?>" method="post" name="adminForm" id="adminForm" class="rb-validate-form">
 			<div class="row-fluid">	
 				<div class="span6">		
 					<fieldset class="form-horizontal">								
@@ -134,7 +117,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 					
 			<!-- ----------------When input is saved and some menu items are already created for the same ------------------- -->
 				<?php elseif (empty($form_menu) ):?>
-					<form action="<?php echo Rb_Route::_('index.php?option=com_jxiforms&view=input&input_id='.$input->getId(), false); ?>" method="post" name="createMenu" id="createMenu">
+					<form action="<?php echo Rb_Route::_('index.php?option=com_jxiforms&view=input&input_id='.$input->getId(), false); ?>" method="post" name="createMenu" id="createMenu" class="rb-validate-form" >
 						<fieldset class="form-horizontal">
 							<?php $fieldSets = $form->getFieldsets('advance');?>
 							<?php foreach ($fieldSets as $name => $fieldSet) :?>
@@ -148,9 +131,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 								<?php endif;?>
 							<?php endforeach;?>
 							<div class="controls">
-							 <button type="button" onclick="Joomla.submitbutton('createMenu');" class="btn btn-primary text-right" id="input-createmenu-button" href="#">
-								 <?php echo Rb_Text::_('COM_JXIFORMS_INPUT_MENU_CREATE_BUTTON');?>
-							 </button>
+							<input type="submit" class="btn btn-primary text-right" id="input-createmenu-button" value="<?php echo Rb_Text::_('COM_JXIFORMS_INPUT_MENU_CREATE_BUTTON');?>" />
 							</div>
 						</fieldset>	
 						<input type="hidden" name="task" value="createMenu" />					
