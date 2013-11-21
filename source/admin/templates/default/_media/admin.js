@@ -60,17 +60,17 @@ jxiforms.admin.grid = {
 					break;
 				}
 			}
-			
 						
-			var result = true;
-		    if (document.adminForm.onsubmit instanceof Function) {
-			    result = document.adminForm.onsubmit.apply(this, Array(isValidAction));
-				// below code is not working on IE7+, so added above line
-		        //result=document.adminForm.onsubmit(isValidAction);
-		    }
-		    if(result){
-		    	document.adminForm.submit();
-		    }
+			if(isValidAction){
+				if (!$('#adminForm').find("input,textarea,select").jqBootstrapValidation("hasErrors")) {
+					Joomla.submitform(action, document.getElementById('adminForm'));
+				}
+				else{
+					$('#adminForm').submit();
+				}
+			}else{
+				Joomla.submitform(action, document.getElementById('adminForm'));
+			}
 		},
 		
 		filters : {

@@ -15,16 +15,8 @@ JHtml::_('behavior.keepalive');
 JHtml::_('behavior.formvalidation');
 JHtml::_('formbehavior.chosen', 'select.multiselect');
 ?>
-<script type="text/javascript">
-	Joomla.submitbutton = function(task)
-	{
-		if (task == 'cancel' || document.formvalidator.isValid(document.id('adminForm'))) {
-			Joomla.submitform(task, document.getElementById('adminForm'));
-		}
-	}
-</script>
 <div class="row-fluid">
-<form action="<?php echo $uri; ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo $uri; ?>" method="post" name="adminForm" id="adminForm" class="rb-validate-form">
 	<div class="span6">		
 		<fieldset class="form-horizontal">
 			<legend> <?php echo $help['name'].Rb_Text::_('COM_JXIFORMS_ACTION_EDIT_DETAILS' ); ?> </legend>
