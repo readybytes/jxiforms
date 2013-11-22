@@ -13,3 +13,7 @@ rb.name		= RBSL.
 file.package		= ${project.shortform}
 file.compression	= gzip
 file.extension		= zip
+
+# package tokens
+packageclass.name = JoomlaxiForms
+redirect.url	  = index.php?option=com_jxiforms&view=install
