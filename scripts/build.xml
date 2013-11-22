@@ -93,6 +93,8 @@
 				    <token key="build.number"   value="${build.number}" />
 				    <token key="rb.build.version"   value="${rb.build.version}" />
 				    <token key="rb.name"   value="${rb.name}" />
+				    <token key="redirect.url"   value="${redirect.url}" />
+				    <token key="packageclass.name"   value="${packageclass.name}" />
 				</replacetokens>
 			</filterchain>
 		</reflexive>
@@ -102,8 +104,8 @@
 		<copy todir="${dir.packages}">
 			<fileset dir="${rb.location}">
 				<include name="${rb.name}${rb.build.version}.${file.extension}" />
-				<include name="*.xml" />
-				<include name="*.php" />
+				<include name="pkg_JoomlaxiForms.xml" />
+				<include name="script.php" />
 			</fileset>
 		</copy>
 	</target>
