@@ -46,7 +46,9 @@ class JXiFormsActionTxntorefund extends JXiformsAction
 		$title = '';
 		$order = false;
 		$invoice = false;
-		if ($subscription !== false){
+
+		//if subscription is not active then do not proceed further calculation
+		if ($subscription !== false && $subscription->getStatus() == PayplansStatus::SUBSCRIPTION_ACTIVE){
 			$buyer = $subscription->getBuyerUsername();
 			$title = $subscription->getTitle();
 			$order = $subscription->getOrder(true);
@@ -76,17 +78,19 @@ class JXiFormsActionTxntorefund extends JXiformsAction
 				$invoice = array_shift($paidInvoices);
 			}
 			
-			$transactions = $invoice->getTransactions();
-	
-			foreach ($transactions as $transaction){
-				//consider only those transactions which contains some amount
-				if ($transaction->getAmount() > 0){
-					$txnId = $transaction->getId();
-					$txnRecords[$txnId]['gateway_txn_id'] = $transaction->getGatewayTxnId();
-					$txnRecords[$txnId]['txn_id'] = $txnId;
-					$payment = $transaction->getPayment(true);
-					$paymentApp = $payment->getApp(true);
-					$txnRecords[$txnId]['gateway_type'] = $paymentApp->getType();
+			if ($invoice !== false){
+				$transactions = $invoice->getTransactions();
+		
+				foreach ($transactions as $transaction){
+					//consider only those transactions which contains some amount
+					if ($transaction->getAmount() > 0){
+						$txnId = $transaction->getId();
+						$txnRecords[$txnId]['gateway_txn_id'] = $transaction->getGatewayTxnId();
+						$txnRecords[$txnId]['txn_id'] = $txnId;
+						$payment = $transaction->getPayment(true);
+						$paymentApp = $payment->getApp(true);
+						$txnRecords[$txnId]['gateway_type'] = $paymentApp->getType();
+					}
 				}
 			}
 		}
