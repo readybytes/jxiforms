@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="system" method="upgrade">
+
+    <name>System-JoomlaXi-Forms-BlockIP</name>
+    <version>1.0.3</version>
+    <creationDate>Oct 2013</creationDate>
+    <author>Team JoomlaXi</author>
+    <authorEmail>team@readybytes.in</authorEmail>
+    <authorUrl>http://www.joomlaxi.com</authorUrl>
+    <copyright>2009-13 Ready Bytes Software Labs Pvt. Ltd.</copyright>
+    <license>GNU General Public License v2</license>
+    <description>BlockIP : This plugin will let you provide additional field of user-ip and generate error log for IP-blocking</description>
+	<files>
+		<filename plugin="blockip">blockip.php</filename>
+	</files>
+	 <config>
+		<fields name="params">
+			<fieldset name="basic">
+			
+				<field name="secret_keyword" type="text"
+					description="Secret Keyword expected in URL to proceed with IP Blocking"
+					label="Secret Keyword"
+					default=""
+					size="37"
+					required="true"
+				/>
+				
+				<field name="keyword_value" type="text"
+					description="Value for the secret keyword expected in URL"
+					label="Keyword Value"
+					default=""
+					size="37"
+					required="true"
+				/>
+				
+				<field name="error_log" type="text"
+					description="Mention Error log to generate"
+					label="Error Log"
+					default=""
+					size="37"
+					required="true"
+				/>
+				
+				<field	name="urlspacer"
+					label="Add in Email Action : 	http://www.jpayplans.com/index.php?option=com_jxiforms&amp;task=blockip&amp;action=confirm&amp;ip_to_block=[[user_ip]]"
+					description="Copy this url and paste it in email content. Replace {secret_keyword} and {keyword_value} with proper values provided in this plugin."
+					type="spacer" />
+				
+			</fieldset>
+		</fields>
+	 </config>
+</extension>
