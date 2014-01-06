@@ -20,3 +20,5 @@ Rb_Html::script(JXIFORMS_PATH_CORE_MEDIA.'/jxiforms.js');
 Rb_Html::_('bootstrap.loadcss');
 //Rb_Html::stylesheet(dirname(__FILE__).'/_media/admin.css');
 
+//Rb_Html::stylesheet(JXIFORMS_PATH_ADMIN_TEMPLATE.'/default/_media/assets/css/custom.css');
+

@@ -46,4 +46,17 @@ class JXiFormsView extends JXiFormsViewbase
 		ob_end_clean();
 		return $content;
 	}
+	
+	public function _adminSubmenu($selMenu = 'dashboard')
+	{
+		$selMenu	= strtolower(JRequest::getVar('view',$selMenu));
+
+		if($this->getTask() == 'display' || $this->getTask() == ''){
+			foreach(self::$_submenus as $menu){
+				Rb_HelperToolbar::addSubMenu($menu, $selMenu, $this->_component->getNameCom());
+			}
+		}
+		
+		return $this;
+	}
 }

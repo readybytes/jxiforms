@@ -20,6 +20,12 @@ class JXiFormsAdminBaseViewDashboard extends JXiFormsView
 		foreach($disabledPlugins as $plugin)
 		{
 				$pluginPath = JXIFORMS_PATH_PLUGIN."/".$plugin->element."/action";
+				
+				//plugin does not necessarily contain action like in autodelete plugin
+				if (!is_dir($pluginPath)){ 
+					unset($disabledPlugins[$plugin->element]);
+					continue;
+				}
 				$actions	 	  = JFolder::folders($pluginPath);
 
 				unset($disabledPlugins[$plugin->element]);
