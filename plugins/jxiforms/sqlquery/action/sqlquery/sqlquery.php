@@ -16,12 +16,15 @@ class JXiFormsActionSqlquery extends JXiformsAction
 	protected $_location	= __FILE__;	
 	
 	public function process($data, $attachments)
-	{
-		$data = $this->_quoteData($data);
-		
+	{	
 		$actionParams = $this->getActionParams();
 		
 		$sql  = $actionParams->get('sql', '');
+		
+		$data = $this->_checkTokens($sql, $data);
+
+		$data = $this->_quoteData($data);
+		
 		if(empty($sql)){
 			//JXITODO :
 			return false;
@@ -70,4 +73,23 @@ class JXiFormsActionSqlquery extends JXiformsAction
 		
 		return $data;
 	}	
+	
+	protected function _checkTokens($sql, $data)
+	{
+		$pattern = "#\[\[(.*?)\]\]#s";
+					
+		preg_match_all($pattern, $sql, $matches);
+		
+		if (empty($matches[1])){
+			return $data;
+		}
+		
+		foreach ($matches[1] as $match){
+			if (!isset($data[$match])){
+				$data[$match] = "";
+			}
+		}
+		
+		return $data;
+	}
 }
