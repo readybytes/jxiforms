@@ -25,10 +25,11 @@ define([
         title: "Formatting"
         , collection: new SnippetsCollection(JSON.parse(formattingJSON))
       });
-      new TabView({
+      
+      /*new TabView({
         title: "Special"
         , collection: new SnippetsCollection(JSON.parse(specialJSON))
-      });
+      });*/
       new TabView({
         title: "Buttons"
         , collection: new SnippetsCollection(JSON.parse(buttonsJSON))

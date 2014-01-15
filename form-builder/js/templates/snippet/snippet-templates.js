@@ -22,6 +22,8 @@ define(function(require) {
   , textinput                 = require('text!templates/snippet/textinput.html')
   , phone                     = require('text!templates/snippet/phone.html')
   , fullmultiplecheckboxes    = require('text!templates/snippet/fullmultiplecheckboxes.html')
+  , filebutton               = require('text!templates/snippet/filebutton.html')
+  , buttondouble             = require('text!templates/snippet/buttondouble.html')
   , fullmultipleradios         = require('text!templates/snippet/fullmultipleradios.html');
 
   return {
@@ -49,5 +51,7 @@ define(function(require) {
     , phone                       : phone
     , fullmultiplecheckboxes      : fullmultiplecheckboxes
     , fullmultipleradios          : fullmultipleradios
+    , filebutton	              : filebutton
+    , doublebutton  	          : buttondouble
   }
 });
