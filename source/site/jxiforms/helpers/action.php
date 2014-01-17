@@ -80,7 +80,7 @@ class JXiFormsHelperAction extends JXiFormsHelper
 		return self::$_actions;
 	}
 	
-	public function addAction($type)
+	public static function addAction($type)
 	{
 		self::$_actions[$type] = $type;
 	}

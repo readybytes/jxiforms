@@ -42,7 +42,7 @@ class JXiformsAction extends JXiFormsLib
 	 * 
 	 * @return Object JXiformsAction  Instance of JXiformsAction
 	 */
-	public static function getInstance($id = 0,  $type = null,  $bindData = null)
+	public static function getInstance($id = 0,  $type = null,  $bindData = null, $dummy = null)
 	{
 		static $instance=array();
 
@@ -332,7 +332,7 @@ class JXiformsAction extends JXiFormsLib
     	return $this->type;
     }
     
-	public function getParam($key, $default=null)
+	public function getParam($key, $default=null, $property = null)
 	{
 		return $this->core_params->get($key,$default);
 	}

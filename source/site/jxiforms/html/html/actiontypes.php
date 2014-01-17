@@ -16,7 +16,7 @@ if(defined('_JEXEC')===false) die();
 
 class JxiformsHtmlActiontypes
 {
-	function edit($name, $value, $attr=null, $ignore=array())
+	static function edit($name, $value, $attr=null, $ignore=array())
 	{
 		$actions = JXiFormsHelperAction::getActions();
 		

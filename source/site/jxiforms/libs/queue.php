@@ -37,7 +37,7 @@ class JXiformsQueue extends JXiFormsLib
 	 * 
 	 * @return Object JXiformsQueue  Instance of JXiformsQueue
 	 */
-	public static function getInstance($id = 0, $bindData = null)
+	public static function getInstance($id = 0, $bindData = null, $dummy = null, $dummy = null)
 	{
 		return parent::getInstance('queue', $id, $bindData);
 	}

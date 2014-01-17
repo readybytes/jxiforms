@@ -28,7 +28,7 @@ class JXiFormsmodelformAction extends JXiFormsModelform
 {
 	// action-type specific parameters needs to be binded 
 	// with basic action form so relevant xml file is loaded on the action form
-	function preprocessForm($form, $data)
+	function preprocessForm(JForm $form, $data, $group=null)
 	{
 		$action_id = isset($data['action_id']) ? $data['action_id'] : 0;
 		if($data['type']){

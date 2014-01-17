@@ -16,7 +16,7 @@ if(defined('_JEXEC')===false) die();
  */
 class JxiformsHtmlInputs
 {
-	function edit($name, $value, $attr=null, $ignore=array())
+	static function edit($name, $value, $attr=null, $ignore=array())
 	{
 		$inputs  =  JXiFormsFactory::getInstance('input', 'model')->loadRecords();
 		
