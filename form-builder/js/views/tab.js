@@ -30,11 +30,11 @@ define([
         that.$el.append(that.options.content);
       }
       // Render & append just the tabs navigation at the top of the forms on the right
-      $(".nav.nav-tabs").append(this.tabNavTemplate({title: this.options.title, id: this.id}))
+      $("#form-builder-navtab").append(this.tabNavTemplate({title: this.options.title, id: this.id}))
 
       // Render tab
       this.$el.attr("id", this.id);
-      this.$el.appendTo(".tab-content");
+      this.$el.appendTo("#form-builder-tabcontent");
       this.delegateEvents();
     }
   });

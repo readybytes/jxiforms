@@ -55,8 +55,8 @@ define([
       });
 
       //Make the first tab active!
-      $("#navtab.tab-pane").first().addClass("active");
-      $("#navtab ul.nav li").first().addClass("active");
+      $("ul#form-builder-navtab li").first().addClass("active");
+      $("div#form-builder-tabcontent div").first().addClass("active");
 
       var formView = new MyFormView({
           title: "Original"

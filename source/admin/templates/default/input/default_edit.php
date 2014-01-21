@@ -35,7 +35,6 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
   <ul class="nav nav-tabs" id="jxiforms-form-tab">
 
    	<li class="active"><a href="#details" data-toggle="tab">Form Details</a></li>
-   	<li><a href="#builder" data-toggle="tab">Form Prepare</a></li>
    	<li><a href="#menuoptions" data-toggle="tab">Menu Options</a></li>
    	
   </ul>
@@ -44,12 +43,12 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
   
   	<div class="tab-content">
           
-          <div class="tab-pane" id="details">
+          <div class="tab-pane active" id="details">
 				<!-- ======================== FORM DETAILS START===================================== -->
 				<form action="<?php echo $uri; ?>" method="post" name="adminForm" id="adminForm" class="rb-validate-form">
 					<div class="row-fluid">
 					
-						<div class="span5">		
+						<div class="span9">		
 							<fieldset class="form-horizontal">								
 							
 								<div class="control-group">
@@ -65,10 +64,6 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 									<div class="controls"><?php echo $form->getInput('description'); ?></div>				
 								</div>
 								
-								<div class="control-group">
-									<div class="control-label"><?php echo $form->getLabel('published'); ?> </div>
-									<div class="controls"><?php echo $form->getInput('published'); ?></div>								
-								</div>
 					
 								<div class="control-group">
 									<div class="control-label"><?php echo $form->getLabel('post_url'); ?> </div>
@@ -85,6 +80,19 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 										<?php endif;?>	
 									</div>
 								</div>		
+								
+								<?php echo $form->getInput('input_id'); ?>
+							</fieldset>
+						</div>
+		
+						<div class="span3">
+							<fieldset>
+								
+								<div class="control-group">
+									<div class="control-label"><?php echo $form->getLabel('published'); ?> </div>
+									<div class="controls"><?php echo $form->getInput('published'); ?></div>								
+								</div>
+								
 								<div class="control-group">
 									<div class="control-label"><?php echo $form->getLabel('redirect_url'); ?> </div>
 									<div class="controls"><?php echo $form->getInput('redirect_url'); ?></div>								
@@ -97,26 +105,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 									<div class="controls"><?php $actions = $input->getActions();
 										 						echo JXiFormsHtml::_('jxiformshtml.actions.edit', 'jxiforms_form[_input_actions]', $actions, array('multiple'=>true, 'style'=>"class='multiselect'"));?></div>				
 								</div>
-								
-								<?php echo $form->getInput('input_id'); ?>
-							</fieldset>
-						</div>
-		
-						<div class="span6">
-							<fieldset class="form-horizontal">
 							
-								<div class="control-group">
-									<div class="control-label"><?php echo $form->getLabel('html'); ?> </div>
-									<div class="controls"><?php echo $form->getInput('html'); ?></div>
-									<div class="clr"></div>
-									<?php $html = trim($input->getHtml());?>
-									<?php if($input->getId() && !empty($html)) { ?>
-										<div class="controls forms-preview-link"><?php echo $preview_link?></div>
-									<?php }
-										  else{?>
-										  	<div class="controls forms-preview-link jxif-opacity45" style="cursor:pointer; color:#0088CC;" title="<?php echo Rb_Text::_('COM_JXIFORMS_FORM_PREVIEW_LINK_TOOLTIP_BEFORE_SAVE');?>"><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_HTML_PREVIEW');?></div>
-										  <?php }?>			
-								</div>
 							</fieldset>	
 						</div>
 					</div>
@@ -124,80 +113,63 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 						<?php echo $input->getParam('jsoncontent');?>
 					</textarea>
 					
+					<div class="hide"><?php echo $form->getInput('html'); ?></div>
 					<input type="hidden" name="task" value="save" />
 					<input type="hidden" name="boxchecked" value="1" />		
-					</form>
+				</form>
 					<!-- ======================== FORM DETAILS END===================================== -->
-			</div>
-          
-          
-          
-          <div class="tab-pane" id="builder">
-          		<!-- ======================== FORM BUILDER START===================================== -->
+					
+					 <div class="tab-pane active" id="builder">
+          			<!-- ======================== FORM BUILDER START===================================== -->
           		
           		
-          		<div class="row-fluid clearfix">
-          		
-          		<!--  Components -->
-          		
-          		 <div id="drag-drop-components" class="span6">
-			         <section>
-			            <h2>Drag And Drop components</h2>
-			            <hr>
-			            <div class="tabbable">
-			              <ul class="nav nav-tabs" id="navtab">
-			                <!-- Tab nav -->
-			              </ul>
-			              <div id="components-parent">
-			                <form class="form-horizontal" id="components">
-			                  <fieldset>
-			                    <div class="tab-content">
-			                      <!-- Tabs of snippets go here -->
-			                    </div>
-			                  </fieldset>
-			                </form>
-			              </div>
-			            </div>
-			         </section>
-       			</div>
-        		<!-- / Components -->
-
-
-	        <!-- Building Form. -->
-	        <div class="span6">
-	          <div class="clearfix">
-	            <h2>Your Form</h2>
-	            <hr>
-	            <div id="build">
-	              <form id="target" class="form-horizontal">
-	              </form>
-	            </div>
-	          </div>
-	        </div>
-	        <!-- / Building Form. -->
-          		
-          		
-          </div>		
-          		
-          		
-          		
-          		
-          		
-          		
-          		
-          		
-                      
-				      
-				      <div class="row-fluid clearfix">
-				        <div class="span12">
+		          		<div class="row-fluid clearfix">
+		          		
+		          		<!--  Components -->
+		          		
+		          		 <div id="drag-drop-components" class="span6">
+					        
+					            <h4>Drag And Drop components</h4>
+					            <hr>
+					            <div class="tabbable">
+					              <ul class="nav nav-tabs" id="form-builder-navtab">
+					                <!-- Tab nav -->
+					              </ul>
+					              <div id="components-parent">
+					                <form class="form-horizontal" id="components">
+					                  <fieldset>
+					                    <div class="tab-content" id="form-builder-tabcontent">
+					                      <!-- Tabs of snippets go here -->
+					                    </div>
+					                  </fieldset>
+					                </form>
+					              </div>
+					            </div>
+					         
+		       			</div>
+		        		<!-- / Components -->
+		
+		
+			       		<!-- Building Form. -->
+				        <div class="span6">
+				          <div class="clearfix">
+				            <h4>Your Form</h4>
+				            <hr>
+				            <div id="build">
+				              <form id="target" class="form-horizontal">
+				              </form>
+				            </div>
+				          </div>
 				        </div>
-				      </div>
-				
-				    
+				        <!-- / Building Form. -->
+		          		
+		          		
+		          </div>
 
-    			<script data-main="<?php echo Rb_HelperTemplate::mediaURI(dirname(dirname(__FILE__)).'/_media/assets/js/main.js', false);?>" src="<?php echo Rb_HelperTemplate::mediaURI(dirname(dirname(__FILE__)).'/_media/assets/js/lib/require.js', false);?>" ></script>
+    			<script data-main="<?php echo Rb_HelperTemplate::mediaURI(dirname(dirname(__FILE__)).'/_media/assets/js/main-built.js', false);?>" src="<?php echo Rb_HelperTemplate::mediaURI(dirname(dirname(__FILE__)).'/_media/assets/js/lib/require.js', false);?>" ></script>
  			<!-- ======================== FORM BUILDER END===================================== -->
-          </div>
+      	    </div>
+		</div>
           
           
           <div class="tab-pane" id="menuoptions">

@@ -17,4 +17,14 @@ class JXiFormsSiteViewInput extends JXiFormsSiteBaseViewInput
 	{
 		return true;
 	}
+	
+	function display($tpl= null, $itemId = null)
+	{
+		$itemId  =  ($itemId === null) ? $this->getModel()->getState('id') : $itemId ;
+		
+		$input   =  JXiformsInput::getInstance($itemId);
+		$this->assign('sample_html', $input->getHtml());
+		$this->assign('input', $input);
+		return true;
+	}
 }
