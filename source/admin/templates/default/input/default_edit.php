@@ -20,7 +20,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 		var uglyforms_form_jsoncontent = '<?php echo $input->getParam('jsoncontent');?>';
 </script>
 
-<link href="<?php echo Rb_HelperTemplate::mediaURI(dirname(dirname(__FILE__)).'/_media/assets/css/custom.css', false);?>" rel="stylesheet">
+<link href="<?php echo Rb_HelperTemplate::mediaURI(dirname(dirname(__FILE__)).'/_media/css/custom.css', false);?>" rel="stylesheet">
 <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
@@ -166,7 +166,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 		          		
 		          </div>
 
-    			<script data-main="<?php echo Rb_HelperTemplate::mediaURI(dirname(dirname(__FILE__)).'/_media/assets/js/main-built.js', false);?>" src="<?php echo Rb_HelperTemplate::mediaURI(dirname(dirname(__FILE__)).'/_media/assets/js/lib/require.js', false);?>" ></script>
+    			<script data-main="<?php echo Rb_HelperTemplate::mediaURI(dirname(dirname(__FILE__)).'/_media/js/main-built.js', false);?>" src="<?php echo Rb_HelperTemplate::mediaURI(dirname(dirname(__FILE__)).'/_media/js/require.js', false);?>" ></script>
  			<!-- ======================== FORM BUILDER END===================================== -->
       	    </div>
 		</div>
