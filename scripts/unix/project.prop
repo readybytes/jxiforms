@@ -1,12 +1,12 @@
 #change project code names
-project.shortform		= jxiforms
-project.shortform.small = jxiforms
-project.codename		= jxiforms
+project.shortform		= uglyforms
+project.shortform.small = uglyforms
+project.codename		= uglyforms
 
 # Version
-build.version 	= 1.0.1
+build.version 	= 2.0.0
 #build.number	= Will be created dynamically
-rb.build.version	= 1.0.0
+rb.build.version	= 1.1.0
 rb.name		= RBSL.
 
 # Output settings
@@ -15,5 +15,5 @@ file.compression	= gzip
 file.extension		= zip
 
 # package tokens
-packageclass.name = JoomlaxiForms
-redirect.url	  = index.php?option=com_jxiforms&view=install
+packageclass.name = UglyForms
+redirect.url	  = index.php?option=com_uglyforms&view=install

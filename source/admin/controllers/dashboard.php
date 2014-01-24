@@ -2,14 +2,14 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JoomlaXi Forms
+* @package		Ugly Forms
 * @subpackage	Backend
 * @contact 		bhavya@readybytes.in
 */
 
 if(defined('_JEXEC')===false) die();
 
-class JXiFormsAdminControllerDashboard extends JXiFormsController
+class UglyformsAdminControllerDashboard extends UglyformsController
 {
 	//there is no model exists for dashboard
 	function getModel($name = '', $prefix = '', $config = array())
@@ -22,14 +22,14 @@ class JXiFormsAdminControllerDashboard extends JXiFormsController
 		//Enables the Plugin of Action		
 		$pluginToEnable = JRequest::getVar('plugin');
 		$pluginName		= JRequest::getVar('pluginName');
-		Rb_HelperPlugin::changeState($pluginToEnable, "jxiforms");
+		Rb_HelperPlugin::changeState($pluginToEnable, "uglyforms");
 
 		//Varifies the status of plugin
-		$enabled		= JXiFormsHelperJoomla::getPlugins('plugin', "jxiforms", true);
-		($enabled[$pluginToEnable]) ? JXiFormsFactory::getApplication()->enqueueMessage(sprintf(Rb_Text::_('COM_JXIFORMS_DASHBOARD_ENABLE_PLUGIN_SUCCESSFULL_MESSAGE'), $pluginName),'success')
-						: JXiFormsFactory::getApplication()->enqueueMessage(sprintf(Rb_Text::_('COM_JXIFORMS_DASHBOARD_ENABLE_PLUGIN_UNSUCCESSFULL_MESSAGE'), $pluginName),'notice');
+		$enabled		= UglyformsHelperJoomla::getPlugins('plugin', "uglyforms", true);
+		($enabled[$pluginToEnable]) ? UglyformsFactory::getApplication()->enqueueMessage(sprintf(Rb_Text::_('COM_UGLYFORMS_DASHBOARD_ENABLE_PLUGIN_SUCCESSFULL_MESSAGE'), $pluginName),'success')
+						: UglyformsFactory::getApplication()->enqueueMessage(sprintf(Rb_Text::_('COM_UGLYFORMS_DASHBOARD_ENABLE_PLUGIN_UNSUCCESSFULL_MESSAGE'), $pluginName),'notice');
 
-		$this->setRedirect(Rb_Route::_('index.php?option=com_jxiforms&view=dashboard'));
+		$this->setRedirect(Rb_Route::_('index.php?option=com_uglyforms&view=dashboard'));
 		return false;
 	}
 } 

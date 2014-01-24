@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-	<layout title="COM_JXIFORMS_INPUT_DEFAULT_LAYOUT_TITLE" option="com_jxiforms_input_view_default_option">
-		<message><![CDATA[COM_JXIFORMS_INPUT_DEFAULT_LAYOUT_MESSAGE]]></message>
+	<layout title="COM_UGLYFORMS_INPUT_DEFAULT_LAYOUT_TITLE" option="com_uglyforms_input_view_default_option">
+		<message><![CDATA[COM_UGLYFORMS_INPUT_DEFAULT_LAYOUT_MESSAGE]]></message>
 	</layout>
 	
 	<fields name="request">
-		<fieldset name="request" addfieldpath="/components/com_jxiforms/jxiforms/html/html"
+		<fieldset name="request" addfieldpath="/components/com_uglyforms/uglyforms/html/html"
 			label="Basic Parameters">
-			<field name="input_id" type="jxiforms.inputs" default="0"
-				label="COM_JXIFORMS_INPUT_SELECT" addnone="true" description=""/>	
+			<field name="input_id" type="uglyforms.inputs" default="0"
+				label="COM_UGLYFORMS_INPUT_SELECT" addnone="true" description=""/>	
 		</fieldset>
 	</fields>
 </metadata>

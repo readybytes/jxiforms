@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<name>Github-Issue</name>
+    <icon>githubissue.png</icon>
+    <description>
+    	<![CDATA[<a href="https://github.com/" target="_blank" >Github</a> is a web-based hosting service for projects that use the Git revision control system.<br> 
+		This action can be used to create issues in github on form submission.<br>
+		]]>
+	</description>
+	<help>
+		<![CDATA[
+		<br>Github-Issue action requires cURL to be installed on your server.<br>
+		You can mention custom Issue title and description based on customer input.<br>
+		With reference to the example, you can use [[issue_title]] and [[issue_description]] for user input values.<br>
+		<b>Important : </b> If any repository lies under an organization then it is mandatory to enter the organization name.
+		]]>
+	</help>
+	<code>
+	<![CDATA[
+    	<pre class="jxif-example-code">
+<b>&lt;form name="form_name" method="POST" action="form_post_url"&gt;<br>
+	Issue Name  : &lt;input name="issue_title" type="text" size="30" /&gt;<br>
+   	Description : &lt;textarea name="issue_description" rows="2" cols="50" &gt;&lt;/textarea&gt;<br>
+                                &lt;input type="submit" name="submit" value="Submit" /&gt;
+&lt;/form&gt;</b>
+		</pre>
+		]]>
+	</code>
+		<fields name="action_params">
+		
+			<fieldset name="parameters" addfieldpath="/components/com_uglyforms/uglyforms/html/fields">
+
+				<field name="username" type="text"
+					label="COM_UGLYFORMS_ACTION_GITHUB_USERNAME_LABEL"
+					description="COM_UGLYFORMS_ACTION_GITHUB_USERNAME_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="password" type="password"
+					label="COM_UGLYFORMS_ACTION_GITHUB_PASSWORD_LABEL"
+					description="COM_UGLYFORMS_ACTION_GITHUB_PASSWORD_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="repository" type="text"
+					label="COM_UGLYFORMS_ACTION_GITHUB_REPOSITORY_LABEL"
+					description="COM_UGLYFORMS_ACTION_GITHUB_REPOSITORY_DESC"
+					default=""
+				/>
+				
+				<field name="organization" type="text"
+					label="COM_UGLYFORMS_ACTION_GITHUB_ORGANIZATION_LABEL"
+					description="COM_UGLYFORMS_ACTION_GITHUB_ORGANIZATION_DESC"
+					default=""
+				/>
+				
+				<field name="issue_title" type="textarea"
+					label="COM_UGLYFORMS_ACTION_GITHUB_ISSUE_TITLE_LABEL"
+					description="COM_UGLYFORMS_ACTION_GITHUB_ISSUE_TITLE_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="issue_description" type="textarea"
+					label="COM_UGLYFORMS_ACTION_GITHUB_ISSUE_DESCRIPTION_LABEL"
+					description="COM_UGLYFORMS_ACTION_GITHUB_ISSUE_DESCRIPTION_DESC"
+					default=""
+				/>
+				
+				<field name="milestone" type="uglyforms.githubmilestonelist"
+					label="COM_UGLYFORMS_ACTION_GITHUB_MILESTONE_LABEL"
+					description="COM_UGLYFORMS_ACTION_GITHUB_MILESTONE_DESC"
+					default=""
+					class="multiselect"
+					addfieldpath="/plugins/uglyforms/github/action/githubissue/fields">
+					<option value="" >COM_UGLYFORMS_SELECT_OPTION</option>
+				</field>
+				
+				<field name="label" type="text"
+					label="COM_UGLYFORMS_ACTION_GITHUB_LABEL_LABEL"
+					description="COM_UGLYFORMS_ACTION_GITHUB_LABEL_DESC"
+					default=""
+				/>
+				
+				<field name="assignee" type="text"
+					label="COM_UGLYFORMS_ACTION_GITHUB_ASSIGNEE_LABEL"
+					description="COM_UGLYFORMS_ACTION_GITHUB_ASSIGNEE_DESC"
+					default=""
+				/>
+				
+
+			</fieldset>
+		</fields>
+</config>

@@ -2,21 +2,21 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JoomlaXi Forms
+* @package		Ugly Forms
 * @subpackage	Backend
-* @contact 		joomlaxi@readybytes.in
+* @contact 		support+uglyforms@readybytes.in
 */
 
 if(defined('_JEXEC')===false) die();
 
-class JXiFormsAdminControllerConfig extends JXiFormsController
+class UglyformsAdminControllerConfig extends UglyformsController
 {
 	protected 	$_defaultTask = 'edit';
 	
 	public function _save(array $data, $itemId=null)
 	{
 		//fields with blank value does not get posted so value does not get updated in the configuration
-		$modelform  = JXiFormsFactory::getInstance('config', 'Modelform' , 'Jxiforms');
+		$modelform  = UglyformsFactory::getInstance('config', 'Modelform' , 'Uglyforms');
 		$form		= $modelform->getForm();
 		$fieldset   = $form->getFieldset('config_params');
 
@@ -25,7 +25,7 @@ class JXiFormsAdminControllerConfig extends JXiFormsController
 				$configParams[] = $field->fieldname;
 		}
 		
-		$postParams    = JXiFormsFactory::getApplication()->input->post->get('jxiforms_form', array(), 'array');
+		$postParams    = UglyformsFactory::getApplication()->input->post->get('uglyforms_form', array(), 'array');
 		$postParams    = array_keys($postParams);
 		$emptyParams   = array_diff($configParams, $postParams);
 		

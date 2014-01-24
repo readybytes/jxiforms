@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<name>Dropbox for Ugly Forms</name>
+    <icon>dropbox.png</icon>
+    <description>
+    	<![CDATA[<a href="https://www.dropbox.com/" target="_blank" >Dropbox</a> is a free service that lets you bring your photos, docs, and videos anywhere and share them easily.
+    	<br>This action can be utilized to move the uploaded files in your Dropbox account.
+    	]]>
+	</description>
+	<help>
+	<![CDATA[
+		<br><b>File-Upload Field Name</b> is name of the field given in html code for file upload.<br>
+		Like in the example name of the file upload element is resume_file so you need to enter this name in this parameter.<br>
+		This parameter is useful when you have multiple file upload elements and you want to upload only selected file. <br>
+		If nothing mentioned in this parameter than all the uploaded files will be moved to your dropbox account.<br><br>
+		<b>Important : enctype="multipart/form-data"</b> is required when you are using forms that have a file upload control.
+		]]>
+	</help>
+	<code>
+	<![CDATA[
+    	<pre class="jxif-example-code">
+<b>&lt;form name="form_name" method="POST" action="form_post_url" enctype="multipart/form-data" &gt;<br>
+	Upload File : &lt;input name="resume_file" type="file" /&gt;<br>
+	                       &lt;input type="submit" name="submit" value="Submit" /&gt;
+&lt;/form&gt;</b>
+		</pre>
+		]]>
+	</code>
+		<fields name="action_params">
+		
+			<fieldset name="parameters" addfieldpath="/components/com_uglyforms/uglyforms/html/fields">
+
+				<field name="email" type="text"
+					label="COM_UGLYFORMS_ACTION_DROPBOX_EMAIL_ID_LABEL"
+					description="COM_UGLYFORMS_ACTION_DROPBOX_EMAIL_ID_DESC"
+					default=""
+				/>
+				
+				<field name="password" type="password"
+					label="COM_UGLYFORMS_ACTION_DROPBOX_PASSWORD_LABEL"
+					description="COM_UGLYFORMS_ACTION_DROPBOX_PASSWORD_DESC"
+					default=""
+				/>
+				
+				<field name="destination" type="text"
+					label="COM_UGLYFORMS_ACTION_DROPBOX_DESTINATION_LABEL"
+					description="COM_UGLYFORMS_ACTION_DROPBOX_DESTINATION_DESC"
+					default=""
+				/>
+				
+				<field name="upload_field" type="text"
+					label="COM_UGLYFORMS_ACTION_DROPBOX_UPLOAD_FIELD_LABEL"
+					description="COM_UGLYFORMS_ACTION_DROPBOX_UPLOAD_FIELD_DESC"
+					default=""
+				/>
+
+			</fieldset>
+		</fields>
+</config>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="uglyforms" method="upgrade">
+    <name>Asana for Ugly Forms</name>
+    <version>@build.version@</version>
+    <creationDate>Jan 2013</creationDate>
+    <author>Team ReadyBytes</author>
+    <authorEmail>support+uglyforms@readybytes.in</authorEmail>
+    <authorUrl>http://www.readybytes.net</authorUrl>
+    <copyright>2009-13 Ready Bytes Software Labs Pvt. Ltd.</copyright>
+    <license>GNU General Public License v2</license>
+    <description>Ugly Forms Asana Integration</description>
+	<files>
+		<filename plugin="asana">asana.php</filename>
+		<folder>action</folder>
+		<filename>index.html</filename>
+	</files>
+</extension>
+

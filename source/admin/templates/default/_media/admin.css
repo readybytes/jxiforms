@@ -1,12 +1,12 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JoomlaXi Forms
+* @package		Ugly Forms
 * @subpackage	Backend
-* @contact 		joomlaxi@readybytes.in
+* @contact 		support+uglyforms@readybytes.in
 */
 
-.jxiforms .jxif-example-code{
+.uglyforms .jxif-example-code{
 	border: solid 1px #b7b7b7;
 	margin-right : 10px;
 	background: #FFFFFF;
@@ -18,7 +18,7 @@
 	width : 85%;
 }
 
-.jxiforms .powered-by{
+.uglyforms .powered-by{
 	color: #aaa;
     background-color: #F6F6F6;
     border-top: 1px dashed #DDDDDD;
@@ -39,13 +39,13 @@
 	border-radius:    0px 0px 5px 5px;
 }
 
-.jxiforms .dashboard-icon{
+.uglyforms .dashboard-icon{
 	width: 16%;
     margin:2%;
     min-width:120px;
 }
 
-.jxiforms .dashboard-icon-name{
+.uglyforms .dashboard-icon-name{
 	height:30px;
 	white-space: nowrap;
     width: 98%;
@@ -53,11 +53,11 @@
 	text-overflow: ellipsis;
 }
 
-.jxiforms .dashboard-icon-image{
+.uglyforms .dashboard-icon-image{
 	padding:5%;
 }
 
-.jxiforms .dashboard-icon-panel{
+.uglyforms .dashboard-icon-panel{
 	background-color: #f5f5f5;
 	border: 1px solid #eee;
 	border: 1px solid rgba(0,0,0,0.05);
@@ -65,44 +65,44 @@
 	float:left !important;
 }
 
-.jxiforms .jxif-opacity45{
+.uglyforms .jxif-opacity45{
 	opacity:0.45;
 }
 
-.jxiforms .forms-preview-link{
+.uglyforms .forms-preview-link{
 	font-size : 12px;
 	font-weight : bold;
 	position : relative;
 	top : 14px;
 }
 
-.jxiforms  .position-relative{	
+.uglyforms  .position-relative{	
  	position : relative;
 }
 
-.jxiforms  .position-absolute{	
+.uglyforms  .position-absolute{	
  	position : absolute;
  	left: 0; 
  	top: 0;
 }
 
-.jxiforms  .jxif-margin-top03{	
+.uglyforms  .jxif-margin-top03{	
  	margin-top : 3%;
 }
 
-.jxiforms  .margin-top2{	
+.uglyforms  .margin-top2{	
  	margin-top : 2%;
 }
 
-.jxiforms  .margin-top1{	
+.uglyforms  .margin-top1{	
  	margin-top : 1%;
 }
 
-.jxiforms  .jxif-margin-bottom01{	
+.uglyforms  .jxif-margin-bottom01{	
  	margin-bottom : 1%;
 }
 
-.jxiforms  .jxif-margin-bottom03{	
+.uglyforms  .jxif-margin-bottom03{	
  	margin-bottom : 3%;
 }
 
@@ -113,17 +113,17 @@
     margin-top: 10px;
 }
 
-.jxiforms .row-fluid [class*="span"]:first-child {
+.uglyforms .row-fluid [class*="span"]:first-child {
     margin-left: 0;
 }
 
-.jxiforms .row-fluid [class*="span"] {
+.uglyforms .row-fluid [class*="span"] {
     margin-left: 2.5641%;
 }
 
 @media (max-width: 767px) {
-	.jxiforms  [class*="span"],
-	.jxiforms .row-fluid [class*="span"], .jxiforms .row-fluid .span6
+	.uglyforms  [class*="span"],
+	.uglyforms .row-fluid [class*="span"], .uglyforms .row-fluid .span6
 	 {
 		float: none;
 		display: block;
@@ -132,19 +132,19 @@
      }	
 }
 
-.jxiforms .row-fluid .span6 {
+.uglyforms .row-fluid .span6 {
     width: 48.7179%;
 }
 
 /* hacks finished */
 
-.jxiforms .action-select-list{
+.uglyforms .action-select-list{
     width: 100%;
     padding:2%;
     margin-top: 1%;
 }
 
-.jxiforms .action-icon-view{
+.uglyforms .action-icon-view{
 	border: 2px solid #D8D8D8;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);    
@@ -153,80 +153,80 @@
     overflow:hidden;
 }
 
-.jxiforms .action-icon-view:hover{
+.uglyforms .action-icon-view:hover{
 	border: 2px solid #0088CC;
 	transition-duration: 1s;
 	-webkit-transition-duration:1s;
 	cursor: pointer;
 }
 
-.jxiforms .action-list [class*="span"]:first-child {
+.uglyforms .action-list [class*="span"]:first-child {
     margin-left: 15px;
 }
 
-.jxiforms .enable-plugin-button{
+.uglyforms .enable-plugin-button{
 	display:none;
 	height:30px;
 }
 
-.jxiforms .dashboard-icon-panel [class*="span"]:first-child {
+.uglyforms .dashboard-icon-panel [class*="span"]:first-child {
     margin-left: 2%;
 }
 
-.jxiforms .jxif-padding01{
+.uglyforms .jxif-padding01{
 	padding:1%;
 }
 
-.jxiforms .jxif-padding02{
+.uglyforms .jxif-padding02{
 	padding:2%;
 }
 
-.jxiforms .jxif-padding03{
+.uglyforms .jxif-padding03{
 	padding:3%;
 }
 
-.jxiforms .jxif-left-padding01{
+.uglyforms .jxif-left-padding01{
 	padding-left:1%;
 }
 
-.jxiforms .jxif-fontsize15{
+.uglyforms .jxif-fontsize15{
 	font-size:1.5em;
 }
 
-.jxiforms .jxif-fontsize12{
+.uglyforms .jxif-fontsize12{
 	font-size:1.2em;
 }
 
-.jxiforms .jxif-action-heading
+.uglyforms .jxif-action-heading
 {
 	background-image: -moz-linear-gradient(left, #FFFFFF, #F5F5F5);
 }
 
-.jxiforms .jxif-text-colorgray
+.uglyforms .jxif-text-colorgray
 {
 	color:gray;
 }
 
-.jxiforms .jxif-border00{
+.uglyforms .jxif-border00{
 	border:none;
 }
 
-.jxiforms .jxif-width100{
+.uglyforms .jxif-width100{
 	width:100px;
 }
 
-.jxiforms .jxif-textarea{
+.uglyforms .jxif-textarea{
 	width:85%;
 	max-width:90%;
 }
 
 /* Compatiblity with J2.5, radio buttons are not looking proper */
-.jxiforms  fieldset.btn-group label.btn {
+.uglyforms  fieldset.btn-group label.btn {
 	clear : none;
 }
 
 /* No Class Available for text align right */
-.jxiforms .jxif-text-right {
+.uglyforms .jxif-text-right {
     text-align: right;
 }
 
@@ -237,36 +237,36 @@ float: right ! important;
 float: left ! important;
 }
 
-.jxiforms .jxif-textcolor999{
+.uglyforms .jxif-textcolor999{
 	color:#999;
 }
 
-.jxiforms .jxif-textcolor444{
+.uglyforms .jxif-textcolor444{
 	color:#444;
 }
 
-.jxiforms .jxif-letterspace01{
+.uglyforms .jxif-letterspace01{
 letter-spacing:1px;
 }
 
-.jxiforms .jxif-letterspace02{
+.uglyforms .jxif-letterspace02{
 letter-spacing:2px;
 }
-.jxiforms .jxif-verticalalign-middle{
+.uglyforms .jxif-verticalalign-middle{
 vertical-align:middle;
 }
 
-.jxiforms .jxif-bgcolor-DC{
+.uglyforms .jxif-bgcolor-DC{
 	background-color: #DCDCDC;
 }
 
-.jxiforms .jxif-setborder{
+.uglyforms .jxif-setborder{
 	border: 1px solid #eee;
 	border: 1px solid rgba(0,0,0,0.05);
 	border-radius: 4px;
 }
 
-.jxiforms .jxif-heading
+.uglyforms .jxif-heading
 {
 	background-image: -moz-linear-gradient(left, #F5F5F5, #DCDCDC);
 }

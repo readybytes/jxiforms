@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset addfieldpath="/components/com_uglyforms/uglyforms/html/fields">
+
+		<field name="action_id" type="hidden"
+			default="0"
+			label="COM_UGLYFORMS_ACTION_ID_LABEL"
+			description="COM_UGLYFORMS_ACTION_ID_DESC"
+			readonly="true"
+			required="true"
+			size="10"
+		/>
+
+		<field name="title" type="text"
+			label="COM_UGLYFORMS_ACTION_TITLE_LABEL"
+			description="COM_UGLYFORMS_ACTION_TITLE_DESC"
+			size="45" required="true"
+		/>
+		
+		<field name="type" type="hidden"
+			label="COM_UGLYFORMS_ACTION_TYPE_LABEL"
+			description="COM_UGLYFORMS_ACTION_TYPE_DESC"
+			size="45" required="true" readonly="true"
+		/>
+		
+		<field name="published" type="radio"
+			label="COM_UGLYFORMS_ACTION_PUBLISHED_LABEL" 
+			description="COM_UGLYFORMS_ACTION_PUBLISHED_DESC"
+			class="btn-group" 
+			size="1" default="1" >
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+		
+		<field name="for_all_inputs" type="list"
+			label="COM_UGLYFORMS_ACTION_FOR_ALL_INPUTS_LABEL" 
+			description="COM_UGLYFORMS_ACTION_FOR_ALL_INPUTS_DESC"
+			class="inputbox" 
+			size="1" default="0" >
+			<option value="0">COM_UGLYFORMS_NO</option>
+			<option value="1">COM_UGLYFORMS_YES</option>
+		</field>
+		
+		<field name="description" type="textarea"
+			rows="2" cols="40"
+			default=""
+			description="COM_UGLYFORMS_ACTION_DESCRIPTION_DESC"
+			label="COM_UGLYFORMS_ACTION_DESCRIPTION_LABEL" 
+		/>
+		
+		<field name="data" type="editor"
+			default=""
+			description="COM_UGLYFORMS_ACTION_DATA_DESC"
+			label="COM_UGLYFORMS_ACTION_DATA_LABEL"  
+		/>
+
+	</fieldset>
+	
+	<fields name="core_params">
+		<fieldset name="core_params" addfieldpath="/components/com_uglyforms/uglyforms/html/fields">
+		
+			<field name="require_approval" type="radio"
+					label="COM_UGLYFORMS_ACTION_CORE_PARAMS_REQUIRE_APPROVAL_LABEL" 
+					description="COM_UGLYFORMS_ACTION_CORE_PARAMS_REQUIRE_APPROVAL_DESC"
+					class="btn-group" 
+					size="1" default="0" >
+					<option value="1">COM_UGLYFORMS_YES</option>
+					<option value="0">COM_UGLYFORMS_NO</option>
+			</field>
+			
+		</fieldset>
+	</fields>
+	
+</form>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Copying JoomlaXi Forms data to GIT" basedir="." default="copy_to_git">
+<project name="Copying Ugly Forms data to GIT" basedir="." default="copy_to_git">
 
 	<property name="target" 		value="@local.repository.location@" 	override="true" />
 	<property name="source" 		value="${project.basedir}" 	override="true" />

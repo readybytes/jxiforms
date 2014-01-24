@@ -54,7 +54,7 @@
 
 	<target name="plugin_build">
 		<foreach param="dirname" absparam="absname" target="copy_plugin">
-			  <fileset dir="${dir.plugin}/jxiforms">
+			  <fileset dir="${dir.plugin}/uglyforms">
 				<type type="dir" />
 				<depth max="0" min="0" />
 		<!--		<include name="email" />  -->
@@ -64,7 +64,7 @@
 	</target>
 
 	<target name="copy_plugin">
-		<copy todir="${dir.tmp}/admin/install/extensions/plg_jxiforms_${dirname}">
+		<copy todir="${dir.tmp}/admin/install/extensions/plg_uglyforms_${dirname}">
 			<fileset dir="${absname}">
 				<include name="**/*.*" />
 			</fileset>

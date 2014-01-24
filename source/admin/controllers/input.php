@@ -2,14 +2,14 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JoomlaXi Forms
+* @package		Ugly Forms
 * @subpackage	Backend
 * @contact 		bhavya@readybytes.in
 */
 
 if(defined('_JEXEC')===false) die();
 
-class JXiFormsAdminControllerInput extends JXiFormsController
+class UglyformsAdminControllerInput extends UglyformsController
 {
 	public function _save(array $data, $itemId=null)
 	{
@@ -22,19 +22,19 @@ class JXiFormsAdminControllerInput extends JXiFormsController
 	public function createMenu()
 	{
 		$input_id 	= $this->getModel()->getId();
-		$data  		= JXiFormsFactory::getApplication()->input->post->get('jxiforms_form', array(), 'array');
+		$data  		= UglyformsFactory::getApplication()->input->post->get('uglyforms_form', array(), 'array');
 		$advance 	= $data['advance'];
 		
-		$cmp   	=  JComponentHelper::getComponent('com_jxiforms');
-		$link  	=  "index.php?option=com_jxiforms&view=input&input_id=".$input_id;
+		$cmp   	=  JComponentHelper::getComponent('com_uglyforms');
+		$link  	=  "index.php?option=com_uglyforms&view=input&input_id=".$input_id;
 		$result =  Rb_HelperJoomla::addMenu($advance['menu_title'], $advance['menu_alias'], $link, $advance['menu_location'], $cmp->id);
 
-		$url     = 'index.php?option=com_jxiforms&view=input&task=edit&input_id='.$input_id;
-		$message = Rb_Text::_('COM_JXIFORMS_INPUT_CREATE_MENU_SUCCESSFULLY');
+		$url     = 'index.php?option=com_uglyforms&view=input&task=edit&input_id='.$input_id;
+		$message = Rb_Text::_('COM_UGLYFORMS_INPUT_CREATE_MENU_SUCCESSFULLY');
 		$type	 = 'message';
 		
 		if($result === false){
-			$message  = Rb_Text::_('COM_JXIFORMS_ERROR_INPUT_CREATE_MENU');
+			$message  = Rb_Text::_('COM_UGLYFORMS_ERROR_INPUT_CREATE_MENU');
 			$type	  = 'error';		
 		}
 		

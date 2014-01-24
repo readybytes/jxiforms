@@ -2,12 +2,12 @@
 /**
 * @copyright		Copyright (C) 2009 - 2009 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license			GNU/GPL, see LICENSE.php
-* @package			JXiForms
+* @package			Uglyforms
 * @subpackage		Backend
 */
 if(defined('_JEXEC')===false) die();
 
-class Com_jxiformsInstallerScript
+class Com_uglyformsInstallerScript
 {
 	
 	/**
@@ -20,14 +20,14 @@ class Com_jxiformsInstallerScript
 		$this->installExtensions();
 
 		$extensions 	= array();
-		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'email');
-		$extensions[] 	= array('type'=>'system', 'name'=>'jxiforms');
-		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'joomlalogin');
-		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'dropbox');
-		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'mailchimp');
-		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'joomlaregistration');
-		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'ack');
-		$extensions[] 	= array('type'=>'jxiforms', 'name'=>'resetpassword');
+		$extensions[] 	= array('type'=>'uglyforms', 'name'=>'email');
+		$extensions[] 	= array('type'=>'system', 'name'=>'uglyforms');
+		$extensions[] 	= array('type'=>'uglyforms', 'name'=>'joomlalogin');
+		$extensions[] 	= array('type'=>'uglyforms', 'name'=>'dropbox');
+		$extensions[] 	= array('type'=>'uglyforms', 'name'=>'mailchimp');
+		$extensions[] 	= array('type'=>'uglyforms', 'name'=>'joomlaregistration');
+		$extensions[] 	= array('type'=>'uglyforms', 'name'=>'ack');
+		$extensions[] 	= array('type'=>'uglyforms', 'name'=>'resetpassword');
 		//For Enabling Rb_Framework
 		$extensions[] 	= array('type'=>'system',   'name'=>'rbsl');
 
@@ -38,14 +38,14 @@ class Com_jxiformsInstallerScript
 	function uninstall($parent)
 	{
 		$db = JFactory::getDBO();
-		$query = "SELECT * FROM `#__extensions` WHERE `type`='plugin' AND `element`='jxiforms' AND `folder`='system'";
+		$query = "SELECT * FROM `#__extensions` WHERE `type`='plugin' AND `element`='uglyforms' AND `folder`='system'";
 		$db->setQuery($query);
 		$result = $db->loadObjectList('element');
 		
-		if(isset($result['jxiforms']))
+		if(isset($result['uglyforms']))
 		{
 			$state=0;
-			$extensions[] 	= array('type'=>'system', 'name'=>'jxiforms');
+			$extensions[] 	= array('type'=>'system', 'name'=>'uglyforms');
 			$this->changeExtensionState($extensions, $state);
 		}
 		
@@ -90,7 +90,7 @@ class Com_jxiformsInstallerScript
 		}
 
 		if($delFolder){
-			$delPath = JPATH_ADMINISTRATOR.'/components/com_jxiforms/install/extensions';
+			$delPath = JPATH_ADMINISTRATOR.'/components/com_uglyforms/install/extensions';
 			JFolder::delete($delPath);
 		}
 
@@ -123,12 +123,12 @@ class Com_jxiformsInstallerScript
 	function alterInputTable()
 	{
 		$db = JFactory::getDBO();
-		$columns = $db->getTableColumns('#__jxiforms_input');
+		$columns = $db->getTableColumns('#__uglyforms_input');
 		if(isset($columns['html'])){
 			return true;
 		}
 		
-		$query = ' ALTER TABLE '.$db->quoteName( '#__jxiforms_input')
+		$query = ' ALTER TABLE '.$db->quoteName( '#__uglyforms_input')
 				 .' ADD '. $db->quoteName('html').' TEXT  NULL ';
 				 
 		$db->setQuery($query);
@@ -139,7 +139,7 @@ class Com_jxiformsInstallerScript
 	{
 		$db = JFactory::getDBO();
 		
-		$query = "CREATE TABLE IF NOT EXISTS `#__jxiforms_queue` (
+		$query = "CREATE TABLE IF NOT EXISTS `#__uglyforms_queue` (
 				  `queue_id`		INT(11)			NOT NULL AUTO_INCREMENT,
 				  `input_id`		INT(11) 		NOT NULL,
 				  `action_id` 		INT(11)			NOT NULL,

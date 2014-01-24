@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+<name>Joomla-Login</name>
+    <author>ReadyBytes</author>
+    <description>
+    	<![CDATA[
+    	Allow user to Login with Joomla Login action.<br>
+    	]]>
+    </description>
+   	<icon>joomlalogin.png</icon>
+    <tags>login</tags>
+	<help><![CDATA[
+	<br>	With reference to the example code, you need to enter name of the fields in Username and Password parameters that are username and password.
+	]]>
+	</help>
+	<code>
+	<![CDATA[
+    	<pre class="jxif-example-code">
+<b>&lt;form name="form_name" method="POST" action="form_post_url" &gt;<br>
+		Username :   &lt;input type="text" size="15" name="username" /&gt;<br>
+		Password :   &lt;input type="password" size="15" name="password" /&gt;<br>
+				      &lt;input type="submit" name="submit" value="Submit" /&gt;<br>
+&lt;/form&gt;</b>
+		</pre>
+		]]>
+	</code>
+		<fields name="action_params">
+		
+			<fieldset name="parameters" addfieldpath="/components/com_uglyforms/uglyforms/html/fields">
+
+				<field name="username" type="text"
+					label="COM_UGLYFORMS_ACTION_JOOMLALOGIN_USERNAME_LABEL"
+					description="COM_UGLYFORMS_ACTION_JOOMLALOGIN_USERNAME_DESC"
+					default=""
+					required="true"
+				/>
+				
+				<field name="password" type="text"
+					label="COM_UGLYFORMS_ACTION_JOOMLALOGIN_PASSWORD_LABEL"
+					description="COM_UGLYFORMS_ACTION_JOOMLALOGIN_PASSWORD_DESC"
+					default=""
+					required="true"
+				/>
+				
+			</fieldset>
+		</fields>
+</config>

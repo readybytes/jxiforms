@@ -2,10 +2,10 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
-* @package		JoomlaXi Forms
+* @package		Ugly Forms
 * @subpackage	Backend
 * @contact 		bhavya@readybytes.in
-* website		http://www.joomlaxi.com
+* website		http://www.readybytes.net
 */
 
 if(defined('_JEXEC')===false) die();
@@ -17,7 +17,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 ?>
 
 <script type="text/javascript">
-		var jxiforms_form_jsoncontent = '<?php echo $input->getParam('jsoncontent');?>';
+		var uglyforms_form_jsoncontent = '<?php echo $input->getParam('jsoncontent');?>';
 </script>
 
 <link href="<?php echo Rb_HelperTemplate::mediaURI(dirname(dirname(__FILE__)).'/_media/assets/css/custom.css', false);?>" rel="stylesheet">
@@ -32,7 +32,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 
 <div class="tabbable tabs-left">
 
-  <ul class="nav nav-tabs" id="jxiforms-form-tab">
+  <ul class="nav nav-tabs" id="uglyforms-form-tab">
 
    	<li class="active"><a href="#details" data-toggle="tab">Form Details</a></li>
    	<li><a href="#menuoptions" data-toggle="tab">Menu Options</a></li>
@@ -56,7 +56,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 									<div class="controls">
 										<div><?php echo $form->getInput('title'); ?></div>
 										<div class="clr"></div>
-										<div class="btn-link" onClick="jxiforms.utils.toggle('input-description');"><?php echo Rb_Text::_('Add a description'); ?></div>
+										<div class="btn-link" onClick="uglyforms.utils.toggle('input-description');"><?php echo Rb_Text::_('Add a description'); ?></div>
 									</div>
 								</div>
 								
@@ -76,7 +76,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 										if(!empty($post_url)):?>
 											<div><?php echo $form->getValue('post_url'); ?></div>
 										<?php else :?>
-											<div class="muted"><?php echo Rb_Text::_('COM_JXIFORMS_FORM_POST_URL_MSG_BEFORE_SAVE');?></div>
+											<div class="muted"><?php echo Rb_Text::_('COM_UGLYFORMS_FORM_POST_URL_MSG_BEFORE_SAVE');?></div>
 										<?php endif;?>	
 									</div>
 								</div>		
@@ -100,16 +100,16 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 								
 								<div class="control-group"> 
 									<div class="control-label">
-										<label class="hasTip" title="<?php echo Rb_Text::_('COM_JXIFORMS_INPUT_EDIT_ACTIONS_DESC');?>"><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_EDIT_ACTIONS'); ?></label>
+										<label class="hasTip" title="<?php echo Rb_Text::_('COM_UGLYFORMS_INPUT_EDIT_ACTIONS_DESC');?>"><?php echo Rb_Text::_('COM_UGLYFORMS_INPUT_EDIT_ACTIONS'); ?></label>
 									</div>
 									<div class="controls"><?php $actions = $input->getActions();
-										 						echo JXiFormsHtml::_('jxiformshtml.actions.edit', 'jxiforms_form[_input_actions]', $actions, array('multiple'=>true, 'style'=>"class='multiselect'"));?></div>				
+										 						echo UglyformsHtml::_('uglyformshtml.actions.edit', 'uglyforms_form[_input_actions]', $actions, array('multiple'=>true, 'style'=>"class='multiselect'"));?></div>				
 								</div>
 							
 							</fieldset>	
 						</div>
 					</div>
-					<textarea name="jxiforms_form[params][jsoncontent]" id="jxiforms_form_params_jsoncontent" class="hide">
+					<textarea name="uglyforms_form[params][jsoncontent]" id="uglyforms_form_params_jsoncontent" class="hide">
 						<?php echo $input->getParam('jsoncontent');?>
 					</textarea>
 					
@@ -180,12 +180,12 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 			<!-- ----------------When input/form is not saved then do no display menu options------------------- -->
 			<?php if($input->getId() == 0):?>
 					<div class="controls">
-						<span class="readonly"><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_MENU_CREATE_AFTER_INPUT_SAVE');?></span>
+						<span class="readonly"><?php echo Rb_Text::_('COM_UGLYFORMS_INPUT_MENU_CREATE_AFTER_INPUT_SAVE');?></span>
 					</div>
 					
 			<!-- ----------------When input is saved and some menu items are already created for the same ------------------- -->
 				<?php elseif (empty($form_menu) ):?>
-					<form action="<?php echo Rb_Route::_('index.php?option=com_jxiforms&view=input&input_id='.$input->getId(), false); ?>" method="post" name="createMenu" id="createMenu" class="rb-validate-form" >
+					<form action="<?php echo Rb_Route::_('index.php?option=com_uglyforms&view=input&input_id='.$input->getId(), false); ?>" method="post" name="createMenu" id="createMenu" class="rb-validate-form" >
 						<fieldset class="form-horizontal">
 							<?php $fieldSets = $form->getFieldsets('advance');?>
 							<?php foreach ($fieldSets as $name => $fieldSet) :?>
@@ -199,7 +199,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 								<?php endif;?>
 							<?php endforeach;?>
 							<div class="controls">
-							<input type="submit" class="btn btn-primary text-right" id="input-createmenu-button" value="<?php echo Rb_Text::_('COM_JXIFORMS_INPUT_MENU_CREATE_BUTTON');?>" />
+							<input type="submit" class="btn btn-primary text-right" id="input-createmenu-button" value="<?php echo Rb_Text::_('COM_UGLYFORMS_INPUT_MENU_CREATE_BUTTON');?>" />
 							</div>
 						</fieldset>	
 						<input type="hidden" name="task" value="createMenu" />					
@@ -208,14 +208,14 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 			<!-- --------When input is saved and no menu items exists for it then display parameters to create menu item--------- -->
 				<?php else :?>
 					<div class="control-group">
-						<div class="control-label"><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_AVAILABLE_MENU_ITEMS'); ?> </div>
+						<div class="control-label"><?php echo Rb_Text::_('COM_UGLYFORMS_INPUT_AVAILABLE_MENU_ITEMS'); ?> </div>
 						<div class="controls"><div class="control-label">
 							<?php foreach ($form_menu as $menu):?>
 								<div>
-									<strong><?php echo JXiFormsHtml::link('index.php?option=com_menus&task=item.edit&id='.$menu->id, $menu->title); ?></strong>
+									<strong><?php echo UglyformsHtml::link('index.php?option=com_menus&task=item.edit&id='.$menu->id, $menu->title); ?></strong>
 									
-									<p class="small"><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_ADVANCE_MENU_ALIAS_LABEL').' : '.$menu->alias; ?><br>
-									<?php echo Rb_Text::_('COM_JXIFORMS_INPUT_ADVANCE_MENU_TYPE').' : '.$menu->menutype; ?></p>
+									<p class="small"><?php echo Rb_Text::_('COM_UGLYFORMS_INPUT_ADVANCE_MENU_ALIAS_LABEL').' : '.$menu->alias; ?><br>
+									<?php echo Rb_Text::_('COM_UGLYFORMS_INPUT_ADVANCE_MENU_TYPE').' : '.$menu->menutype; ?></p>
 								</div>
 							<?php endforeach;?>
 						</div></div>

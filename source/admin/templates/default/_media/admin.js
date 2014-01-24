@@ -1,18 +1,18 @@
 /**
 * @copyright	Copyright (C) 2009-2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JXiForms
+* @package		Uglyforms
 * @contact 		bhavya@readybytes.in
 */
 
-//define jxiforms, if not defined.
-if (typeof(jxiforms)=='undefined'){
-	var jxiforms = {}
+//define uglyforms, if not defined.
+if (typeof(uglyforms)=='undefined'){
+	var uglyforms = {}
 }
 
 // all admin function should be in admin scope 
-if(typeof(jxiforms.admin)=='undefined'){
-	jxiforms.admin = {};
+if(typeof(uglyforms.admin)=='undefined'){
+	uglyforms.admin = {};
 }
 
 //all admin function should be in admin scope 
@@ -28,11 +28,11 @@ if(typeof(Joomla)=='undefined'){
 	
 	
 /*--------------------------------------------------------------
-jxiforms.admin.grid
+uglyforms.admin.grid
 	submit
 	filters
 --------------------------------------------------------------*/
-jxiforms.admin.grid = {
+uglyforms.admin.grid = {
 		
 		//default submit function
 		submit : function( view, action, validActions){
@@ -102,4 +102,4 @@ $(document).ready(function(){
 //ENDING :
 //Scoping code for easy and non-conflicting access to $.
 //Should be last line, write code above this line.
-})(jxiforms.jQuery);
+})(uglyforms.jQuery);

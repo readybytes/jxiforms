@@ -2,10 +2,10 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
-* @package		JoomlaXi Forms
+* @package		Ugly Forms
 * @subpackage	Backend
 * @contact 		bhavya@readybytes.in
-* website		http://www.joomlaxi.com
+* website		http://www.readybytes.net
 */
 if(defined('_JEXEC')===false) die();
 
@@ -23,12 +23,12 @@ JHtml::_('behavior.framework');
 				</th>
 				
 				<th class="default-grid-sno">
-					<?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_INPUT_GRID_INPUT_ID", 'input_id', $filter_order_Dir, $filter_order);?>
+					<?php echo UglyformsHtml::_('grid.sort', "COM_UGLYFORMS_INPUT_GRID_INPUT_ID", 'input_id', $filter_order_Dir, $filter_order);?>
 				</th>
-				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_INPUT_GRID_TITLE", 'title', $filter_order_Dir, $filter_order);?></th>
-				<th><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_GRID_POSTURL');?></th>
-				<th><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_GRID_REDIRECTURL');?></th>
-				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_INPUT_GRID_PUBLISHED", 'published', $filter_order_Dir, $filter_order);?></th>
+				<th><?php echo UglyformsHtml::_('grid.sort', "COM_UGLYFORMS_INPUT_GRID_TITLE", 'title', $filter_order_Dir, $filter_order);?></th>
+				<th><?php echo Rb_Text::_('COM_UGLYFORMS_INPUT_GRID_POSTURL');?></th>
+				<th><?php echo Rb_Text::_('COM_UGLYFORMS_INPUT_GRID_REDIRECTURL');?></th>
+				<th><?php echo UglyformsHtml::_('grid.sort', "COM_UGLYFORMS_INPUT_GRID_PUBLISHED", 'published', $filter_order_Dir, $filter_order);?></th>
 							
 			</tr>
 		<!-- TABLE HEADER END -->
@@ -40,16 +40,16 @@ JHtml::_('behavior.framework');
 			foreach ($records as $record):?>
 				<tr class="<?php echo "row".$count%2; ?>">								
 					<th class="default-grid-chkbox">
-				    	<?php echo JXiFormsHtml::_('grid.id', $count, $record->{$record_key} ); ?>
+				    	<?php echo UglyformsHtml::_('grid.id', $count, $record->{$record_key} ); ?>
 				    </th>				
 					<td><?php echo $record->input_id;?></td>
 					<td>
-						<div><?php echo JXiFormsHtml::link($uri.'&task=edit&id='.$record->{$record_key}, $record->title);?></div>
+						<div><?php echo UglyformsHtml::link($uri.'&task=edit&id='.$record->{$record_key}, $record->title);?></div>
 						<div><?php echo $record->description;?></div>
 					</td>
 					<td><?php echo $record->post_url;?></td>
 					<td><?php echo $record->redirect_url;?></td>
-					<td><?php echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'published', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_JXIFORMS');?></td>
+					<td><?php echo UglyformsHtml::_("rb_html.boolean.grid", $record, 'published', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_UGLYFORMS');?></td>
 				</tr>
 			<?php $count++;?>
 			<?php endforeach;?>

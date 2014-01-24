@@ -2,25 +2,25 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JoomlaXi Forms
+* @package		Ugly Forms
 * @subpackage	Backend
 * @contact 		bhavya@readybytes.in
 */
 
 if(defined('_JEXEC')===false) die();
 
-class JXiFormsAdminBaseViewConfig extends JXiFormsView
+class UglyformsAdminBaseViewConfig extends UglyformsView
 {	
 	function edit($tpl=null)
 	{
-		$modelform  = JXiFormsFactory::getInstance($this->getName(), 'Modelform' , $this->_component->getPrefixClass());
+		$modelform  = UglyformsFactory::getInstance($this->getName(), 'Modelform' , $this->_component->getPrefixClass());
 		$form		= $modelform->getForm();
 		
-		$file = JXIFORMS_PATH_CORE_FORMS.'/config.xml';
+		$file = UGLYFORMS_PATH_CORE_FORMS.'/config.xml';
 		$form->loadFile($file, false, '//config');
 		$records = $this->getModel()->loadRecords();
 		
-		$data = JXiFormsHelperConfig::get();
+		$data = UglyformsHelperConfig::get();
 		$form->bind($data);		
 		$this->assign('form', $form);
 

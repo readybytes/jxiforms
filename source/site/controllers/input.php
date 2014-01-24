@@ -2,22 +2,22 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JoomlaXi Forms
+* @package		Ugly Forms
 * @subpackage	Frontend
 * @contact 		bhavya@readybytes.in
 */
 
 if(defined('_JEXEC')===false) die();
 
-class JXiFormsSiteControllerInput extends JXiFormsController
+class UglyformsSiteControllerInput extends UglyformsController
 {
 	public function submit()
 	{
 		$inputId = $this->_getId();
-		$input   = ($inputId != 0) ?  JXiformsInput::getInstance($inputId) : false; 
+		$input   = ($inputId != 0) ?  UglyformsInput::getInstance($inputId) : false; 
 		
-		if(!($input instanceof JXiformsInput)){
-			throw new Exception(Rb_Text::sprintf('COM_JXIFORMS_EXCEPTION_INVALID_INPUT_ID', $inputId));
+		if(!($input instanceof UglyformsInput)){
+			throw new Exception(Rb_Text::sprintf('COM_UGLYFORMS_EXCEPTION_INVALID_INPUT_ID', $inputId));
 		}
 		
 		//if form is not published then do nothing
@@ -32,17 +32,17 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		
 		//If any action's plugin want to attach some data.		
 		$args     = array(&$data);
-		Rb_HelperPlugin::trigger('onJXIFormsDataPrepare', $args, 'jxiforms');
+		Rb_HelperPlugin::trigger('onUglyformsDataPrepare', $args, 'uglyforms');
 
 		//unset token(added by RBFW for protecting against CSRF) from the submitted data 
-		$formToken   = JXiFormsFactory::getSession()->getFormToken();
+		$formToken   = UglyformsFactory::getSession()->getFormToken();
 		unset($data[$formToken]);
 		
 		$result = $this->_submit($input, $data);
 		
 		$url = $input->getRedirecturl();
 		//TODO : routed url required
-		JXiFormsFactory::getApplication()->redirect($url);	
+		UglyformsFactory::getApplication()->redirect($url);	
 	}
 	
 	public function _submit($input, $data)
@@ -67,32 +67,32 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 			$tmp_name = explode('/', $file['tmp_name']);
 			$filename = array_pop($tmp_name).'_'.time();
 			
-			$destination = JPATH_SITE.JXIFORMS_PATH_ATTACHMENTS.$filename.$extension;
+			$destination = JPATH_SITE.UGLYFORMS_PATH_ATTACHMENTS.$filename.$extension;
 			
 			if(move_uploaded_file($file['tmp_name'], $destination)){
-				$attachments[$name] = JXIFORMS_PATH_ATTACHMENTS.$filename.$extension;	
+				$attachments[$name] = UGLYFORMS_PATH_ATTACHMENTS.$filename.$extension;	
 			}
 		}
 		
 		//create queue records and dump data into file
-		$queueRecs  =  JXiFormsHelperQueue::enqueue($input);
-		JXiFormsHelperQueue::appendDataToFile($queueRecs, $data, $attachments);
+		$queueRecs  =  UglyformsHelperQueue::enqueue($input);
+		UglyformsHelperQueue::appendDataToFile($queueRecs, $data, $attachments);
 		
-		$approvalContent = Rb_Text::sprintf('COM_JXIFORMS_INPUT_DATA_SUBMITTED_ON', $input->getTitle());
+		$approvalContent = Rb_Text::sprintf('COM_UGLYFORMS_INPUT_DATA_SUBMITTED_ON', $input->getTitle());
 		$approvalLinks    = '';
 		foreach ($queueRecs as $queue){
 			//if task is approved then process immediately else set the approval contents to email
-			if($queue->isApproved() && $queue->getStatus() != JXiformsQueue::STATUS_PROCESSED){
+			if($queue->isApproved() && $queue->getStatus() != UglyformsQueue::STATUS_PROCESSED){
 				$queue->process();
 			}
 			else {
-				$approvalLinks .= Rb_Text::sprintf('COM_JXIFORMS_INPUT_APPROVAL_REQUEST', JXiFormsHelperAction::get($queue->getActionId())->title,$queue->getApprovalUrl());
+				$approvalLinks .= Rb_Text::sprintf('COM_UGLYFORMS_INPUT_APPROVAL_REQUEST', UglyformsHelperAction::get($queue->getActionId())->title,$queue->getApprovalUrl());
 			}
 		}
 		
 		//do not send approval email when configuration setting is set to no  
-		if(!empty($approvalLinks) && JXiFormsHelperConfig::get('approval_send_email')){
-			JXiFormsHelperQueue::sendApprovalEmail($approvalContent.$approvalLinks);
+		if(!empty($approvalLinks) && UglyformsHelperConfig::get('approval_send_email')){
+			UglyformsHelperQueue::sendApprovalEmail($approvalContent.$approvalLinks);
 		}
 		
 		return true;

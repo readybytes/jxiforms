@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `#__jxiforms_input` (
+CREATE TABLE IF NOT EXISTS `#__uglyforms_input` (
  `input_id` 		INT(11)		NOT NULL AUTO_INCREMENT,
  `title` 		VARCHAR(255) 	NOT NULL ,
  `description` 		TEXT		DEFAULT NULL, 
@@ -13,7 +13,7 @@ ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8 ;
 
 
-CREATE  TABLE IF NOT EXISTS `#__jxiforms_config` (
+CREATE  TABLE IF NOT EXISTS `#__uglyforms_config` (
   `config_id`		INT(11)		NOT NULL AUTO_INCREMENT,
   `key`    		VARCHAR(255) 	NOT NULL,
   `value`  		TEXT		DEFAULT NULL,
@@ -24,7 +24,7 @@ ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8 ;
 
 
-CREATE  TABLE IF NOT EXISTS `#__jxiforms_action` (
+CREATE  TABLE IF NOT EXISTS `#__uglyforms_action` (
   `action_id`		INT(11)		NOT NULL AUTO_INCREMENT,
   `title`    		VARCHAR(255) 	NOT NULL,
   `type`  		VARCHAR(50) 	NOT NULL,
@@ -43,7 +43,7 @@ ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8 ;
 
 
-CREATE  TABLE IF NOT EXISTS `#__jxiforms_inputaction` (
+CREATE  TABLE IF NOT EXISTS `#__uglyforms_inputaction` (
   `inputaction_id`	INT(11) 	NOT NULL AUTO_INCREMENT,
   `input_id`     	INT(11)		NOT NULL ,
   `action_id`     	INT(11)		NOT NULL ,
@@ -55,7 +55,7 @@ ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8;
 
 
-CREATE TABLE IF NOT EXISTS `#__jxiforms_log` (
+CREATE TABLE IF NOT EXISTS `#__uglyforms_log` (
   `log_id`		INT(11)		NOT NULL AUTO_INCREMENT,
   `level`		INT(11) 	NOT NULL,
   `user_id` 		INT(11)		NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `#__jxiforms_log` (
 ENGINE = MyISAM 
 DEFAULT CHARACTER SET = utf8;
 
-CREATE TABLE IF NOT EXISTS `#__jxiforms_queue` (
+CREATE TABLE IF NOT EXISTS `#__uglyforms_queue` (
   `queue_id`		INT(11)			NOT NULL AUTO_INCREMENT,
   `input_id`		INT(11) 		NOT NULL,
   `action_id` 		INT(11)			NOT NULL,

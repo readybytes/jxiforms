@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <name>Joomla Registration</name>
+    <author>ReadyBytes</author>
+    <description>
+    	<![CDATA[
+	Joomla Registration Action collects the form data, and registers the user at your site.
+    	]]>
+    </description>
+   	<icon>joomlaregistration.png</icon>
+    <tags>registration</tags>
+	<help>
+		<![CDATA[
+		You are not required to use all the fields, which are displayed in Joomla Registration. You can register users in
+		the following way.
+		<ul>
+			<li>By Email Id Only : In this case you need to show only Email field, user will be registered with email and random password. In this case <b>username</b> and <b>name</b> will contain the email id.</li>
+			<li>By Email Id and Password :  By this user will be registered with email id and the password selected by user. In this case <b>username</b> and <b>name</b> will contain the email id.</li>
+			<li>By Username, Email and Password</li>
+			<li>By Name, Username, Email, Password</li>
+			<li>By Name, Username, Email, Re-type Email, Password, Re-type Password</li>
+		</ul>
+		]]>
+	</help>
+	<code>
+	<![CDATA[
+    	<pre class="jxif-example-code">
+<b>&lt;form name="form_name" method="POST" action="form_post_url" &gt;<br>
+		Username:    &lt;input type="text" size="15" name="username" /&gt;<br>
+		Email   :    &lt;input type="text" size="15" name="email" /&gt;<br>
+		password:   &lt;input type="password" size="15" name="password" /&gt;<br>		
+	                           &lt;input type="submit" name="submit" value="Submit" /&gt;<br>
+&lt;/form&gt;</b>
+		</pre>
+		]]>
+	</code>
+		<fields name="action_params">		
+			<fieldset name="parameters" addfieldpath="/components/com_uglyforms/uglyforms/html/fields">
+				<field 	name="email" 
+						type="text"
+						label="COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_EMAIL_LABEL"
+						description="COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_EMAIL_DESC"						 
+						required="true"/>
+				
+				<field 	name="confirm_email" 
+						type="text"
+						label="COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_CONFIRM_EMAIL_LABEL"
+						description="COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_CONFIRM_EMAIL_DESC"/>
+						
+				<field 	name="username" 
+						type="text"
+						label="COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_USERNAME_LABEL"
+						description="COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_USERNAME_DESC"/>
+						
+				<field 	name="password" 
+						type="text"
+						label="COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_PASSWORD_LABEL"
+						description="COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_PASSWORD_DESC"/>
+						
+				<field 	name="retype_password" 
+						type="text"
+						label="COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_RETYPE_PASSWORD_LABEL"
+						description="COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_RETYPE_PASSWORD_DESC"/>
+						
+				<field 	name="name" 
+						type="text"
+						label="COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_NAME_LABEL"
+						description="COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_NAME_DESC"/>
+		</fieldset>
+	</fields>
+</config>

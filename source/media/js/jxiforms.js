@@ -1,15 +1,15 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JXiForms
+* @package		Uglyforms
 * @subpackage	UI
 * @contact 		bhavya@readybytes.in
 */
 
-if (typeof(jxiforms)=='undefined'){
-	var jxiforms 	= {};
-	jxiforms.$ 		= jxiforms.jQuery = rb.jQuery;
-	jxiforms.ajax	= rb.ajax;
+if (typeof(uglyforms)=='undefined'){
+	var uglyforms 	= {};
+	uglyforms.$ 		= uglyforms.jQuery = rb.jQuery;
+	uglyforms.ajax	= rb.ajax;
 }
 
 
@@ -19,9 +19,9 @@ if (typeof(jxiforms)=='undefined'){
 // Should be first line, write code below this line.	
 
 /*--------------------------------------------------------------
-jxiforms.utils
+uglyforms.utils
 --------------------------------------------------------------*/
-jxiforms.utils = {
+uglyforms.utils = {
 		toggle : function(entityId){
 	        $("#"+entityId).toggle(300);
 		}	
@@ -37,4 +37,4 @@ $(document).ready(function(){
 //ENDING :
 //Scoping code for easy and non-conflicting access to $.
 //Should be last line, write code above this line.
-})(jxiforms.jQuery);
+})(uglyforms.jQuery);

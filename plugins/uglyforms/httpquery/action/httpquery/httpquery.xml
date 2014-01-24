@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+	<name>Http-Query</name>
+    <icon>httpquery.png</icon>
+    <description>
+    	<![CDATA[
+    	HTTP-Query action sends out HTTP request to a URL with certain variables on the basis of form submission.
+    	<br> You can pass custom query variables or can use the existing variables with the HTTP query to that URL.
+    	]]>
+	</description>
+	<help><![CDATA[
+	<br>Note : Option, view, task, input_id and ItemId will not be available in submitted data.
+	]]></help>
+	<code></code>
+		<fields name="action_params">
+		
+			<fieldset name="parameters" addfieldpath="/components/com_uglyforms/uglyforms/html/fields">
+
+				<field name="query_url" type="textarea"
+					label="COM_UGLYFORMS_ACTION_HTTPQUERY_POST_URL_LABEL"
+					description="COM_UGLYFORMS_ACTION_HTTPQUERY_POST_URL_DESC"
+					rows="3" cols="50" default=""
+				/>
+				
+				<field name="query_parameters" type="textarea"
+					label="COM_UGLYFORMS_ACTION_HTTPQUERY_QUERY_PARAMETERS_LABEL"
+					description="COM_UGLYFORMS_ACTION_HTTPQUERY_QUERY_PARAMETERS_DESC"
+					rows="3" cols="50" default=""
+				/>
+				
+				<field name="append_data" type="list"
+					label="COM_UGLYFORMS_ACTION_HTTPQUERY_APPEND_DATA_LABEL"
+					description="COM_UGLYFORMS_ACTION_HTTPQUERY_APPEND_DATA_DESC" 
+					default="1">
+				<option value="0">COM_UGLYFORMS_NO</option>
+				<option value="1">COM_UGLYFORMS_YES</option>
+				</field>
+				
+				<field name="filter_parameters" type="textarea"
+					label="COM_UGLYFORMS_ACTION_HTTPQUERY_FILTER_PARAMETERS_LABEL"
+					description="COM_UGLYFORMS_ACTION_HTTPQUERY_FILTER_PARAMETERS_DESC"
+					rows="3" cols="50" default=""
+				/>
+				
+			</fieldset>
+		</fields>
+</config>

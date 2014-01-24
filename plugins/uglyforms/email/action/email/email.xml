@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<name>Email</name>
+    <author>ReadyBytes</author>
+    <description>
+    	<![CDATA[
+    	Email action collects the form data and send email.<br>
+    	You can set the email content as per your requirement.
+    	]]>
+    </description>
+   	<icon>email.png</icon>
+    <tags>email</tags>
+	<help>
+	</help>
+	<code>
+	<![CDATA[
+    	<pre class="jxif-example-code">
+<b>&lt;form name="form_name" method="POST" action="form_post_url" &gt;<br>
+		Email   :    &lt;input type="text" size="15" name="email" /&gt;<br>
+		Subject :   &lt;input type="text" size="15" name="subject" /&gt;<br>
+		Message :  &lt;textarea rows="4" cols="12" name="message" &gt;&lt;/textarea&gt;<br>
+	                           &lt;input type="submit" name="submit" value="Submit" /&gt;<br>
+&lt;/form&gt;</b>
+		</pre>
+		]]>
+	</code>
+		<fields name="action_params">
+		
+			<fieldset name="parameters" addfieldpath="/components/com_uglyforms/uglyforms/html/fields">
+
+				<field name="email_id" type="email"
+					label="COM_UGLYFORMS_ACTION_EMAIL_ID_LABEL"
+					description="COM_UGLYFORMS_ACTION_EMAIL_ID_DESC"
+					size="45" required="true"
+				/>
+				
+				<field name="send_cc" type="textarea"
+					label="COM_UGLYFORMS_ACTION_EMAIL_CC_LABEL"
+					description="COM_UGLYFORMS_ACTION_EMAIL_CC_DESC"
+					rows="2" cols="50" default=""
+				/>
+				
+				<field name="send_bcc" type="textarea"
+					label="COM_UGLYFORMS_ACTION_EMAIL_BCC_LABEL"
+					description="COM_UGLYFORMS_ACTION_EMAIL_CC_DESC"
+					rows="2" cols="50" default=""
+				/>
+				
+				<field name="email_subject" type="textarea"
+					label="COM_UGLYFORMS_ACTION_EMAIL_SUBJECT_LABEL"
+					description="COM_UGLYFORMS_ACTION_EMAIL_SUBJECT_DESC"
+					rows="2" cols="50" default="" required="true"
+				/>
+				
+				<field name="email_format" type="list"
+					label="COM_UGLYFORMS_ACTION_EMAIL_FORMAT_LABEL"
+					description="COM_UGLYFORMS_ACTION_EMAIL_FORMAT_DESC" 
+					default="1">
+				<option value="0">COM_UGLYFORMS_ACTION_EMAIL_FORMAT_PLAIN_TEXT</option>
+				<option value="1">COM_UGLYFORMS_ACTION_EMAIL_FORMAT_HTML</option>
+				</field>
+				
+				<field name="attach_data" type="list"
+					label="COM_UGLYFORMS_ACTION_EMAIL_ATTACH_DATA_LABEL"
+					description="COM_UGLYFORMS_ACTION_EMAIL_ATTACH_DATA_DESC" 
+					default="0">
+					<option value="0">COM_UGLYFORMS_NO</option>
+					<option value="1">COM_UGLYFORMS_YES</option>
+				</field>
+				
+		</fieldset>
+	</fields>
+</config>
