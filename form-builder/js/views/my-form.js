@@ -59,7 +59,7 @@ define([
     , toJson: function() {
         var jsonString = JSON.stringify(this.collection.toJSON());
       //  $("#jsonrender").val(jsonString);
-        $("#jxiforms_form_params_jsoncontent").val(jsonString);
+        $("#uglyforms_form_params_jsoncontent").val(jsonString);
     }
 
     , getBottomAbove: function(eventY){

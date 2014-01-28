@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<project name="RB Framework" basedir="." default="setup" description="Phing setup script for JoomlaXi Forms package.">
+<project name="RB Framework" basedir="." default="setup" description="Phing setup script for UglyForms package.">
 
 	<target name="config" description="Load configuration file">
 		<php expression="(PHP_OS == 'WINNT') ? 'win/' :'unix/'" returnProperty="IF_OS"/>

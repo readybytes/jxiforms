@@ -82,7 +82,7 @@ define([
 
       
         //IMP : populate form with saved content
-        var value =  jxiforms_form_jsoncontent;
+        var value =  uglyforms_form_jsoncontent;
         var json = $.parseJSON( value );
 
         formView.collection = new MyFormSnippetsCollection( json );

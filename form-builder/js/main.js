@@ -1,6 +1,6 @@
 //this is the configuration of require.js
 require.config({
-  baseUrl: "components/com_jxiforms/templates/default/_media/assets/js/lib/"
+  baseUrl: "components/com_uglyforms/templates/default/_media/assets/js/lib/"
   , shim: {
     'backbone': {
       deps: ['underscore', 'jquery'],

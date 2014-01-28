@@ -109,9 +109,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 							</fieldset>	
 						</div>
 					</div>
-					<textarea name="uglyforms_form[params][jsoncontent]" id="uglyforms_form_params_jsoncontent" class="hide">
-						<?php echo $input->getParam('jsoncontent');?>
-					</textarea>
+					<textarea name="uglyforms_form[params][jsoncontent]" id="uglyforms_form_params_jsoncontent" class="hide"><?php echo $input->getParam('jsoncontent');?></textarea>
 					
 					<div class="hide"><?php echo $form->getInput('html'); ?></div>
 					<input type="hidden" name="task" value="save" />
