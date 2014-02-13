@@ -44,6 +44,7 @@ class UglyformsHelperAction extends UglyformsHelper
 		if($instances === null)
 		{
 			$queryFilters = array('published'=>1);
+			//TODO : load as per ordering
 			$actions = UglyformsFactory::getInstance('action', 'model')->loadRecords($queryFilters);
 
 			$instances = array();

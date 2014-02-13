@@ -15,7 +15,7 @@ class UglyformsAdminBaseViewDashboard extends UglyformsView
 	{
 		//For Published and Unpublished plugins icons on dashboard.
 		$this->assign('enablePlugins', UglyformsHelperAction::getXml());
-		$disabledPlugins = UglyformsHelperJoomla::getPlugins('plugin','uglyforms',false);
+		$disabledPlugins = UglyformsHelperJoomla::getPlugins('uglyforms',false);
 
 		foreach($disabledPlugins as $plugin)
 		{

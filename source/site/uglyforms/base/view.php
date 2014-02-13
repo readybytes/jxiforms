@@ -51,7 +51,7 @@ class UglyformsView extends UglyformsViewbase
 	{
 		$selMenu	= strtolower(JRequest::getVar('view',$selMenu));
 
-		if($this->getTask() == 'display' || $this->getTask() == ''){
+		if(in_array($this->getTask(), array('display', 'selectAction')) || $this->getTask() == ''){
 			foreach(self::$_submenus as $menu){
 				Rb_HelperToolbar::addSubMenu($menu, $selMenu, $this->_component->getNameCom());
 			}

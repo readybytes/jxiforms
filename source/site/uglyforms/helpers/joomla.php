@@ -83,14 +83,14 @@ class UglyformsHelperJoomla extends UglyformsHelper
 		return $result;
 	}
 
-	public static function getPlugins($type, $folder, $status=true)
+	public static function getPlugins($type, $status=true)
 	{
 		$status = (false == $status) ? 0 : 1;
 		$db = UglyformsFactory::getDbo();
 		$query = new Rb_Query();
 		return $query->select('*')
 				->from('#__extensions')
-				->where(array("`type`='"."$type"."'", "`folder`='"."$folder"."'", '`enabled`="'.$status.'"'),'AND')
+				->where(array("`type`='plugin'", "`folder`='"."$type"."'", '`enabled`="'.$status.'"'),'AND')
 				->dbLoadQuery()
 				->loadObjectList('element');
 	}

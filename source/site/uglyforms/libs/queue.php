@@ -27,6 +27,7 @@ class UglyformsQueue extends UglyformsLib
 	const STATUS_WAITING		= 1300;
 	const STATUS_PROCESSED		= 1301;
 	const STATUS_FAILED			= 1302;
+	const STATUS_INVALID		= 1303;
 
 	/**
 	 * Gets the instance of UglyformsQueue with provide form identifier
@@ -74,16 +75,14 @@ class UglyformsQueue extends UglyformsLib
 	
 	public function process()
 	{
-		//prepare data and attachements for action to process
-		$token 			= $this->getToken();
-		if(empty($token)){
-			//JXITODO : Create Error log
-		}
-		
-		$relevant_data  = UglyformsHelperQueue::fetchData($token, true);
+		$relevant_data = $this->getParam('submitted_data', false);
 
+		$relevant_data = ($relevant_data == false) ? array('data'=>array(), 'attachments'=>array()) : json_decode($relevant_data, true); 
 		$action = UglyformsAction::getInstance($this->getActionId());
-		$result = $action->process($relevant_data['data'], $relevant_data['attachments']);
+		
+		//TODO : trigger before processing action 
+		//TODO : update all the actions since another variable added in process function call
+		$result = $action->process($this->input_id, $relevant_data['data'], $relevant_data['attachments']);
 		
 		//when action has been performed successfully 
 		//on the data then change the status of the queue
