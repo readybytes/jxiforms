@@ -49,9 +49,10 @@ class UglyformsView extends UglyformsViewbase
 	
 	public function _adminSubmenu($selMenu = 'dashboard')
 	{
-		$selMenu	= strtolower(JRequest::getVar('view',$selMenu));
+		$selMenu	= strtolower(UglyformsFactory::getApplication()->input->get('view',$selMenu));
+		$task 		= $this->getTask();
 
-		if(in_array($this->getTask(), array('display', 'selectAction')) || $this->getTask() == ''){
+		if($task == 'display' || $task == ''){
 			foreach(self::$_submenus as $menu){
 				Rb_HelperToolbar::addSubMenu($menu, $selMenu, $this->_component->getNameCom());
 			}

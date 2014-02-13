@@ -29,12 +29,6 @@ class UglyformsHelperEvent extends UglyformsHelper
 			if(method_exists($plg_inst, $eventName)){
 				$results[] = call_user_func_array(array($plg_inst,$eventName), $args);
 			}
-			
-			//if any plugin returns false as a result of validation check
-			//then do not proceed further with other plugins and mark data in log  
-			if (in_array(false, $results)){
-				return $results;
-			}
 		}
 		
 		
@@ -46,12 +40,6 @@ class UglyformsHelperEvent extends UglyformsHelper
 			if (method_exists($action, $eventName)){
 				//$results[] = call_user_func_array(array($action, $eventName), $args);
 				$results[] = $action->$eventName($args[0], $args[1], $args[2]);
-			}
-			
-			//if any action returns false as a result of validation check
-			//then do not proceed further with other actions and mark data in log  
-			if (in_array(false, $results)){
-				return $results;
 			}
 		}
 		

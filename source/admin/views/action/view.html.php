@@ -42,4 +42,18 @@ class UglyformsAdminViewAction extends UglyformsAdminBaseViewAction
 			return parent::_adminToolbar();
 		}
 	}
+	
+	public function _adminSubmenu()
+	{
+		$view = strtolower(UglyformsFactory::getApplication()->input->get('view', ''));
+		$task = $this->getTask();
+		
+		if($task == 'selectAction' || $task == 'display'){
+			foreach(self::$_submenus as $menu){
+				Rb_HelperToolbar::addSubMenu($menu, $view, $this->_component->getNameCom());
+			}
+		}
+		
+		return $this;
+	}
 }

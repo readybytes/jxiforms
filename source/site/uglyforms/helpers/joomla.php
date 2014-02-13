@@ -90,7 +90,7 @@ class UglyformsHelperJoomla extends UglyformsHelper
 		$query = new Rb_Query();
 		return $query->select('*')
 				->from('#__extensions')
-				->where(array("`type`='plugin'", "`folder`='"."$type"."'", '`enabled`="'.$status.'"'),'AND')
+				->where(array("`type`='plugin'", "`folder`='".$type."'", '`enabled`="'.$status.'"'),'AND')
 				->dbLoadQuery()
 				->loadObjectList('element');
 	}

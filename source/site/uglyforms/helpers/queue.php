@@ -22,7 +22,7 @@ class UglyformsHelperQueue extends UglyformsHelper
 		
 		//save this data in params
 		//TODO : what about attachments, should maintain in db or what???
-		$dataToDump = json_encode(array('data'=>$data, 'attachments'=>$attachments));
+		$submitted_data = json_encode(array('data'=>$data, 'attachments'=>$attachments));
 		
 		$queueRecords = array();
 		foreach ($actions as $action){
@@ -31,7 +31,7 @@ class UglyformsHelperQueue extends UglyformsHelper
 				  ->set('action_id',    $action->getId())
 				  ->set('approved',     !$action->getParam('require_approval', 1))
 				  ->set('approval_key', !($queue->isApproved()) ? md5($action->getId().$action->getType().time()) : '')
-				  ->setParam('submitted_data', $dataToDump)
+				  ->setParam('submitted_data', $submitted_data)
 				  ->save();
 			
 			$queueRecords[$queue->getId()]  =  $queue;

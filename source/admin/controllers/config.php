@@ -37,4 +37,17 @@ class UglyformsAdminControllerConfig extends UglyformsController
 		$model->save($data);
 		return true;
 	}
+
+	public function close()
+	{
+        //try to checkin
+		if($this->_close()===false)
+			$this->setMessage($this->getError());
+
+		//setup redirection
+		$url = Rb_Route::_("index.php?option={$this->_component->getNameCom()}&view=dashboard");
+		$this->setRedirect($url);
+		//as we need redirection
+		return false;
+	}
 }
