@@ -44,7 +44,7 @@ define([
       }));
 
       //for maintaining rendered html in jxiforms form element
-      $("#jxiforms_form_html").html(that.renderForm({
+      $("#uglyforms_form_html").html(that.renderForm({
           text: _.map(this.collection.renderAllRendered(), function(e){return e.html()}).join("\n")
         }));
 
