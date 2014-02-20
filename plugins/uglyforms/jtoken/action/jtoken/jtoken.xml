@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+<name>Joomla-Token</name>
+    <author>ReadyBytes</author>
+    <description>
+    	<![CDATA[
+    	Add Joomla-token in the form for validation purpose.<br>
+    	]]>
+    </description>
+   	<icon>jtoken.png</icon>
+    <tags>token</tags>
+	<help>
+	</help>
+</config>

@@ -17,7 +17,7 @@ class UglyformsHelperQueue extends UglyformsHelper
 	public static function enqueue($input, $data, $attachments, $actions = array())
 	{		
 		if(empty($actions)){
-			$actions = UglyformsHelperAction::getApplicableActions('', $input);
+			$actions = UglyformsHelperAction::getApplicableActions('processor', $input);
 		}
 		
 		//save this data in params

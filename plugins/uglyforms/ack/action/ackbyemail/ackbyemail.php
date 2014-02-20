@@ -12,11 +12,12 @@ if(defined('_JEXEC')===false) die();
  *
  */
 class UglyformsActionAckbyemail extends UglyformsAction
+								implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
 	public    $show_editor  = true;
 	
-	public function process($data, $attachments)
+	public function process($input_id, $data, $attachments)
 	{
 		$emailFields    = explode(',', $this->getActionParam('email_field', ''));
 		$actionParams   = $this->getActionParams();

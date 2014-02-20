@@ -174,17 +174,20 @@ class UglyformsAction extends UglyformsLib
 	} 
 	
 	/**
-	 * Check the action Type
-	 * @return boolean  True when action is of mentioned type else False
+	 * Check the action purpose
+	 * Action Purpose basically denotes the work that action is supposed to do
+	 * for eg. data-validation, data-processing 
+	 * Purpose is identified by the interface an action implements
+	 * @return boolean  True when action is of mentioned purpose else False
 	 */
-	public function hasType($type='')
+	public function hasPurpose($purpose='')
 	{
-		if($type==='')
+		if($purpose==='')
 			return true;
 
-		$type = JString::ucfirst(JString::strtolower($type));
+		$purpose = JString::ucfirst(JString::strtolower($purpose));
 		
-		return is_a($this, 'UglyformsAction'.$type);
+		return is_a($this, 'UglyformsInterface'.$purpose);
 	}
 	
 	public function getId()

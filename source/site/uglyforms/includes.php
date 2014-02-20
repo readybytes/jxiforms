@@ -31,6 +31,7 @@ Rb_HelperLoader::addAutoLoadFolder(UGLYFORMS_PATH_CORE.'/models',		'Modelform','
 Rb_HelperLoader::addAutoLoadFolder(UGLYFORMS_PATH_CORE.'/tables',		'Table',	'Uglyforms');
 Rb_HelperLoader::addAutoLoadFolder(UGLYFORMS_PATH_CORE.'/libs',			'',			'Uglyforms');
 Rb_HelperLoader::addAutoLoadFolder(UGLYFORMS_PATH_CORE.'/helpers',		'Helper',	'Uglyforms');
+Rb_HelperLoader::addAutoLoadFolder(UGLYFORMS_PATH_CORE.'/interface',		'Interface',	'Uglyforms');
 
 //html
 Rb_HelperLoader::addAutoLoadFolder(UGLYFORMS_PATH_CORE.'/html/html',		'Html',			'Uglyforms');

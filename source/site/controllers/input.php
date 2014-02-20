@@ -45,7 +45,9 @@ class UglyformsSiteControllerInput extends UglyformsController
 		
 		if (in_array(false, $result)){
 			//TODO : log data and exit
+			//IMP : log data in action itself
 			//redirect user to some page or on redirect url
+			return ;
 		}
 		
 		$result = $this->_submit($input, $data, $attachments);

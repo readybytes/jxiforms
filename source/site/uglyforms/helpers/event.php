@@ -14,7 +14,7 @@ if(defined('_JEXEC')===false) die();
  */
 class UglyformsHelperEvent extends UglyformsHelper
 {
-	public static function trigger($eventName, $args, $type)
+	public static function trigger($eventName, $args, $purpose='', $refObject ='')
 	{
 		//TODO : add option if only plugin or action needs to trigger
 		$results = array();
@@ -34,12 +34,13 @@ class UglyformsHelperEvent extends UglyformsHelper
 		
 		
 		//TRIGGER action
-		$actions = UglyformsHelperAction::getApplicableActions('', $args[0]);
-		
-		foreach ($actions as $action){
-			if (method_exists($action, $eventName)){
-				//$results[] = call_user_func_array(array($action, $eventName), $args);
-				$results[] = $action->$eventName($args[0], $args[1], $args[2]);
+		if ($refObject instanceof UglyformsInput){
+			$actions = UglyformsHelperAction::getApplicableActions($purpose, $refObject);
+			
+			foreach ($actions as $action){
+				if (method_exists($action, $eventName)){
+					$results[] = call_user_func_array(array($action, $eventName), $args);
+				}
 			}
 		}
 		

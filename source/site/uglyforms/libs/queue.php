@@ -82,13 +82,17 @@ class UglyformsQueue extends UglyformsLib
 		
 		//TODO : trigger before processing action 
 		//TODO : update all the actions since another variable added in process function call
-		$result = $action->process($this->input_id, $relevant_data['data'], $relevant_data['attachments']);
-		
-		//when action has been performed successfully 
-		//on the data then change the status of the queue
-		if($result === true ){
-			$this->set('status', self::STATUS_PROCESSED)
-				 ->save();
+		//TODO : throw exception when method does not exists rather than setting default result
+		$result = false;
+		if (method_exists($action, 'process')){ 
+			$result = $action->process($this->input_id, $relevant_data['data'], $relevant_data['attachments']);
+			
+			//when action has been performed successfully 
+			//on the data then change the status of the queue
+			if($result === true ){
+				$this->set('status', self::STATUS_PROCESSED)
+					 ->save();
+			}
 		}
 
 		return $result;
