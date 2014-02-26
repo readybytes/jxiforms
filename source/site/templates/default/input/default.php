@@ -16,7 +16,7 @@ if(defined('_JEXEC')===false) die(); ?>
 	<div class="row-fluid">
 		<?php if($input->isPublished()){?>
 		
-			 <form action="<?php echo Rb_Route::_('index.php?option=com_uglyforms&view=input&task=submit&input_id='.$input->getId());?>" method="post" name="site<?php echo $this->getName(); ?>Form">
+			 <form action="<?php echo Rb_Route::_('index.php?option=com_uglyforms&view=input&task=submit&input_id='.$input->getId());?>" method="post" name="site<?php echo $this->getName(); ?>Form" class="form-horizontal">
 				<?php echo $sample_html; ?>
 				
 				<!-- ===========TRIGGER POSITION============= -->
@@ -29,6 +29,12 @@ if(defined('_JEXEC')===false) die(); ?>
 						<?php endif;?>
 				<?php endforeach;?>
 
+				<div class="control-group">
+					<div class="control-label"></div>
+					<div class="controls">
+						<input id="submit" class="btn btn-default" type="submit" value="Submit" name="submit">
+					</div>
+				</div>
 			 </form>
 		
 		<?php }

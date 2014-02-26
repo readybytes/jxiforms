@@ -339,4 +339,75 @@ class UglyformsAction extends UglyformsLib
 	{
 		return $this->core_params->get($key,$default);
 	}
+	
+	/**
+	 * Render plugins template
+	 */
+	protected function _render($tpl, $args=null, $layout = null)
+	{
+		return $this->_loadTemplate($tpl, $args, $layout);
+	}
+
+
+	protected function _loadTemplate($tpl = null, $args = null, $layout=null)
+	{
+		if($args === null){
+			$args= $this->_tplVars;
+		}
+		
+		$file = isset($layout) ?  $layout.'_'.$tpl : $tpl;	
+		$file = preg_replace('/[^A-Z0-9_\.-]/i', '', $file);
+		
+		$template = $this->_getTemplatePath($file);
+
+		if($template == false){
+        	Rb_Error::raiseError(500, "Template file : $tpl missing for app {$this->getType()}");
+		}
+		
+		// unset so as not to introduce into template scope
+		unset($tpl);
+
+		// Support tmpl vars
+        // Extracting variables here
+        unset($args['this']);
+        unset($args['_tplVars']);
+        extract((array)$args,  EXTR_OVERWRITE);
+		
+		// start capturing output into a buffer
+		ob_start();
+		include $template;
+		$output = ob_get_contents();
+		ob_end_clean();
+
+		return $output;
+	}
+	
+
+    protected function _getTemplatePath($layout = 'default')
+    {
+    	static $paths = null;
+
+    	if($paths == null){
+	        $paths[] = JPATH_THEMES.'/'.UglyformsFactory::getApplication()->getTemplate()
+	        			.'/html/'.UGLYFORMS_COMPONENT_NAME.
+	        			'/_app/'.JString::strtolower($this->getType());
+
+	        $paths[] = UGLYFORMS_COMPONENT_NAME.'/default'
+	        			.'/_app/'.JString::strtolower($this->getType());
+	        			
+	        $paths[] = $this->getLocation().'/tmpl';
+	        $paths[] = UGLYFORMS_COMPONENT_NAME.'/default/_partials';
+    	}
+
+        //Security Checks : clean paths
+        $layout = preg_replace('/[^A-Z0-9_\.-]/i', '', $layout);
+
+        //find the path and return
+        return JPath::find($paths, $layout.'.php');
+    }
+    
+	protected function assign($key, $value)
+	{
+		$this->_tplVars[$key] = $value;
+	}
 }

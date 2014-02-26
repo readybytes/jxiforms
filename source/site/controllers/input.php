@@ -41,13 +41,13 @@ class UglyformsSiteControllerInput extends UglyformsController
 		
 		//TRIGGER onUglyformsDataValidation for validation checks injected by plugin or actions on the current form
 		$args   = array($input, &$data, &$attachments);
-		$result = UglyformsHelperEvent::trigger('onUglyformsDataValidation', $args, 'uglyforms');
+		$result = UglyformsHelperEvent::trigger('onUglyformsDataValidation', $args, 'validator', $input);
 		
 		if (in_array(false, $result)){
 			//TODO : log data and exit
 			//IMP : log data in action itself
 			//redirect user to some page or on redirect url
-			return ;
+			return false;
 		}
 		
 		$result = $this->_submit($input, $data, $attachments);

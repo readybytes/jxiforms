@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+<name>Captcha</name>
+    <author>ReadyBytes</author>
+    <description>
+    	<![CDATA[
+    	Apply captcha <br>
+    	]]>
+    </description>
+   	<icon>captcha.png</icon>
+    <tags>captcha</tags>
+	<help>	</help>
+	<code>
+	</code>
+		<fields name="action_params">
+		</fields>
+</config>
