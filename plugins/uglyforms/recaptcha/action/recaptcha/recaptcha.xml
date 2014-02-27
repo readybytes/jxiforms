@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+<name>Captcha</name>
+    <author>ReadyBytes</author>
+    <description>
+    	<![CDATA[
+    	Apply recaptcha <br>
+    	]]>
+    </description>
+   	<icon>recaptcha.png</icon>
+    <tags>recaptcha</tags>
+	<help>	</help>
+		<fields name="action_params">
+			<fieldset name="parameters" addfieldpath="/components/com_uglyforms/uglyforms/html/fields">
+
+				<field name="public_key" type="text"
+					label="COM_UGLYFORMS_ACTION_RECAPTCHA_PUBLIC_KEY_LABEL"
+					description="COM_UGLYFORMS_ACTION_RECAPTCHA_PUBLIC_KEY_DESC"
+					default=""
+				/>
+				
+				<field name="private_key" type="text"
+					label="COM_UGLYFORMS_ACTION_RECAPTCHA_PRIVATE_KEY_LABEL"
+					description="COM_UGLYFORMS_ACTION_RECAPTCHA_PRIVATE_KEY_DESC"
+					default=""
+				/>
+				
+				<field name="ssl_site" type="radio"
+					label="COM_UGLYFORMS_ACTION_RECAPTCHA_SSL_SITE_LABEL" 
+					description="COM_UGLYFORMS_ACTION_RECAPTCHA_SSL_SITE_DESC"
+					class="btn-group" 
+					size="1" default="0" >
+					<option value="0">COM_UGLYFORMS_NO</option>
+					<option value="1">COM_UGLYFORMS_YES</option>
+				</field>
+				
+				<field name="theme" type="list"
+					default="clean"
+					label="COM_UGLYFORMS_ACTION_RECAPTCHA_THEME_LABEL"
+					description="COM_UGLYFORMS_ACTION_RECAPTCHA_THEME_LABEL" >
+					<option
+						value="clean">COM_UGLYFORMS_ACTION_RECAPTCHA_THEME_CLEAN</option>
+					<option
+						value="white">COM_UGLYFORMS_ACTION_RECAPTCHA_THEME_WHITE</option>
+					<option
+						value="blackglass">COM_UGLYFORMS_ACTION_RECAPTCHA_THEME_BLACKGLASS</option>
+					<option
+						value="red">COM_UGLYFORMS_ACTION_RECAPTCHA_THEME_RED</option>
+				</field>
+
+			</fieldset>
+		</fields>
+</config>
