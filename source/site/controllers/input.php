@@ -127,4 +127,9 @@ class UglyformsSiteControllerInput extends UglyformsController
 		
 		return $attachments;
 	}
+	
+	public function display($cachable = false, $urlparams = array())
+	{
+		return parent::display($cachable, $urlparams);
+	}	
 } 

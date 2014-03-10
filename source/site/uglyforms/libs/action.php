@@ -190,6 +190,17 @@ class UglyformsAction extends UglyformsLib
 		return is_a($this, 'UglyformsInterface'.$purpose);
 	}
 	
+	public function hasType($type='')
+	{
+		if($type==='')
+			return true;
+
+		$type = JString::ucfirst(JString::strtolower($type));
+		
+		return is_a($this, 'UglyformsAction'.$type);
+	}
+		
+	
 	public function getId()
 	{
 		Rb_Error::assert($this);

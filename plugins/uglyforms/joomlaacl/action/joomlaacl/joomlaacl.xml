@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<name>Joomla-ACL</name>
+    <author>ReadyBytes</author>
+    <description>
+    </description>
+   	<icon>joomlaacl.png</icon>
+    <tags>joomlaacl</tags>
+	<help>
+	</help>
+
+		<fields name="action_params">
+		
+			<fieldset name="parameters" addfieldpath="/components/com_uglyforms/uglyforms/html/fields">
+				<field name="accesslevel" type="accesslevel" 
+						label="JFIELD_ACCESS_LABEL"
+						description="JFIELD_ACCESS_DESC" size="1" />
+		</fieldset>
+	</fields>
+</config>

@@ -86,17 +86,21 @@ class UglyformsHelperAction extends UglyformsHelper
 		self::$_actions[$type] = $type;
 	}
 		
-	static function getAvailableActions($purpose='')
+	static function getAvailableActions($purpose='', $byType = false)
 	{
 		//get Plugins classes names
 		$actions = self::loadActions();
 
 		$results = array();
 
-		//trigger all actions if they are of mentioned type
+		$function = 'hasPurpose';
+		if ($byType == true){
+			$function = 'hasType';
+		}
+		
 		foreach($actions as $action)
 		{
-			if($action->hasPurpose($purpose)){
+			if($action->$function($purpose)){
 				$results[$action->getId()] = $action;
 			}
 		}
@@ -137,14 +141,19 @@ class UglyformsHelperAction extends UglyformsHelper
 		return self::$xmlData;
 	}
 	
-	static function getApplicableActions($purpose='', $refObject=null)
+	static function getApplicableActions($purpose='', $refObject=null, $byType = false)
 	{
 		$actions = self::loadActions();
 		$results = array();
 
+		$function = 'hasPurpose';
+		if ($byType == true){
+			$function = 'hasType';
+		}
+		
 		foreach($actions as $action)
 		{
-			if($action->hasPurpose($purpose) && $action->isApplicable($refObject)){
+			if($action->$function($purpose) && $action->isApplicable($refObject)){
 				$results[$action->getId()] = $action;
 			}
 		}

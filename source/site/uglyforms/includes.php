@@ -51,4 +51,7 @@ $filename = 'com_uglyforms_extensions';
 $language = JFactory::getLanguage();
 $language->load($filename, JPATH_SITE);
 
+//load uglyforms plugins
+Rb_HelperPlugin::loadPlugins('uglyforms');
+
 require_once UGLYFORMS_PATH_CORE.'/base/event.php';
