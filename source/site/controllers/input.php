@@ -97,4 +97,9 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		
 		return true;
 	}
+	
+	public function display($cachable = false, $urlparams = array())
+	{
+		return parent::display($cachable, $urlparams);
+	}
 } 

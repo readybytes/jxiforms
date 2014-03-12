@@ -11,7 +11,7 @@ if(defined('_JEXEC')===false) die();
 
 class JXiFormsAdminBaseViewDashboard extends JXiFormsView
 {
-	public function display($tpl=null)
+	public function display($cachable = false, $urlparams = array())
 	{
 		//For Published and Unpublished plugins icons on dashboard.
 		$this->assign('enablePlugins', JXiFormsHelperAction::getXml());
