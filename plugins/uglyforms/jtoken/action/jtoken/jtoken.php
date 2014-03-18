@@ -27,7 +27,7 @@ class UglyformsActionJtoken extends UglyformsAction
 		return $html;
 	}
 	
-	public function onUglyformsDataValidation($input, $data, $attachments)
+	public function onUglyformsDataValidation($input, $data_id)
 	{
 		if (JSession::checkToken()){
 			return true;

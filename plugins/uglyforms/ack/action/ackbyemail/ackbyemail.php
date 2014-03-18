@@ -17,7 +17,7 @@ class UglyformsActionAckbyemail extends UglyformsAction
 	protected $_location	= __FILE__;
 	public    $show_editor  = true;
 	
-	public function process($input_id, $data, $attachments)
+	public function process($input_id, $data_id)
 	{
 		$emailFields    = explode(',', $this->getActionParam('email_field', ''));
 		$actionParams   = $this->getActionParams();

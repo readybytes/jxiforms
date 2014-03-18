@@ -29,18 +29,24 @@ class UglyformsSiteControllerInput extends UglyformsController
 		$postData    = Rb_Request::get('POST');
 		$getData     = Rb_Request::get('GET');
 		$data 		 = array_merge($getData, $postData);
-		$attachments = $this->_collectAttachments();
+		$attachments = $this->_collectAttachments($_FILES);
+		
+		//TRIGGER : If any action or plugin want to attach some data.		
+		$args     = array($input, &$data, &$attachments);
+		UglyformsHelperEvent::trigger('onUglyformsDataPrepare', $args, 'uglyforms');
+		
+		
+		$user_ip = isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] 
+								: ( isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : Rb_Text::_('COM_UGLYFORMS_LOGGER_REMOTE_IP_NOT_DEFINED')) ;
+		
+		$data_id = UglyformsHelperInput::recordData($inputId, array('data'=>$data, 'attachment'=>$attachments, 'user_ip'=>$user_ip));
+
 		
 		//TODO : implement core checking to validate if the data is expected one or not
 		//here data is validated with respect to field type of the form
 
-
-//		//unset token(added by RBFW for protecting against CSRF) from the submitted data 
-//		$formToken   = UglyformsFactory::getSession()->getFormToken();
-//		unset($data[$formToken]);
-		
 		//TRIGGER onUglyformsDataValidation for validation checks injected by plugin or actions on the current form
-		$args   = array($input, &$data, &$attachments);
+		$args   = array($input, $data_id);
 		$result = UglyformsHelperEvent::trigger('onUglyformsDataValidation', $args, 'validator', $input);
 		
 		if (in_array(false, $result)){
@@ -50,25 +56,18 @@ class UglyformsSiteControllerInput extends UglyformsController
 			return false;
 		}
 		
-		$result = $this->_submit($input, $data, $attachments);
+		$result = $this->_submit($input, $data_id);
 		
 		$url = $input->getRedirecturl();
 		//TODO : routed url required
 		UglyformsFactory::getApplication()->redirect($url);	
 	}
 	
-	public function _submit($input, $data, $attachments)
-	{ 	
-		//TRIGGER : If any action or plugin want to attach some data.		
-		$args     = array($input, &$data, &$attachments);
-		UglyformsHelperEvent::trigger('onUglyformsDataPrepare', $args, 'uglyforms');
-		
+	public function _submit($input, $data_id)
+	{		
 		//TODO : decision based on the trigger result  
 		//create queue records and dump data into file
-		$queueRecs  =  UglyformsHelperQueue::enqueue($input, $data, $attachments);
-		
-		//TODO : convert this process in database driven rather than file based
-//		UglyformsHelperQueue::appendDataToFile($queueRecs, $data, $attachments);
+		$queueRecs  =  UglyformsHelperQueue::enqueue($input, $data_id);
 		
 		$approvalContent = Rb_Text::sprintf('COM_UGLYFORMS_INPUT_DATA_SUBMITTED_ON', $input->getTitle());
 		$approvalLinks    = '';
@@ -94,14 +93,14 @@ class UglyformsSiteControllerInput extends UglyformsController
 		return true;
 	}
 	
-	function _collectAttachments()
+	function _collectAttachments($files)
 	{
 		//TODO : implement security for attachments
 
 		//move the uploaded attachments file to the 
 		//tmp location and pass it on to the plugins for further process
 		$attachments = array();
-		foreach($_FILES as $name => $file){
+		foreach($files as $name => $file){
 			if(empty($file['tmp_name'])){
 				continue;
 			}

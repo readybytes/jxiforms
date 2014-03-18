@@ -17,13 +17,11 @@ class UglyformsInput extends UglyformsLib
 	protected 	$description   =   '';
 	protected 	$published	   =	1;
 	
-	protected 	$post_url	   =   '';
 	protected 	$redirect_url  =   'index.php';
 		
 	protected 	$params		   =   null;
 	
 	protected 	$_input_actions  =   null;
-	protected 	$html			 =   null;
 	
 	/**
 	 * Gets the instance of UglyformsInput with provide form identifier
@@ -50,11 +48,9 @@ class UglyformsInput extends UglyformsLib
 		$this->title		= '';
 		$this->description  = '';
 		$this->published	= 1;
-		$this->post_url		= '';
 		$this->redirect_url = 'index.php';
 		$this->params		= new Rb_Registry();
 		$this->_input_actions= array();
-		$this->html			 = '';
 
 		return $this;
 	}
@@ -79,7 +75,6 @@ class UglyformsInput extends UglyformsLib
 	
 	/**
 	 * Save the input and its association with actions in inputaction table
-	 * Attach the posturl with object if empty
 	 * 
 	 * @return object UglyformsInput  Instance of UglyformsInput
 	 */
@@ -87,12 +82,6 @@ class UglyformsInput extends UglyformsLib
 	{
 		if(!parent::save()){
 			return false;
-		}
-		
-		$posturl = $this->getPosturl(); 
-		if(empty($posturl)){
-			$this->post_url = JUri::root().'index.php?option=com_uglyforms&view=input&task=submit&input_id='.$this->getId();
-			$this->save();
 		}
 		
 		return $this->_saveInputActions();
@@ -104,7 +93,7 @@ class UglyformsInput extends UglyformsLib
 	 */
 	public function getPosturl()
 	{
-		return $this->post_url;
+		return 'index.php?option=com_uglyforms&view=input&task=submit&input_id='.$this->getId();
 	}
 	
 	/**
@@ -153,13 +142,44 @@ class UglyformsInput extends UglyformsLib
 		return $this->published;
 	}
 	
-	public function getHtml()
+	public function getRecentHtml()
 	{
-		return $this->html;
+		$inputhtml = $this->getRecentInputhtml();
+		
+		if ($inputhtml == false){
+			return '';
+		}
+		
+		return $inputhtml->html;
 	}
 	
 	public function getTitle()
 	{
 		return $this->title;
 	}
+	
+	public function getRecentFormJson()
+	{
+		$inputhtml = $this->getRecentInputhtml();
+		
+		if ($inputhtml == false){
+			return '';
+		}
+		
+		return $inputhtml->json;
+	}
+	
+	public function getRecentInputhtml()
+	{
+		$html_records = UglyformsFactory::getInstance('inputhtml', 'model')
+										->loadRecords(array('input_id'=>$this->getId()));
+
+		if (empty($html_records)){
+			return false;
+		}
+		
+		$html = array_pop($html_records);
+		return $html;
+	}
+	
 }

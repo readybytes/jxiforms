@@ -17,5 +17,5 @@ if(defined('_JEXEC')===false) die();
  */
 interface UglyformsInterfaceValidator
 {
-	public function onUglyformsDataValidation($input, $data, $attachments);
+	public function onUglyformsDataValidation($input, $data_id);
 }

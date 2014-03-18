@@ -26,7 +26,6 @@ JHtml::_('behavior.framework');
 					<?php echo UglyformsHtml::_('grid.sort', "COM_UGLYFORMS_INPUT_GRID_INPUT_ID", 'input_id', $filter_order_Dir, $filter_order);?>
 				</th>
 				<th><?php echo UglyformsHtml::_('grid.sort', "COM_UGLYFORMS_INPUT_GRID_TITLE", 'title', $filter_order_Dir, $filter_order);?></th>
-				<th><?php echo Rb_Text::_('COM_UGLYFORMS_INPUT_GRID_POSTURL');?></th>
 				<th><?php echo Rb_Text::_('COM_UGLYFORMS_INPUT_GRID_REDIRECTURL');?></th>
 				<th><?php echo UglyformsHtml::_('grid.sort', "COM_UGLYFORMS_INPUT_GRID_PUBLISHED", 'published', $filter_order_Dir, $filter_order);?></th>
 							
@@ -47,7 +46,6 @@ JHtml::_('behavior.framework');
 						<div><?php echo UglyformsHtml::link($uri.'&task=edit&id='.$record->{$record_key}, $record->title);?></div>
 						<div><?php echo $record->description;?></div>
 					</td>
-					<td><?php echo $record->post_url;?></td>
 					<td><?php echo $record->redirect_url;?></td>
 					<td><?php echo UglyformsHtml::_("rb_html.boolean.grid", $record, 'published', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_UGLYFORMS');?></td>
 				</tr>

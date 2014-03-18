@@ -2,11 +2,9 @@ CREATE TABLE IF NOT EXISTS `#__uglyforms_input` (
  `input_id` 		INT(11)		NOT NULL AUTO_INCREMENT,
  `title` 		VARCHAR(255) 	NOT NULL ,
  `description` 		TEXT		DEFAULT NULL, 
- `post_url`     	VARCHAR(255)	NOT NULL,
  `redirect_url` 	VARCHAR(255)	DEFAULT NULL,
  `published` 		TINYINT(1) 	DEFAULT 1,
  `params`		TEXT 		DEFAULT NULL,  
- `html` 		TEXT		DEFAULT NULL,
   PRIMARY KEY (`input_id`)
 )
 ENGINE = MyISAM
@@ -57,18 +55,15 @@ DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `#__uglyforms_log` (
   `log_id`		INT(11)		NOT NULL AUTO_INCREMENT,
-  `level`		INT(11) 	NOT NULL,
-  `user_id` 		INT(11)		NOT NULL,
-  `class`		VARCHAR(100) 	NOT NULL,
-  `object_id`		INT(11) 	NOT NULL,
-  `message`		TEXT		DEFAULT NULL,
-  `user_ip` 		VARCHAR(50)	NOT NULL,
+  `message`		TEXT		NOT NULL,
+  `reference_id`	INT(11) 	DEFAULT NULL,
+  `reference_type`	VARCHAR(100)	DEFAULT NULL,
+  `data_id`		INT(11)		DEFAULT NULL,
   `created_date`	DATETIME	NOT NULL,
-  `token`		VARCHAR(255)    DEFAULT NULL,
-  `status`		INT(11) 	DEFAULT '0',
   PRIMARY KEY (`log_id`),
-  INDEX `idx_level` (`level` ASC),
-  INDEX `idx_class` (`class` ASC)
+  INDEX `idx_data_id` (`data_id` ASC),
+  INDEX `idx_reference_id` (`reference_id` ASC),
+  INDEX `idx_reference_type` (`reference_type` ASC)
 ) 
 ENGINE = MyISAM 
 DEFAULT CHARACTER SET = utf8;
@@ -80,8 +75,8 @@ CREATE TABLE IF NOT EXISTS `#__uglyforms_queue` (
   `approved`		TINYINT(1) 		DEFAULT 1,
   `approval_key`	VARCHAR(255)	DEFAULT NULL,
   `status`			INT(4) 			DEFAULT 0,
+  `data_id`		INT(11) 		NOT NULL,
   `created_date`	DATETIME		NOT NULL,
-  `token` 			TEXT			DEFAULT NULL,
   `params` 			TEXT			DEFAULT NULL,
   PRIMARY KEY (`queue_id`),
   INDEX `idx_input_id` (`input_id` ASC),
@@ -91,3 +86,30 @@ CREATE TABLE IF NOT EXISTS `#__uglyforms_queue` (
 ) 
 ENGINE = MyISAM 
 DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `#__uglyforms_inputhtml` (
+  `inputhtml_id`		INT(11)			NOT NULL AUTO_INCREMENT,
+  `html`		TEXT	 		DEFAULT NULL,
+  `json` 		TEXT			DEFAULT NULL,
+  `input_id`		INT(11)			NOT NULL,
+  `created_date`	DATETIME		NOT NULL,
+  PRIMARY KEY (`inputhtml_id`),
+  INDEX `idx_input_id` (`input_id` ASC)
+) 
+ENGINE = MyISAM 
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `#__uglyforms_data` (
+  `data_id`		INT(11)			NOT NULL AUTO_INCREMENT,
+  `data`		TEXT	 		DEFAULT NULL,
+  `attachment` 		TEXT			DEFAULT NULL,
+  `input_id`		INT(11)			NOT NULL,
+  `user_ip`		VARCHAR(50) 		NOT NULL,
+  `created_date`	DATETIME		NOT NULL,
+  PRIMARY KEY (`data_id`),
+  INDEX `idx_input_id` (`input_id` ASC)
+) 
+ENGINE = MyISAM 
+DEFAULT CHARACTER SET = utf8;
+
+

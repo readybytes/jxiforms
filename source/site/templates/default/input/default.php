@@ -16,7 +16,7 @@ if(defined('_JEXEC')===false) die(); ?>
 	<div class="row-fluid">
 		<?php if($input->isPublished()){?>
 		
-			 <form action="<?php echo Rb_Route::_('index.php?option=com_uglyforms&view=input&task=submit&input_id='.$input->getId());?>" method="post" name="site<?php echo $this->getName(); ?>Form" class="form-horizontal">
+			 <form action="<?php echo Rb_Route::_('index.php?option=com_uglyforms&view=input&task=submit&input_id='.$input->getId());?>" method="post" name="site<?php echo $this->getName(); ?>Form" class="form-horizontal rb-validate-form">
 				<?php echo $sample_html; ?>
 				
 				<!-- ===========TRIGGER POSITION============= -->

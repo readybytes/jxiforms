@@ -31,4 +31,21 @@ class UglyformsHelperInput extends UglyformsHelper
 		
 		return false;
 	}
+	
+	public static function recordData($input_id, $data)
+	{
+		//TODO : throw exception
+		if (!$input_id || empty($data)){
+			return false;
+		}
+		
+		$data_model = UglyformsFactory::getInstance('data', 'model');
+		
+		$record['data'] 		= isset($data['data']) 			? json_encode($data['data']) : json_encode(array());
+		$record['attachment'] 	= isset($data['attachment']) 	? json_encode($data['attachment']) : json_encode(array());
+		$record['user_ip'] 		= isset($data['user_ip']) 		? $data['user_ip'] : '';
+		$record['input_id'] 	= $input_id;
+		
+		return $data_model->save($record);
+	}
 }

@@ -14,7 +14,7 @@ if(defined('_JEXEC')===false) die(); ?>
 </div>
 <div class="control-group">
 	<div class="control-label"><?php echo Rb_Text::_('COM_UGLYFORMS_ACTION_CAPTCHA_ENTER_CAPTCHA');?></div>
-	<div class="controls"><input type="text" name="uglyforms_captcha_<?php echo $action_id;?>" value="" /></div>
+	<div class="controls"><input type="text" name="uglyforms_captcha_<?php echo $action_id;?>" value="" class="required" required="true" /></div>
 </div>
-
+<?php 
 

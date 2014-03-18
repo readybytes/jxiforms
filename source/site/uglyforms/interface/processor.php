@@ -17,5 +17,5 @@ if(defined('_JEXEC')===false) die();
  */
 interface UglyformsInterfaceProcessor
 {
-	function process($refId, $data, $attachments);
+	function process($refId, $data_id);
 }

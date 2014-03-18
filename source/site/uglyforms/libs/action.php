@@ -421,4 +421,9 @@ class UglyformsAction extends UglyformsLib
 	{
 		$this->_tplVars[$key] = $value;
 	}
+	
+	public function getInputData($data_id) 
+	{
+		return UglyformsHelperData::get($data_id);
+	}
 }

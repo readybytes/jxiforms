@@ -23,7 +23,7 @@ class UglyformsSiteViewInput extends UglyformsSiteBaseViewInput
 		$itemId  =  ($itemId === null) ? $this->getModel()->getState('id') : $itemId ;
 		
 		$input   =  UglyformsInput::getInstance($itemId);
-		$this->assign('sample_html', $input->getHtml());
+ 		$this->assign('sample_html', $input->getRecentHtml());
 		$this->assign('input', $input);
 		return true;
 	}

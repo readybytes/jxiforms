@@ -20,7 +20,7 @@ class UglyformsQueue extends UglyformsLib
 	
 	protected 	$status	   	   =   0;
 	protected 	$created_date  =   null;
-	protected 	$token		   =   '';
+	protected 	$data_id	   =   0;
 	protected 	$params		   =   null;
 	
 	const STATUS_NONE			= 0;
@@ -55,9 +55,9 @@ class UglyformsQueue extends UglyformsLib
 		$this->action_id 		= 0;
 		$this->approved			= 1;
 		$this->approval_key		= '';
+		$this->data_id			= 0;
 		$this->status 			= self::STATUS_NONE;
 		$this->created_date		= new Rb_Date();
-		$this->token			= '';
 		$this->params		 	= new Rb_Registry();
 
 		return $this;
@@ -75,9 +75,6 @@ class UglyformsQueue extends UglyformsLib
 	
 	public function process()
 	{
-		$relevant_data = $this->getParam('submitted_data', false);
-
-		$relevant_data = ($relevant_data == false) ? array('data'=>array(), 'attachments'=>array()) : json_decode($relevant_data, true); 
 		$action = UglyformsAction::getInstance($this->getActionId());
 		
 		//TODO : trigger before processing action 
@@ -85,7 +82,7 @@ class UglyformsQueue extends UglyformsLib
 		//TODO : throw exception when method does not exists rather than setting default result
 		$result = false;
 		if (method_exists($action, 'process')){ 
-			$result = $action->process($this->input_id, $relevant_data['data'], $relevant_data['attachments']);
+			$result = $action->process($this->input_id, $this->data_id);
 			
 			//when action has been performed successfully 
 			//on the data then change the status of the queue
@@ -99,10 +96,6 @@ class UglyformsQueue extends UglyformsLib
 		//JXITODO : if process is not successfull then do not change the queue status else mark it as processed
 	}
 	
-	public function getToken()
-	{
-		return $this->token;
-	}
 	
 	public function getApprovalKey()
 	{
@@ -156,5 +149,10 @@ class UglyformsQueue extends UglyformsLib
 			return UglyformsAction::getInstance($this->action_id);
 		}
 		return $this->action_id;
+	}
+	
+	public function getInputData()
+	{
+		return UglyformsHelperData::get($this->data_id);
 	}
 }

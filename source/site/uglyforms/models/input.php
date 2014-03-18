@@ -19,7 +19,11 @@ class UglyformsModelInput extends UglyformsModel
 			Rb_Error::raiseError(500, $db->getErrorMsg());
 		}
 			// delete input from inputaction table
-	       return UglyformsFactory::getInstance('inputaction', 'model')
+	       UglyformsFactory::getInstance('inputaction', 'model')
+							 	 ->deleteMany(array('input_id' => $id));
+							 	 
+			// delete relevant inputhtml records from inputhtml table
+	       return UglyformsFactory::getInstance('inputhtml', 'model')
 							 	 ->deleteMany(array('input_id' => $id));
 	}
 }

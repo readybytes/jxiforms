@@ -17,7 +17,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 ?>
 
 <script type="text/javascript">
-		var uglyforms_form_jsoncontent = '<?php echo $input->getParam('jsoncontent');?>';
+		var uglyforms_form_jsoncontent = '<?php echo $input_html->json;?>';
 </script>
 
 <link href="<?php echo Rb_HelperTemplate::mediaURI(dirname(dirname(__FILE__)).'/_media/css/custom.css', false);?>" rel="stylesheet">
@@ -63,24 +63,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 								<div class="control-group hide" id="input-description">
 									<div class="controls"><?php echo $form->getInput('description'); ?></div>				
 								</div>
-								
 					
-								<div class="control-group">
-									<div class="control-label"><?php echo $form->getLabel('post_url'); ?> </div>
-								
-									<div class="controls">
-										<div class="jxif-fontsize15">
-											<strong><?php echo $help_link;?></strong>
-										</div>
-										<?php $post_url = $form->getValue('post_url');
-										if(!empty($post_url)):?>
-											<div><?php echo $form->getValue('post_url'); ?></div>
-										<?php else :?>
-											<div class="muted"><?php echo Rb_Text::_('COM_UGLYFORMS_FORM_POST_URL_MSG_BEFORE_SAVE');?></div>
-										<?php endif;?>	
-									</div>
-								</div>		
-								
 								<?php echo $form->getInput('input_id'); ?>
 							</fieldset>
 						</div>
@@ -109,9 +92,11 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 							</fieldset>	
 						</div>
 					</div>
-					<textarea name="uglyforms_form[params][jsoncontent]" id="uglyforms_form_params_jsoncontent" class="hide"><?php echo $input->getParam('jsoncontent');?></textarea>
+					<!-- IMP : to load form json -->
+					<textarea name="uglyforms_form[inputhtml][json]" id="uglyforms_form_inputhtml_json" class="hide"><?php echo $input_html->json;?></textarea>
+					<!-- IMP : for html code -->										
+					<div class="hide"><textarea id="uglyforms_form_inputhtml_html" name="uglyforms_form[inputhtml][html]"></textarea></div>
 					
-					<div class="hide"><?php echo $form->getInput('html'); ?></div>
 					<input type="hidden" name="task" value="save" />
 					<input type="hidden" name="boxchecked" value="1" />		
 				</form>

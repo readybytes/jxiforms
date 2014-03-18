@@ -11,12 +11,17 @@ if(defined('_JEXEC')===false) die();
  *
  */
 class UglyformsActionEmail extends UglyformsAction
+							implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
 	public    $show_editor  = true;
 	
-	public function process($data, $attachments)
+	public function process($input, $data_id)
 	{
+		$record 	= $this->getInputData($data_id);
+		$data  			= $record->data;
+		$attachments 	= $record->attachment;
+		
 		$actionParams = $this->getActionParams();
 		
 		$mailer  =  UglyformsFactory::getMailer();
