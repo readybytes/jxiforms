@@ -57,7 +57,16 @@
 			  <fileset dir="${dir.plugin}/jxiforms">
 				<type type="dir" />
 				<depth max="0" min="0" />
-		<!--		<include name="email" />  -->
+				<include name="jxiforms" />  
+				<include name="resetpassword" />  
+				<include name="mailchimp" />  
+				<include name="joomlaregistration" />  
+				<include name="joomlalogin" />  
+				<include name="email" />  
+				<include name="dropbox" />  
+				<include name="ack" />  
+				<include name="languagepack_en_GB" />  
+
 			  </fileset>
 		
 		</foreach>
