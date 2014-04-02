@@ -63,6 +63,11 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 								<div class="control-group hide" id="input-description">
 									<div class="controls"><?php echo $form->getInput('description'); ?></div>				
 								</div>
+								
+								<div class="control-group">
+									<div class="control-label"><?php echo $form->getLabel('published'); ?> </div>
+									<div class="controls"><?php echo $form->getInput('published'); ?></div>								
+								</div>							
 					
 								<?php echo $form->getInput('input_id'); ?>
 							</fieldset>
@@ -71,15 +76,12 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 						<div class="span3">
 							<fieldset>
 								
-								<div class="control-group">
-									<div class="control-label"><?php echo $form->getLabel('published'); ?> </div>
-									<div class="controls"><?php echo $form->getInput('published'); ?></div>								
-								</div>
-								
-								<div class="control-group">
-									<div class="control-label"><?php echo $form->getLabel('redirect_url'); ?> </div>
-									<div class="controls"><?php echo $form->getInput('redirect_url'); ?></div>								
-								</div>
+								<?php foreach ($form->getFieldset('params') as $field) : ?>
+									<div class="control-group">
+										<div class="control-label"><?php echo $field->label; ?></div>
+										<div class="controls"><?php echo $field->input; ?></div>
+									</div>
+								<?php endforeach; ?>
 								
 								<div class="control-group"> 
 									<div class="control-label">

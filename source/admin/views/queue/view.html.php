@@ -44,19 +44,15 @@ class UglyformsAdminViewQueue extends UglyformsAdminBaseViewQueue
 		$itemId  =  ($itemId === null) ? $this->getModel()->getState('id') : $itemId ;
 		$queue   =  UglyformsQueue::getInstance($itemId);
 		
-		$recorded_data = $queue->getInputData();
+		$relevant_data = $queue->getInputData();
 
-		$relevant_data = ($recorded_data == false) ? 
-									array('data'=>array(), 'attachment'=>array()) 
-										: array('data'=>$recorded_data->data, 'attachment'=>$recorded_data->attachment);
-		
 		$this->assign('queue', 				$queue);
 		$this->assign('input', 				UglyformsHelperInput::get($queue->getInput()));
 		$this->assign('action',  			UglyformsHelperAction::get($queue->getAction()));
 		$this->assign('status', 			UglyformsQueue::getStatusList());
 		$this->assign('form',  				$queue->getModelform()->getForm($queue));
-		$this->assign('queue_data',  		$relevant_data['data']);
-		$this->assign('queue_attachments',  $relevant_data['attachment']);
+		$this->assign('queue_data',  		$relevant_data->data);
+		$this->assign('queue_attachments',  $relevant_data->attachment);
 				
 		return true;
 	} 

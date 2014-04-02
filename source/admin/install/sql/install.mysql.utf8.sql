@@ -2,7 +2,6 @@ CREATE TABLE IF NOT EXISTS `#__uglyforms_input` (
  `input_id` 		INT(11)		NOT NULL AUTO_INCREMENT,
  `title` 		VARCHAR(255) 	NOT NULL ,
  `description` 		TEXT		DEFAULT NULL, 
- `redirect_url` 	VARCHAR(255)	DEFAULT NULL,
  `published` 		TINYINT(1) 	DEFAULT 1,
  `params`		TEXT 		DEFAULT NULL,  
   PRIMARY KEY (`input_id`)

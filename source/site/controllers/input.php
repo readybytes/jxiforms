@@ -28,71 +28,27 @@ class UglyformsSiteControllerInput extends UglyformsController
 		//collect data from get and post 
 		$postData    = Rb_Request::get('POST');
 		$getData     = Rb_Request::get('GET');
-		$data 		 = array_merge($getData, $postData);
-		$attachments = $this->_collectAttachments($_FILES);
 		
-		//TRIGGER : If any action or plugin want to attach some data.		
-		$args     = array($input, &$data, &$attachments);
-		UglyformsHelperEvent::trigger('onUglyformsDataPrepare', $args, 'uglyforms');
+		$input_data = new stdClass();
+		$input_data->data 		=  array_merge($getData, $postData);
+		$input_data->attachment = $this->_collectAttachments($_FILES);
 		
+		$result = UglyformsHelperInput::process($input, $input_data);
 		
-		$user_ip = isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] 
-								: ( isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : Rb_Text::_('COM_UGLYFORMS_LOGGER_REMOTE_IP_NOT_DEFINED')) ;
-		
-		$data_id = UglyformsHelperInput::recordData($inputId, array('data'=>$data, 'attachment'=>$attachments, 'user_ip'=>$user_ip));
-
-		
-		//TODO : implement core checking to validate if the data is expected one or not
-		//here data is validated with respect to field type of the form
-
-		//TRIGGER onUglyformsDataValidation for validation checks injected by plugin or actions on the current form
-		$args   = array($input, $data_id);
-		$result = UglyformsHelperEvent::trigger('onUglyformsDataValidation', $args, 'validator', $input);
-		
-		if (in_array(false, $result)){
-			//TODO : log data and exit
-			//IMP : log data in action itself
-			//redirect user to some page or on redirect url
+		if ($result == false){
+			//TODO : display message and link to current form
+			//checking whether form is displayed by uglyforms or some custom form is used
+			$error_url = $input->getParam('error_url', Rb_Route::_("index.php?option=com_uglyforms&view=input&task=error", false));
+			$this->setRedirect($error_url);
 			return false;
 		}
 		
-		$result = $this->_submit($input, $data_id);
-		
-		$url = $input->getRedirecturl();
-		//TODO : routed url required
-		UglyformsFactory::getApplication()->redirect($url);	
+		//TODO : routed url needed
+		$redirect_url = $input->getParam('redirect_url', Rb_Route::_("index.php?option=com_uglyforms&view=input&task=complete", false));
+		$this->setRedirect($redirect_url);
+		return false;
 	}
-	
-	public function _submit($input, $data_id)
-	{		
-		//TODO : decision based on the trigger result  
-		//create queue records and dump data into file
-		$queueRecs  =  UglyformsHelperQueue::enqueue($input, $data_id);
 		
-		$approvalContent = Rb_Text::sprintf('COM_UGLYFORMS_INPUT_DATA_SUBMITTED_ON', $input->getTitle());
-		$approvalLinks    = '';
-		
-		
-		//TODO : before process trigger for server-side validation checks
-		//get applicable actions and trigger/function call for before process check
-		foreach ($queueRecs as $queue){
-			//if task is approved then process immediately else set the approval contents to email
-			if($queue->isApproved() && $queue->getStatus() != UglyformsQueue::STATUS_PROCESSED){
-				$queue->process();
-			}
-			else {
-				$approvalLinks .= Rb_Text::sprintf('COM_UGLYFORMS_INPUT_APPROVAL_REQUEST', UglyformsHelperAction::get($queue->getActionId())->title,$queue->getApprovalUrl());
-			}
-		}
-		
-		//do not send approval email when configuration setting is set to no  
-		if(!empty($approvalLinks) && UglyformsHelperConfig::get('approval_send_email')){
-			UglyformsHelperQueue::sendApprovalEmail($approvalContent.$approvalLinks);
-		}
-		
-		return true;
-	}
-	
 	function _collectAttachments($files)
 	{
 		//TODO : implement security for attachments
@@ -131,4 +87,16 @@ class UglyformsSiteControllerInput extends UglyformsController
 	{
 		return parent::display($cachable, $urlparams);
 	}	
-} 
+	
+	public function complete()
+	{
+		$this->setTemplate('complete');
+		return true;
+	}
+	
+	public function error()
+	{
+		$this->setTemplate('error');
+		return true;
+	}
+}

@@ -23,11 +23,6 @@
 			size="60" readonly="true"
 		/>
 		
-		<field name="redirect_url" type="text"
-			label="COM_UGLYFORMS_INPUT_REDIRECT_URL_LABEL"
-			description="COM_UGLYFORMS_INPUT_REDIRECT_URL_DESC"
-			size="45"
-		/>
 		<field name="published" type="radio"
 			label="COM_UGLYFORMS_INPUT_PUBLISHED_LABEL" 
 			description="COM_UGLYFORMS_INPUT_PUBLISHED_DESC"
@@ -78,5 +73,16 @@
 				   
 		</fieldset>
 	</fields>
+	
+	<fields name="params">
+		<fieldset name="params">
+			<field name="error_url" type="text" label="COM_UGLYFORMS_INPUT_ERROR_URL_LABEL"
+					size="40" default="" description="COM_UGLYFORMS_INPUT_ERROR_URL_DESC" 
+				/>		
+			<field name="redirect_url" type="text" label="COM_UGLYFORMS_INPUT_REDIRECT_URL_LABEL"
+					size="40" default="" description="COM_UGLYFORMS_INPUT_REDIRECT_URL_DESC" 
+				/>		
+		</fieldset>
+   	</fields>
 	
 </form>

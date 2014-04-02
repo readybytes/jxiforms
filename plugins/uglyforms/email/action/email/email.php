@@ -18,7 +18,7 @@ class UglyformsActionEmail extends UglyformsAction
 	
 	public function process($input, $data_id)
 	{
-		$record 	= $this->getInputData($data_id);
+		$record 		= $this->getInputData($data_id);
 		$data  			= $record->data;
 		$attachments 	= $record->attachment;
 		

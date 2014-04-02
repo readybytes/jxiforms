@@ -20,11 +20,14 @@ class UglyformsHelperData extends UglyformsHelper
 		if(($id !== 0 && !isset($record[$id])) || $record == null){
 			$record= UglyformsFactory::getInstance('data', 'model')
 									->loadRecords(array('data_id'=>$id));
+
+			foreach ($record as $key=>$value){
+				$record[$key]->data  		= json_decode($record[$key]->data, true);
+				$record[$key]->attachment  	= json_decode($record[$key]->attachment, true);
+			}
 		}
 				
 		if(isset($record[$id])){
-			$record[$id]->data  		= json_decode($record[$id]->data, true);
-			$record[$id]->attachment  	= json_decode($record[$id]->attachment, true);
 			return $record[$id];
 		}
 		

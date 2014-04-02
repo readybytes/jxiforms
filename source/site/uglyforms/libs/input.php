@@ -16,8 +16,6 @@ class UglyformsInput extends UglyformsLib
 	protected 	$title    	   =   '';
 	protected 	$description   =   '';
 	protected 	$published	   =	1;
-	
-	protected 	$redirect_url  =   'index.php';
 		
 	protected 	$params		   =   null;
 	
@@ -48,7 +46,6 @@ class UglyformsInput extends UglyformsLib
 		$this->title		= '';
 		$this->description  = '';
 		$this->published	= 1;
-		$this->redirect_url = 'index.php';
 		$this->params		= new Rb_Registry();
 		$this->_input_actions= array();
 
@@ -134,7 +131,7 @@ class UglyformsInput extends UglyformsLib
 	 */
 	public function getRedirecturl()
 	{
-		return $this->redirect_url;
+		return $this->getParam('redirect_url');
 	}
 	
 	public function isPublished()
@@ -182,4 +179,8 @@ class UglyformsInput extends UglyformsLib
 		return $html;
 	}
 	
+	public function getParam($key, $default=null)
+	{
+		return $this->params->get($key,$default);
+	}
 }

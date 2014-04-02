@@ -24,7 +24,7 @@ define('UGLYFORMS_REVISION','@build.number@');
 
 //shared paths
 define('UGLYFORMS_PATH_CORE',				JPATH_SITE.'/components/com_uglyforms/uglyforms');
-define('UGLYFORMS_PATH_CORE_MEDIA',			JPATH_ROOT.'/media/com_uglyforms');
+define('UGLYFORMS_PATH_CORE_MEDIA',			dirname(dirname(dirname(dirname(__FILE__)))).'/media/com_uglyforms');
 define('UGLYFORMS_PATH_CORE_FORM',			UGLYFORMS_PATH_CORE.'/form');
 
 // frontend
@@ -44,17 +44,11 @@ define('UGLYFORMS_PATH_PLUGIN', 				JPATH_PLUGINS.'/uglyforms');
 define('UGLYFORMS_PATH_CORE_FORMS', 			UGLYFORMS_PATH_CORE.'/html/forms');
 define('UGLYFORMS_PATH_CORE_FIELDS', 		UGLYFORMS_PATH_CORE.'/html/fields');
 
-//queue bucket directory and bucket
-define('UGLYFORMS_PATH_BUCKET_ROOT', 		'/media/com_uglyforms/queue/data/');
 define('UGLYFORMS_PATH_ATTACHMENTS', 		'/media/com_uglyforms/queue/attachments/');
-define('UGLYFORMS_BUCKET_NAME',	 			'bucket1');
-define('UGLYFORMS_BUCKET_CAPACITY',	 		67108864); //in bytes (64mb)
 
 define('UGLYFORMS_INSTANCE_REQUIRE', 		true);
 
 define('UGLYFORMS_EXECUTION_TIME_MARGIN', 	10); //in percent
-
-define('UGLYFORMS_BUCKET_MAX_FILE_COUNT', 	32);//maximum number of files allowed in a bucket 
 
 
 // object to identify extension, create once, so same can be consumed by constructors
