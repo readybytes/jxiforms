@@ -11,11 +11,15 @@ if(defined('_JEXEC')===false) die();
  *
  */
 class UglyformsActionHttpquery extends UglyformsAction
+								implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
 	
-	public function process($data, $attachments)
+	public function process($input_id, $data_id)
 	{
+		$data			   = $this->getInputData($data_id)->data;
+		//TODO : add an option for posting uploaded attachments on provided url
+		
 		$url 		       = $this->getActionParam('query_url', '');
 		$queryParameters   = $this->getActionParam('query_parameters', '');
 		$filters		   = $this->getActionParam('filter_parameters', '');

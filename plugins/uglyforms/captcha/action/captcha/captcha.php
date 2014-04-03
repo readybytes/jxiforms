@@ -43,9 +43,10 @@ class UglyformsActionCaptcha extends UglyformsAction
 
 	}
 	
-	public function onUglyformsDataValidation($input, $data, $attachments)
+	public function onUglyformsDataValidation(UglyformsInput $input, $data_id)
 	{
-		$session = UglyformsFactory::getSession();
+		$data 			= $this->getInputData($data_id)->data;
+		$session 		= UglyformsFactory::getSession();
 		$captcha_string = $session->get('captcha_keystring_'.$this->action_id, '');
 		
 		//check captcha value set in the session with the user-filled data

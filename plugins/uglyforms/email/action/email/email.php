@@ -16,7 +16,7 @@ class UglyformsActionEmail extends UglyformsAction
 	protected $_location	= __FILE__;
 	public    $show_editor  = true;
 	
-	public function process($input, $data_id)
+	public function process($input_id, $data_id)
 	{
 		$record 		= $this->getInputData($data_id);
 		$data  			= $record->data;

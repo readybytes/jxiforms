@@ -12,14 +12,17 @@ if(defined('_JEXEC')===false) die();
  *
  */
 class UglyformsActionGooglespreadsheet extends UglyformsAction
+										implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
 	
-	public function process($data, $attachments)
+	public function process($input_id, $data_id)
 	{
 		if(!class_exists('spreadsheet')){
 			require_once(__DIR__.'/spreadsheet.php');
 		}
+		
+		$data	= $this->getInputData($data_id)->data;
 		
 		$params = $this->getActionParams();
 		$username = $params->get('email');

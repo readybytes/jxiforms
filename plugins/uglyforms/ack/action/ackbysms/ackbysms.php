@@ -12,11 +12,14 @@ if(defined('_JEXEC')===false) die();
  *
  */
 class UglyformsActionAckbysms extends UglyformsAction
+								implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
 	
-	public function process($data, $attachments)
+	public function process($input_id, $data_id)
 	{
+		$data = $this->getInputData($data_id)->data;
+		
 		//For Getting Phone Number from html element where user has inserted.
 		$recipient	= $this->getActionParam('recipient');
 		$recipient  = $data[$recipient];

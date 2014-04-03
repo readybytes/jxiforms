@@ -14,16 +14,18 @@ if(!class_exists('MCAPI')){
  *
  */
 class UglyformsActionMailchimp extends UglyformsAction
+								implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
 	
-	public function process($data, $attachments)
+	public function process($input_id, $data_id)
 	{
 		$apiKey 		 = $this->getActionParam('mailchimpApikey', '');
 		$addToLists 	 = $this->getActionParam('addToLists', '');
 		$removeFromLists = $this->getActionParam('removeFromLists', '');		
 		$emailFields     = explode(',', $this->getActionParam('emailField', ''));
 		
+		$data		= $this->getInputData($data_id)->data;
 		$result 	= array();
 		
 		foreach ($emailFields as $key => $email){

@@ -1,6 +1,6 @@
 <?php
 /**
-* @copyright	Copyright (C) 2009 - 2009 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
+* @copyright	Copyright (C) 2009 - 2014 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * @package		Uglyforms
 * @subpackage	Frontend
@@ -12,16 +12,18 @@ if(defined('_JEXEC')===false) die();
  *
  */
 class UglyformsActionTxntorefund extends UglyformsAction
+									implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
 	public    $show_editor  = true;
 	
-	public function process($data, $attachments)
+	public function process($input_id, $data_id)
 	{
 		if(!class_exists('PayplansApi')){
 			return true;
 		}
 		
+		$data   = $this->getInputData($data_id)->data;
 		$params = $this->getActionParams();
 		
 		$emails = explode(',', $params->get('email'));

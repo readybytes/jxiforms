@@ -11,11 +11,13 @@ if(defined('_JEXEC')===false) die();
  *
  */
 class UglyformsActionJpst extends UglyformsAction
+							implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
 	
-	public function process($data, $attachments)
+	public function process($input_id, $data_id)
 	{		
+		$data = $this->getInputData($data_id)->data;
 		return $this->_changeProfileType($data);
 	}
 	

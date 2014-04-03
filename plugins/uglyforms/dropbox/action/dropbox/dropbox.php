@@ -12,11 +12,14 @@ if(defined('_JEXEC')===false) die();
  *
  */
 class UglyformsActionDropbox extends UglyformsAction
+								implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
 	
-	public function process($data, $attachments)
+	public function process($input_id, $data_id)
 	{
+		$attachments  = $this->getInputData($data_id)->attachment;
+		
 		if(empty($attachments)){
 			return true;
 		}

@@ -12,12 +12,14 @@ if(defined('_JEXEC')===false) die();
  *
  */
 class UglyformsActionSqlquery extends UglyformsAction
+								implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;	
 	
-	public function process($data, $attachments)
+	public function process($input_id, $data_id)
 	{
-		$data = $this->_quoteData($data);
+		$data	= $this->getInputData($data_id)->data;
+		$data   = $this->_quoteData($data);
 		
 		$actionParams = $this->getActionParams();
 		

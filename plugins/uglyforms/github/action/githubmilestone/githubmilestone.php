@@ -12,6 +12,7 @@ if(defined('_JEXEC')===false) die();
  *
  */
 class UglyformsActionGithubmilestone extends UglyformsAction
+										implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
 	
@@ -21,8 +22,10 @@ class UglyformsActionGithubmilestone extends UglyformsAction
 		require_once dirname(dirname(__FILE__)).'/helper.php';
 	}
 	
-	public function process($data, $attachments)
+	public function process($input_id, $data_id)
 	{
+		$data			= $this->getInputData($data_id)->data;
+		
 		$username  	    =  $this->getActionParam('username', '');
 		$password		=  $this->getActionParam('password', '');
 		$organization	=  $this->getActionParam('organization', '');

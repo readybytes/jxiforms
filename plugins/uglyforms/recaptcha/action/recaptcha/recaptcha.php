@@ -36,11 +36,9 @@ class UglyformsActionRecaptcha extends UglyformsAction
 		}
 	}
 	
-	public function onUglyformsDataValidation($input, $data_id)
+	public function onUglyformsDataValidation(UglyformsInput $input, $data_id)
 	{
-		$record 		= $this->getInputData($data_id);
-		$data  			= $record->data;
-		$attachments 	= $record->attachment;
+		 $data 	= $this->getInputData($data_id)->data;
 		
 		 if(!function_exists('recaptcha_check_answer')){
 			  require_once('recaptchalib.php');

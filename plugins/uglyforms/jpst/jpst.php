@@ -18,7 +18,7 @@ class  plgUglyformsJpst extends UglyformsPlugin
 	protected $_location	= __FILE__;
 	
 	//To Append data after submission of a form.
-	public function onUglyformsDataPrepare(&$data)
+	public function onUglyformsDataPrepare($input, &$data, $attachment)
 	{
 		//Append User ID with form data because user id is required when you want to change profile type.
 		$user = UglyformsFactory::getUser();

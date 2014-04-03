@@ -12,14 +12,16 @@ if(defined('_JEXEC')===false) die();
  *
  */
 class UglyformsActionHubspotcontacts extends UglyformsAction
+										implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
 	
-	public function process($data, $attachments)
+	public function process($input_id, $data_id)
 	{		
 		$params   = $this->getActionParams();
 		$apiKey	  = $params->get('api_key');
 		
+		$data 	  = $this->getInputData($data_id)->data;
 		$contact  = $this->_prepareContact($data, $params);
 		$endpoint = 'https://api.hubapi.com/contacts/v1/contact?hapikey='.$apiKey;
 		

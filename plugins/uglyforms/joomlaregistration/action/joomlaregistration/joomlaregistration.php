@@ -10,12 +10,15 @@ if(defined('_JEXEC')===false) die();
  * @author Gaurav
  */
 class UglyformsActionJoomlaregistration extends UglyformsAction
+											implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
 	
-	public function process($data, $attachments)
+	public function process($input_id, $data_id)
 	{
-		$actionParams = $this->getActionParams();
+		$actionParams   = $this->getActionParams();
+
+		$data			= $this->getInputData($data_id)->data;
 		
 		$email 			= $actionParams->get('email', '');
 		$confirm_email	= $actionParams->get('confirm_email', '');

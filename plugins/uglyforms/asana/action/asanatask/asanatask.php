@@ -12,13 +12,16 @@ if(defined('_JEXEC')===false) die();
  *
  */
 class UglyformsActionAsanatask extends UglyformsAction
+								implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
 	
-	public function process($data, $attachments)
+	public function process($input_id, $data_id)
 	{
 		$apikey  	=  $this->getActionParam('api_key', '');		
 		$url 		= "https://app.asana.com/api/1.0/tasks";
+		
+		$data		= $this->getInputData($data_id)->data;
 		
 		$task 		= $this->_prepareTask($data);
 		$response 	= $this->requestAsana($url, "POST", $apikey, $task);
