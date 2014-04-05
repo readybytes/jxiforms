@@ -10,7 +10,7 @@ if(defined('_JEXEC')===false) die();
  * @author Jitendra Khatri
  *
  */
-class UglyformsActionJpst extends UglyformsAction
+class UglyformsActionJspt extends UglyformsAction
 							implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;

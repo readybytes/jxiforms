@@ -13,7 +13,7 @@ if(defined('_JEXEC')===false) die();
  * @author Jitendra Khatri
  *
  */
-class  plgUglyformsJpst extends UglyformsPlugin
+class  plgUglyformsJspt extends UglyformsPlugin
 {	
 	protected $_location	= __FILE__;
 	

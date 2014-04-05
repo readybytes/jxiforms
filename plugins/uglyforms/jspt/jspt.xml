@@ -10,7 +10,7 @@
     <license>GNU General Public License v2</license>
     <description>Uglyforms-JSPT Action.This action assigns a Profile Type to User.</description>
 	<files>
-		<filename plugin="jpst">jpst.php</filename>
+		<filename plugin="jspt">jspt.php</filename>
 		<folder>action</folder>
 		<filename>index.html</filename>
 	</files>

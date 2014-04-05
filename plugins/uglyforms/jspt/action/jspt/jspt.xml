@@ -2,7 +2,7 @@
 
 <config>
 	<name>JSPT</name>
-    <icon>jpst.png</icon>
+    <icon>jspt.png</icon>
     <description>
     	<![CDATA[
 		This Action allows a user to change his JomSocial Profile Type. 
