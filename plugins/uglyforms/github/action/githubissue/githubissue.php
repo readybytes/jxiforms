@@ -34,17 +34,16 @@ class UglyformsActionGithubissue extends UglyformsAction
 		$owner 			=  empty($organization) ? $username : $organization;
 		$url 			= "https://api.github.com/repos/$owner/$repo/issues";
 		
-		$issue 			= $this->_prepareIssue($data);
-		$response 		= UglyformsActionGithubHelper::requestAPI($url, "POST", $username, $password, $issue);
+		list($issue, $issue_json) 	= $this->_prepareIssue($data);
+		$response 		= UglyformsActionGithubHelper::requestAPI($url, "POST", $username, $password, $issue_json);
 		
 		if($response['http_code'] == 201){
-			//JXITODO : success log of github issue creation
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_GITHUB_ISSUE_LOG_ISSUE_CREATED', $issue['title']), $this->getId(), get_class($this), $data_id);
 			return true;
 		}
-		else {
-			//JXITODO : create error log
-			return false;
-		}
+		
+		UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_GITHUB_ISSUE_LOG_ISSUE_CREATION_FAILED', $issue['title'], $response['http_code']), $this->getId(), get_class($this), $data_id);
+		return false;
 	}
 	
 	protected function _prepareIssue($data)
@@ -64,6 +63,7 @@ class UglyformsActionGithubissue extends UglyformsAction
 			}
 		}
 
-		return json_encode($issue);
+		$issue_json = json_encode($issue); 
+		return array($issue, $issue_json);
 	}
 }

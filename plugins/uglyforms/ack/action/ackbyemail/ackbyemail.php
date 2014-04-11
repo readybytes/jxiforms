@@ -45,7 +45,7 @@ class UglyformsActionAckbyemail extends UglyformsAction
 		}
 
 		if(empty($body)){
-			//JXITODO : create Error log, Message not set
+			UglyformsHelperLog::create(Rb_Text::_('COM_UGLYFORMS_ACTION_ACK_BYEMAIL_LOG_MESSAGE_NOT_SET'), $this->getId(), get_class($this), $data_id);
 			return false;
 		}
 
@@ -61,10 +61,14 @@ class UglyformsActionAckbyemail extends UglyformsAction
 			}
 		}
 
-		if ($mailer->Send() === true){
+		$result = $mailer->Send();
+		if ( $result=== true){
 			return true;
 		}
 		
+		$reason  = ($result instanceof JException) ? $result->getMessage() : '';
+		
+		UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_ACK_BYEMAIL_LOG_MAIL_SENDING_FAILED', $reason), $this->getId(), get_class($this), $data_id);
 		return false;
 	}
 	

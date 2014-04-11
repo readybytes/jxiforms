@@ -107,8 +107,8 @@ class UglyformsActionJoomlaregistration extends UglyformsAction
 
 		// Check for validation errors.
 		if ($reg_data === false) {
-			//JXITODO : log error
 			$errors	= $model->getErrors();
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_LOG_ERROR_IN_REGISTRATION', implode(', ', $errors)), $this->getId(), get_class($this), $data_id);
 			return false;
 		}
 
@@ -117,10 +117,11 @@ class UglyformsActionJoomlaregistration extends UglyformsAction
 
 		// Check for errors.
 		if ($return === false) {
-			//JXITODO : log error JText::sprintf('COM_USERS_REGISTRATION_SAVE_FAILED', $model->getError())
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_LOG_REGISTRATION_SAVE_FAILED', $model->getError()), $this->getId(), get_class($this), $data_id);
 			return false;
 		}
 
+		UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_LOG_REGISTRATION_SUCCESS', $requestData['email1']), $this->getId(), get_class($this), $data_id);
 		return true;		
 	}
 }

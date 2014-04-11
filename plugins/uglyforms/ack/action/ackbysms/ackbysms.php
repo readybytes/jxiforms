@@ -26,8 +26,10 @@ class UglyformsActionAckbysms extends UglyformsAction
 
 		//For Cross Checking Phone Number.
 		if(!is_numeric($recipient) || strlen($recipient) < 10){
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_ACK_BYSMS_LOG_INVALID_PHONE_NUMBER', $recipient), $this->getId(), get_class($this), $data_id);
+			
 			$app = UglyformsFactory::getApplication();
-			$app->enqueueMessage(Rb_Text::_('COM_UGLYFORMS_ACTION_ACK_BY_SMS_SMSGATEWAYHUB_INVALID_PHONE_NUMBER'));
+			$app->enqueueMessage(Rb_Text::_('COM_UGLYFORMS_ACTION_ACK_BYSMS_SMSGATEWAYHUB_INVALID_PHONE_NUMBER'));
 			return false;
 		}
 		
@@ -66,9 +68,11 @@ class UglyformsActionAckbysms extends UglyformsAction
 		
 		//For Validation of messege sent succussefull or not
 		if($result['http_code'] == 200){
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_ACK_BYSMS_LOG_SMS_SENT', $recipient), $this->getId(), get_class($this), $data_id);
 			return true;
 		}
 
+		UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_ACK_BYSMS_LOG_SMS_SENDING_FAILED', $recipient, $result['http_code']), $this->getId(), get_class($this), $data_id);
 		return false;
 	}
 	

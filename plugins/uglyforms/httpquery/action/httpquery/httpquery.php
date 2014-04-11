@@ -29,9 +29,11 @@ class UglyformsActionHttpquery extends UglyformsAction
 		//http-code 2XX This class of status codes indicates the action requested 
 		//by the client was received, understood, accepted and processed successfully.
 		if($info['http_code'] > 199 && $info['http_code'] < 300){
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_HTTPQUERY_LOG_REQUEST_SENT', $url), $this->getId(), get_class($this), $data_id);
 			return true;
 		}
 		
+		UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_HTTPQUERY_LOG_ERROR_OCCURRED_IN_SENDING_REQUEST', $url, $info['http_code']), $this->getId(), get_class($this), $data_id);
 		return false;
 	}
 

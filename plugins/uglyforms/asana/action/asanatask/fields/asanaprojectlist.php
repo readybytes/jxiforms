@@ -46,10 +46,12 @@ class UglyformsFormFieldAsanaprojectlist extends JFormFieldList
 		$url 		= "https://app.asana.com/api/1.0/projects";
 		//request asana api to list the projects
 		$result 	= $asanaApp->requestAsana($url, "GET", $apikey);
-		$response   = array_shift(json_decode($result['body'], true));
-		
-		foreach ($response as $key => $project){
-			$projects[$project['id']] = array('id'=> $project['id'], 'name' => $project['name']); 
+		if($result['http_code'] == 200){
+			$response   = array_shift(json_decode($result['body'], true));
+			
+			foreach ($response as $key => $project){
+				$projects[$project['id']] = array('id'=> $project['id'], 'name' => $project['name']); 
+			}
 		}
 		
 		return $projects;

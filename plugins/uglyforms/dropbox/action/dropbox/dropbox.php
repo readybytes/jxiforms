@@ -54,7 +54,7 @@ class UglyformsActionDropbox extends UglyformsAction
 			}
 			catch (Exception $e){
 				$result = false ;
-				UglyformsHelperUtils::sendEmailToAdmin(Rb_Text::_('COM_UGLYFORMS_ACTION_DROPBOX_ERROR_OCCURRED_IN_FILE_UPLOAD'), Rb_Text::_($e->getMessage()), $attachment);
+				UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_DROPBOX_LOG_UNABLE_TO_UPLOAD_FILE', $e->getMessage()), $this->getId(), get_class($this), $data_id);
 			}
 		}
 		

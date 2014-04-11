@@ -22,19 +22,19 @@ class UglyformsActionHubspotcontacts extends UglyformsAction
 		$apiKey	  = $params->get('api_key');
 		
 		$data 	  = $this->getInputData($data_id)->data;
-		$contact  = $this->_prepareContact($data, $params);
+		
+		list($contact, $contact_json)  = $this->_prepareContact($data, $params);
 		$endpoint = 'https://api.hubapi.com/contacts/v1/contact?hapikey='.$apiKey;
 		
-		$response = $this->requestHubspot($endpoint, $contact);
+		$response = $this->requestHubspot($endpoint, $contact_json);
 		
 		if($response['http_code'] == 200){
-			//JXITODO : success log of contact creation in hubspot
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_HUBSPOTCONTACTS_LOG_CONTACT_CREATED', $contact['email']), $this->getId(), get_class($this), $data_id);
 			return true;
 		}
-		else {
-			//JXITODO : create error log
-			return false;
-		}	
+		
+		UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_HUBSPOTCONTACTS_LOG_CONTACT_CREATION_FAILED', $contact['email']), $this->getId(), get_class($this), $data_id);
+		return false;
 	}
 	
 	public function requestHubspot($url, $data)
@@ -75,6 +75,8 @@ class UglyformsActionHubspotcontacts extends UglyformsAction
 		}
 		
 		$contactData = array('properties'=>$properties);
-		return json_encode($contactData);
+		$contact_json = json_encode($contactData);
+		 
+		return array($param, $contact_json);
 	}
 }

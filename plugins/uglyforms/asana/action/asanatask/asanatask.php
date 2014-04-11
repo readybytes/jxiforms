@@ -23,17 +23,17 @@ class UglyformsActionAsanatask extends UglyformsAction
 		
 		$data		= $this->getInputData($data_id)->data;
 		
-		$task 		= $this->_prepareTask($data);
-		$response 	= $this->requestAsana($url, "POST", $apikey, $task);
+		list($task, $taskquery) 	= $this->_prepareTask($data);
+		
+		$response 	= $this->requestAsana($url, "POST", $apikey, $taskquery);
 		
 		if($response['http_code'] == 201){
-			//JXITODO : success log of github issue creation
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_ASANATASK_LOG_TASK_CREATED', $task['name']), $this->getId(), get_class($this), $data_id);
 			return true;
 		}
-		else {
-			//JXITODO : create error log
-			return false;
-		}
+		
+		UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_ASANATASK_LOG_TASK_CREATION_FAILED', $response['http_code']), $this->getId(), get_class($this), $data_id);
+		return false;
 	}
 	
 	public function requestAsana($url, $method, $apiKey, $data=array()) 
@@ -73,7 +73,8 @@ class UglyformsActionAsanatask extends UglyformsAction
 		$task['projects']		=  $this->getActionParam('project', '');
 		$task['assignee']		=  $this->getActionParam('assignee', '');
 
-		return http_build_query(array_filter($task));
+		$query = http_build_query(array_filter($task));
+		return array($task, $query);
 	}
 	
 	public function filterActionParams(array $data)

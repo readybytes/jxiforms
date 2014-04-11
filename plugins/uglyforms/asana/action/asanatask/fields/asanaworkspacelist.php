@@ -45,10 +45,12 @@ class UglyformsFormFieldAsanaworkspacelist extends JFormFieldList
 		$url 		= "https://app.asana.com/api/1.0/workspaces";
 		//request asana api to list the workspaces
 		$result 	= $asanaApp->requestAsana($url, "GET", $apikey);
-		$response   = array_shift(json_decode($result['body'], true));
+		if($result['http_code'] == 200){
+			$response   = array_shift(json_decode($result['body'], true));
 		
-		foreach ($response as $key => $workspace){
-			$workspaces[$workspace['id']] = array('id'=> $workspace['id'], 'name' => $workspace['name']); 
+			foreach ($response as $key => $workspace){
+				$workspaces[$workspace['id']] = array('id'=> $workspace['id'], 'name' => $workspace['name']); 
+			}
 		}
 		
 		return $workspaces;

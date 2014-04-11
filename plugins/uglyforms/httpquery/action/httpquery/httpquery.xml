@@ -21,7 +21,7 @@
 				<field name="query_url" type="textarea"
 					label="COM_UGLYFORMS_ACTION_HTTPQUERY_POST_URL_LABEL"
 					description="COM_UGLYFORMS_ACTION_HTTPQUERY_POST_URL_DESC"
-					rows="3" cols="50" default=""
+					rows="3" cols="50" default="" required="true"
 				/>
 				
 				<field name="query_parameters" type="textarea"

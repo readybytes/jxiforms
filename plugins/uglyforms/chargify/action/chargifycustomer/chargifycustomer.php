@@ -23,20 +23,19 @@ class UglyformsActionChargifycustomer extends UglyformsAction
 		
 		$subdomain   = $params->get('subdomain');
 		$apiKey      = $params->get('api_key');
-		$requestData = $this->_prepareRequestData($data, $params);
-		
-		$url = "https://".$subdomain.".chargify.com/customers.json"; 
-		
+		$url = "https://".$subdomain.".chargify.com/customers.json";
+				
+		list($customer, $requestData) = $this->_prepareRequestData($data, $params);
+				
 		$response = $this->requestChargify($url, "POST", $apiKey, $requestData);
 		
 		if($response['http_code'] == 201){
-			//JXITODO : success log of customer creation in chargify
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_CHARGIFY_CUSTOMER_LOG_CUSTOMER_CREATED', $customer['email']), $this->getId(), get_class($this), $data_id);
 			return true;
 		}
-		else {
-			//JXITODO : create error log
-			return false;
-		}
+
+		UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_CHARGIFY_CUSTOMER_LOG_CUSTOMER_CREATION_FAILED', $customer['email'], $response['http_code']), $this->getId(), get_class($this), $data_id);
+		return false;
 	}
 	
 	public function requestChargify($url, $method, $apiKey, $data=array()) 
@@ -84,7 +83,8 @@ class UglyformsActionChargifycustomer extends UglyformsAction
 		$customer['country'] 		 = $data[$params->get('country')]; //country code
 		$customer['phone'] 			 = $data[$params->get('phone')];
 
-		$customerData = array('customer'=>$customer); 
-		return json_encode($customerData);
+		$customerData = array('customer'=>$customer);
+		$json 		  = json_encode($customerData);
+		return array($customer, $json);
 	}
 }

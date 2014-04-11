@@ -55,9 +55,7 @@ class UglyformsActionRecaptcha extends UglyformsAction
 		                                $data["recaptcha_response_field"]);
 		
 		 if (!$resp->is_valid) {
-		   //die ("The reCAPTCHA wasn't entered correctly. Go back and try it again." .
-		    //     "(reCAPTCHA said: " . $resp->error . ")");
-		    //TODO : log data for failure case
+		    UglyformsHelperLog::create(Rb_Text::_('COM_UGLYFORMS_VALIDATOR_ACTION_LOG_INVALID_DATA'), $this->getId(), get_class($this), $data_id);
 		    return false;
 		 }
 		 

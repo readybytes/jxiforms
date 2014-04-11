@@ -34,17 +34,16 @@ class UglyformsActionGithubmilestone extends UglyformsAction
 		$owner 			=  empty($organization) ? $username : $organization;
 		$url 			= "https://api.github.com/repos/$owner/$repo/milestones";
 		
-		$issue 			= $this->_prepareMilestone($data);
-		$response 		= UglyformsActionGithubHelper::requestAPI($url, "POST", $username, $password, $issue);
+		list($milestone, $milestone_json)	= $this->_prepareMilestone($data);
+		$response 		= UglyformsActionGithubHelper::requestAPI($url, "POST", $username, $password, $milestone_json);
 		
 		if($response['http_code'] == 201){
-			//JXITODO : success log of github milestone creation
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_GITHUB_MILESTONE_LOG_MILESTONE_CREATED', $milestone['title']), $this->getId(), get_class($this), $data_id);
 			return true;
 		}
-		else {
-			//JXITODO : create error log
-			return false;
-		}
+		
+		UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_GITHUB_MILESTONE_LOG_MILESTONE_CREATION_FAILED', $milestone['title'], $response['http_code']), $this->getId(), get_class($this), $data_id);
+		return false;
 	}
 	
 	protected function _prepareMilestone($data)
@@ -62,6 +61,7 @@ class UglyformsActionGithubmilestone extends UglyformsAction
 			}
 		}
 
-		return json_encode($milestone);
+		$milestone_json = json_encode($milestone);
+		return array($milestone, $milestone_json);
 	}
 }

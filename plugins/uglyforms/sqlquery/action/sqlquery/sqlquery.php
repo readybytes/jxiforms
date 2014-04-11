@@ -25,7 +25,7 @@ class UglyformsActionSqlquery extends UglyformsAction
 		
 		$sql  = $actionParams->get('sql', '');
 		if(empty($sql)){
-			//JXITODO :
+			UglyformsHelperLog::create(Rb_Text::_('COM_UGLYFORMS_ACTION_SQLQUERY_LOG_NO_SQL_QUERY'), $this->getId(), get_class($this), $data_id);
 			return false;
 		}
 		
@@ -53,6 +53,7 @@ class UglyformsActionSqlquery extends UglyformsAction
 			$db->setQuery($query);
 			if ( !$db->query() ) {
 				$result = false;
+				UglyformsHelperLog::create(Rb_Text::_('COM_UGLYFORMS_ACTION_SQLQUERY_LOG_QUERY_EXECUTION_ERROR', $query, $db->getErrorMsg()), $this->getId(), get_class($this), $data_id);
 			}
 		}
 		

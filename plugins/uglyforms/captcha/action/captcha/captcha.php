@@ -56,7 +56,7 @@ class UglyformsActionCaptcha extends UglyformsAction
 				|| (isset($data['uglyforms_captcha_'.$this->action_id]) 
 					&& $data['uglyforms_captcha_'.$this->action_id] != $captcha_string)){
 			
-			//TODO : log data for failure case
+			UglyformsHelperLog::create(Rb_Text::_('COM_UGLYFORMS_VALIDATOR_ACTION_LOG_INVALID_DATA'), $this->getId(), get_class($this), $data_id);
 			return false;
 		}
 		

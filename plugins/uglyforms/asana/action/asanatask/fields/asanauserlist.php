@@ -46,10 +46,13 @@ class UglyformsFormFieldAsanauserlist extends JFormFieldList
 		$url 		= "https://app.asana.com/api/1.0/users";
 		//request asana api to list the users
 		$result 	= $asanaApp->requestAsana($url, "GET", $apikey);
-		$response   = array_shift(json_decode($result['body'], true));
 		
-		foreach ($response as $key => $user){
-			$users[$user['id']] = array('id'=> $user['id'], 'name' => $user['name']); 
+		if($result['http_code'] == 200){
+			$response   = array_shift(json_decode($result['body'], true));
+			
+			foreach ($response as $key => $user){
+				$users[$user['id']] = array('id'=> $user['id'], 'name' => $user['name']); 
+			}
 		}
 		
 		return $users;

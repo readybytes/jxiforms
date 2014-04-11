@@ -33,7 +33,7 @@ class UglyformsActionJtoken extends UglyformsAction
 			return true;
 		}
 		
-		//TODO : log data since its a failure
+		UglyformsHelperLog::create(Rb_Text::_('COM_UGLYFORMS_VALIDATOR_ACTION_LOG_INVALID_DATA'), $this->getId(), get_class($this), $data_id);
 		return false;
 	}
 }

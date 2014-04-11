@@ -45,9 +45,11 @@ class UglyformsActionJoomlalogin extends UglyformsAction
 		$result = UglyformsFactory::getApplication()->login(array('username'=>$username, 'password'=>$password));
 		
 		if($result !== true){
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_JOOMLALOGIN_LOG_USER_LOGIN_ERROR', $username), $this->getId(), get_class($this), $data_id);
 			return false;
 		}
 		
+		UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_JOOMLALOGIN_LOG_USER_LOGIN_SUCCESS', $username), $this->getId(), get_class($this), $data_id);
 		return true;
 	}
 }

@@ -64,10 +64,10 @@ class UglyformsActionMailchimp extends UglyformsAction
 			$result = $api->listSubscribe($listId, $emailId, $data, 'html', true, true);
 			
 			if($result != false){
-				//JXITODO : enter the success of subscription into logs
+				UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_MAILCHIMP_LOG_ADDED_IN_LIST', $emailId, $listId), $this->getId(), get_class($this), $data_id);
 			}
 			else{
-				//JXITODO : enter the failure of subscription into logs
+				UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_MAILCHIMP_LOG_FAILURE_IN_ADDING_TO_LIST', $emailId, $listId), $this->getId(), get_class($this), $data_id);
 			}
 			
 			$ret[] = $result;
@@ -101,10 +101,10 @@ class UglyformsActionMailchimp extends UglyformsAction
 			}
 			
 			if($result != false){
-				//JXITODO : enter the success of unsubscription into logs
+				UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_MAILCHIMP_LOG_REMOVED_FROM_LIST', $emailId, $listId), $this->getId(), get_class($this), $data_id);
 			}
 			else{
-				//JXITODO : enter the failure of unsubscription into logs
+				UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_MAILCHIMP_LOG_FAILURE_IN_REMOVING_FROM_LIST', $emailId, $listId), $this->getId(), get_class($this), $data_id);
 			}
 			$ret[] = $result;
 		}
