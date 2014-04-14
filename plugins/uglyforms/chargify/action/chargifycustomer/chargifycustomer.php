@@ -30,7 +30,7 @@ class UglyformsActionChargifycustomer extends UglyformsAction
 		$response = $this->requestChargify($url, "POST", $apiKey, $requestData);
 		
 		if($response['http_code'] == 201){
-			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_CHARGIFY_CUSTOMER_LOG_CUSTOMER_CREATED', $customer['email']), $this->getId(), get_class($this), $data_id);
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_CHARGIFY_CUSTOMER_LOG_CUSTOMER_CREATED', $customer['email']), $this->getId(), get_class($this), $data_id, UglyformsLog::LEVEL_INFO);
 			return true;
 		}
 

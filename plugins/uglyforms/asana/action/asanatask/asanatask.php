@@ -28,7 +28,7 @@ class UglyformsActionAsanatask extends UglyformsAction
 		$response 	= $this->requestAsana($url, "POST", $apikey, $taskquery);
 		
 		if($response['http_code'] == 201){
-			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_ASANATASK_LOG_TASK_CREATED', $task['name']), $this->getId(), get_class($this), $data_id);
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_ASANATASK_LOG_TASK_CREATED', $task['name']), $this->getId(), get_class($this), $data_id, UglyformsLog::LEVEL_INFO);
 			return true;
 		}
 		

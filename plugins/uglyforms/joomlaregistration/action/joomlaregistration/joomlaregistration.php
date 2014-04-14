@@ -121,7 +121,7 @@ class UglyformsActionJoomlaregistration extends UglyformsAction
 			return false;
 		}
 
-		UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_LOG_REGISTRATION_SUCCESS', $requestData['email1']), $this->getId(), get_class($this), $data_id);
+		UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_JOOMLAREGISTRATION_LOG_REGISTRATION_SUCCESS', $requestData['email1']), $this->getId(), get_class($this), $data_id, UglyformsLog::LEVEL_INFO);
 		return true;		
 	}
 }

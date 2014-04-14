@@ -55,6 +55,7 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `#__uglyforms_log` (
   `log_id`		INT(11)		NOT NULL AUTO_INCREMENT,
   `message`		TEXT		NOT NULL,
+  `level`		INT(11) 	DEFAULT '4',
   `reference_id`	INT(11) 	DEFAULT NULL,
   `reference_type`	VARCHAR(100)	DEFAULT NULL,
   `data_id`		INT(11)		DEFAULT NULL,

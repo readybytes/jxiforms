@@ -68,7 +68,7 @@ class UglyformsActionAckbysms extends UglyformsAction
 		
 		//For Validation of messege sent succussefull or not
 		if($result['http_code'] == 200){
-			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_ACK_BYSMS_LOG_SMS_SENT', $recipient), $this->getId(), get_class($this), $data_id);
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_ACK_BYSMS_LOG_SMS_SENT', $recipient), $this->getId(), get_class($this), $data_id, UglyformsLog::LEVEL_INFO);
 			return true;
 		}
 

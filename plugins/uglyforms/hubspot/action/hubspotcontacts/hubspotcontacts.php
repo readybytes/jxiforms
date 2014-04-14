@@ -29,7 +29,7 @@ class UglyformsActionHubspotcontacts extends UglyformsAction
 		$response = $this->requestHubspot($endpoint, $contact_json);
 		
 		if($response['http_code'] == 200){
-			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_HUBSPOTCONTACTS_LOG_CONTACT_CREATED', $contact['email']), $this->getId(), get_class($this), $data_id);
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_HUBSPOTCONTACTS_LOG_CONTACT_CREATED', $contact['email']), $this->getId(), get_class($this), $data_id, UglyformsLog::LEVEL_INFO);
 			return true;
 		}
 		

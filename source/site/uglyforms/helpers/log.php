@@ -14,17 +14,17 @@ if(defined('_JEXEC')===false) die();
  */
 class UglyformsHelperLog extends UglyformsHelper
 {
-	static public function create($message, $reference_id=null, $reference_type=null, $data_id=null)
+	static public function create($message, $reference_id=null, $reference_type=null, $data_id=null, $level=UglyformsLog::LEVEL_ERROR)
 	{
-		$model  = UglyformsFactory::getInstance('log', 'model');
+		$log = UglyformsLog::getInstance();
 		
-		$record['message']		  = $message;
-		$record['reference_id']   = $reference_id;
-		$record['reference_type'] = $reference_type;
-		$record['data_id']		  =	$data_id;
-
-		$result = $model->save($record);
-		
+		$result  = $log->set('message', $message)
+						->set('reference_id', $reference_id)
+						->set('reference_type', $reference_type)
+						->set('data_id', $data_id)
+						->set('level', $level)
+						->save();
+						
 		if (!$result){
 			throw new Exception(Rb_Text::_('COM_UGLYFORMS_EXCEPTION_UNABLE_TO_LOG'));
 		}

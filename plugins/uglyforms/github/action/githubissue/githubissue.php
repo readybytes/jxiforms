@@ -38,7 +38,7 @@ class UglyformsActionGithubissue extends UglyformsAction
 		$response 		= UglyformsActionGithubHelper::requestAPI($url, "POST", $username, $password, $issue_json);
 		
 		if($response['http_code'] == 201){
-			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_GITHUB_ISSUE_LOG_ISSUE_CREATED', $issue['title']), $this->getId(), get_class($this), $data_id);
+			UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_GITHUB_ISSUE_LOG_ISSUE_CREATED', $issue['title']), $this->getId(), get_class($this), $data_id, UglyformsLog::LEVEL_INFO);
 			return true;
 		}
 		

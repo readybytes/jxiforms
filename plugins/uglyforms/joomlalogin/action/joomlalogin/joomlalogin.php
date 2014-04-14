@@ -49,7 +49,7 @@ class UglyformsActionJoomlalogin extends UglyformsAction
 			return false;
 		}
 		
-		UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_JOOMLALOGIN_LOG_USER_LOGIN_SUCCESS', $username), $this->getId(), get_class($this), $data_id);
+		UglyformsHelperLog::create(Rb_Text::sprintf('COM_UGLYFORMS_ACTION_JOOMLALOGIN_LOG_USER_LOGIN_SUCCESS', $username), $this->getId(), get_class($this), $data_id, UglyformsLog::LEVEL_INFO);
 		return true;
 	}
 }
