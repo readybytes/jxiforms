@@ -43,6 +43,7 @@ class UglyformsHelperInput extends UglyformsHelper
 		$record['data'] 		= isset($data->data) 			? json_encode($data->data) : json_encode(array());
 		$record['attachment'] 	= isset($data->attachment) 		? json_encode($data->attachment) : json_encode(array());
 		$record['user_ip'] 		= isset($data->user_ip) 		? $data->user_ip : '';
+		$record['user_id'] 		= isset($data->user_id) 		? $data->user_id : 0;
 		$record['input_id'] 	= $input_id;
 		
 		$result = $data_model->save($record);
@@ -63,6 +64,9 @@ class UglyformsHelperInput extends UglyformsHelper
 		$input_data->user_ip = isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] 
 								: ( isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : Rb_Text::_('COM_UGLYFORMS_LOGGER_REMOTE_IP_NOT_DEFINED')) ;
 		
+		//maintain user-id if available
+		$input_data->user_id = UglyformsFactory::getUser()->id;
+		
 		$inputId = $input->getId();
 		$data_id = UglyformsHelperInput::recordData($inputId, $input_data);
 
@@ -75,9 +79,7 @@ class UglyformsHelperInput extends UglyformsHelper
 		$result = UglyformsHelperEvent::trigger('onUglyformsDataValidation', $args, 'validator', $input);
 		
 		if (in_array(false, $result)){
-			//TODO : log data and exit
 			//IMP : log data in action itself
-			//redirect user to some page or on redirect url
 			return false;
 		}
 		

@@ -37,6 +37,7 @@ class UglyformsHelperData extends UglyformsHelper
 		$record[$id]->input_id = 0;
 		$record[$id]->create_date = '';
 		$record[$id]->user_ip = '';
+		$record[$id]->user_id = 0;
 	
 		return $record[$id];
 	}

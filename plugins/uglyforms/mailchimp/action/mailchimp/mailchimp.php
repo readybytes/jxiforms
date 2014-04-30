@@ -17,6 +17,7 @@ class UglyformsActionMailchimp extends UglyformsAction
 								implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
+	protected $_approval_applicable = true;
 	
 	public function process($input_id, $data_id)
 	{

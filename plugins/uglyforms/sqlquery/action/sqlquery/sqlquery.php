@@ -14,7 +14,8 @@ if(defined('_JEXEC')===false) die();
 class UglyformsActionSqlquery extends UglyformsAction
 								implements UglyformsInterfaceProcessor
 {
-	protected $_location	= __FILE__;	
+	protected $_location	= __FILE__;
+	protected $_approval_applicable = true;	
 	
 	public function process($input_id, $data_id)
 	{

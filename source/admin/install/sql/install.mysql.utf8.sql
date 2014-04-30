@@ -105,9 +105,11 @@ CREATE TABLE IF NOT EXISTS `#__uglyforms_data` (
   `attachment` 		TEXT			DEFAULT NULL,
   `input_id`		INT(11)			NOT NULL,
   `user_ip`		VARCHAR(50) 		NOT NULL,
+  `user_id`		INT(11) 		DEFAULT 0,
   `created_date`	DATETIME		NOT NULL,
   PRIMARY KEY (`data_id`),
-  INDEX `idx_input_id` (`input_id` ASC)
+  INDEX `idx_input_id` (`input_id` ASC),
+  INDEX `idx_user_id` (`user_id` ASC)
 ) 
 ENGINE = MyISAM 
 DEFAULT CHARACTER SET = utf8;

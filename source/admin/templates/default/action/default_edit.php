@@ -56,16 +56,20 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 			<?php echo $form->getInput('action_id'); ?>
 			<?php echo $form->getInput('type'); ?>
 			
-		<?php $fieldSets = $form->getFieldsets('core_params'); ?>
-		<?php foreach ($fieldSets as $name => $fieldSet) : ?>
+			<!-- currently only require-approval setting is there in action core-params -->
+			<?php if ($show_approval_setting):?>
+				<?php $fieldSets = $form->getFieldsets('core_params'); ?>
+				<?php foreach ($fieldSets as $name => $fieldSet) : ?>
+				
+					<?php foreach ($form->getFieldset($name) as $field):?>
+						<div class="control-group">
+							<div class="control-label"><?php echo $field->label; ?> </div>
+							<div class="controls"><?php echo $field->input; ?></div>								
+						</div>
+					<?php endforeach;?>
+				<?php endforeach;?>
+			<?php endif;?>
 		
-			<?php foreach ($form->getFieldset($name) as $field):?>
-				<div class="control-group">
-					<div class="control-label"><?php echo $field->label; ?> </div>
-					<div class="controls"><?php echo $field->input; ?></div>								
-				</div>
-			<?php endforeach;?>
-		<?php endforeach;?>
 		</fieldset>	
 	</div>
 	
@@ -85,7 +89,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 			<?php endforeach;?>
 		<?php endforeach;?>	
 
-		<?php if($action->show_editor):?>
+		<?php if($show_editor):?>
 			<div class="control-group">
 					<div class="control-label"><?php echo $form->getLabel('data'); ?> </div>
 					<div class="controls"><?php echo $form->getInput('data'); ?></div>

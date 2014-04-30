@@ -15,6 +15,7 @@ class UglyformsActionGithubissue extends UglyformsAction
 									implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
+	protected $_approval_applicable = true;
 	
 	public function __construct($config = array())
 	{

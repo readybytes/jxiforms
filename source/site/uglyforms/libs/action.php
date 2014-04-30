@@ -31,7 +31,8 @@ class UglyformsAction extends UglyformsLib
 	
 	protected 	$_action_inputs  =   null;
 	
-	public      $show_editor 		= false;
+	protected   $_show_editor 		= false;
+	protected  	$_approval_applicable	= false;
 	
 	/**
 	 * Gets the instance of UglyformsAction with provide form identifier
@@ -425,5 +426,15 @@ class UglyformsAction extends UglyformsLib
 	public function getInputData($data_id) 
 	{
 		return UglyformsHelperData::get($data_id);
+	}
+	
+	public function showEditor()
+	{
+		return $this->_show_editor;
+	}
+	
+	public function approvalApplicable()
+	{
+		return $this->_approval_applicable;
 	}
 }

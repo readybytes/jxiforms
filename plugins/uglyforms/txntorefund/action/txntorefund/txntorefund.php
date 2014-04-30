@@ -15,7 +15,7 @@ class UglyformsActionTxntorefund extends UglyformsAction
 									implements UglyformsInterfaceProcessor
 {
 	protected $_location	= __FILE__;
-	public    $show_editor  = true;
+	protected $_show_editor  = true;
 	
 	public function process($input_id, $data_id)
 	{
