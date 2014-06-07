@@ -51,6 +51,7 @@
 			<menu view="input">COM_JOOMLAXIFORMS_INPUT</menu>
 			<menu view="action">COM_JOOMLAXIFORMS_ACTION</menu>
 			<menu view="queue">COM_JOOMLAXIFORMS_QUEUE</menu>
+			<menu view="appstore">COM_JOOMLAXIFORMS_APPSTORE</menu>
 		</submenu>
 
 		<!-- Back-end files -->

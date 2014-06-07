@@ -207,4 +207,35 @@ class JXiFormsHelperUtils extends JXiFormsHelper
 	
 		return $html;
 	}
+	
+	public static function install($file)
+	{
+		$random			 	= rand(1000, 999999);
+		$tmp_file_name 	 	= JPATH_ROOT.'/tmp/'.$random.'.zip';
+		$tmp_folder_name 	= JPATH_ROOT.'/tmp/'.$random;
+
+		// create a file
+		JFile::write($tmp_file_name, $file);
+		
+		jimport('joomla.filesystem.archive');
+		jimport( 'joomla.installer.installer' );
+		jimport('joomla.installer.helper');
+		JArchive::extract($tmp_file_name, $tmp_folder_name);
+		$installer = JInstaller::getInstance();	
+	
+		if(!$installer->install($tmp_folder_name))
+		{
+			return false;
+		}
+
+		if (JFolder::exists($tmp_folder_name)){
+			JFolder::delete($tmp_folder_name);
+		}
+		
+		if (JFile::exists($tmp_file_name)){
+			JFile::delete($tmp_file_name);
+		}
+		
+		return true;
+	}
 }
