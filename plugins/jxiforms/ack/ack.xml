@@ -14,5 +14,10 @@
 		<folder>action</folder>
 		<filename>index.html</filename>
 	</files>
+
+	<alias>jxif-ack</alias>
+	<version_number>@build.version@</version_number>
+	<version_name>JxiForms Ack @build.version@</version_name>
+
 </extension>
 

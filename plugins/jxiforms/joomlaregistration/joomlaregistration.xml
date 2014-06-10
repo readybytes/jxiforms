@@ -14,5 +14,8 @@
 		<folder>action</folder>
 		<filename>index.html</filename>
 	</files>
+	<alias>jxif-joomlaregistration</alias>
+	<version_number>@build.version@</version_number>
+	<version_name>JxiForms Joomla-Registration @build.version@</version_name>
 </extension>
 

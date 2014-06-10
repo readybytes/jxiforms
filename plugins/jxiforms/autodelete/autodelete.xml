@@ -30,4 +30,8 @@
 			</fieldset>
 		</fields>
 	</config>
+
+	<alias>jxif-autodelete</alias>
+	<version_number>@build.version@</version_number>
+	<version_name>JxiForms Auto Delete @build.version@</version_name>
 </extension>
