@@ -57,6 +57,6 @@
 			</filterchain>
 		</reflexive>
 
-		<zip destfile="${dir.packages}/${dirname}-${build.version}.zip" basedir="${absname}" />
+		<zip destfile="${dir.packages}/${dirname}-${build.version}.zip" basedir="${dir.tmp}/plg_jxiforms_${dirname}" />
 	</target>
 </project>

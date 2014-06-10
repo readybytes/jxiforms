@@ -49,4 +49,8 @@
 			</fieldset>
 		</fields>
 	 </config>
+
+	<alias>jxif-blockip</alias>
+	<version_number>@build.version@</version_number>
+	<version_name>JxiForms BlockIP @build.version@</version_name>
 </extension>

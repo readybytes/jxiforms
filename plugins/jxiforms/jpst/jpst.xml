@@ -14,4 +14,9 @@
 		<folder>action</folder>
 		<filename>index.html</filename>
 	</files>
+
+	<alias>jxif-jspt</alias>
+	<version_number>@build.version@</version_number>
+	<version_name>JxiForms JSPT @build.version@</version_name>
+
 </extension>

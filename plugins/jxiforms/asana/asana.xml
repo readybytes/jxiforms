@@ -14,5 +14,9 @@
 		<folder>action</folder>
 		<filename>index.html</filename>
 	</files>
+
+	<alias>jxif-asana</alias>
+	<version_number>@build.version@</version_number>
+	<version_name>JxiForms Asana @build.version@</version_name>
 </extension>
 

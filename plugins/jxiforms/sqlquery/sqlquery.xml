@@ -14,5 +14,8 @@
 		<filename>index.html</filename>
 		<folder>action</folder>
 	</files>
+	<alias>jxif-sqlquery</alias>
+	<version_number>@build.version@</version_number>
+	<version_name>JxiForms SQL-Query @build.version@</version_name>
 </extension>
 
