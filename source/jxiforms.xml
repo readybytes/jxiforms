@@ -8,7 +8,7 @@
 	<copyright>2009-12 Ready Bytes Software Labs Pvt. Ltd.</copyright>
 	<license>This component in released under the GNU/GPL v3 or later license</license>
 	<version>@build.version@</version>
-	<description>JoomlaXi Forms</description>
+	<description>JxiForms</description>
 
 	<!-- Public front end files -->
 	<files folder="site">
@@ -45,13 +45,13 @@
 	<!-- Administrator back-end section -->
 	<administration>
 		<!-- Administration menu -->
-		<menu view="cpanel">COM_JOOMLAXIFORMS</menu>
+		<menu view="cpanel">COM_JXIFORMS</menu>
 		<submenu>
-			<menu view="config">COM_JOOMLAXIFORMS_CONFIG</menu>
-			<menu view="input">COM_JOOMLAXIFORMS_INPUT</menu>
-			<menu view="action">COM_JOOMLAXIFORMS_ACTION</menu>
-			<menu view="queue">COM_JOOMLAXIFORMS_QUEUE</menu>
-			<menu view="appstore">COM_JOOMLAXIFORMS_APPSTORE</menu>
+			<menu view="config">COM_JXIFORMS_CONFIG</menu>
+			<menu view="input">COM_JXIFORMS_INPUT</menu>
+			<menu view="action">COM_JXIFORMS_ACTION</menu>
+			<menu view="queue">COM_JXIFORMS_QUEUE</menu>
+			<menu view="appstore">COM_JXIFORMS_APPSTORE</menu>
 		</submenu>
 
 		<!-- Back-end files -->

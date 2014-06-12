@@ -2,7 +2,7 @@
 /**
 * @copyright 	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		Joomlaxi Forms	
+* @package		JxiForms
 * @subpackage	Frontend
 * @contact 		bhavya@readybytes.in
 */
@@ -34,7 +34,7 @@ class JXiFormsView extends JXiFormsViewbase
 		ob_start()?>
        
         <div class="powered-by">
-	       <?php echo Rb_Text::_('COM_JXIFORMS_POWERED_BY') .'<a href="http://www.joomlaxi.com/products/item/joomlaxi-forms.html" target="_blank" >Joomlaxi Forms</a>';?>
+	       <?php echo Rb_Text::_('COM_JXIFORMS_POWERED_BY') .'<a href="http://www.readybytes.net/jxiforms" target="_blank" >JxiForms</a>';?>
 		   <?php echo ' | '.Rb_Text::_('COM_JXIFORMS_FOOTER_VERSION').' <strong>'.JXIFORMS_VERSION .'</strong> | '. Rb_Text::_('COM_JXIFORMS_FOOTER_BUILD').JXIFORMS_REVISION; ?>	  	
         	<?php echo '<br />'
         		.Rb_Text::_('COM_JXIFORMS_FOOTER_MESSAGE')
