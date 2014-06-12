@@ -6,14 +6,17 @@ project.codename		= jxiforms
 # Version
 build.version 	= 1.0.5
 #build.number	= Will be created dynamically
-rb.build.version	= 1.0.5
-rb.name		= RBSL.
 
 # Output settings
 file.package		= ${project.shortform}
 file.compression	= gzip
 file.extension		= zip
 
-# package tokens
-packageclass.name = JoomlaxiForms
-redirect.url	  = index.php?option=com_jxiforms&view=install
+# Package
+build.package.location = ${dir.root}/scripts
+build.package.name = pkg_jxiforms
+
+# RbFramework
+rbframework.build.version = 1.0.5
+rbframework.name	  = RBSL
+rbframework.location	  = ${user.home}/Dropbox/TEAM/dev/rbframework
