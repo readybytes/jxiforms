@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="jxiforms" method="upgrade">
-    <name>JomSocial Profile Type Integration</name>
+    <name>PLG_JXIFORMS_JSPT</name>
     <version>@build.version@</version>
     <creationDate>May 2013</creationDate>
     <author>Team JoomlaXi</author>
