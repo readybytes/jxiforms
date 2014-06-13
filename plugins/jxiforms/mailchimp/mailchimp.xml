@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="jxiforms" method="upgrade">
-    <name>MailChimp for JoomlaXi Forms</name>
+    <name>PLG_JXIFORMS_MAILCHIMP</name>
     <version>@build.version@</version>
     <creationDate>Nov 2012</creationDate>
     <author>Team JoomlaXi</author>
