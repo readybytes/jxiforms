@@ -16,6 +16,6 @@
 	</files>
 	<alias>jxif-emailpro</alias>
 	<version_number>@build.version@</version_number>
-	<version_name>JxiForms Email @build.version@</version_name>
+	<version_name>JxiForms Email Pro@build.version@</version_name>
 </extension>
 
