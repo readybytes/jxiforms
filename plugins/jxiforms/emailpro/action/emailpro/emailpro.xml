@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <config>
-	<name>Email</name>
-    <author>JoomlaXi</author>
+	<name>Email Pro</name>
+    <author>ReadyBytes</author>
     <description>
     	<![CDATA[
-    	Email action collects the form data and send email.<br>
-    	You can set the email content as per your requirement.
+    	Email Pro action collects the form data and send email.<br>
+    	You can set the email content as per your requirement.<br>
+    	With Email Pro you can attach submitted data and uploaded files in email and also decide email format. 
     	]]>
     </description>
-   	<icon>email.png</icon>
-    <tags>email</tags>
+   	<icon>emailpro.png</icon>
+    <tags>emailpro</tags>
 	<help>
 	</help>
 	<code>
@@ -52,6 +53,29 @@
 					description="COM_JXIFORMS_ACTION_EMAIL_SUBJECT_DESC"
 					rows="2" cols="50" default="" required="true"
 				/>
+				
+				<field name="send_attachments" type="checkbox"
+					label="COM_JXIFORMS_ACTION_EMAILPRO_SEND_ATTACHMENTS_LABEL"
+					description="COM_JXIFORMS_ACTION_EMAILPRO_SEND_ATTACHMENTS_DESC"
+					default="0"
+					value="1"
+				/>
+				
+				<field name="email_format" type="list"
+					label="COM_JXIFORMS_ACTION_EMAILPRO_FORMAT_LABEL"
+					description="COM_JXIFORMS_ACTION_EMAILPRO_FORMAT_DESC" 
+					default="1">
+				<option value="0">COM_JXIFORMS_ACTION_EMAILPRO_FORMAT_PLAIN_TEXT</option>
+				<option value="1">COM_JXIFORMS_ACTION_EMAILPRO_FORMAT_HTML</option>
+				</field>
+
+				<field name="attach_data" type="list"
+					label="COM_JXIFORMS_ACTION_EMAILPRO_ATTACH_DATA_LABEL"
+					description="COM_JXIFORMS_ACTION_EMAILPRO_ATTACH_DATA_DESC" 
+					default="0">
+					<option value="0">COM_JXIFORMS_NO</option>
+					<option value="1">COM_JXIFORMS_YES</option>
+				</field>
 				
 		</fieldset>
 	</fields>

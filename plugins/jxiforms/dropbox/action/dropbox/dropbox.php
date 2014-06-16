@@ -23,7 +23,7 @@ class JXiFormsActionDropbox extends JXiformsAction
 		
 		$email  	  =  $this->getActionParam('email', '');
 		$password  	  =  $this->getActionParam('password', '');
-		$destination  =  $this->getActionParam('destination', '');
+		$destination  =  JXiFormsHelperRewriter::rewrite($this->getActionParam('destination', ''), $data);
 		$uploadField  =  $this->getActionParam('upload_field', '');
 		$uploadField  =  empty($uploadField) ? '' : explode(',', $uploadField);
 		
