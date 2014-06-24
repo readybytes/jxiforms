@@ -4,8 +4,8 @@
 * @license		http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 * @package		JxiForms
 * @subpackage	Backend
-* @contact 		bhavya@readybytes.in
-* website		http://www.joomlaxi.com
+* @contact 		support+jxiforms@readybytes.in
+* website		http://www.readybytes.net
 */
 if(defined('_JEXEC')===false) die();
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <name>Joomla Registration</name>
-    <author>JoomlaXi</author>
+    <author>Team readyBytes</author>
     <description>
     	<![CDATA[
 	Joomla Registration Action collects the form data, and registers the user at your site.

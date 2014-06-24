@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <config>
-	<name>Mailchimp for JoomlaXi Forms</name>
+	<name>Mailchimp for JxiForms</name>
     <icon>mailchimp.png</icon>
     <description>
     	<![CDATA[<a href="http://mailchimp.com/" target="_blank" >Mailchimp</a> helps you design email newsletters, share them on social networks, integrate with services you already use, and track your results.

@@ -4,7 +4,7 @@
 * @license		GNU/GPL, see LICENSE.php
 * @package		JXiForms
 * @subpackage	Frontend
-* @contact 		bhavya@readybytes.in
+* @contact 		support+jxiforms@readybytes.in
 */
 if(defined('_JEXEC')===false) die();
 /**

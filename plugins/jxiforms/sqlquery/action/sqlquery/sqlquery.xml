@@ -2,7 +2,7 @@
 
 <config>
     <name>SQL Query</name>
-    <author>JoomlaXi</author>
+    <author>Team readyBytes</author>
     <description>
     	<![CDATA[
     	SQL query action can be used to fire various queries in SQL Database whenever the attached form is submitted. Different features embedded in it are as follows:

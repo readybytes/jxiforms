@@ -4,7 +4,7 @@
 * @license		GNU/GPL, see LICENSE.php
 * @package		JxiForms
 * @subpackage	Backend
-* @contact 		joomlaxi@readybytes.in
+* @contact 		support+jxiforms@readybytes.in
 */
 
 if(defined('_JEXEC')===false) die();

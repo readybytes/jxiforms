@@ -4,8 +4,8 @@
 * @license		http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 * @package		JxiForms
 * @subpackage	Backend
-* @contact 		bhavya@readybytes.in
-* website		http://www.joomlaxi.com
+* @contact 		support+jxiforms@readybytes.in
+* website		http://www.readybytes.net
 */
 if(defined('_JEXEC')===false) die();
 JHtml::_('behavior.framework');
@@ -76,7 +76,7 @@ JHtml::_('behavior.framework');
 								</div>
 						<?php }?>
 						<div class="jxif-margin-bottom03">
-							<button type="submit" class="btn btn-warning margin-top2 jxif-textcolor444 jxif-padding02" onclick="window.open('http://www.joomlaxi.com/download/category/joomlaxi-forms-2.html')">
+							<button type="submit" class="btn btn-warning margin-top2 jxif-textcolor444 jxif-padding02" onclick="window.open('http://www.readybytes.net/jxiforms.html?download/category/joomlaxi-forms-2.html')">
 				  				<i class="icon-shopping-cart"></i>&nbsp;<?php echo Rb_Text::_('COM_JXIFORMS_GET_PREMIUM_BUNDLE_BUTTON');?>
 							</button>
 						</div>

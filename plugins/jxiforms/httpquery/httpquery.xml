@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="jxiforms" method="upgrade">
-    <name>PLG_JXIFORMS_HTTPQUERY</name>
+    <name>JxiForms-Http Query</name>
     <version>@build.version@</version>
     <creationDate>Nov 2012</creationDate>
-    <author>Team JoomlaXi</author>
-    <authorEmail>bhavya@readybytes.in</authorEmail>
-    <authorUrl>http://www.joomlaxi.com</authorUrl>
+    <author>Team ReadyBytes</author>
+    <authorEmail>support+jxiforms@readybytes.in</authorEmail>
+    <authorUrl>http://www.readybytes.net</authorUrl>
     <copyright>2009-12 Ready Bytes Software Labs Pvt. Ltd.</copyright>
     <license>GNU General Public License v2</license>
     <description>JXiForms-Http-Query</description>
