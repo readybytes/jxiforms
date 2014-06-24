@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="jxiforms" method="upgrade">
-    <name>PLG_JXIFORMS_EMAILPRO</name>
+    <name>JxiForms-Email Pro</name>
     <version>@build.version@</version>
     <creationDate>June 2014</creationDate>
     <author>Team ReadyBytes</author>

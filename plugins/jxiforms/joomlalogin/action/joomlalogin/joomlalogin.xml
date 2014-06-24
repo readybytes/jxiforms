@@ -2,7 +2,7 @@
 
 <config>
 <name>Joomla-Login</name>
-    <author>JoomlaXi</author>
+    <author>Team readyBytes</author>
     <description>
     	<![CDATA[
     	Allow user to Login with Joomla Login action.<br>

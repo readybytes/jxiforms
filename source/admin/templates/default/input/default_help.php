@@ -3,8 +3,8 @@
 * @license		http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 * @package		JxiForms
 * @subpackage	Backend
-* @contact 		bhavya@readybytes.in
-* website		http://www.joomlaxi.com
+* @contact 		support+jxiforms@readybytes.in
+* website		http://www.readybytes.net
 */
 
 if(defined('_JEXEC')===false) die();
@@ -15,7 +15,7 @@ if(defined('_JEXEC')===false) die();
 			<img alt ="<?php echo Rb_Text::_('COM_JXIFORMS_FORM_POST_URL_HELP_ALTERNATE_TEXT');?>" src="<?php echo $help_image;?>" >
 		</div>
 		<div class="span12">
-				<a href="http://www.joomlaxi.com/support/documentation/item/forms.html" target="_blank"><?php echo Rb_Text::_('COM_JXIFORMS_FORM_POST_URL_HELP_READ_MORE');?></a>
+				<a href="http://www.readybytes.net/jxiforms/documentation/item/forms.html" target="_blank"><?php echo Rb_Text::_('COM_JXIFORMS_FORM_POST_URL_HELP_READ_MORE');?></a>
 		</div>
 	</div>
 

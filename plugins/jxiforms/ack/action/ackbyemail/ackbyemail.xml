@@ -2,7 +2,7 @@
 
 <config>
 <name>Ack-By-Email</name>
-    <author>JoomlaXi</author>
+    <author>Team readyBytes</author>
     <description>
     	<![CDATA[
     	Ack-By-Email action allows you to send acknowledgement to user via email.<br>
