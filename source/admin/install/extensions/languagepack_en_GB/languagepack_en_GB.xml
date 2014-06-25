@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
    <extension version="2.5" type="file" method="upgrade">
-      <name>JoomlaXi Forms Plugins English Language Pack</name>
+      <name>JxiForms Plugins English Language Pack</name>
       <version>@build.version@</version>
       <creationDate>December 2012</creationDate>
-      <author>Team Joomlaxi</author>
+      <author>Team ReadyBytes</author>
       <authorEmail>bhavya@readybytes.in</authorEmail>
-      <authorUrl>www.joomlaxi.com</authorUrl>
+      <authorUrl>www.readybytes.net</authorUrl>
       <copyright>Copyright (C) 2009 - 2012 All rights reserved.</copyright>
       <license>GNU/GPL</license>
       <description>English Language pack for plugins of payplans.</description>
    	  <fileset>
-       <!--joomlaxi forms plugin language files -->
+       <!--jxiforms plugin language files -->
        <files folder="plg_jxiforms" target="language/en-GB/">
            <filename>en-GB.com_jxiforms_extensions.ini</filename>
        </files>
