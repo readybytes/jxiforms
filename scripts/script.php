@@ -15,7 +15,20 @@ class pkg_JxiFormsInstallerScript
 		$extension   = array();
 		$extension[] = array('type'=>'system',   'name'=>'rbsl');
 		$this->changeExtensionState($extension);
-		return $this->_addScript();
+
+		$db		= JFactory::getDBO();
+		$query	= 'SELECT * FROM `#__extensions`'
+				 .'WHERE `type` LIKE "component"'
+				 .'AND `element` LIKE "com_jxiforms"'
+				 .'AND `enabled` =1';
+				
+		$db->setQuery($query);
+
+		//redirects only when component is enabled
+		if($db->loadColumn()){
+			return $this->_addScript();
+		}
+		return true;
 	}
 
 	//Redirects After Installation

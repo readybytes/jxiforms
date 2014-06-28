@@ -105,4 +105,17 @@ class JXiFormsActionEmailpro extends JXiformsAction
 		
 		return $body;
 	}
+	
+	public function filterActionParams(array $data)
+    {
+    	$actionParams = $data['action_params'];
+
+	    //when there is nothing set in the send_attachments then its parameter does not get posted	
+		//checkbox element only get posted when its checked
+    	if(!isset($data['action_params']['send_attachments'])){
+    		$data['action_params']['send_attachments'] = 0;
+    	}
+    	
+    	return parent::filterActionParams($data);
+    }
 }
