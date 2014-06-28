@@ -26,7 +26,7 @@ class JXiFormsAdminControllerDashboard extends JXiFormsController
 
 		//Varifies the status of plugin
 		$enabled		= JXiFormsHelperJoomla::getPlugins('plugin', "jxiforms", true);
-		($enabled[$pluginToEnable]) ? JXiFormsFactory::getApplication()->enqueueMessage(sprintf(Rb_Text::_('COM_JXIFORMS_DASHBOARD_ENABLE_PLUGIN_SUCCESSFULL_MESSAGE'), $pluginName),'success')
+		($enabled[$pluginToEnable]) ? JXiFormsFactory::getApplication()->enqueueMessage(sprintf(Rb_Text::_('COM_JXIFORMS_DASHBOARD_ENABLE_PLUGIN_SUCCESSFULL_MESSAGE'), $pluginName),'message')
 						: JXiFormsFactory::getApplication()->enqueueMessage(sprintf(Rb_Text::_('COM_JXIFORMS_DASHBOARD_ENABLE_PLUGIN_UNSUCCESSFULL_MESSAGE'), $pluginName),'notice');
 
 		$this->setRedirect(Rb_Route::_('index.php?option=com_jxiforms&view=dashboard'));
