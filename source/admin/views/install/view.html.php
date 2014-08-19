@@ -20,4 +20,32 @@ class JXiFormsAdminViewInstall extends JXiFormsAdminBaseViewInstall
 		
 		return true;
 	}
+	
+	public function display()
+	{
+		$app = JXiFormsFactory::getApplication();
+		$db_prefix = $app->get('dbprefix', '');
+		
+		$db = JXiFormsFactory::getDbo();
+		$tables = $db->getTableList();
+		
+		$email = '';
+		if (!in_array($db_prefix.'rbinstaller_config', $tables)){
+			$this->assign('email', $email);
+			return true;
+		}
+		
+		$query	= 'SELECT * FROM `#__rbinstaller_config`'
+			 .'WHERE `key` = "email"';
+			
+		$db->setQuery($query);
+		$object = $db->loadObject();
+		
+		if($object){
+			$email = $object->value;
+		}
+		
+		$this->assign('email', $email);
+		return true;
+	}
 }
