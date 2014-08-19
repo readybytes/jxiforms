@@ -75,10 +75,19 @@ JHtml::_('behavior.framework');
 
 	<div class="hide">
 		<?php
+			$domain  = JURI::getInstance()->toString(array('scheme', 'host', 'port'));
 			$version = new JVersion();
-			$suffix = 'jom=J'.$version->RELEASE.'&utm_campaign=broadcast&jxif=JXIF'.JXIFORMS_VERSION.'&dom='.JURI::getInstance()->toString(array('scheme', 'host', 'port'));?>
+			$suffix = 'jom=J'.$version->RELEASE.'&utm_campaign=broadcast&jxif=JXIF'.JXIFORMS_VERSION.'&dom='.$domain;
+			
+			$event 		= "product.installation";
+			$event_args = array('product'=>'Jxiforms', 'version'=>JXIFORMS_VERSION, 'domain'=>$domain, 'joomla_version'=>$version->RELEASE, 'email'=>$email);
+			$event_args = urlencode(json_encode($event_args));?>
 			
 		<iframe src="http://pub.joomlaxi.com/broadcast/joomlaxi-form/installation.html?<?php echo $suffix?>"></iframe>
+		
+		<iframe src="http://www.readybytes.net/broadcast/track.html?event=<?php echo $event;?>&event_args=<?php echo $event_args;?>" style="display :none;"></iframe>
+
+	</div>
 	</div>
 </div>
 <?php 
