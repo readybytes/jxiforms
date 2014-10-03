@@ -54,23 +54,29 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 			if(empty($file['tmp_name'])){
 				continue;
 			}
-
-			$extension = '';
-			$properties = explode('.', $file['name']);
 			
-			//if there is no extension attached with filename
-			if(count($properties) > 1){
-				$extension = '.'.array_pop($properties);
+			//IMP : for multiple uploads
+			if (is_array($file['name'])){
+				
+				$multipleUpload = array();
+				foreach(array_keys($file['name']) as $i) { // loop over 0,1,2,3 etc...
+				   foreach(array_keys($file) as $j) { // loop over 'name', 'size', 'error', etc...
+				      $multipleUpload[$i][$j] = $file[$j][$i]; // "swap" keys and copy over original array values
+				   }
+				}
+				
+				foreach ($multipleUpload as $key => $upload){
+					$path  =  $this->_arrangeAttachment($upload);
+					if ($path != false){
+						$attachments[$name] = $path;
+					}
+				}
 			}
-
-			//append current time_stamp to the file name
-			$tmp_name = explode('/', $file['tmp_name']);
-			$filename = array_pop($tmp_name).'_'.time();
-			
-			$destination = JPATH_SITE.JXIFORMS_PATH_ATTACHMENTS.$filename.$extension;
-			
-			if(move_uploaded_file($file['tmp_name'], $destination)){
-				$attachments[$name] = JXIFORMS_PATH_ATTACHMENTS.$filename.$extension;	
+			else {
+					$path  =  $this->_arrangeAttachment($file);
+					if ($path != false){
+						$attachments[$name] = $path;
+					}
 			}
 		}
 		
@@ -101,5 +107,26 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 	public function display($cachable = false, $urlparams = array())
 	{
 		return parent::display($cachable, $urlparams);
+	}
+	
+	protected function _arrangeAttachment($file)
+	{
+		$extension = '';
+		$properties = explode('.', $file['name']);
+		
+		//if there is no extension attached with filename
+		if(count($properties) > 1){
+			$extension = '.'.array_pop($properties);
+		}
+
+		//append current time_stamp to the file name
+		$tmp_name = explode('/', $file['tmp_name']);
+		$filename = array_pop($tmp_name).'_'.time();
+		
+		$destination = JPATH_SITE.JXIFORMS_PATH_ATTACHMENTS.$filename.$extension;
+		
+		if(move_uploaded_file($file['tmp_name'], $destination)){
+			return JXIFORMS_PATH_ATTACHMENTS.$filename.$extension;
+		}
 	}
 } 
