@@ -68,14 +68,14 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 				foreach ($multipleUpload as $key => $upload){
 					$path  =  $this->_arrangeAttachment($upload);
 					if ($path != false){
-						$attachments[$name] = $path;
+						$attachments[$name][] = $path;
 					}
 				}
 			}
 			else {
 					$path  =  $this->_arrangeAttachment($file);
 					if ($path != false){
-						$attachments[$name] = $path;
+						$attachments[$name][] = $path;
 					}
 			}
 		}

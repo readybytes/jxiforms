@@ -49,10 +49,12 @@ class JXiFormsActionAckbyemail extends JXiFormsAction
 		$mailer->IsHTML(1);
 
 		// add attachments
-		if(!empty($attachments) && $actionParams->get('send_attachments', '')){
+		if($actionParams->get('send_attachments', '') && !empty($attachments)){
 			foreach ($attachments as $name => $value){
-				$extension = array_pop(explode('.', $value));
-				$mailer->addAttachment(JPATH_SITE.$value, $name.'.'.$extension);
+				foreach ($value as $index =>$file){
+					$extension = array_pop(explode('.', $file));
+					$mailer->addAttachment(JPATH_SITE.$file, $name.'.'.$extension);
+				}
 			}
 		}
 
