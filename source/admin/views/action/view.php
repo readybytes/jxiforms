@@ -17,6 +17,7 @@ class JXiFormsAdminBaseViewAction extends JXiFormsView
 		$enabledPlugins = JXiFormsHelperAction::getXml();
 		$this->assign('enable_plugins', $enabledPlugins);
 		parent::_displayGrid($records);
+		return true;
 	}
 	
 	public function edit($tpl= null, $itemId = null, $actionType=null)

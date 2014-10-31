@@ -106,13 +106,25 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 				
 				<div class="control-group">
 					<?php foreach ($queue_attachments as $name =>$file):?>
-							<div><?php  $extension  = '';
-										$properties = explode('.', $file);
+							<?php if (is_array($file)):?>
+								<?php foreach ($file as $attachment):?>
+									<div><?php  $extension  = '';
+										$properties = explode('.', $attachment);
 										if(count($properties) > 1){
 											$extension = '.'.array_pop($properties);
 										}?>
-								<a href="<?php echo JUri::root().$file;?>" target="blank"><?php echo $name.$extension;?></a>
-							</div>
+										<a href="<?php echo JUri::root().$attachment;?>" target="blank"><?php echo $name.$extension;?></a>
+									</div>
+								<?php endforeach;?>
+							<?php else :?>
+								<div><?php  $extension  = '';
+											$properties = explode('.', $file);
+											if(count($properties) > 1){
+												$extension = '.'.array_pop($properties);
+											}?>
+									<a href="<?php echo JUri::root().$file;?>" target="blank"><?php echo $name.$extension;?></a>
+								</div>
+							<?php endif;?>
 					<?php endforeach;?>				
 				</div>
 			</fieldset>

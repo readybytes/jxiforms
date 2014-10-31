@@ -56,10 +56,12 @@ class JXiFormsActionEmailpro extends JXiformsAction
 		$this->_addEmailAddress($actionParams->get('send_bcc',''),'addBCC', $mailer);
 
 		// add attachments
-		if(!empty($attachments) && $actionParams->get('send_attachments', 0)){
+		if($actionParams->get('send_attachments', 0) && !empty($attachments)){
 			foreach ($attachments as $attachment =>$value){
-				$extension = array_pop(explode('.', $value));
-				$mailer->addAttachment(JPATH_SITE.$value, $attachment.'.'.$extension);
+				foreach ($value as $index =>$file){
+					$extension = array_pop(explode('.', $file));
+					$mailer->addAttachment(JPATH_SITE.$file, $attachment.'.'.$extension);
+				}
 			}
 		}
 

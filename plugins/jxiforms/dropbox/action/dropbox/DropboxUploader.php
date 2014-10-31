@@ -1,24 +1,19 @@
 <?php
-
-/**
-* @license	GNU/GPL, see LICENSE.php
-*/
-if(defined('_JEXEC')===false) die();
 /**
  * Dropbox Uploader
- * 
+ *
  * Copyright (c) 2009 Jaka Jancar
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -27,8 +22,9 @@ if(defined('_JEXEC')===false) die();
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * @author Jaka Jancar [jaka@kubje.org] [http://jaka.kubje.org/]
- * @version 1.1.7
+ * @author Jaka Jancar <jaka@kubje.org> <http://jaka.kubje.org/>
+ * @version 1.1.19
+ * @license MIT <http://spdx.org/licenses/MIT>
  */
 final class DropboxUploader {
     /**
@@ -43,7 +39,9 @@ final class DropboxUploader {
     const DROPBOX_UPLOAD_LIMIT_IN_BYTES = 314572800;
     const HTTPS_DROPBOX_COM_HOME        = 'https://www.dropbox.com/home';
     const HTTPS_DROPBOX_COM_LOGIN       = 'https://www.dropbox.com/login';
+    const HTTPS_DROPBOX_COM_LOGINACTION = 'https://www.dropbox.com/ajax_login';
     const HTTPS_DROPBOX_COM_UPLOAD      = 'https://dl-web.dropbox.com/upload';
+    const HTTPS_DROPBOX_COM_LOGOUT      = 'https://www.dropbox.com/logout';
     /**
      * DropboxUploader Error Flags and Codes
      */
@@ -131,6 +129,7 @@ final class DropboxUploader {
             'dest'         => $remoteDir,
             't'            => $token,
             '_subject_uid' => $subjectUid,
+            'mtime_utc'    => filemtime($source),
         );
 
         $data     = $this->request(self::HTTPS_DROPBOX_COM_UPLOAD, $postData);
@@ -184,12 +183,20 @@ final class DropboxUploader {
             'login_password' => (string) $this->password,
             't'              => $token
         );
-        $data     = $this->request(self::HTTPS_DROPBOX_COM_LOGIN, http_build_query($postData));
+        $data     = $this->request(self::HTTPS_DROPBOX_COM_LOGINACTION, http_build_query($postData));
 
-        if (stripos($data, 'location: /home') === FALSE)
+        if (stripos($data, '{"status": "OK", "csrf_token": "') === FALSE)
             throw new Exception('Login unsuccessful.', self::CODE_LOGIN_ERROR);
 
         $this->loggedIn = TRUE;
+    }
+
+    private function logout() {
+        $data = $this->request(self::HTTPS_DROPBOX_COM_LOGOUT);
+
+        if (!empty($data) && strpos($data, 'HTTP/1.1 302 FOUND') !== FALSE) {
+            $this->loggedIn = FALSE;
+        }
     }
 
     private function request($url, $postData = NULL) {
@@ -252,6 +259,12 @@ final class DropboxUploader {
         if (!preg_match('#, "TOKEN": "([A-Za-z0-9_-]+)", #', $html, $matches))
             throw new Exception('Cannot extract login CSRF token.', self::CODE_SCRAPING_LOGIN);
         return $matches[1];
+    }
+
+    public function __destruct() {
+        if ($this->loggedIn) {
+            $this->logout();
+        }
     }
 
 }

@@ -36,7 +36,7 @@ class JXiFormsActionDropbox extends JXiformsAction
 			$uploadField = array_keys($attachments);
 		}
 		
-		$result   = true;
+		$error = array();
 		$uploader = new DropboxUploader($email, $password);
 		foreach ($uploadField as $key){
 			$key = trim($key);
@@ -44,18 +44,31 @@ class JXiFormsActionDropbox extends JXiformsAction
 				continue ;
 			}
 			
-			$attachment  = JPATH_SITE.$attachments[$key];
-			$extension = JFile::getExt($attachment);			
-			try{
-				$uploader->upload($attachment, $destination, date("d_m_Y_").time().'_'.$key.'.'.$extension);
-			}
-			catch (Exception $e){
-				$result = false ;
-				JXiFormsHelperUtils::sendEmailToAdmin(Rb_Text::_('COM_JXIFORMS_ACTION_DROPBOX_ERROR_OCCURRED_IN_FILE_UPLOAD'), Rb_Text::_($e->getMessage()), $attachment);
+			foreach ($attachments[$key] as $index =>$file){
+				$attachment = JPATH_SITE.$file;
+				$this->_upload($uploader, $attachment, $destination, $key, $error);
 			}
 		}
 		
-		return $result;
+		if (!empty($error)){
+			return false;
+		}
+		
+		return true;
+	}
+	
+	protected function _upload($uploader, $attachment, $destination, $key, &$error)
+	{
+		$extension = JFile::getExt($attachment);
+		$extension = date("d_m_Y_").time().'_'.$key.'.'.$extension;
+		
+		try{
+			$uploader->upload($attachment, $destination, $extension);
+		}
+		catch (Exception $e){
+			$error[] = true;
+			JXiFormsHelperUtils::sendEmailToAdmin(Rb_Text::_('COM_JXIFORMS_ACTION_DROPBOX_ERROR_OCCURRED_IN_FILE_UPLOAD'), Rb_Text::_($e->getMessage()), $attachment);
+		}
 	}
 
 }
