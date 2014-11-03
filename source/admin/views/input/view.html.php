@@ -15,20 +15,49 @@ class JXiFormsAdminViewInput extends JXiFormsAdminBaseViewInput
 {
 	protected function _adminGridToolbar()
 	{
-		Rb_HelperToolbar::addNew('new');
-		Rb_HelperToolbar::divider();
-		Rb_HelperToolbar::publish();
-		Rb_HelperToolbar::unpublish();
-		Rb_HelperToolbar::divider();
-		Rb_HelperToolbar::deleteList();
+		JToolbarHelper::addNew('new');
+		JToolbarHelper::divider();
+		JToolbarHelper::publish('publish', 'JTOOLBAR_PUBLISH', true);
+		JToolbarHelper::unpublish('unpublish','JTOOLBAR_UNPUBLISH', true);
+		JToolbarHelper::divider();
+		JToolbarHelper::deleteList();
 	}
 	
 	protected function _adminEditToolbar()
 	{
-		Rb_HelperToolbar::apply();
-		Rb_HelperToolbar::save();
-		Rb_HelperToolbar::save2new('savenew');
-		Rb_HelperToolbar::divider();
-		Rb_HelperToolbar::cancel();
+		JToolbarHelper::apply();
+		JToolbarHelper::save();
+		JToolbarHelper::save2new('savenew');
+		JToolbarHelper::divider();
+		JToolbarHelper::cancel();
+	}
+	
+	function edit($tpl= null, $itemId = null)
+	{
+		$itemId  =  ($itemId === null) ? $this->getModel()->getState('id') : $itemId ;
+		$input   =  JXiformsInput::getInstance($itemId);
+		
+		//get the menus created for the current input and display it
+		$cmp   	 =  JComponentHelper::getComponent('com_jxiforms');
+		$link  	 =  "index.php?option=com_jxiforms&view=input&input_id=".$input->getId();
+		
+		$this->assign('input', $input);
+		$this->assign('form',  $input->getModelform()->getForm($input));
+		$this->assign('form_menu',  Rb_HelperJoomla::getExistingMenu($link, $cmp->id));
+		
+		$preview_link = JUri::root().$link."&tmpl=component";
+		$this->assign('preview_link', JXiFormsHelperUtils::getModalLink($preview_link, 'COM_JXIFORMS_INPUT_HTML_PREVIEW', '380', '600', 'COM_JXIFORMS_INPUT_HTML_PREVIEW'));		
+		
+		$helpLink = JURI::base()."index.php?option=com_jxiforms&view=input&task=help&tmpl=component";
+		$this->assign('help_link', JXiFormsHelperUtils::getModalLink($helpLink, '?', '410', '660', 'COM_JXIFORMS_FORM_POST_URL_HELP_DESC')); 
+		
+		
+		return true;
+	} 
+	
+	function help()
+	{
+		$this->setTpl('help');
+		return true;
 	}
 }

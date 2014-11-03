@@ -15,7 +15,7 @@
 	if(isset($enablePlugins)){
 		foreach ($enablePlugins as $type => $data){
 			$imagePath  = $data['location']."/".$data['icon'];
-			$imagePath  = file_exists($imagePath) ? $imagePath : JXIFORMS_PATH_ADMIN_TEMPLATE.'/default/_media/icons/actions.png';
+			$imagePath  = file_exists($imagePath) ? $imagePath : JXIFORMS_PATH_CORE_MEDIA.'/admin/img/actions.png';
 ?>
 		
 		<div class="dashboard-icon action-icon-view jxif-padding02 center" onclick="location.href='<?php echo Rb_Route::_('index.php?option=com_jxiforms&view=action&task=new&type='.$type);?>';">

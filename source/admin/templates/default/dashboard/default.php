@@ -22,11 +22,8 @@ JHtml::_('behavior.framework');
 		
 		<!--For BroadCast-->
 		<div class="span5">
-		<?php
-			$version = new JVersion();
-			$suffix = 'jom=J'.$version->RELEASE.'&utm_campaign=broadcast&jxif=JXIF'.JXIFORMS_VERSION.'&dom='.JURI::getInstance()->toString(array('scheme', 'host', 'port'));?>
 			<div class="span12 dashboard-icon-panel">
-				<iframe class="span12 jxif-padding02 jxif-border00" height="325px;" src="http://pub.joomlaxi.com/broadcast/broadcast.html?<?php echo $suffix?>"></iframe>
+				<iframe class="span12 jxif-padding02 jxif-border00" height="325px;" src="http://www.readybytes.net/broadcast/jxiforms.html"></iframe>
 				<div class="span12">
 					<!-- JXITODO: Show a Cross-Button For Permanent removing this link-->
 					<h2><?php echo $howItWorks;?></h2>

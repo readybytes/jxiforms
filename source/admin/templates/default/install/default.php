@@ -26,7 +26,7 @@ JHtml::_('behavior.framework');
 			<div class="jxif-install-border">
 				<div class="row-fluid">
 					<div class="span4 center jxif-vertical-line">
-						<span><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI(JXIFORMS_PATH_ADMIN_TEMPLATE."/default/_media/icons/free_actions.png", false), Rb_Text::_('JxiForms Actions'));?></span>
+						<span><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI(JXIFORMS_PATH_CORE_MEDIA."/admin/img/free_actions.png", false), Rb_Text::_('JxiForms Actions'));?></span>
 						<p><b><?php echo Rb_Text::_('COM_JXIFORMS_INSTALL_ACTIONS');?></b></p>
 					</div>	
 					<div class="span1"></div>				
@@ -48,7 +48,7 @@ JHtml::_('behavior.framework');
 			<div class="jxif-install-border">
 				<div class="row-fluid">
 					<div class="span4 center jxif-vertical-line">
-						<span><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI(JXIFORMS_PATH_ADMIN_TEMPLATE."/default/_media/icons/app-store.png", false), Rb_Text::_('COM_JXIFORMS_APPSTORE_HEADING'));?></span>
+						<span><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI(JXIFORMS_PATH_CORE_MEDIA."/admin/img/app-store.png", false), Rb_Text::_('COM_JXIFORMS_APPSTORE_HEADING'));?></span>
 						<p><b><?php echo Rb_Text::_('COM_JXIFORMS_APPSTORE');?></b></p>
 					</div>	
 					<div class="span1"></div>				
