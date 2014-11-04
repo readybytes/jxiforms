@@ -21,7 +21,7 @@ class JXiFormsAdminViewInstall extends JXiFormsAdminBaseViewInstall
 		return true;
 	}
 	
-	public function display()
+	public function display($cachable = false, $urlparams = array())
 	{
 		$app = JXiFormsFactory::getApplication();
 		$db_prefix = $app->get('dbprefix', '');
