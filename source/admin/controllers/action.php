@@ -14,7 +14,7 @@ class JXiFormsAdminControllerAction extends JXiFormsController
 	public function _save(array $data, $itemId=null)
 	{
 		if(!isset($data['type'])){
-			throw new Exception(Rb_Text::_('COM_JXIFORMS_EXCEPTION_NO_ACTION_TYPE_PROVIDED'));
+			throw new Exception(JText::_('COM_JXIFORMS_EXCEPTION_NO_ACTION_TYPE_PROVIDED'));
 		}
 		$action = JXiformsAction::getInstance($itemId, $data['type']);
 

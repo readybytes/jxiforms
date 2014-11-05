@@ -29,7 +29,7 @@ JHtml::_('behavior.framework');
 				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_QUEUE_GRID_ACTION_ID", 'action_id', $filter_order_Dir, $filter_order);?></th>
 				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_QUEUE_GRID_STATUS", 'status', $filter_order_Dir, $filter_order);?></th>
 				<th class="center"><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_QUEUE_GRID_APPROVED", 'approved', $filter_order_Dir, $filter_order);?></th>
-				<th class="center"><?php echo Rb_Text::_('COM_JXIFORMS_QUEUE_GRID_APPROVAL_KEY');?></th>
+				<th class="center"><?php echo JText::_('COM_JXIFORMS_QUEUE_GRID_APPROVAL_KEY');?></th>
 				<th class="center"><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_QUEUE_GRID_CREATED_DATE", 'created_date', $filter_order_Dir, $filter_order);?></th>
 							
 			</tr>
@@ -45,12 +45,12 @@ JHtml::_('behavior.framework');
 				    	<?php echo JXiFormsHtml::_('grid.id', $count, $record->{$record_key} ); ?>
 				    </th>				
 					<td><?php echo JXiFormsHtml::link($uri.'&task=edit&id='.$record->{$record_key}, $record->queue_id);?></td>
-					<td><?php echo isset($inputs[$record->input_id]) ? JXiFormsHtml::link('index.php?option=com_jxiforms&view=input&task=edit&input_id='.$record->input_id, $inputs[$record->input_id]->title) : $record->input_id.'('.Rb_Text::_('COM_JXIFORMS_INPUT_DELETED').')';?></td>
-					<td><?php echo isset($actions[$record->action_id]) ? JXiFormsHtml::link('index.php?option=com_jxiforms&view=action&task=edit&action_id='.$record->action_id, $actions[$record->action_id]->title) : $record->action_id.'('.Rb_Text::_('COM_JXIFORMS_ACTION_DELETED').')';?></td>
-					<td><?php echo Rb_Text::_($queue_status_list[$record->status]);?></td>					
+					<td><?php echo isset($inputs[$record->input_id]) ? JXiFormsHtml::link('index.php?option=com_jxiforms&view=input&task=edit&input_id='.$record->input_id, $inputs[$record->input_id]->title) : $record->input_id.'('.JText::_('COM_JXIFORMS_INPUT_DELETED').')';?></td>
+					<td><?php echo isset($actions[$record->action_id]) ? JXiFormsHtml::link('index.php?option=com_jxiforms&view=action&task=edit&action_id='.$record->action_id, $actions[$record->action_id]->title) : $record->action_id.'('.JText::_('COM_JXIFORMS_ACTION_DELETED').')';?></td>
+					<td><?php echo JText::_($queue_status_list[$record->status]);?></td>					
 					<td class="center"><?php 
 									if($record->approved){?>
-										 <i class="icon-ok" title="<?php echo Rb_Text::_('COM_JXIFORMS_QUEUE_GRID_APPROVED');?>"></i><?php 
+										 <i class="icon-ok" title="<?php echo JText::_('COM_JXIFORMS_QUEUE_GRID_APPROVED');?>"></i><?php 
 									}
 									else{
 										echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'approved', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_JXIFORMS');

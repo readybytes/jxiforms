@@ -17,7 +17,7 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		$input   = ($inputId != 0) ?  JXiformsInput::getInstance($inputId) : false; 
 		
 		if(!($input instanceof JXiformsInput)){
-			throw new Exception(Rb_Text::sprintf('COM_JXIFORMS_EXCEPTION_INVALID_INPUT_ID', $inputId));
+			throw new Exception(JText::sprintf('COM_JXIFORMS_EXCEPTION_INVALID_INPUT_ID', $inputId));
 		}
 		
 		//if form is not published then do nothing
@@ -25,14 +25,15 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 			return true;
 		}
 		
-		//collect data from get and post 
-		$postData    = Rb_Request::get('POST');
-		$getData     = Rb_Request::get('GET');
-		$data 		 = array_merge($getData, $postData);
+		$jinput = JXiFormsFactory::getApplication()->input;
+		
+		$postData = $jinput->post->getArray();
+		$getData  = $jinput->get->getArray();
+		$data 	  = array_merge($getData, $postData);
 		
 		//If any action's plugin want to attach some data.		
 		$args     = array(&$data);
-		Rb_HelperPlugin::trigger('onJXIFormsDataPrepare', $args, 'jxiforms');
+		Rb_HelperJoomla::triggerPlugin('onJXIFormsDataPrepare', $args, 'jxiforms');
 
 		//unset token(added by RBFW for protecting against CSRF) from the submitted data 
 		$formToken   = JXiFormsFactory::getSession()->getFormToken();
@@ -84,7 +85,7 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		$queueRecs  =  JXiFormsHelperQueue::enqueue($input);
 		JXiFormsHelperQueue::appendDataToFile($queueRecs, $data, $attachments);
 		
-		$approvalContent = Rb_Text::sprintf('COM_JXIFORMS_INPUT_DATA_SUBMITTED_ON', $input->getTitle());
+		$approvalContent = JText::sprintf('COM_JXIFORMS_INPUT_DATA_SUBMITTED_ON', $input->getTitle());
 		$approvalLinks    = '';
 		foreach ($queueRecs as $queue){
 			//if task is approved then process immediately else set the approval contents to email
@@ -92,7 +93,7 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 				$queue->process();
 			}
 			else {
-				$approvalLinks .= Rb_Text::sprintf('COM_JXIFORMS_INPUT_APPROVAL_REQUEST', JXiFormsHelperAction::get($queue->getActionId())->title,$queue->getApprovalUrl());
+				$approvalLinks .= JText::sprintf('COM_JXIFORMS_INPUT_APPROVAL_REQUEST', JXiFormsHelperAction::get($queue->getActionId())->title,$queue->getApprovalUrl());
 			}
 		}
 		

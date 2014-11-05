@@ -53,8 +53,8 @@ JHtml::_('behavior.framework');
 <!-- 					<td><?php //echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'for_all_inputs', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_JXIFORMS');?></td> -->
 						<td><?php echo JXiFormsHtml::_("rb_html.boolean.grid", $record, 'published', $count, 'tick.png', 'publish_x.png', '', $langPrefix='COM_JXIFORMS');?></td>
 						<td>
-							<span><?php echo $pagination->orderUpIcon( $count , true, 'orderup', Rb_Text::_('COM_JXIFORMS_ORDERING_MOVE_UP')); ?></span>
-							<span><?php echo $pagination->orderDownIcon( $count , count($records), true , 'orderdown', Rb_Text::_('COM_JXIFORMS_ORDERING_MOVE_DOWN'), true ); ?></span>
+							<span><?php echo $pagination->orderUpIcon( $count , true, 'orderup', JText::_('COM_JXIFORMS_ORDERING_MOVE_UP')); ?></span>
+							<span><?php echo $pagination->orderDownIcon( $count , count($records), true , 'orderdown', JText::_('COM_JXIFORMS_ORDERING_MOVE_DOWN'), true ); ?></span>
 						</td>
 					
 					<?php }
@@ -64,7 +64,7 @@ JHtml::_('behavior.framework');
 							<td><?php echo $record->action_id;?></td>
 							<td style="width:40%;"> <?php echo $record->title;?></td>
 							<td colspan="3">
-						  		<div class="muted"><?php echo Rb_Text::sprintf('COM_JXIFORMS_ACTION_GRID_PLUGIN_NOT_ENABLED',$record->type);?></div>
+						  		<div class="muted"><?php echo JText::sprintf('COM_JXIFORMS_ACTION_GRID_PLUGIN_NOT_ENABLED',$record->type);?></div>
 							</td>
 					<?php }?>
 				</tr>

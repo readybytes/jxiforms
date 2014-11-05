@@ -16,8 +16,8 @@ if(defined('_JEXEC')===false) die();?>
 		</div>
 		
 		<div class="center">
-			<a href="http://www.readybytes.net/jxiforms/forum.html" target="_blank" class="btn disabled"><i class="icon-question-sign "></i>&nbsp;<?php echo Rb_Text::_('COM_JXIFORMS_SUPPORT_BUTTON');?></a>
-			<a href="http://www.readybytes.net/jxiforms/documentation.html" target="_blank" class="btn disabled"><i class="icon-book"></i>&nbsp;<?php echo Rb_Text::_('COM_JXIFORMS_DOCUMENTATION_BUTTON');?></a>
+			<a href="http://www.readybytes.net/jxiforms/forum.html" target="_blank" class="btn disabled"><i class="icon-question-sign "></i>&nbsp;<?php echo JText::_('COM_JXIFORMS_SUPPORT_BUTTON');?></a>
+			<a href="http://www.readybytes.net/jxiforms/documentation.html" target="_blank" class="btn disabled"><i class="icon-book"></i>&nbsp;<?php echo JText::_('COM_JXIFORMS_DOCUMENTATION_BUTTON');?></a>
 		</div>
 	</div> 
 	<input type="hidden" name="task" value="" />

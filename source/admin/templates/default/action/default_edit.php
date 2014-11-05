@@ -19,14 +19,14 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 <form action="<?php echo $uri; ?>" method="post" name="adminForm" id="adminForm" class="rb-validate-form">
 	<div class="span6">		
 		<fieldset class="form-horizontal">
-			<legend> <?php echo $help['name'].Rb_Text::_('COM_JXIFORMS_ACTION_EDIT_DETAILS' ); ?> </legend>
+			<legend> <?php echo $help['name'].JText::_('COM_JXIFORMS_ACTION_EDIT_DETAILS' ); ?> </legend>
 			
 			<div class="control-group">
 				<div class="control-label"><?php echo $form->getLabel('title'); ?> </div>
 				<div class="controls">
 					<div><?php echo $form->getInput('title'); ?></div>
 					<div class="clr"></div>	
-					<span class="btn-link" onClick="jxiforms.utils.toggle('action-description');"><?php echo Rb_Text::_('Add a description'); ?></span>
+					<span class="btn-link" onClick="jxiforms.utils.toggle('action-description');"><?php echo JText::_('Add a description'); ?></span>
 				</div>
 			</div>
 			
@@ -47,7 +47,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 
 		 	<div class="control-group">
 				<div class="control-label">
-					<label class="hasTip" title="<?php echo Rb_Text::_('COM_JXIFORMS_ACTION_EDIT_INPUTS_DESC');?>"><?php echo Rb_Text::_('COM_JXIFORMS_ACTION_EDIT_INPUTS'); ?></label>
+					<label class="hasTip" title="<?php echo JText::_('COM_JXIFORMS_ACTION_EDIT_INPUTS_DESC');?>"><?php echo JText::_('COM_JXIFORMS_ACTION_EDIT_INPUTS'); ?></label>
 				</div>
 				<div class="controls"><?php $inputs = $action->getInputs();
 					 						echo JXiFormsHtml::_('jxiformshtml.inputs.edit', 'jxiforms_form[_action_inputs]', $inputs, array('multiple'=>true, 'style'=>"class='multiselect'"));?></div>				
@@ -71,7 +71,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 	
 	<div class="span6">
 	<fieldset class="form-horizontal">
-	<legend> <?php echo Rb_Text::_('COM_JXIFORMS_ACTION_EDIT_PARAMETERS' ); ?> </legend>
+	<legend> <?php echo JText::_('COM_JXIFORMS_ACTION_EDIT_PARAMETERS' ); ?> </legend>
 	
 		<?php $fieldSets = $form->getFieldsets('action_params'); ?>
 		<?php foreach ($fieldSets as $name => $fieldSet) : ?>
@@ -99,18 +99,18 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 	<!-- Display help message and code block -->
 	<?php if(!empty($help['help']) || !empty($help['code'])): ?>
 			<fieldset class="form-horizontal">
-				<legend > <?php echo Rb_Text::_('COM_JXIFORMS_ACTION_EDIT_ACTION_HELP'); ?></legend>
+				<legend > <?php echo JText::_('COM_JXIFORMS_ACTION_EDIT_ACTION_HELP'); ?></legend>
 					<div class="row-fluid">
 					<?php if(!empty($help['help']) || !empty($help['description'])):?>
 						<div class="span6">
-						  <div><?php echo (isset($help['description']) && !empty($help['description'])) ? Rb_Text::_('COM_JXIFORMS_ACTION_INTRODUCTION').$help['description'] : ''; ?></div>
-						  <div><?php echo (isset($help['help']) && !empty($help['help'])) ? Rb_Text::_($help['help']) : ''; ?></div>
+						  <div><?php echo (isset($help['description']) && !empty($help['description'])) ? JText::_('COM_JXIFORMS_ACTION_INTRODUCTION').$help['description'] : ''; ?></div>
+						  <div><?php echo (isset($help['help']) && !empty($help['help'])) ? JText::_($help['help']) : ''; ?></div>
 						</div>
 					<?php endif;?>
 					
 					<?php if(!empty($help['code'])):?>
 					<div class="span6">
-						<div><?php echo Rb_Text::_('COM_JXIFORMS_ACTION_EXAMPLE_CODE'); ?></div>
+						<div><?php echo JText::_('COM_JXIFORMS_ACTION_EXAMPLE_CODE'); ?></div>
 						<div><?php echo $help['code']; ?></div>
 					</div>
 					<?php endif;?>

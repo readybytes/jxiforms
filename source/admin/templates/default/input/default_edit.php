@@ -35,7 +35,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 							<div class="controls">
 								<div><?php echo $form->getInput('title'); ?></div>
 								<div class="clr"></div>
-								<div class="btn-link" onClick="jxiforms.utils.toggle('input-description');"><?php echo Rb_Text::_('Add a description'); ?></div>
+								<div class="btn-link" onClick="jxiforms.utils.toggle('input-description');"><?php echo JText::_('Add a description'); ?></div>
 							</div>
 						</div>
 						
@@ -59,7 +59,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 								if(!empty($post_url)):?>
 									<div><?php echo $form->getValue('post_url'); ?></div>
 								<?php else :?>
-									<div class="muted"><?php echo Rb_Text::_('COM_JXIFORMS_FORM_POST_URL_MSG_BEFORE_SAVE');?></div>
+									<div class="muted"><?php echo JText::_('COM_JXIFORMS_FORM_POST_URL_MSG_BEFORE_SAVE');?></div>
 								<?php endif;?>	
 							</div>
 						</div>
@@ -71,7 +71,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 						
 						<div class="control-group"> 
 							<div class="control-label">
-								<label class="hasTip" title="<?php echo Rb_Text::_('COM_JXIFORMS_INPUT_EDIT_ACTIONS_DESC');?>"><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_EDIT_ACTIONS'); ?></label>
+								<label class="hasTip" title="<?php echo JText::_('COM_JXIFORMS_INPUT_EDIT_ACTIONS_DESC');?>"><?php echo JText::_('COM_JXIFORMS_INPUT_EDIT_ACTIONS'); ?></label>
 							</div>
 							<div class="controls"><?php $actions = $input->getActions();
 								 						echo JXiFormsHtml::_('jxiformshtml.actions.edit', 'jxiforms_form[_input_actions]', $actions, array('multiple'=>true, 'style'=>"class='multiselect'"));?></div>				
@@ -93,7 +93,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 								<div class="controls forms-preview-link"><?php echo $preview_link?></div>
 							<?php }
 								  else{?>
-								  	<div class="controls forms-preview-link jxif-opacity45" style="cursor:pointer; color:#0088CC;" title="<?php echo Rb_Text::_('COM_JXIFORMS_FORM_PREVIEW_LINK_TOOLTIP_BEFORE_SAVE');?>"><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_HTML_PREVIEW');?></div>
+								  	<div class="controls forms-preview-link jxif-opacity45" style="cursor:pointer; color:#0088CC;" title="<?php echo JText::_('COM_JXIFORMS_FORM_PREVIEW_LINK_TOOLTIP_BEFORE_SAVE');?>"><?php echo JText::_('COM_JXIFORMS_INPUT_HTML_PREVIEW');?></div>
 								  <?php }?>			
 						</div>
 					</fieldset>	
@@ -112,7 +112,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 			<!-- ----------------When input/form is not saved then do no display menu options------------------- -->
 			<?php if($input->getId() == 0):?>
 					<div class="controls">
-						<span class="readonly"><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_MENU_CREATE_AFTER_INPUT_SAVE');?></span>
+						<span class="readonly"><?php echo JText::_('COM_JXIFORMS_INPUT_MENU_CREATE_AFTER_INPUT_SAVE');?></span>
 					</div>
 					
 			<!-- ----------------When input is saved and some menu items are already created for the same ------------------- -->
@@ -131,7 +131,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 								<?php endif;?>
 							<?php endforeach;?>
 							<div class="controls">
-							<input type="submit" class="btn btn-primary text-right" id="input-createmenu-button" value="<?php echo Rb_Text::_('COM_JXIFORMS_INPUT_MENU_CREATE_BUTTON');?>" />
+							<input type="submit" class="btn btn-primary text-right" id="input-createmenu-button" value="<?php echo JText::_('COM_JXIFORMS_INPUT_MENU_CREATE_BUTTON');?>" />
 							</div>
 						</fieldset>	
 						<input type="hidden" name="task" value="createMenu" />					
@@ -140,14 +140,14 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 			<!-- --------When input is saved and no menu items exists for it then display parameters to create menu item--------- -->
 				<?php else :?>
 					<div class="control-group">
-						<div class="control-label"><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_AVAILABLE_MENU_ITEMS'); ?> </div>
+						<div class="control-label"><?php echo JText::_('COM_JXIFORMS_INPUT_AVAILABLE_MENU_ITEMS'); ?> </div>
 						<div class="controls"><div class="control-label">
 							<?php foreach ($form_menu as $menu):?>
 								<div>
 									<strong><?php echo JXiFormsHtml::link('index.php?option=com_menus&task=item.edit&id='.$menu->id, $menu->title); ?></strong>
 									
-									<p class="small"><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_ADVANCE_MENU_ALIAS_LABEL').' : '.$menu->alias; ?><br>
-									<?php echo Rb_Text::_('COM_JXIFORMS_INPUT_ADVANCE_MENU_TYPE').' : '.$menu->menutype; ?></p>
+									<p class="small"><?php echo JText::_('COM_JXIFORMS_INPUT_ADVANCE_MENU_ALIAS_LABEL').' : '.$menu->alias; ?><br>
+									<?php echo JText::_('COM_JXIFORMS_INPUT_ADVANCE_MENU_TYPE').' : '.$menu->menutype; ?></p>
 								</div>
 							<?php endforeach;?>
 						</div></div>

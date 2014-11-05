@@ -22,7 +22,7 @@ class JxiformsHtmlActiontypes
 		
 		$options = array();
 		if(isset($attr['none']))
-			$options[] = JXiFormsHtml::_('select.option', '', Rb_Text::_('COM_JXIFORMS_ACTION_SELECT_ACTION_TYPE'));
+			$options[] = JXiFormsHtml::_('select.option', '', JText::_('COM_JXIFORMS_ACTION_SELECT_ACTION_TYPE'));
 	
 		
 			

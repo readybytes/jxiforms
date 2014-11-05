@@ -26,8 +26,8 @@ JHtml::_('behavior.framework');
 					<?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_INPUT_GRID_INPUT_ID", 'input_id', $filter_order_Dir, $filter_order);?>
 				</th>
 				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_INPUT_GRID_TITLE", 'title', $filter_order_Dir, $filter_order);?></th>
-				<th><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_GRID_POSTURL');?></th>
-				<th><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_GRID_REDIRECTURL');?></th>
+				<th><?php echo JText::_('COM_JXIFORMS_INPUT_GRID_POSTURL');?></th>
+				<th><?php echo JText::_('COM_JXIFORMS_INPUT_GRID_REDIRECTURL');?></th>
 				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_INPUT_GRID_PUBLISHED", 'published', $filter_order_Dir, $filter_order);?></th>
 							
 			</tr>

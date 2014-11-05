@@ -18,7 +18,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 <form action="<?php echo $uri; ?>" method="post" name="adminForm" id="adminForm">
 	<div class="span6">		
 		<fieldset class="form-horizontal">
-			<legend> <?php echo Rb_Text::_('COM_JXIFORMS_CONFIG_SETTING' ); ?> </legend>								
+			<legend> <?php echo JText::_('COM_JXIFORMS_CONFIG_SETTING' ); ?> </legend>								
 			
 			<div class="control-group">
 				<div class="control-label"><?php echo $form->getLabel('approval_send_email'); ?> </div>
@@ -41,7 +41,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 		</fieldset>
 		
 		<fieldset class="form-horizontal">
-			<legend> <?php echo Rb_Text::_('COM_JXIFORMS_CONFIG_CRON_SETTING' ); ?> </legend>
+			<legend> <?php echo JText::_('COM_JXIFORMS_CONFIG_CRON_SETTING' ); ?> </legend>
 			
 			<div class="control-group">
 				<div class="control-label"><?php echo $form->getLabel('cron_run_automatic'); ?> </div>

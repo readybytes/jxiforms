@@ -30,11 +30,11 @@ class JXiFormsAdminControllerInput extends JXiFormsController
 		$result =  Rb_HelperJoomla::addMenu($advance['menu_title'], $advance['menu_alias'], $link, $advance['menu_location'], $cmp->id);
 
 		$url     = 'index.php?option=com_jxiforms&view=input&task=edit&input_id='.$input_id;
-		$message = Rb_Text::_('COM_JXIFORMS_INPUT_CREATE_MENU_SUCCESSFULLY');
+		$message = JText::_('COM_JXIFORMS_INPUT_CREATE_MENU_SUCCESSFULLY');
 		$type	 = 'message';
 		
 		if($result === false){
-			$message  = Rb_Text::_('COM_JXIFORMS_ERROR_INPUT_CREATE_MENU');
+			$message  = JText::_('COM_JXIFORMS_ERROR_INPUT_CREATE_MENU');
 			$type	  = 'error';		
 		}
 		

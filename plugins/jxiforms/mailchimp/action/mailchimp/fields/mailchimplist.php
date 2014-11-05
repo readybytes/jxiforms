@@ -25,7 +25,7 @@ class JXiFormsFormFieldMailchimplist extends JFormFieldList
 	{
 		$lists = $this->getMailchimpList();
 		if(empty($lists)){
-			return Rb_Text::_('COM_JXIFORMS_ACTION_MAILCHIMP_NO_LIST_EXISTS_FOR_API_KEY');
+			return JText::_('COM_JXIFORMS_ACTION_MAILCHIMP_NO_LIST_EXISTS_FOR_API_KEY');
 		}		
 		
 		$options = array();

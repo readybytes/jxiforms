@@ -67,7 +67,7 @@ class JXiformsAction extends JXiFormsLib
 				$type = $item->type;
 		}
 
-			Rb_Error::assert($type!==null, Rb_Text::_('PLG_SYSTEM_RBSL_ERROR_INVALID_TYPE_OF_APPLICATION'));
+			Rb_Error::assert($type!==null, JText::_('PLG_SYSTEM_RBSL_ERROR_INVALID_TYPE_OF_APPLICATION'));
 
 			//IMP autoload actions
 			JXiFormsHelperAction::getActions();

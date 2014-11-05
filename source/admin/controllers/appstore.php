@@ -38,7 +38,7 @@ class JXiFormsAdminControllerAppstore extends JXiFormsController
      		$response   = $curl->request('GET', $link);
       
       		if($response->code != 200){
-      			$msg = Rb_Text::_('COM_JXIFORMS_UNABLE_TO_FIND_FILE');
+      			$msg = JText::_('COM_JXIFORMS_UNABLE_TO_FIND_FILE');
        	 		$this->setRedirect("index.php?option=com_jxiforms", $msg, 'error');
        	 		return false;
       		}
@@ -50,14 +50,14 @@ class JXiFormsAdminControllerAppstore extends JXiFormsController
 			$content_type 	= $data->headers['Content-Type'];
     
    			 if ($content_type != 'application/zip'){ 
-   			 	$msg = Rb_Text::_('COM_JXIFORMS_UNABLE_TO_FIND_FILE');
+   			 	$msg = JText::_('COM_JXIFORMS_UNABLE_TO_FIND_FILE');
       			$this->setRedirect("index.php?option=com_jxiforms", $msg, 'error');
       			return false;
    		 	}
     		else {
       			$file =  $data->body;
 				if(!JXiFormsHelperUtils::install($file)){
-					$msg  = Rb_Text::_('COM_JXIFORMS_INSTALLATIN_FAILED');
+					$msg  = JText::_('COM_JXIFORMS_INSTALLATIN_FAILED');
 					$this->setRedirect("index.php?option=com_jxiforms", $msg, 'error');
 					return false;
 				}
@@ -66,7 +66,7 @@ class JXiFormsAdminControllerAppstore extends JXiFormsController
 		
 		//In case rbinstaller is installed but disable
 		elseif (!$object->enabled){
-			$this->setRedirect("index.php?option=com_installer&view=manage&filter_search=rb", Rb_Text::_('COM_JXIFORMS_ENABLE_RBINSTALLER'), 'warning');
+			$this->setRedirect("index.php?option=com_installer&view=manage&filter_search=rb", JText::_('COM_JXIFORMS_ENABLE_RBINSTALLER'), 'warning');
 			return false;
 		}
        	 		

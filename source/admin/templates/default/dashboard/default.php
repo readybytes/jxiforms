@@ -16,7 +16,7 @@ JHtml::_('behavior.framework');
 	<div class="span12">
 		<!--For Actions Panel-->
 		<div class="span7 dashboard-icon-panel jxif-left-padding01">
-			<div class="span10 jxif-padding01 jxif-action-heading jxif-fontsize15 margin-top2 jxif-text-colorgray"><?php echo Rb_Text::_('COM_JXIFORMS_SUBMENU_ACTION');?></div>
+			<div class="span10 jxif-padding01 jxif-action-heading jxif-fontsize15 margin-top2 jxif-text-colorgray"><?php echo JText::_('COM_JXIFORMS_SUBMENU_ACTION');?></div>
 			<div><?php echo  $this->loadTemplate('actions', compact('enablePlugins', 'disablePlugins')); ?></div>
 		</div>
 		

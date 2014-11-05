@@ -74,7 +74,7 @@ class JXiFormsHelperAction extends JXiFormsHelper
 		}
 
 		$type = 'jxiforms';
-		Rb_HelperPlugin::loadPlugins($type);
+		Rb_HelperJoomla::loadPlugins($type);
 		
 		sort(self::$_actions);
 		return self::$_actions;

@@ -23,7 +23,7 @@ class JxiformsHtmlInputs
 		$options = array();
 		
 		if(isset($attr['none']))
-			$options[] = JXiFormsHtml::_('select.option', '', Rb_Text::_('Select Input'));
+			$options[] = JXiFormsHtml::_('select.option', '', JText::_('Select Input'));
 			
 		foreach($inputs as $input){
 			$options[] = JXiFormsHtml::_('select.option', $input->input_id, $input->title);	

@@ -37,12 +37,12 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 <form action="<?php echo $uri; ?>" method="post" name="adminForm" id="adminForm">
 	<div class="span6">		
 		<fieldset class="form-horizontal">
-			<legend> <?php echo Rb_Text::_('COM_JXIFORMS_QUEUE_EDIT_DETAILS' ); ?> </legend>			
+			<legend> <?php echo JText::_('COM_JXIFORMS_QUEUE_EDIT_DETAILS' ); ?> </legend>			
 			<div class="control-group">
 				<div class="control-label"><?php echo $form->getLabel('input_id'); ?> </div>
 				<div class="controls">
 					<div class="control-label">
-						<?php echo ($input) ? JXiFormsHtml::link('index.php?option=com_jxiforms&view=input&task=edit&input_id='.$input->input_id, $input->title) : $input->input_id.'('.Rb_Text::_('COM_JXIFORMS_INPUT_DELETED').')'; ?>
+						<?php echo ($input) ? JXiFormsHtml::link('index.php?option=com_jxiforms&view=input&task=edit&input_id='.$input->input_id, $input->title) : $input->input_id.'('.JText::_('COM_JXIFORMS_INPUT_DELETED').')'; ?>
 					</div>
 				</div>								
 			</div>
@@ -51,7 +51,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 				<div class="control-label"><?php echo $form->getLabel('action_id'); ?> </div>
 				<div class="controls">
 					<div class="control-label">
-						<?php echo ($action) ? JXiFormsHtml::link('index.php?option=com_jxiforms&view=action&task=edit&action_id='.$action->action_id, $action->title) : $action->action_id.'('.Rb_Text::_('COM_JXIFORMS_ACTION_DELETED').')'; ?>
+						<?php echo ($action) ? JXiFormsHtml::link('index.php?option=com_jxiforms&view=action&task=edit&action_id='.$action->action_id, $action->title) : $action->action_id.'('.JText::_('COM_JXIFORMS_ACTION_DELETED').')'; ?>
 					</div>
 				</div>								
 			</div>
@@ -68,7 +68,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 							<i class="icon-remove"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							 <button type="submit" class="btn" id="queue-approve-button">
 							 	<i class="icon-ok"></i>
-							 	<strong><?php echo Rb_Text::_('COM_JXIFORMS_QUEUE_EDIT_APPROVE_BUTTON');?></strong> 
+							 	<strong><?php echo JText::_('COM_JXIFORMS_QUEUE_EDIT_APPROVE_BUTTON');?></strong> 
 							</button> 
 						<?php endif;?>
 					</div>
@@ -87,7 +87,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 			
 			<div class="control-group">
 				<div class="control-label"><?php echo $form->getLabel('status'); ?> </div>
-				<div class="controls"><div class="control-label"><?php echo Rb_Text::_($status[$form->getValue('status')]); ?></div></div>				
+				<div class="controls"><div class="control-label"><?php echo JText::_($status[$form->getValue('status')]); ?></div></div>				
 			</div>
 			
 			<div class="control-group">
@@ -102,7 +102,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 	
 		<?php if(count($queue_attachments) > 0):?>
 			<fieldset class="form-horizontal">
-				<legend> <?php echo Rb_Text::_('COM_JXIFORMS_QUEUE_EDIT_ATTACHMENTS_DETAILS' ); ?> </legend>
+				<legend> <?php echo JText::_('COM_JXIFORMS_QUEUE_EDIT_ATTACHMENTS_DETAILS' ); ?> </legend>
 				
 				<div class="control-group">
 					<?php foreach ($queue_attachments as $name =>$file):?>
@@ -131,7 +131,7 @@ JHtml::_('formbehavior.chosen', 'select.multiselect');
 		<?php endif;?>
 		
 		<fieldset class="form-horizontal">
-			<legend> <?php echo Rb_Text::_('COM_JXIFORMS_QUEUE_EDIT_DATA_DETAILS' ); ?> </legend>
+			<legend> <?php echo JText::_('COM_JXIFORMS_QUEUE_EDIT_DATA_DETAILS' ); ?> </legend>
 		
 						<?php foreach ($queue_data as $key=>$value):?>
 								<div class="control-group">

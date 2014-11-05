@@ -34,7 +34,7 @@ class JXiFormsActionResetPassword extends JXiformsAction
 
 			// Check for a user.
 		if (empty($user->id)) {
-			$app->enqueueMessage(Rb_Text::sprintf('COM_JXIFORMS_RESET_PASSWORD_INVALID_EMAIL'), 'error');
+			$app->enqueueMessage(JText::sprintf('COM_JXIFORMS_RESET_PASSWORD_INVALID_EMAIL'), 'error');
 			return false;
 		}
 
@@ -43,13 +43,13 @@ class JXiFormsActionResetPassword extends JXiformsAction
 
 		// Make sure the user isn't blocked.
 		if ($user->block) {
-			$app->enqueueMessage(Rb_Text::sprintf('COM_JXIFORMS_RESET_PASSWORD_USER_BLOCKED'), 'error');
+			$app->enqueueMessage(JText::sprintf('COM_JXIFORMS_RESET_PASSWORD_USER_BLOCKED'), 'error');
 			return false;
 		}
 
 		// Make sure the user isn't a Super Admin.
 		if ($user->authorise('core.admin')) {
-			$app->enqueueMessage(Rb_Text::sprintf('COM_JXIFORMS_RESET_PASSWORD_SUPERADMIN_ERROR'), 'error');
+			$app->enqueueMessage(JText::sprintf('COM_JXIFORMS_RESET_PASSWORD_SUPERADMIN_ERROR'), 'error');
 			return false;
 		}
 		
@@ -61,23 +61,23 @@ class JXiFormsActionResetPassword extends JXiformsAction
 
 		// Save the user to the database.
 		if (!$user->save(true)) {
-			$app->enqueueMessage(Rb_Text::sprintf('COM_JXIFORMS_RESET_PASSWORD_USER_SAVE_FAILED', $user->getError()), 'error');
+			$app->enqueueMessage(JText::sprintf('COM_JXIFORMS_RESET_PASSWORD_USER_SAVE_FAILED', $user->getError()), 'error');
 			return false;
 		}
 
 		//Prepares Contents for mail
-		$subject = Rb_Text::sprintf('COM_JXIFORMS_RESET_PASSWORD_MAIL_SUBJECT',$data['sitename']);
-		$body 	 = Rb_Text::sprintf('COM_JXIFORMS_RESET_PASSWORD_MAIL_BODY',$data['sitename'],$data['token'],$data['link_text']);
+		$subject = JText::sprintf('COM_JXIFORMS_RESET_PASSWORD_MAIL_SUBJECT',$data['sitename']);
+		$body 	 = JText::sprintf('COM_JXIFORMS_RESET_PASSWORD_MAIL_BODY',$data['sitename'],$data['token'],$data['link_text']);
 
 		// Send the password reset request email.
 		$return = JXiFormsHelperUtils::sendEmail($subject, $body, null, array($user->email));
 		// Check for an error.
 		if ($return !== true) {
-			$app->enqueueMessage(Rb_Text::sprintf('COM_JXIFORMS_RESET_PASSWORD_MAIL_SENDING_FAILED'),'error');
+			$app->enqueueMessage(JText::sprintf('COM_JXIFORMS_RESET_PASSWORD_MAIL_SENDING_FAILED'),'error');
 			return false;
 		}
 
-		$app->enqueueMessage(Rb_Text::sprintf('COM_JXIFORMS_RESET_PASSWORD_MAIL_SENDING_SUCCESSFUL'), 'Info');
+		$app->enqueueMessage(JText::sprintf('COM_JXIFORMS_RESET_PASSWORD_MAIL_SENDING_SUCCESSFUL'), 'Info');
 		return true;
 	}
 	

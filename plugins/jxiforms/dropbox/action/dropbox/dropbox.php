@@ -67,7 +67,7 @@ class JXiFormsActionDropbox extends JXiformsAction
 		}
 		catch (Exception $e){
 			$error[] = true;
-			JXiFormsHelperUtils::sendEmailToAdmin(Rb_Text::_('COM_JXIFORMS_ACTION_DROPBOX_ERROR_OCCURRED_IN_FILE_UPLOAD'), Rb_Text::_($e->getMessage()), $attachment);
+			JXiFormsHelperUtils::sendEmailToAdmin(JText::_('COM_JXIFORMS_ACTION_DROPBOX_ERROR_OCCURRED_IN_FILE_UPLOAD'), JText::_($e->getMessage()), $attachment);
 		}
 	}
 

@@ -14,7 +14,7 @@ if(defined('_JEXEC')===false) die(); ?>
 }
 else { ?>
 	<div class="alert">
-		<h4><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_FORM_UNPUBLISHED');?></h4>
+		<h4><?php echo JText::_('COM_JXIFORMS_INPUT_FORM_UNPUBLISHED');?></h4>
 	</div>
 <?php 
 }
