@@ -36,11 +36,6 @@ class JXiFormsHelperAction extends JXiFormsHelper
 	{
 		static $instances = null;
 
-		//clean cache if required, required during testing
-		if(JXiFormsFactory::cleanStaticCache()){
-			$instances = null;
-		}
-
 		if($instances === null)
 		{
 			$queryFilters = array('published'=>1);

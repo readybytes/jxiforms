@@ -20,24 +20,18 @@ class JXiFormsLock
 
 	protected function __construct(){}
 	
+	static $instance = array();
 	static function getInstance($lockName="", $timeout=0)
 	{
-		static $instance = array();
-
-		//clean cache if we need to
-		if(JXiFormsFactory::cleanStaticCache()){
-			$instance = array();
-		}
-
 		//if already there is an object and check for static cache clean up
-		if(isset($instance[$lockName]))
-			return $instance[$lockName];
+		if(isset(self::$instance[$lockName]))
+			return self::$instance[$lockName];
 		
 		// create new instance if not cached
 		$lock = new JXiFormsLock();
 		$lock->_lockname = $lockName;
 		$lock->_result   = $lock->getLock($timeout);
-		return $instance[$lockName] = $lock;
+		return self::$instance[$lockName] = $lock;
 	}
 	
 	public function getLockResult()
