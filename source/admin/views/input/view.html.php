@@ -20,7 +20,7 @@ class JXiFormsAdminViewInput extends JXiFormsAdminBaseViewInput
 		JToolbarHelper::publish('publish', 'JTOOLBAR_PUBLISH', true);
 		JToolbarHelper::unpublish('unpublish','JTOOLBAR_UNPUBLISH', true);
 		JToolbarHelper::divider();
-		JToolbarHelper::deleteList();
+		JToolbarHelper::deleteList(JText::_('COM_JXIFORMS_JS_ARE_YOU_SURE_TO_DELETE'));
 	}
 	
 	protected function _adminEditToolbar()

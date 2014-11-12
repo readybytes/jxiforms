@@ -15,7 +15,7 @@ class JXiFormsAdminViewQueue extends JXiFormsAdminBaseViewQueue
 {
 	protected function _adminGridToolbar()
 	{
-		JToolbarHelper::deleteList();
+		JToolbarHelper::deleteList(JText::_('COM_JXIFORMS_JS_ARE_YOU_SURE_TO_DELETE'));
 	}
 	
 	protected function _adminEditToolbar()

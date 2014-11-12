@@ -21,7 +21,7 @@ class JXiFormsAdminViewAction extends JXiFormsAdminBaseViewAction
 		JToolbarHelper::publish('publish', 'JTOOLBAR_PUBLISH', true);
 		JToolbarHelper::unpublish('unpublish','JTOOLBAR_UNPUBLISH', true);
 		JToolbarHelper::divider();
-		JToolbarHelper::deleteList();
+		JToolbarHelper::deleteList(JText::_('COM_JXIFORMS_JS_ARE_YOU_SURE_TO_DELETE'));
 	}
 	
 	protected function _adminEditToolbar()
@@ -60,7 +60,7 @@ class JXiFormsAdminViewAction extends JXiFormsAdminBaseViewAction
 			$actionType =	JXiFormsFactory::getApplication()->input->get('type', $actionType);
 			
 			if(!$actionType){
-				throw new Exception(Rb_Text::_("COM_JXIFORMS_EXCEPTION_NO_ACTION_TYPE_PROVIDED"));
+				throw new Exception(JText::_("COM_JXIFORMS_EXCEPTION_NO_ACTION_TYPE_PROVIDED"));
 			}
 			
 			$record = new stdClass();
