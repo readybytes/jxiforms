@@ -105,10 +105,22 @@
 	</target>
 
 	<target name="copy_framework">
-		<copy todir="${dir.packages}">
-			<fileset dir="${rbframework.location}">
-				<include name="${rbframework.name}.${rbframework.build.version}.${file.extension}" />
-			</fileset>
-		</copy>
+		<php expression="strpos('${rbframework.location}', 'http')" returnProperty="is_url" />
+
+		<if>
+			<equals arg1="${is_url}" arg2='false' />
+			<then>
+				<copy todir="${dir.packages}">
+					<fileset dir="${rbframework.location}">
+						<include name="${rbframework.name}.${rbframework.build.version}.${file.extension}" />
+					</fileset>
+				</copy>
+			</then>
+
+			<else>
+				<!-- Copy RB-Framework kit from URL -->
+				<httpget url="${rbframework.location}/${rbframework.name}.${rbframework.build.version}.${file.extension}" dir="${dir.packages}"/>
+			</else>
+		</if>
 	</target>
 </project>

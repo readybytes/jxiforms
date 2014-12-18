@@ -8,4 +8,3 @@ dir.tmp		=${dir.packages}/tmp
 dir.src		=${dir.root}/source
 dir.report	=${dir.root}/data/report
 dir.plugin	=${dir.root}/plugins
-rb.location	=${user.home}/Dropbox/TEAM/dev/rbframework

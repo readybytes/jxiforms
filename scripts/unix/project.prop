@@ -4,7 +4,7 @@ project.shortform.small = jxiforms
 project.codename		= jxiforms
 
 # Version
-build.version 	= 1.0.5
+build.version 	= 1.1.0
 #build.number	= Will be created dynamically
 
 # Output settings
@@ -17,6 +17,7 @@ build.package.location = ${dir.root}/scripts
 build.package.name = pkg_jxiforms
 
 # RbFramework
-rbframework.build.version = 1.0.5
+rbframework.build.version = 1.1.0
 rbframework.name	  = RBSL
-rbframework.location	  = ${user.home}/Dropbox/TEAM/dev/rbframework
+#rbframework.location	  = ${user.home}/Dropbox/TEAM/dev/rbframework
+rbframework.location	  = http://10.0.0.91/intranet/downloads/SetupKits/RbFramework
