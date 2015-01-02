@@ -163,7 +163,7 @@ class Com_jxiformsInstallerScript
 			return true;
 		}
 
-		$message = JText::_('ERROR_RB_NOT_FOUND : RB-Framework not found. Please refer <a href="http://www.readybytes.net" target="_blank">URL</a> for more details.');
+		$message = JText::_('ERROR_RB_NOT_FOUND : RB-Framework not found. Please refer <a href="http://www.readybytes.net/support/forum/knowledge-base/201257-error-codes.html" target="_blank">Error Codes </a> to resolve this issue.');
 
 		// get content for rbframework version
     	$file_url   = 'http://pub.readybytes.net/rbinstaller/update/live.json';
@@ -232,7 +232,7 @@ class Com_jxiformsInstallerScript
 				return true;
 			}
 
-			$message = JText::_('ERROR_RB_MAJOR_VERSION_CHANGE : Major version change in the RB-Framework. Refer this URL to resolve this.');
+			$message = JText::_('ERROR_RB_MAJOR_VERSION_CHANGE : Major version change in the RB-Framework. Refer <a href="http://www.readybytes.net/support/forum/knowledge-base/201257-error-codes.html" target="_blank">Error Codes </a> to resolve this issue.');
 			JFactory::getApplication()->enqueueMessage($message, 'error');
 			return false;
 		}
