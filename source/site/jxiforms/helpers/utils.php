@@ -238,4 +238,9 @@ class JXiFormsHelperUtils extends JXiFormsHelper
 		
 		return true;
 	}
+	
+	public static function filterComments($sql)
+	{
+		return preg_replace("!/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/!s","",$sql);
+	}
 }

@@ -30,25 +30,26 @@
 		
 		<phing phingfile="${project.shortform.small}.xml" inheritAll="true" target="build" />
 		
-		<phingcall target="copy_framework"/>
+<!--		<phingcall target="copy_framework"/>  -->
 
 		<phingcall target="plugin_build" />
-
+<!--
 		<copy file="${build.package.location}/pkg.xml" tofile="${dir.packages}/${build.package.name}.xml" overwrite="true"/>
 		<copy file="${build.package.location}/script.php" tofile="${dir.packages}/script.php" overwrite="true"/>
-
+-->
 		<phingcall target="replace_tokens" />
 
-		<zip destfile="${dir.packages}/${file.package}.${build.version}.${build.number}.${file.extension}" 
+		<zip destfile="${dir.packages}/${file.package}.${build.version}.${file.extension}" 
 			basedir="${dir.tmp}" />
 		
-		<zip destfile="${dir.packages}/${file.package}.${build.version}.${file.extension}" basedir="${dir.packages}">
+<!--		<zip destfile="${dir.packages}/${file.package}.${build.version}.${file.extension}" basedir="${dir.packages}">
 			<fileset dir="${dir.packages}">
 				<include name="*.xml"></include>
 				<include name="*.php"></include>
 				<include name="*.zip"></include>
 			</fileset>
 		</zip>
+-->
 		<delete>
 			<fileset dir="${dir.packages}">
 				<include name="*.xml" />
@@ -103,7 +104,7 @@
 			</filterchain>
 		</reflexive>
 	</target>
-
+<!--
 	<target name="copy_framework">
 		<php expression="strpos('${rbframework.location}', 'http')" returnProperty="is_url" />
 
@@ -118,9 +119,10 @@
 			</then>
 
 			<else>
-				<!-- Copy RB-Framework kit from URL -->
+				
 				<httpget url="${rbframework.location}/${rbframework.name}.${rbframework.build.version}.${file.extension}" dir="${dir.packages}"/>
 			</else>
 		</if>
 	</target>
+-->
 </project>

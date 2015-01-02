@@ -46,7 +46,7 @@ class JXiFormsActionSqlquery extends JXiformsAction
 			
 		$sql = JXiFormsHelperRewriter::rewrite($sql, $data);
 		
-		$sql = Rb_HelperPatch::_filterComments($sql);
+		$sql = JXiFormsHelperUtils::filterComments($sql);
 		$queries = $db->splitSql($sql);
 
 		$result = true;
