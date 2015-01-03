@@ -224,7 +224,8 @@ class Com_jxiformsInstallerScript
 			$installed_rb_version 	=  explode('.', $params['version']);
 			
 			//if there is no change in the major version of rbframework then install else show message
-			if(version_compare($installed_rb_version[0].'.'.$installed_rb_version[1], $latest_rb_version[0].'.'.$latest_rb_version[1]) == 0){
+			if(version_compare($installed_rb_version[0].'.'.$installed_rb_version[1], $latest_rb_version[0].'.'.$latest_rb_version[1]) == 0
+				&& version_compare($content['rbframework']['version'], $params['version']) != 0){
 				$this->installRBFramework($content['rbframework']);
 				if(!$result->enabled){
 					$this->changeExtensionState(array(array('type'=>'system',   'name'=>'rbsl')));
