@@ -172,14 +172,12 @@ class Com_jxiformsInstallerScript
 		$response 	= $curl->request('GET', $link);
 			
 		if($response->code != 200){
-			JFactory::getApplication()->enqueueMessage($message, 'error');
-			return false;
+			JFactory::getApplication()->redirect('index.php?option=com_installer&view=install', $message, 'error');
 		}
 								
 		$content   =  json_decode($response->body, true);
 		if(!isset($content['rbframework']) || !isset($content['rbframework']['file_path'])){
-			JFactory::getApplication()->enqueueMessage($message, 'error');
-			return false;
+			JFactory::getApplication()->redirect('index.php?option=com_installer&view=install', $message, 'error');
 		}
 			
 		// check if already exists
@@ -233,8 +231,7 @@ class Com_jxiformsInstallerScript
 			}
 
 			$message = JText::_('ERROR_RB_MAJOR_VERSION_CHANGE : Major version change in the RB-Framework. Refer <a href="http://www.readybytes.net/support/forum/knowledge-base/201257-error-codes.html" target="_blank">Error Codes </a> to resolve this issue.');
-			JFactory::getApplication()->enqueueMessage($message, 'error');
-			return false;
+			JFactory::getApplication()->redirect('index.php?option=com_installer&view=install', $message, 'error');
 		}
 		
 		return true;
