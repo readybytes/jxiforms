@@ -31,7 +31,6 @@
 	<target name="setup" description="build installable package only" depends="config">
 		<phing phingfile="joomla.xml" inheritAll="true" target="setup" />
 		<phingcall target="copy_kit" />
-		<!--phingcall target="copy_testcase" / -->
 		<phingcall target="copy_revbuild" />
 	</target>
 
@@ -61,39 +60,6 @@
 				    <token key="build.version"   		value="${build.version}" />
 				</replacetokens>
  			</filterchain>
-		</reflexive>
-	</target>
-
-	<target name="copy_testcase">
-		<!-- Copy testcases -->
-		<copy todir="${joomla.rootpath}/${joomla.folder}/test" >
-		  <fileset dir="${dir.root}/test" />
-		</copy>
-		
-		<exec command="sudo chmod -R 777 test" dir="${joomla.rootpath}/${joomla.folder}" />
-
-		<!-- replace configuration-->
-		<reflexive>
-			<fileset dir="${joomla.rootpath}/${joomla.folder}/test">
-			    <include name="system/jdefines.php" />
-			</fileset>
-			<filterchain>
-				<replacetokens>
-					<token key="joomla.folder" 				value="${joomla.folder}"/>
-				    <token key="dropbox.package.folder"  	value="${pkg.location}"/>
-				    <token key="pkg.location"            	value="${pkg.location}"/>
-				    <token key="local.repository.location" 	value="${project.basedir}/../"/>
-				    <token key="joomla.sitename" 			value="${joomla.sitename}/"/>
-				    <token key="joomla.dbuser"   			value="${joomla.dbuser}"/>
-				    <token key="joomla.dbpassword"   		value="${joomla.dbpassword}"/>
-				    <token key="joomla.dbname"   			value="${joomla.dbname}"/>
-				    <token key="joomla.dbprefix"   			value="${joomla.dbprefix}"/>
-				    <token key="joomla.rootpath"   			value="${joomla.rootpath}"/>
-				    <token key="joomla.mysqlpath"   		value="${joomla.mysqlpath}"/>
-					<token key="build.number" 				value="${build.number}" />
-				    <token key="build.version"   			value="${build.version}" />
-				</replacetokens>
-			</filterchain>
 		</reflexive>
 	</target>
 
