@@ -34,7 +34,7 @@ class JXiFormsFormFieldFieldmanipulator extends JFormFieldList
 				continue;
 			}
 			$val	   = (string) $option['value'];
-			$options[] = Rb_Html::_('select.option', $val, Rb_Text::_((string) $option));
+			$options[] = Rb_Html::_('select.option', $val, JText::_((string) $option));
 			
 			// get attribute fields from each option
 			$fieldsVal	= (string)$option['fields'];

@@ -2,9 +2,9 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JoomlaXi Forms
+* @package		JxiForms
 * @subpackage	Frontend
-* @contact 		joomlaxi@readybytes.in
+* @contact 		support+jxiforms@readybytes.in
 */
 
 if(defined('_JEXEC')===false) die(); ?>
@@ -14,7 +14,7 @@ if(defined('_JEXEC')===false) die(); ?>
 }
 else { ?>
 	<div class="alert">
-		<h4><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_FORM_UNPUBLISHED');?></h4>
+		<h4><?php echo JText::_('COM_JXIFORMS_INPUT_FORM_UNPUBLISHED');?></h4>
 	</div>
 <?php 
 }

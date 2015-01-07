@@ -185,7 +185,7 @@ class JXiFormsHelperQueue extends JXiFormsHelper
 	
 	public static function sendApprovalEmail($approvalMessage, $subject = 'COM_JXIFORMS_QUEUE_APPROVAL_SEND_EMAIL_SUBJECT')
 	{
-		$subject  =  Rb_Text::_($subject);
+		$subject  =  JText::_($subject);
 		$emails   =  JXiFormsHelperConfig::get('approval_send_email_to');
 		$emails   =  empty($emails) ? array() : explode(',', $emails);
 		

@@ -26,11 +26,11 @@ class JXiFormsAdminControllerAppstore extends JXiFormsController
 		$db		= JXiFormsFactory::getDbo();
 		$query	= 'SELECT * FROM `#__extensions`'
 				 .'WHERE `type` LIKE "component"'
-				 .'AND `element` LIKE "com_rbinstaller"'
-				 .'AND `enabled` =1';
+				 .'AND `element` LIKE "com_rbinstaller"';
 				
 		$db->setQuery($query);
-		if(!$db->loadColumn())
+		$object = $db->loadObject();
+		if(!$object)
 		{
 	 		$file_url  = 'http://pub.readybytes.net/rbinstaller/update/live.json';
      		$link     = new JURI($file_url);  
@@ -38,8 +38,9 @@ class JXiFormsAdminControllerAppstore extends JXiFormsController
      		$response   = $curl->request('GET', $link);
       
       		if($response->code != 200){
-      			$msg = Rb_Text::_('COM_JXIFORMS_UNABLE_TO_FIND_FILE');
-       	 		JXiFormsFactory::getApplication()->redirect("index.php?option=com_jxiforms", $msg, 'error');
+      			$msg = JText::_('COM_JXIFORMS_UNABLE_TO_FIND_FILE');
+       	 		$this->setRedirect("index.php?option=com_jxiforms", $msg, 'error');
+       	 		return false;
       		}
                 
      		$content   	=  json_decode($response->body, true);    
@@ -49,19 +50,27 @@ class JXiFormsAdminControllerAppstore extends JXiFormsController
 			$content_type 	= $data->headers['Content-Type'];
     
    			 if ($content_type != 'application/zip'){ 
-   			 	$msg = Rb_Text::_('COM_JXIFORMS_UNABLE_TO_FIND_FILE');
-      			JXiFormsFactory::getApplication()->redirect("index.php?option=com_jxiforms", $msg, 'error');
+   			 	$msg = JText::_('COM_JXIFORMS_UNABLE_TO_FIND_FILE');
+      			$this->setRedirect("index.php?option=com_jxiforms", $msg, 'error');
+      			return false;
    		 	}
     		else {
       			$file =  $data->body;
 				if(!JXiFormsHelperUtils::install($file)){
-					$msg  = Rb_Text::_('COM_JXIFORMS_INSTALLATIN_FAILED');
-					JXiFormsFactory::getApplication()->redirect("index.php?option=com_jxiforms", $msg, 'error');
+					$msg  = JText::_('COM_JXIFORMS_INSTALLATIN_FAILED');
+					$this->setRedirect("index.php?option=com_jxiforms", $msg, 'error');
+					return false;
 				}
 			}
 		}
+		
+		//In case rbinstaller is installed but disable
+		elseif (!$object->enabled){
+			$this->setRedirect("index.php?option=com_installer&view=manage&filter_search=rb", JText::_('COM_JXIFORMS_ENABLE_RBINSTALLER'), 'warning');
+			return false;
+		}
        	 		
-		$app = JXiFormsFactory::getApplication();
-		$app->redirect("index.php?option=com_rbinstaller&view=item&product_tag=rbappsjxiforms&tmpl=component#/app");
+		$this->setRedirect("index.php?option=com_rbinstaller&view=item&product_tag=rbappsjxiforms&tmpl=component#/app");
+		return false;
 	}
 }

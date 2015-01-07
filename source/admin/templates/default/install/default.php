@@ -2,93 +2,92 @@
 /**
 * @copyright	Copyright (C) 2009 - 2013 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
-* @package		JoomlaXi Forms
+* @package		JxiForms
 * @subpackage	Backend
-* @contact 		bhavya@readybytes.in
-* website		http://www.joomlaxi.com
+* @contact 		support+jxiforms@readybytes.in
+* website		http://www.readybytes.net
 */
 if(defined('_JEXEC')===false) die();
 JHtml::_('behavior.framework');
 ?>
 
 <!--Congratulation Message-->
-<div class="row-fluid show-grid">
-	<div class="jxif-setborder jxif-bgcolor-DC ">
-		<div class="row-fluid">
-			<div class="span6 jxif-padding01">
-				<div class="jxif-fontsize15 jxif-textcolor777 jxif-letterspace02"><strong><?php echo Rb_Text::_('COM_JXIFORMS_INSTALLATION_SUCCESS_MSG');?><br></strong></div>
-				<div class="jxif-fontsize12 jxif-textcolor999 jxif-letterspace01 margin-top1"><strong><?php echo Rb_Text::_('COM_JXIFORMS_INSTALLATION_SUCCESS_MSG_CONTENT');?></strong></div>
-			</div>
-			<div class="span6 ">
-				<div class="jxif-fontsize15 margin-top1 jxif-text-right jxif-padding01">
-					<strong><?php echo $howItWorks;?></strong>
+<div class="row-fluid">
+	
+	<div class="row-fluid">
+		<div class="alert alert-success center">
+			<h3><em><?php echo Rb_Text::_('COM_JXIFORMS_INSTALLATION_SUCCESS_MSG');?></em></h3>
+			<p><?php echo Rb_Text::_('COM_JXIFORMS_INSTALLATION_SUCCESS_MSG_CONTENT');?></p>
+		</div>
+	</div>
+	
+	<div class="row-fluid">
+		<div class="span6">
+			<div class="jxif-install-border">
+				<div class="row-fluid">
+					<div class="span4 center jxif-vertical-line">
+						<span><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI(JXIFORMS_PATH_CORE_MEDIA."/admin/img/free_actions.png", false), Rb_Text::_('JxiForms Actions'));?></span>
+						<p><b><?php echo Rb_Text::_('COM_JXIFORMS_INSTALL_ACTIONS');?></b></p>
+					</div>	
+					<div class="span1"></div>				
+					<div class="span7">
+						<div class="jxif-unit">
+			    			<ul class="message">
+			    				<li><?php echo Rb_Text::_('COM_JXIFORMS_EMAIL_ACTION')?></li>
+			    				<li><?php echo Rb_Text::_('COM_JXIFORMS_MAILCHIMP_ACTION')?></li>
+			    				<li><?php echo Rb_Text::_('COM_JXIFORMS_RESET_PASSWORD_ACTION')?></li>
+			    				<li><?php echo Rb_Text::_('COM_JXIFORMS_JOOMLA_REGISTRATION_ACTION')?></li>
+			    			</ul>
+				    	</div>
+					</div>
 				</div>
-				<button type="submit" class="btn btn-success btn-large pull-right jxif-textcolor444 jxif-margin-bottom01" onclick="window.location.href='<?php echo JUri::base().'index.php?option=com_jxiforms&view=install&task=complete';?>';">
-	  				<i class="icon-hand-right"></i>&nbsp;<?php echo Rb_Text::_('COM_JXIFORMS_FINISH_INSTALLATION_BUTTON');?>
-				</button>
+			</div>
+		</div>
+		
+		<div class="span6">
+			<div class="jxif-install-border">
+				<div class="row-fluid">
+					<div class="span4 center jxif-vertical-line">
+						<span><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI(JXIFORMS_PATH_CORE_MEDIA."/admin/img/app-store.png", false), Rb_Text::_('COM_JXIFORMS_APPSTORE_HEADING'));?></span>
+						<p><b><?php echo Rb_Text::_('COM_JXIFORMS_APPSTORE');?></b></p>
+					</div>	
+					<div class="span1"></div>				
+					<div class="span7">
+						<div class="jxif-unit">
+			    			<span class="jxif-install-header"><?php echo Rb_Text::_('COM_JXIFORMS_APPSTORE_HEADING');?></span>
+			    			<p class="message"><?php echo Rb_Text::_('COM_JXIFORMS_APPSTORE_HEADING_MSG')?></p>
+						    <p><a href="<?php echo JUri::base().'index.php?option=com_jxiforms&view=appstore';?>" class="btn btn-info"><?php echo Rb_Text::_('COM_JXIFORMS_VISIT_APPSTORE');?></a></p>
+				    	</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+	<div>&nbsp;</div>
+		
+	<div class="row-fluid">
+		<button type="submit" class="btn btn-success btn-large pull-right" onclick="window.location.href='<?php echo JUri::base().'index.php?option=com_jxiforms&view=install&task=complete';?>';">
+	  	<i class="icon-hand-right"></i>&nbsp;<?php echo Rb_Text::_('COM_JXIFORMS_FINISH_INSTALLATION_BUTTON');?>
+		</button>
+	</div>	
+	<div>&nbsp;</div>
 
-<!--For Premium And Free Action Blocks-->
-<div class="row-fluid">
-	<!--For Free Actions Block-->
-	<div class="span6 jxif-setborder jxif-bgcolor-DC jxif-margin-bottom03">
-		<!--Header-->
-		<div class="jxif-heading jxif-fontsize15 jxif-textcolor777 jxif-letterspace02 jxif-padding01 margin-top1"><?php echo Rb_Text::_('COM_JXIFORMS_PRE_INSTALLED_ACTION_HEADING');?></div>
-			<div class="row-fluid">
-				<div class="span6 center"><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI(JXIFORMS_PATH_ADMIN_TEMPLATE."/default/_media/icons/free_actions.png", false), Rb_Text::_('COM_JXIFORMS_PRE_INSTALLED_ACTION_HEADING'));?></div>
-					<div class="span6">
-						<?php 	$freeAction = array( Rb_Text::_('COM_JXIFORMS_ACK_BY_EMAIL_ACTION'),
-													 Rb_Text::_('COM_JXIFORMS_ACK_BY_SMS_ACTION'),
-													 Rb_Text::_('COM_JXIFORMS_DROPBOX_ACTION'),
-													 Rb_Text::_('COM_JXIFORMS_EMAIL_ACTION'),
-													 Rb_Text::_('COM_JXIFORMS_JOOMLA_LOGIN_ACTION'),
-													 Rb_Text::_('COM_JXIFORMS_JOOMLA_REGISTRATION_ACTION'),
-													 Rb_Text::_('COM_JXIFORMS_MAILCHIMP_ACTION')
-													 );
-								foreach ($freeAction as $key => $action) {?>
-								<div class="jxif-textcolor999 jxif-letterspace01 jxif-padding01">
-									<span class="jxif-fontsize15 jxif-verticalalign-middle"><?php echo Rb_Text::_('COM_JXIFORMS_GREATER_THEN_SIGN');?></span>
-									<span class="jxif-verticalalign-middle"><?php echo $action;?></span>
-								</div>
-						<?php }?>
-					</div>
-			</div>
-	</div>
-	<!--For Premium Actions Block-->
-	<div class="span6 jxif-setborder jxif-bgcolor-DC">
-		<div class="jxif-heading jxif-fontsize15 jxif-textcolor777 jxif-letterspace02 jxif-padding01 margin-top1"><?php echo Rb_Text::_('COM_JXIFORMS_PREMIUM_ACTION_HEADING');?></div>
-			<div class="row-fluid">
-				<div class="span6 center"><?php echo Rb_Html::image(Rb_HelperTemplate::mediaURI(JXIFORMS_PATH_ADMIN_TEMPLATE."/default/_media/icons/premium_actions_bundle.png", false), Rb_Text::_('COM_JXIFORMS_PREMIUM_ACTION_HEADING'));?></div>
-					<div class="span6 ">
-						<?php 	$premiumAction = array( Rb_Text::_('COM_JXIFORMS_ASANA_TASK_ACTION'),
-														Rb_Text::_('COM_JXIFORMS_GITHUB_ISSUE_ACTION'),
-														Rb_Text::_('COM_JXIFORMS_GITHUB_MILESTONE_ACTION'),
-														Rb_Text::_('COM_JXIFORMS_HTTP_QUERY_ACTION'),
-														Rb_Text::_('COM_JXIFORMS_SQL_QUERY_ACTION')
-														);
-								foreach ($premiumAction as $key => $action) {?>
-								<div class="jxif-textcolor999 jxif-letterspace01 jxif-padding01">
-									<span class="jxif-fontsize15 jxif-verticalalign-middle"><?php echo Rb_Text::_('COM_JXIFORMS_GREATER_THEN_SIGN');?></span>
-									<span class="jxif-verticalalign-middle"><?php echo $action;?></span>
-								</div>
-						<?php }?>
-						<div class="jxif-margin-bottom03">
-							<button type="submit" class="btn btn-warning margin-top2 jxif-textcolor444 jxif-padding02" onclick="window.open('http://www.joomlaxi.com/download/category/joomlaxi-forms-2.html')">
-				  				<i class="icon-shopping-cart"></i>&nbsp;<?php echo Rb_Text::_('COM_JXIFORMS_GET_PREMIUM_BUNDLE_BUTTON');?>
-							</button>
-						</div>
-					</div>
-			</div>
-	</div>
+
 	<div class="hide">
 		<?php
+			$domain  = JURI::getInstance()->toString(array('scheme', 'host', 'port'));
 			$version = new JVersion();
-			$suffix = 'jom=J'.$version->RELEASE.'&utm_campaign=broadcast&jxif=JXIF'.JXIFORMS_VERSION.'&dom='.JURI::getInstance()->toString(array('scheme', 'host', 'port'));?>
+			$suffix = 'jom=J'.$version->RELEASE.'&utm_campaign=broadcast&jxif=JXIF'.JXIFORMS_VERSION.'&dom='.$domain;
+			
+			$event 		= "product.installation";
+			$event_args = array('product'=>'Jxiforms', 'version'=>JXIFORMS_VERSION, 'domain'=>$domain, 'joomla_version'=>$version->RELEASE, 'email'=>$email);
+			$event_args = urlencode(json_encode($event_args));?>
 			
 		<iframe src="http://pub.joomlaxi.com/broadcast/joomlaxi-form/installation.html?<?php echo $suffix?>"></iframe>
+		
+		<iframe src="http://www.readybytes.net/broadcast/track.html?event=<?php echo $event;?>&event_args=<?php echo $event_args;?>" style="display :none;"></iframe>
+
+	</div>
 	</div>
 </div>
 <?php 

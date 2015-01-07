@@ -2,9 +2,9 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JoomlaXi Forms
+* @package		JxiForms
 * @subpackage	Backend
-* @contact 		bhavya@readybytes.in
+* @contact 		support+jxiforms@readybytes.in
 */
 
 if(defined('_JEXEC')===false) die();
@@ -14,7 +14,7 @@ class JXiFormsAdminControllerAction extends JXiFormsController
 	public function _save(array $data, $itemId=null)
 	{
 		if(!isset($data['type'])){
-			throw new Exception(Rb_Text::_('COM_JXIFORMS_EXCEPTION_NO_ACTION_TYPE_PROVIDED'));
+			throw new Exception(JText::_('COM_JXIFORMS_EXCEPTION_NO_ACTION_TYPE_PROVIDED'));
 		}
 		$action = JXiformsAction::getInstance($itemId, $data['type']);
 

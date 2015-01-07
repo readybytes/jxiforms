@@ -2,9 +2,9 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JoomlaXi Forms
+* @package		JxiForms
 * @subpackage	Frontend
-* @contact 		bhavya@readybytes.in
+* @contact 		support+jxiforms@readybytes.in
 */
 
 if(defined('_JEXEC')===false) die();
@@ -17,7 +17,7 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		$input   = ($inputId != 0) ?  JXiformsInput::getInstance($inputId) : false; 
 		
 		if(!($input instanceof JXiformsInput)){
-			throw new Exception(Rb_Text::sprintf('COM_JXIFORMS_EXCEPTION_INVALID_INPUT_ID', $inputId));
+			throw new Exception(JText::sprintf('COM_JXIFORMS_EXCEPTION_INVALID_INPUT_ID', $inputId));
 		}
 		
 		//if form is not published then do nothing
@@ -25,14 +25,15 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 			return true;
 		}
 		
-		//collect data from get and post 
-		$postData    = Rb_Request::get('POST');
-		$getData     = Rb_Request::get('GET');
-		$data 		 = array_merge($getData, $postData);
+		$jinput = JXiFormsFactory::getApplication()->input;
+		
+		$postData = $jinput->post->getArray();
+		$getData  = $jinput->get->getArray();
+		$data 	  = array_merge($getData, $postData);
 		
 		//If any action's plugin want to attach some data.		
 		$args     = array(&$data);
-		Rb_HelperPlugin::trigger('onJXIFormsDataPrepare', $args, 'jxiforms');
+		Rb_HelperJoomla::triggerPlugin('onJXIFormsDataPrepare', $args, 'jxiforms');
 
 		//unset token(added by RBFW for protecting against CSRF) from the submitted data 
 		$formToken   = JXiFormsFactory::getSession()->getFormToken();
@@ -54,23 +55,29 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 			if(empty($file['tmp_name'])){
 				continue;
 			}
-
-			$extension = '';
-			$properties = explode('.', $file['name']);
 			
-			//if there is no extension attached with filename
-			if(count($properties) > 1){
-				$extension = '.'.array_pop($properties);
+			//IMP : for multiple uploads
+			if (is_array($file['name'])){
+				
+				$multipleUpload = array();
+				foreach(array_keys($file['name']) as $i) { // loop over 0,1,2,3 etc...
+				   foreach(array_keys($file) as $j) { // loop over 'name', 'size', 'error', etc...
+				      $multipleUpload[$i][$j] = $file[$j][$i]; // "swap" keys and copy over original array values
+				   }
+				}
+				
+				foreach ($multipleUpload as $key => $upload){
+					$path  =  $this->_arrangeAttachment($upload);
+					if ($path != false){
+						$attachments[$name][] = $path;
+					}
+				}
 			}
-
-			//append current time_stamp to the file name
-			$tmp_name = explode('/', $file['tmp_name']);
-			$filename = array_pop($tmp_name).'_'.time();
-			
-			$destination = JPATH_SITE.JXIFORMS_PATH_ATTACHMENTS.$filename.$extension;
-			
-			if(move_uploaded_file($file['tmp_name'], $destination)){
-				$attachments[$name] = JXIFORMS_PATH_ATTACHMENTS.$filename.$extension;	
+			else {
+					$path  =  $this->_arrangeAttachment($file);
+					if ($path != false){
+						$attachments[$name][] = $path;
+					}
 			}
 		}
 		
@@ -78,7 +85,7 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 		$queueRecs  =  JXiFormsHelperQueue::enqueue($input);
 		JXiFormsHelperQueue::appendDataToFile($queueRecs, $data, $attachments);
 		
-		$approvalContent = Rb_Text::sprintf('COM_JXIFORMS_INPUT_DATA_SUBMITTED_ON', $input->getTitle());
+		$approvalContent = JText::sprintf('COM_JXIFORMS_INPUT_DATA_SUBMITTED_ON', $input->getTitle());
 		$approvalLinks    = '';
 		foreach ($queueRecs as $queue){
 			//if task is approved then process immediately else set the approval contents to email
@@ -86,7 +93,7 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 				$queue->process();
 			}
 			else {
-				$approvalLinks .= Rb_Text::sprintf('COM_JXIFORMS_INPUT_APPROVAL_REQUEST', JXiFormsHelperAction::get($queue->getActionId())->title,$queue->getApprovalUrl());
+				$approvalLinks .= JText::sprintf('COM_JXIFORMS_INPUT_APPROVAL_REQUEST', JXiFormsHelperAction::get($queue->getActionId())->title,$queue->getApprovalUrl());
 			}
 		}
 		
@@ -101,5 +108,26 @@ class JXiFormsSiteControllerInput extends JXiFormsController
 	public function display($cachable = false, $urlparams = array())
 	{
 		return parent::display($cachable, $urlparams);
+	}
+	
+	protected function _arrangeAttachment($file)
+	{
+		$extension = '';
+		$properties = explode('.', $file['name']);
+		
+		//if there is no extension attached with filename
+		if(count($properties) > 1){
+			$extension = '.'.array_pop($properties);
+		}
+
+		//append current time_stamp to the file name
+		$tmp_name = explode('/', $file['tmp_name']);
+		$filename = array_pop($tmp_name).'_'.time();
+		
+		$destination = JPATH_SITE.JXIFORMS_PATH_ATTACHMENTS.$filename.$extension;
+		
+		if(move_uploaded_file($file['tmp_name'], $destination)){
+			return JXIFORMS_PATH_ATTACHMENTS.$filename.$extension;
+		}
 	}
 } 

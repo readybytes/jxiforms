@@ -2,10 +2,10 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
-* @package		JoomlaXi Forms
+* @package		JxiForms
 * @subpackage	Backend
-* @contact 		bhavya@readybytes.in
-* website		http://www.joomlaxi.com
+* @contact 		support+jxiforms@readybytes.in
+* website		http://www.readybytes.net
 */
 if(defined('_JEXEC')===false) die();
 
@@ -26,8 +26,8 @@ JHtml::_('behavior.framework');
 					<?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_INPUT_GRID_INPUT_ID", 'input_id', $filter_order_Dir, $filter_order);?>
 				</th>
 				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_INPUT_GRID_TITLE", 'title', $filter_order_Dir, $filter_order);?></th>
-				<th><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_GRID_POSTURL');?></th>
-				<th><?php echo Rb_Text::_('COM_JXIFORMS_INPUT_GRID_REDIRECTURL');?></th>
+				<th><?php echo JText::_('COM_JXIFORMS_INPUT_GRID_POSTURL');?></th>
+				<th><?php echo JText::_('COM_JXIFORMS_INPUT_GRID_REDIRECTURL');?></th>
 				<th><?php echo JXiFormsHtml::_('grid.sort', "COM_JXIFORMS_INPUT_GRID_PUBLISHED", 'published', $filter_order_Dir, $filter_order);?></th>
 							
 			</tr>

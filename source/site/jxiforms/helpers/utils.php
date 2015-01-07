@@ -75,7 +75,7 @@ class JXiFormsHelperUtils extends JXiFormsHelper
 		$fromname 	= $app->getCfg( 'fromname' );
 		
 		if( !$mailfrom  || !$fromname ) {
-			throw new Exception(Rb_Text::_('COM_JXIFORMS_EXCEPTION_UTILS_NO_EMAILFROM_AND_FROMNAME_EXISTS'));
+			throw new Exception(JText::_('COM_JXIFORMS_EXCEPTION_UTILS_NO_EMAILFROM_AND_FROMNAME_EXISTS'));
 		}
 		
 		$message = html_entity_decode($message, ENT_QUOTES);
@@ -192,7 +192,7 @@ class JXiFormsHelperUtils extends JXiFormsHelper
         JHTML::_('behavior.modal', "a.exportPopup");
         $buttonMap = new JObject();
         $buttonMap->set('modal', true);
-        $buttonMap->set('text', Rb_Text::_("$textToShow"));
+        $buttonMap->set('text', JText::_("$textToShow"));
         $buttonMap->set('modalname', 'exportPopup');
         $buttonMap->set('options', "{handler: 'iframe', size: {x: $width, y:$height}}");
         $buttonMap->set('link', $link);
@@ -200,7 +200,7 @@ class JXiFormsHelperUtils extends JXiFormsHelper
         $html = '<a style="color:#0088CC;"
         `			id="'.$buttonMap->modalname.'" '
                  .' class="'.$buttonMap->modalname.'" '
-                 .' title="'.Rb_Text::_($toolTip).'" '
+                 .' title="'.JText::_($toolTip).'" '
                  .' href ="'.$buttonMap->link.'" '
                  .' rel  ="'.$buttonMap->options.'" >'
 			                .$buttonMap->text.' </a>';
@@ -237,5 +237,10 @@ class JXiFormsHelperUtils extends JXiFormsHelper
 		}
 		
 		return true;
+	}
+	
+	public static function filterComments($sql)
+	{
+		return preg_replace("!/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/!s","",$sql);
 	}
 }

@@ -1,9 +1,9 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JoomlaXi Forms
+* @package		JxiForms
 * @subpackage	Backend
-* @contact 		joomlaxi@readybytes.in
+* @contact 		support+jxiforms@readybytes.in
 */
 
 .jxiforms .jxif-example-code{
@@ -260,13 +260,43 @@ vertical-align:middle;
 	background-color: #DCDCDC;
 }
 
-.jxiforms .jxif-setborder{
-	border: 1px solid #eee;
-	border: 1px solid rgba(0,0,0,0.05);
-	border-radius: 4px;
-}
-
 .jxiforms .jxif-heading
 {
 	background-image: -moz-linear-gradient(left, #F5F5F5, #DCDCDC);
+}
+
+.jxiforms .jxif-install-border {
+	border: 1px solid #E3E3E3;
+	border-radius: 4px 4px 4px 4px;
+    padding : 50px 0px 50px 0px;
+    min-height: 140px;
+}
+
+.jxiforms .jxif-install-header {
+	font-size: 23px;
+	line-height: 1;
+}
+
+.jxiforms .jxif-unit {
+	margin-bottom: 30px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+
+.jxiforms .jxif-unit p{
+	padding-top: 10px;
+	font-size: 15px;
+	color:#606060 ;
+	line-height: 27px;	
+}
+
+.jxiforms .jxif-unit ul li{
+	font-size: 14px;
+	color:#606060 ;
+	line-height: 20px;	
+}
+
+.jxiforms .jxif-vertical-line {
+	border-right: 1px solid #E3E3E3;
 }

@@ -21,7 +21,7 @@ class JxiformsHtmlActions
 		$options = array();
 		
 		if(isset($attr['none']))
-			$options[] = JXiFormsHtml::_('select.option', '', Rb_Text::_('Select Action'));
+			$options[] = JXiFormsHtml::_('select.option', '', JText::_('Select Action'));
 			
 		foreach($actions as $action){
 			$options[] = JXiFormsHtml::_('select.option', $action->action_id, $action->title);	

@@ -3,7 +3,7 @@
 * @license		GNU/GPL, see LICENSE.php
 * @package		JXiForms
 * @subpackage	UI
-* @contact 		bhavya@readybytes.in
+* @contact 		support+jxiforms@readybytes.in
 */
 
 if (typeof(jxiforms)=='undefined'){

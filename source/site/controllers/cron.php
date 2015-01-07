@@ -2,7 +2,7 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JoomlaXi Forms
+* @package		JxiForms
 * @subpackage	Frontend
 */
 
@@ -21,7 +21,7 @@ class JXiFormsSiteControllerCron extends JXiFormsController
 	public function trigger()
 	{
 		header("Content-type: image/png");
-	    echo file_get_contents(JXIFORMS_PATH_CORE_MEDIA.'/images/cron.png');	    
+	    echo file_get_contents(JXIFORMS_PATH_CORE_MEDIA.'/img/cron.png');	    
 
 		// check if we need to trigger, dont trigger too frequently
 		if(JXiFormsHelperCron::checkRequired()==false){

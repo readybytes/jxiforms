@@ -21,7 +21,7 @@ class JXiFormsFormFieldAsanauserlist extends JFormFieldList
 	{
 		$users = $this->getAsanaUserlist();
 		if(empty($users)){
-			return Rb_Text::_('COM_JXIFORMS_ACTION_ASANA_NO_USER_EXISTS');
+			return JText::_('COM_JXIFORMS_ACTION_ASANA_NO_USER_EXISTS');
 		}		
 		
 		$options = array();

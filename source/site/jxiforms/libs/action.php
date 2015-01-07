@@ -2,9 +2,9 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JoomlaXi Forms
+* @package		JxiForms
 * @subpackage	Frontend
-* @contact 		bhavya@readybytes.in
+* @contact 		support+jxiforms@readybytes.in
 */
 
 if(defined('_JEXEC')===false) die();
@@ -42,15 +42,9 @@ class JXiformsAction extends JXiFormsLib
 	 * 
 	 * @return Object JXiformsAction  Instance of JXiformsAction
 	 */
+	static $instance = array();
 	public static function getInstance($id = 0,  $type = null,  $bindData = null, $dummy = null)
-	{
-		static $instance=array();
-
-		//clean cache if required
-		if(JXiFormsFactory::cleanStaticCache()){
-			$instance=array();
-		}
-		
+	{		
 		$name = 'Action';
 		//generate class name
 		$className	= 'JXiForms'.$name;
@@ -67,7 +61,7 @@ class JXiformsAction extends JXiFormsLib
 				$type = $item->type;
 		}
 
-			Rb_Error::assert($type!==null, Rb_Text::_('PLG_SYSTEM_RBSL_ERROR_INVALID_TYPE_OF_APPLICATION'));
+			Rb_Error::assert($type!==null, JText::_('PLG_SYSTEM_RBSL_ERROR_INVALID_TYPE_OF_APPLICATION'));
 
 			//IMP autoload actions
 			JXiFormsHelperAction::getActions();
@@ -86,15 +80,15 @@ class JXiformsAction extends JXiFormsLib
 		}
 
 		//if already there is an object and check for static cache clean up
-		if(isset($instance[$name][$id]) && $instance[$name][$id]->getId()==$id)
-			return $instance[$name][$id];
+		if(isset(self::$instance[$name][$id]) && self::$instance[$name][$id]->getId()==$id)
+			return self::$instance[$name][$id];
 
 		//create new object, class must be autoloaded
-		$instance[$name][$id] = new $className();
+		self::$instance[$name][$id] = new $className();
 
 		//if bind data exist then bind with it, else load new data
-		return  $bindData 	? $instance[$name][$id]->bind($item)
-					: $instance[$name][$id]->load($id);
+		return  $bindData 	? self::$instance[$name][$id]->bind($item)
+					: self::$instance[$name][$id]->load($id);
 	}
 	
 	/**

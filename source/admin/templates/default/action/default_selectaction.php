@@ -2,9 +2,9 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JoomlaXi Forms
+* @package		JxiForms
 * @subpackage	Backend
-* @contact 		bhavya@readybytes.in
+* @contact 		support+jxiforms@readybytes.in
 */
 
 if(defined('_JEXEC')===false) die();
@@ -59,7 +59,7 @@ jxiforms.jQuery(document).ready(function(){
 
 <fieldset >
 	<legend>
-		<?php echo Rb_Text::_('COM_JXIFORMS_ACTION_SELECT_ACTION');?>
+		<?php echo JText::_('COM_JXIFORMS_ACTION_SELECT_ACTION');?>
 	</legend>
 </fieldset>
 
@@ -76,7 +76,7 @@ jxiforms.jQuery(document).ready(function(){
 					foreach ($actions as $type => $action)
 					{
 						$imagePath  = $action['location'].'/'.$action['icon'];
-						$imagePath  = file_exists($imagePath) ? $imagePath : JXIFORMS_PATH_ADMIN_TEMPLATE.'/default/_media/icons/actions.png';
+						$imagePath  = file_exists($imagePath) ? $imagePath : JXIFORMS_PATH_CORE_MEDIA.'/admin/images/actions.png';
 						$details[$type]['description'] = $action['description'];
 						$details[$type]['icon'] = Rb_HelperTemplate::mediaURI($imagePath, false);
 						$details[$type]['name'] = $action['name'];
@@ -89,7 +89,7 @@ jxiforms.jQuery(document).ready(function(){
 			<?php }
 			}
 			else {?>
-				<div><?php echo Rb_Text::_('COM_JXIFORMS_FORM_NO_ACTION_ENABLED');?></div>
+				<div><?php echo JText::_('COM_JXIFORMS_FORM_NO_ACTION_ENABLED');?></div>
 			<?php } ?>
 		</div>					
 	</div>
@@ -113,9 +113,9 @@ jxiforms.jQuery(document).ready(function(){
 		
 		<div class="row-fluid">	
 			<div class="span12 margin-top2">
-				<div class="span2" id="restore-actions"><a href='#' class="btn"><i class="icon-home"></i><strong><?php echo Rb_Text::_('COM_JXIFORMS_ACTION_SELECT_ACTION_BACK');?></strong></a></div>
+				<div class="span2" id="restore-actions"><a href='#' class="btn"><i class="icon-home"></i><strong><?php echo JText::_('COM_JXIFORMS_ACTION_SELECT_ACTION_BACK');?></strong></a></div>
 				<div class="span6"></div>
-				<div class="span3"><a href='#' class="btn btn-primary" id="action-type-next"><strong><?php echo Rb_Text::_('COM_JXIFORMS_ACTION_SELECT_ACTION_NEXT');?></strong> <i class="icon-hand-right icon-white"></i></a></div>
+				<div class="span3"><a href='#' class="btn btn-primary" id="action-type-next"><strong><?php echo JText::_('COM_JXIFORMS_ACTION_SELECT_ACTION_NEXT');?></strong> <i class="icon-hand-right icon-white"></i></a></div>
 			</div>
 		</div>
 	</div>

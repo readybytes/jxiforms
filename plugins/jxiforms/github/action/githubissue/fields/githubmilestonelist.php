@@ -21,7 +21,7 @@ class JXiFormsFormFieldGithubmilestonelist extends JFormFieldList
 	{
 		$milestones = $this->getGithubmilestonelist();
 		if(empty($milestones)){
-			return Rb_Text::_('COM_JXIFORMS_ACTION_GITHUB_NO_MILESTONE_EXISTS');
+			return JText::_('COM_JXIFORMS_ACTION_GITHUB_NO_MILESTONE_EXISTS');
 		}		
 		
 		$options = array();

@@ -2,9 +2,9 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JoomlaXi Forms
+* @package		JxiForms
 * @subpackage	Backend
-* @contact 		bhavya@readybytes.in
+* @contact 		support+jxiforms@readybytes.in
 */
 
 if(defined('_JEXEC')===false) die();
@@ -19,15 +19,18 @@ class JXiFormsAdminControllerDashboard extends JXiFormsController
 	
 	public function enableActionPlugin()
 	{
-		//Enables the Plugin of Action		
-		$pluginToEnable = JRequest::getVar('plugin');
-		$pluginName		= JRequest::getVar('pluginName');
-		Rb_HelperPlugin::changeState($pluginToEnable, "jxiforms");
+		$input = JXiFormsFactory::getApplication()->input;
+		
+		//Enables the Plugin of Action
+		$pluginToEnable = $input->get('plugin');
+		$pluginName		= $input->get('pluginName');
+		
+		Rb_HelperJoomla::changePluginState($pluginToEnable, "jxiforms");
 
 		//Varifies the status of plugin
 		$enabled		= JXiFormsHelperJoomla::getPlugins('plugin', "jxiforms", true);
-		($enabled[$pluginToEnable]) ? JXiFormsFactory::getApplication()->enqueueMessage(sprintf(Rb_Text::_('COM_JXIFORMS_DASHBOARD_ENABLE_PLUGIN_SUCCESSFULL_MESSAGE'), $pluginName),'success')
-						: JXiFormsFactory::getApplication()->enqueueMessage(sprintf(Rb_Text::_('COM_JXIFORMS_DASHBOARD_ENABLE_PLUGIN_UNSUCCESSFULL_MESSAGE'), $pluginName),'notice');
+		($enabled[$pluginToEnable]) ? JXiFormsFactory::getApplication()->enqueueMessage(sprintf(JText::_('COM_JXIFORMS_DASHBOARD_ENABLE_PLUGIN_SUCCESSFULL_MESSAGE'), $pluginName),'message')
+						: JXiFormsFactory::getApplication()->enqueueMessage(sprintf(JText::_('COM_JXIFORMS_DASHBOARD_ENABLE_PLUGIN_UNSUCCESSFULL_MESSAGE'), $pluginName),'notice');
 
 		$this->setRedirect(Rb_Route::_('index.php?option=com_jxiforms&view=dashboard'));
 		return false;

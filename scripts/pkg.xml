@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="2.5" method="install">
+	<name>JxiForms</name>
+	<author>Team ReadyBytes</author>
+	<creationDate>March 2013</creationDate>
+	<packagename>jxiforms</packagename>
+	<version>@build.version@</version>
+	<license>This component in released under the GNU/GPL v3 or later license</license>
+	<url>www.readybytes.net</url>
+	<packager>Team ReadyBytes</packager>
+	<packagerurl>www.readybytes.net</packagerurl>
+	<files>
+	    <file type="plugin" group="system" id="rbsl">@rbframework.name@.@rbframework.build.version@.zip</file>		
+	    <file type="component" id="com_jxiforms">jxiforms.@build.version@.@build.number@.zip</file>
+	</files>
+	<scriptfile>script.php</scriptfile>
+</extension>

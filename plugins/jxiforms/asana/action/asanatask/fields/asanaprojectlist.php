@@ -21,7 +21,7 @@ class JXiFormsFormFieldAsanaprojectlist extends JFormFieldList
 	{
 		$projects = $this->getAsanaProjectlist();
 		if(empty($projects)){
-			return Rb_Text::_('COM_JXIFORMS_ACTION_ASANA_NO_PROJECT_EXISTS');
+			return JText::_('COM_JXIFORMS_ACTION_ASANA_NO_PROJECT_EXISTS');
 		}		
 		
 		$options = array();

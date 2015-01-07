@@ -1,8 +1,10 @@
 #===============================================
-//pkg.version=J2.5.6
-pkg.version=J3.2
+pkg.version=J3.3.0
 pkg.location=${user.home}/Dropbox/TEAM/dev/joomla
 dropbox.package.folder=${pkg.location}
+
+# url for joomla kit
+pkg.location			=	http://10.0.0.91/intranet/downloads/SetupKits/Joomla
 
 #=================================================
 #== joomla installation configuration on linux
@@ -26,6 +28,10 @@ joomla.importDBQuery	="source ${joomla.dbdump}"
 
 joomla.bakpath		=./${joomla.version}
 joomla.dbdump		=${joomla.rootpath}/${joomla.folder}/database.sql
+
+## Site config
+joomla.error.reporting = maximum
+joomla.dbtype = mysql
 
 
 #======================================== 

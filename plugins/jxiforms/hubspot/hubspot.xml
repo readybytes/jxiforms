@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="jxiforms" method="upgrade">
-    <name>Hubspot for JoomlaXi Forms</name>
+    <name>JxiForms-Hubspot</name>
     <version>@build.version@</version>
     <creationDate>Jan 2013</creationDate>
-    <author>Team JoomlaXi</author>
-    <authorEmail>joomlaxi@readybytes.in</authorEmail>
-    <authorUrl>http://www.joomlaxi.com</authorUrl>
+    <author>Team ReadyBytes</author>
+    <authorEmail>support+jxiforms@readybytes.in</authorEmail>
+    <authorUrl>http://www.readybytes.net</authorUrl>
     <copyright>2009-13 Ready Bytes Software Labs Pvt. Ltd.</copyright>
     <license>GNU General Public License v2</license>
-    <description>JoomlaXi Forms Hubspot Integration</description>
+    <description>JxiForms Hubspot Integration</description>
 	<files>
 		<filename plugin="hubspot">hubspot.php</filename>
 		<folder>action</folder>
 		<filename>index.html</filename>
 	</files>
+	<alias>jxif-hubspot</alias>
+	<version_number>@build.version@</version_number>
+	<version_name>JxiForms Hubspot @build.version@</version_name>
 </extension>
 

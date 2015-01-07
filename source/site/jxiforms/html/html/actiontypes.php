@@ -3,7 +3,7 @@
 /**
 * @copyright	Copyright (C) 2009 - 2012 Ready Bytes Software Labs Pvt. Ltd. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
-* @package		JoomlaXi Forms
+* @package		JxiForms
 * @subpackage	Frontend
 */
 
@@ -22,7 +22,7 @@ class JxiformsHtmlActiontypes
 		
 		$options = array();
 		if(isset($attr['none']))
-			$options[] = JXiFormsHtml::_('select.option', '', Rb_Text::_('COM_JXIFORMS_ACTION_SELECT_ACTION_TYPE'));
+			$options[] = JXiFormsHtml::_('select.option', '', JText::_('COM_JXIFORMS_ACTION_SELECT_ACTION_TYPE'));
 	
 		
 			

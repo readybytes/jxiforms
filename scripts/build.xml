@@ -30,21 +30,26 @@
 		
 		<phing phingfile="${project.shortform.small}.xml" inheritAll="true" target="build" />
 		
-		<phingcall target="copy_framework"/>
+<!--		<phingcall target="copy_framework"/>  -->
 
 		<phingcall target="plugin_build" />
+<!--
+		<copy file="${build.package.location}/pkg.xml" tofile="${dir.packages}/${build.package.name}.xml" overwrite="true"/>
+		<copy file="${build.package.location}/script.php" tofile="${dir.packages}/script.php" overwrite="true"/>
+-->
 		<phingcall target="replace_tokens" />
 
-		<zip destfile="${dir.packages}/${file.package}.${build.version}.${build.number}.${file.extension}" 
+		<zip destfile="${dir.packages}/${file.package}.${build.version}.${file.extension}" 
 			basedir="${dir.tmp}" />
 		
-		<zip destfile="${dir.packages}/${file.package}.${build.version}.${file.extension}" basedir="${dir.packages}">
+<!--		<zip destfile="${dir.packages}/${file.package}.${build.version}.${file.extension}" basedir="${dir.packages}">
 			<fileset dir="${dir.packages}">
 				<include name="*.xml"></include>
 				<include name="*.php"></include>
 				<include name="*.zip"></include>
 			</fileset>
 		</zip>
+-->
 		<delete>
 			<fileset dir="${dir.packages}">
 				<include name="*.xml" />
@@ -58,15 +63,8 @@
 				<type type="dir" />
 				<depth max="0" min="0" />
 				<include name="jxiforms" />  
-				<include name="resetpassword" />  
-				<include name="mailchimp" />  
-				<include name="joomlaregistration" />  
-				<include name="joomlalogin" />  
-				<include name="email" />  
-				<include name="dropbox" />  
-				<include name="ack" />  
-				<include name="languagepack_en_GB" />  
-
+				<include name="email" />
+				<include name="languagepack_en_GB" />
 			  </fileset>
 		
 		</foreach>
@@ -100,22 +98,31 @@
 				<replacetokens>
 				    <token key="build.version" 	value="${build.version}" />
 				    <token key="build.number"   value="${build.number}" />
-				    <token key="rb.build.version"   value="${rb.build.version}" />
-				    <token key="rb.name"   value="${rb.name}" />
-				    <token key="redirect.url"   value="${redirect.url}" />
-				    <token key="packageclass.name"   value="${packageclass.name}" />
+				    <token key="rbframework.name"  value="${rbframework.name}" />
+				    <token key="rbframework.build.version"  value="${rbframework.build.version}" />
 				</replacetokens>
 			</filterchain>
 		</reflexive>
 	</target>
-
+<!--
 	<target name="copy_framework">
-		<copy todir="${dir.packages}">
-			<fileset dir="${rb.location}">
-				<include name="${rb.name}${rb.build.version}.${file.extension}" />
-				<include name="pkg_JoomlaxiForms.xml" />
-				<include name="script.php" />
-			</fileset>
-		</copy>
+		<php expression="strpos('${rbframework.location}', 'http')" returnProperty="is_url" />
+
+		<if>
+			<equals arg1="${is_url}" arg2='false' />
+			<then>
+				<copy todir="${dir.packages}">
+					<fileset dir="${rbframework.location}">
+						<include name="${rbframework.name}.${rbframework.build.version}.${file.extension}" />
+					</fileset>
+				</copy>
+			</then>
+
+			<else>
+				
+				<httpget url="${rbframework.location}/${rbframework.name}.${rbframework.build.version}.${file.extension}" dir="${dir.packages}"/>
+			</else>
+		</if>
 	</target>
+-->
 </project>

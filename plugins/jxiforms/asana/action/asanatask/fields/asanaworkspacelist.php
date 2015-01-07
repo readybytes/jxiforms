@@ -21,7 +21,7 @@ class JXiFormsFormFieldAsanaworkspacelist extends JFormFieldList
 	{
 		$workspaces = $this->getAsanaWorkspacelist();
 		if(empty($workspaces)){
-			return Rb_Text::_('COM_JXIFORMS_ACTION_ASANA_NO_WORKSPACE_EXISTS');
+			return JText::_('COM_JXIFORMS_ACTION_ASANA_NO_WORKSPACE_EXISTS');
 		}		
 		
 		$options = array();

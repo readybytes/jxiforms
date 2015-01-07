@@ -24,7 +24,7 @@ class JXiFormsActionAckbysms extends JXiformsAction
 		//For Cross Checking Phone Number.
 		if(!is_numeric($recipient) || strlen($recipient) < 10){
 			$app = JXiFormsFactory::getApplication();
-			$app->enqueueMessage(Rb_Text::_('COM_JXIFORMS_ACTION_ACK_BY_SMS_SMSGATEWAYHUB_INVALID_PHONE_NUMBER'));
+			$app->enqueueMessage(JText::_('COM_JXIFORMS_ACTION_ACK_BY_SMS_SMSGATEWAYHUB_INVALID_PHONE_NUMBER'));
 			return false;
 		}
 		
