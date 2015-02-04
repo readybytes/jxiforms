@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="jxiforms" method="upgrade">
+    <name>JxiForms-Email Custom Action For ReadyBytes</name>
+    <version>@build.version@</version>
+    <creationDate>June 2014</creationDate>
+    <author>Team ReadyBytes</author>
+    <authorEmail>suppot+jxiforms@readybytes.in</authorEmail>
+    <authorUrl>http://www.readybytes.net</authorUrl>
+    <copyright>2009-14 Ready Bytes Software Labs Pvt. Ltd.</copyright>
+    <license>GNU General Public License v2</license>
+    <description>JXiForms-Email Custom Action For ReadyBytes</description>
+	<files>
+		<filename plugin="rbslcustomemail">rbslcustomemail.php</filename>
+		<folder>action</folder>
+		<filename>index.html</filename>
+	</files>
+	<alias>jxif-rbslcustomemail</alias>
+	<version_number>@build.version@</version_number>
+	<version_name>JxiForms Email Custom @build.version@</version_name>
+</extension>
+
