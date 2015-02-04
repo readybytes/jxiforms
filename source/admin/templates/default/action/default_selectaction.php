@@ -76,7 +76,7 @@ jxiforms.jQuery(document).ready(function(){
 					foreach ($actions as $type => $action)
 					{
 						$imagePath  = $action['location'].'/'.$action['icon'];
-						$imagePath  = file_exists($imagePath) ? $imagePath : JXIFORMS_PATH_CORE_MEDIA.'/admin/images/actions.png';
+						$imagePath  = file_exists($imagePath) ? $imagePath : JXIFORMS_PATH_CORE_MEDIA.'/admin/img/actions.png';
 						$details[$type]['description'] = $action['description'];
 						$details[$type]['icon'] = Rb_HelperTemplate::mediaURI($imagePath, false);
 						$details[$type]['name'] = $action['name'];
